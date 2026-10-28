@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Electrical</a><span aria-hidden="true">/</span>
     <a href="./#dc-circuits">DC circuits</a>
@@ -72,17 +75,19 @@
           <path id="I-arrow" d="M230 140 L230 102 M236.6 102 L230 90 L223.4 102 Z" class="s-ox f-ox" stroke-width="2.5"></path>
           <text id="I-label" x="240" y="120" class="t-ox">I = 120 mA</text>
           <path d="M320 190 L500 190 M500 193.3 L506 190 L500 186.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M320 190 L320 30 M323.3 30 L320 24 L316.7 30 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="506" y="224" text-anchor="end">V</text><text class="lbl" x="328" y="28">I</text>
+          <text x="490" y="206" text-anchor="middle">50</text>
+          <text x="314" y="44" text-anchor="end">0.5</text>
           <path id="iv" class="s-ink" stroke-width="2" d="M320.0 190.0 L490.0 40.0"></path>
-          <path id="drop" class="s-ox dash" stroke-width="1" d="M320.0 100.0 L422.0 100.0 L422.0 190.0"></path>
-          <circle id="pt" r="5" class="f-ox" cx="422.0" cy="100.0"></circle>
+          <path id="drop" class="s-ox dash" stroke-width="1" d="M320.0 154.0 L360.8 154.0 L360.8 190.0"></path>
+          <circle id="pt" r="5" class="f-ox" cx="360.8" cy="154.0" visibility="visible"></circle>
         </svg>
-        <figcaption><b>Fig. 1.1-1</b>The current–voltage line is straight, with slope 1/R.</figcaption>
+        <figcaption><b>Fig. 1.1-1</b>The current–voltage line is straight, with slope 1/R. Axes run to 50 V and 0.5 A.</figcaption>
 
         <div class="controls">
           <div class="ctl">
             <label for="V-num"><i>V</i>Voltage <span class="unit">V</span></label>
-            <input type="range" id="V-range" min="0.1" max="240" step="0.1" value="12" aria-label="Voltage, V">
-            <input type="number" id="V-num" min="0.1" max="240" step="0.1" value="12" inputmode="decimal" data-name="a voltage" data-unit="V" aria-describedby="V-err">
+            <input type="range" id="V-range" min="0.1" max="50" step="0.1" value="12" aria-label="Voltage, V">
+            <input type="number" id="V-num" min="0.1" max="50" step="0.1" value="12" inputmode="decimal" data-name="a voltage" data-unit="V" aria-describedby="V-err">
             <span class="err" id="V-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
@@ -106,7 +111,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -132,10 +138,12 @@
           <p class="answer-note" id="w-note">The resistor dissipates P = VI = 1.44 W as heat.</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Related cases</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Related cases</h2></summary>
       <ul class="cases">
         <li>
           <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L14 26 L18 18 L26 34 L34 18 L42 34 L46 26 L62 26 L66 18 L74 34 L82 18 L90 34 L94 26 L106 26" class="s-ink" stroke-width="1.5"/></svg>
@@ -166,8 +174,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li>The resistor is ohmic: its resistance stays constant. That holds for resistors and metal wires at steady temperature, but not for diodes, or lamps as they warm up.</li>
@@ -176,7 +185,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <ol class="derive prose">
           <li>In a metal, free electrons drift at a speed proportional to the electric field, so the current density is <code><i class="v">J</i> = <i class="v">σ</i><sub>e</sub><i class="v">E</i></code>, where <i class="v">σ</i><sub>e</sub> is the conductivity.</li>

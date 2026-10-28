@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Mechanics</a><span aria-hidden="true">/</span>
     <a href="./#beams">Beams</a>
@@ -65,12 +68,12 @@
           <desc id="fig-desc">A beam built into a wall at the left with a point load at its free right end. The deflected shape is drawn below the unloaded position.</desc>
 <line x1="40" y1="30" x2="40" y2="140" class="s-ink" stroke-width="3"></line><path d="M32 38 L40 30 M32 48 L40 40 M32 58 L40 50 M32 68 L40 60 M32 78 L40 70 M32 88 L40 80 M32 98 L40 90 M32 108 L40 100 M32 118 L40 110 M32 128 L40 120 M32 138 L40 130" class="s-ink" stroke-width="1"></path>
           <line x1="40" y1="86" x2="480" y2="86" class="s-ink2 dash" stroke-width="1"></line>
-          <path id="curve" class="s-ink" stroke-width="4" stroke-linecap="round" d="M40.0 86.00 L51.0 86.04 L62.0 86.16 L73.0 86.35 L84.0 86.62 L95.0 86.97 L106.0 87.38 L117.0 87.86 L128.0 88.41 L139.0 89.02 L150.0 89.69 L161.0 90.43 L172.0 91.22 L183.0 92.07 L194.0 92.97 L205.0 93.93 L216.0 94.94 L227.0 95.99 L238.0 97.09 L249.0 98.24 L260.0 99.43 L271.0 100.66 L282.0 101.92 L293.0 103.23 L304.0 104.56 L315.0 105.93 L326.0 107.33 L337.0 108.76 L348.0 110.21 L359.0 111.69 L370.0 113.19 L381.0 114.71 L392.0 116.25 L403.0 117.80 L414.0 119.37 L425.0 120.95 L436.0 122.54 L447.0 124.14 L458.0 125.75 L469.0 127.36 L480.0 128.97"></path>
-          <g id="load" transform="translate(0 42.97)"><path d="M478 14 L478 64 M469.2 64 L478 80 L486.8 64 Z" class="s-ox f-ox" stroke-width="4"></path><text id="load-label" x="468" y="30" text-anchor="end" class="t-ox">P = 1 kN</text></g>
+          <path id="curve" class="s-ink" stroke-width="4" stroke-linecap="round" d="M40.0 86.00 L51.0 86.02 L62.0 86.08 L73.0 86.18 L84.0 86.31 L95.0 86.48 L106.0 86.69 L117.0 86.93 L128.0 87.20 L139.0 87.51 L150.0 87.85 L161.0 88.21 L172.0 88.61 L183.0 89.04 L194.0 89.49 L205.0 89.97 L216.0 90.47 L227.0 91.00 L238.0 91.55 L249.0 92.12 L260.0 92.71 L271.0 93.33 L282.0 93.96 L293.0 94.61 L304.0 95.28 L315.0 95.97 L326.0 96.67 L337.0 97.38 L348.0 98.11 L359.0 98.85 L370.0 99.60 L381.0 100.36 L392.0 101.13 L403.0 101.90 L414.0 102.69 L425.0 103.48 L436.0 104.27 L447.0 105.07 L458.0 105.87 L469.0 106.68 L480.0 107.48"></path>
+          <g id="load" transform="translate(0 21.48)"><path d="M478 14 L478 64 M469.2 64 L478 80 L486.8 64 Z" class="s-ox f-ox" stroke-width="4"></path><text id="load-label" x="468" y="30" text-anchor="end" class="t-ox">P = 1 kN</text></g>
           <line x1="40" y1="150" x2="480" y2="150" class="s-ink2" stroke-width="1"></line>
           <line x1="480" y1="144" x2="480" y2="156" class="s-ink2" stroke-width="1"></line>
           <text id="span-label" x="44" y="172">L = 1.00 m</text>
-          <text id="scale-label" class="lbl" x="480" y="172" text-anchor="end">deflection drawn ×100</text>
+          <text id="scale-label" class="lbl" x="480" y="172" text-anchor="end">deflection drawn ×50</text>
         </svg>
         <figcaption><b>Fig. 2.4-1</b>Deflection exaggerated; scale noted under the beam.</figcaption>
 
@@ -123,7 +126,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 2.4-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -154,10 +158,12 @@
           <p class="answer-note" id="w-note">Length over tip deflection: L/1,024.</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Other load cases</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Other load cases</h2></summary>
       <p class="legend">Same symbols. <i class="v">δ</i> and <i class="v">θ</i> are at the free end; <i class="v">M</i> is at the wall.</p>
       <ul class="cases">
         <li>
@@ -182,8 +188,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li>The root is fully fixed: no movement or rotation at the wall. Real fixings rotate a little, which adds deflection.</li>
@@ -193,7 +200,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <div class="prose">
           <p>Measure <i class="v">x</i> from the wall, with <i class="v">y</i> positive upwards. An end load gives a hogging moment <span class="inline-eq"><i class="v">M</i> = −<i class="v">P</i>(<i class="v">L</i> − <i class="v">x</i>)</span> at <i class="v">x</i>.</p>

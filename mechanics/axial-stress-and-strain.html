@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Mechanics</a><span aria-hidden="true">/</span>
     <a href="./#stress">Stress</a>
@@ -63,14 +66,14 @@
         <svg class="fig" id="fig" viewBox="0 0 520 190" role="img" aria-labelledby="fig-desc">
           <desc id="fig-desc">A round bar fixed to a wall at the left and pulled to the right by a force. The stretched bar is drawn over its original length.</desc>
 <line x1="40" y1="40" x2="40" y2="140" class="s-ink" stroke-width="3"></line><path d="M32 48 L40 40 M32 58 L40 50 M32 68 L40 60 M32 78 L40 70 M32 88 L40 80 M32 98 L40 90 M32 108 L40 100 M32 118 L40 110 M32 128 L40 120 M32 138 L40 130" class="s-ink" stroke-width="1"></path>
-          <rect id="bar" x="40" class="s-ink f-tab" stroke-width="2" y="82.9" width="391.8" height="14.2"></rect>
+          <rect id="bar" x="40" class="s-ink f-tab" stroke-width="2" y="82.9" width="375.9" height="14.2"></rect>
           <line x1="400" y1="44" x2="400" y2="136" class="s-ink2 dash" stroke-width="1"></line>
-          <path id="force" class="s-ox f-ox" stroke-width="4" d="M435.8 90.0 L481.8 90.0 M481.8 97.7 L495.8 90.0 L481.8 82.3 Z"></path>
+          <path id="force" class="s-ox f-ox" stroke-width="4" d="M419.9 90.0 L465.9 90.0 M465.9 97.7 L479.9 90.0 L465.9 82.3 Z"></path>
           <text id="force-label" y="72.9" class="t-ox" x="512" text-anchor="end">F = 20 kN</text>
           <line x1="40" y1="156" x2="400" y2="156" class="s-ink2" stroke-width="1"></line>
           <line x1="400" y1="150" x2="400" y2="162" class="s-ink2" stroke-width="1"></line>
           <text id="len-label" x="44" y="178">L = 2 m</text>
-          <text id="scale-label" class="lbl" x="500" y="178" text-anchor="end">extension drawn ×100</text>
+          <text id="scale-label" class="lbl" x="500" y="178" text-anchor="end">extension drawn ×50</text>
         </svg>
         <figcaption><b>Fig. 3.1-1</b>Extension exaggerated; scale noted under the bar.</figcaption>
 
@@ -117,7 +120,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 3.1-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -148,10 +152,12 @@
           <p class="answer-note" id="w-note">The stress is 64.3% of the yield strength of steel S275 (275 MPa).</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Related cases</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Related cases</h2></summary>
       <ul class="cases">
         <li>
           <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="8" y1="14" x2="8" y2="40" class="s-ink" stroke-width="3"/><path d="M0 22 L8 14 M0 32 L8 24" class="s-ink" stroke-width="1"/><rect x="8" y="20" width="76" height="14" class="s-ink f-tab" stroke-width="1.5"/><path d="M86 27 L99 27 M99 30.9 L106 27 L99 23.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
@@ -182,8 +188,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li>The force acts along the bar's axis through the centroid, so stress is uniform across the section.</li>
@@ -194,7 +201,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <ol class="derive prose">
           <li>Stress is force per unit area: <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code>.</li>

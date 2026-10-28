@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Mechanics</a><span aria-hidden="true">/</span>
     <a href="./#beams">Beams</a>
@@ -107,7 +110,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 2.5-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -136,10 +140,12 @@
           <p class="answer-note" id="w-note">About the vertical axis, hb³/12 = 1.56 × 10⁶ mm⁴.</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Other sections</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Other sections</h2></summary>
       <p class="legend">About a centroidal axis unless stated.</p>
       <ul class="cases">
         <li>
@@ -171,8 +177,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li><i class="v">I</i> is taken about an axis through the centroid, for a section of one material.</li>
@@ -181,7 +188,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <div class="prose">
           <p>By definition <span class="inline-eq"><i class="v">I</i> = ∫ <i class="v">y</i>² d<i class="v">A</i></span>, where <i class="v">y</i> is the distance of each element of area d<i class="v">A</i> from the axis.</p>

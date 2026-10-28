@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Materials</a><span aria-hidden="true">/</span>
     <a href="./#elasticity">Elasticity</a>
@@ -62,11 +65,11 @@
         <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
           <desc id="fig-desc">A rectangular bar, outlined dashed at its original size and drawn solid after loading: longer and narrower in tension, shorter and wider in compression.</desc>
           <rect x="110" y="60" width="300" height="80" class="s-ink2 dash" stroke-width="1"></rect>
-          <rect id="bar" class="s-ink f-tab" stroke-width="2" x="80.0" y="62.4" width="360.0" height="75.2"></rect>
-          <path id="fl" class="s-ox f-ox" stroke-width="3" d="M74.0 100.0 L42.0 100.0 M42.0 93.4 L30.0 100.0 L42.0 106.6 Z"></path>
-          <path id="fr" class="s-ox f-ox" stroke-width="3" d="M446.0 100.0 L478.0 100.0 M478.0 106.6 L490.0 100.0 L478.0 93.4 Z"></path>
+          <rect id="bar" class="s-ink f-tab" stroke-width="2" x="106.0" y="61.2" width="308.0" height="77.6"></rect>
+          <path id="fl" class="s-ox f-ox" stroke-width="3" d="M100.0 100.0 L78.0 100.0 M78.0 93.4 L66.0 100.0 L78.0 106.6 Z"></path>
+          <path id="fr" class="s-ox f-ox" stroke-width="3" d="M420.0 100.0 L442.0 100.0 M442.0 106.6 L454.0 100.0 L442.0 93.4 Z"></path>
           <text id="d-label" x="260" y="186" text-anchor="middle">d = 20 mm → 19.94 mm</text>
-          <text id="scale-label" class="lbl" x="500" y="24" text-anchor="end">strains drawn ×20</text>
+          <text id="scale-label" class="lbl" x="500" y="24" text-anchor="end">strains drawn ×10</text>
         </svg>
         <figcaption><b>Fig. 1.2-1</b>Dashed: original shape. Strains exaggerated by the scale noted.</figcaption>
 
@@ -108,7 +111,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 1.2-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -136,10 +140,12 @@
           <p class="answer-note" id="w-note">The width changes by −0.06 mm, and the volume by 0.4%.</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Related elastic constants</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Related elastic constants</h2></summary>
       <ul class="cases">
         <li>
           <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="16" width="52" height="28" class="s-ink f-tab" stroke-width="1.5"/><path d="M30 10 L75 10 M75 13.9 L82 10 L75 6.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
@@ -163,8 +169,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li>The material is isotropic and linear-elastic, and strains are small.</li>
@@ -174,7 +181,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <ol class="derive prose">
           <li>Apply axial strain <i class="v">ε</i>. Each lateral direction then strains by <code>−<i class="v">ν</i><i class="v">ε</i></code>.</li>

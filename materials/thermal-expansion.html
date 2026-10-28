@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Materials</a><span aria-hidden="true">/</span>
     <a href="./#thermal">Thermal</a>
@@ -61,14 +64,14 @@
       <figure class="demo" id="demo">
         <svg class="fig" id="fig" viewBox="0 0 520 170" role="img" aria-labelledby="fig-desc">
           <desc id="fig-desc">A bar resting on a roller, drawn at its original length with a dashed end mark, and at its heated length.</desc>
-          <rect id="bar" x="40" y="60" height="30" class="s-ink f-tab" stroke-width="2" width="438.4"></rect>
+          <rect id="bar" x="40" y="60" height="30" class="s-ink f-tab" stroke-width="2" width="419.2"></rect>
           <line x1="440" y1="46" x2="440" y2="104" class="s-ink2 dash" stroke-width="1"></line>
           <path d="M40 92 L30 108 L50 108 Z" class="s-ink" stroke-width="2"></path>
-          <text id="dL-label" y="44" class="t-ox" x="478.4" text-anchor="end">ΔL = 4.8 mm</text>
+          <text id="dL-label" y="44" class="t-ox" x="459.2" text-anchor="end">ΔL = 4.8 mm</text>
           <line x1="40" y1="130" x2="440" y2="130" class="s-ink2" stroke-width="1"></line>
           <line x1="440" y1="124" x2="440" y2="136" class="s-ink2" stroke-width="1"></line>
           <text id="len-label" x="44" y="152">L = 10 m</text>
-          <text id="scale-label" class="lbl" x="500" y="152" text-anchor="end">change drawn ×200</text>
+          <text id="scale-label" class="lbl" x="500" y="152" text-anchor="end">change drawn ×100</text>
         </svg>
         <figcaption><b>Fig. 2.1-1</b>Change in length exaggerated; scale noted under the bar.</figcaption>
 
@@ -110,7 +113,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 2.1-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -139,10 +143,12 @@
           <p class="answer-note" id="w-note">If both ends were fixed, the stress would be −EαΔT = −96 MPa.</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Related cases</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Related cases</h2></summary>
       <ul class="cases">
         <li>
           <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="12" width="44" height="28" class="s-ink f-tab" stroke-width="1.5"/><rect x="30" y="8" width="50" height="34" class="s-ox dash" stroke-width="1"/></svg>
@@ -166,8 +172,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li><i class="v">α</i> is constant over the temperature range. In reality it varies with temperature.</li>
@@ -177,7 +184,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <ol class="derive prose">
           <li>The coefficient is defined as the fractional change in length per kelvin: <code><i class="v">α</i> = (1/<i class="v">L</i>) d<i class="v">L</i>/d<i class="v">T</i></code>.</li>

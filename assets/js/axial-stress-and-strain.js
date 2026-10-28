@@ -1,14 +1,14 @@
 // Round bar in tension: live demo for Mechanics §3.1.
 (function () {
   const { fmt, set, attr, opt, arrow, nb } = NB;
-  const X0 = 40, XL = 400, CY = 90, MAX_DRAW = 40; // fixed end, unloaded end, axis, largest drawn extension
+  const X0 = 40, XL = 400, CY = 90, MAX_DRAW = 40, SCALE = 50; // fixed end, unloaded end, axis, largest drawn extension, exaggeration
 
   NB.demo(function (v) {
     const F = v.F * 1e3, d = v.d / 1e3, L = v.L, E = v.E * 1e9;
     const sel = opt("E"), fy = Number(sel.dataset.fy);
     const A = (Math.PI * d * d) / 4, s = F / A, e = s / E, dL = e * L;
 
-    const ex = NB.exaggerate(e * (XL - X0), MAX_DRAW), end = XL + ex.amp, hh = 4 + (26 * v.d) / 100;
+    const ex = NB.exaggerate(e * (XL - X0), SCALE, MAX_DRAW), end = XL + ex.amp, hh = 4 + (26 * v.d) / 100;
     attr("bar", { y: (CY - hh).toFixed(1), width: (end - X0).toFixed(1), height: (2 * hh).toFixed(1) });
     attr("force", { d: arrow(end + 4, CY, end + 64, CY, 14) });
     attr("force-label", { x: 512, "text-anchor": "end", y: (CY - hh - 10).toFixed(1) });

@@ -27,7 +27,7 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   - Every discipline is published now. A future unpublished one would use `class="soon"` and link to its homepage section.
 - **Topic page order** (keep it the same for new topics):
   1. title, lede, `.eq` formula block, `dl.symbols`
-  2. the boxed demo (`.demo-col > figure.demo`, sticky beside the first two blocks on desktop)
+  2. the boxed demo (`.demo-col > figure.demo`, sticky beside every block on desktop)
   3. Worked example: `.step` rows for Given / Find / Solution / Answer, driven by the demo's values
   4. Other load cases (`ul.cases`, a mini SVG beside its formulas; never a highlighted table shared with the main formula)
   5. Assumptions and Derivation as collapsed `details.more`, then the pager

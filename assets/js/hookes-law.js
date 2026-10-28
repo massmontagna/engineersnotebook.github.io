@@ -1,13 +1,13 @@
 // Stress–strain line up to yield: live demo for Materials §1.1.
 (function () {
-  const { fmt, set, attr, opt, path, nice, nb } = NB;
-  const OX = 60, OY = 200, W = 400, H = 160; // plot origin and size
+  const { fmt, set, attr, opt, path, nb } = NB;
+  const OX = 60, OY = 200, W = 400, H = 160, EMAX = 10000, SMAX = 1000; // plot origin and size; axes in µε and MPa
 
   NB.demo(function (v) {
     const o = opt("E"), E = v.E * 1e3, fy = Number(o.dataset.fy); // MPa
     const e = v.e * 1e-6, ey = fy / E, s = E * e, yielded = s > fy;
 
-    const xm = nice(Math.max(v.e, 1.5 * ey * 1e6)), ym = nice(1.2 * fy);
+    const xm = EMAX, ym = SMAX;
     const X = (ue) => OX + (W * ue) / xm, Y = (mpa) => OY - (H * mpa) / ym;
     const Py = [X(ey * 1e6), Y(fy)];
     attr("el", { d: path([[OX, OY], Py]) });

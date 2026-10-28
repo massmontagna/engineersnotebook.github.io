@@ -1,7 +1,7 @@
 // Cantilever with an end load: live demo for Mechanics §2.4.
 (function () {
   const { fmt, set, attr, opt, nb } = NB;
-  const X0 = 40, X1 = 480, Y0 = 86, MAX_DRAW = 52; // beam ends, rest line, largest drawn deflection
+  const X0 = 40, X1 = 480, Y0 = 86, MAX_DRAW = 52, SCALE = 50; // beam ends, rest line, largest drawn deflection, exaggeration
 
   function shape(amp) {
     // Elastic line normalised to its tip value: f(u) = (3u² − u³)/2.
@@ -23,7 +23,7 @@
     set("out-T", fmt(theta * 1e3) + " mrad");
     set("out-D", fmt(delta * 1e3) + " mm");
 
-    const ex = NB.exaggerate((delta / L) * (X1 - X0), MAX_DRAW);
+    const ex = NB.exaggerate((delta / L) * (X1 - X0), SCALE, MAX_DRAW);
     attr("curve", { d: shape(ex.amp) });
     attr("load", { transform: "translate(0 " + ex.amp.toFixed(2) + ")" });
     set("scale-label", "deflection " + ex.label);

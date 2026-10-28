@@ -2,7 +2,7 @@
 (function () {
   const X0 = 40, X1 = 480, Y0 = 86;           // beam ends and rest line in SVG units
   const MAX_DRAW = 52;                         // largest drawn deflection, SVG units
-  const SCALES = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
+  const SCALE = 200;                           // fixed exaggeration of the drawn deflection
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   const fields = {
@@ -71,14 +71,10 @@
     $("out-T").textContent = fmt(theta * 1e3) + " mrad";
     $("out-D").textContent = fmt(delta * 1e3) + " mm";
 
-    // Drawn deflection: true scale is 440 units per span; pick the largest round exaggeration that fits.
+    // Drawn deflection: true scale is 440 units per span, exaggerated by a fixed SCALE and clipped at MAX_DRAW.
     const trueAmp = (delta / L) * (X1 - X0);
-    let scale = 1;
-    for (const s of SCALES) if (trueAmp * s <= MAX_DRAW) scale = s;
-    const amp = Math.min(trueAmp * scale, MAX_DRAW);
-    $("scale-label").textContent = trueAmp > MAX_DRAW
-      ? "deflection not to scale"
-      : "deflection drawn ×" + scale.toLocaleString("en-GB");
+    const amp = Math.min(trueAmp * SCALE, MAX_DRAW);
+    $("scale-label").textContent = "deflection drawn ×" + SCALE + (trueAmp * SCALE > MAX_DRAW ? ", off scale" : "");
     $("load-label").textContent = "P = " + fmt(values.P) + " kN";
     $("span-label").textContent = "L = " + values.L.toFixed(2) + " m";
     animateTo(amp);
