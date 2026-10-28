@@ -20,14 +20,14 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
 
 - **Pages:**
   - `index.html` is the Contents page: a grid of six disciplines and one example.
-  - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 25 topics in all.
+  - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 26 topics in all.
   - `mechanics/beam-deflection.html` is the original hand-written topic. Every other topic page follows its structure.
 - **Shared chrome is duplicated, not templated.** Each page repeats the running head, the right-edge discipline tabs (`ul.tabs`: Contents, Mechanics, Thermo, Fluids, Materials, Electrical, Automotive) and the footer.
   - Adding a discipline or a page means editing the tab list on every page, plus the discipline index, the homepage list and the neighbouring pagers.
   - Every discipline is published now. A future unpublished one would use `class="soon"` and link to its homepage section.
 - **Topic page order** (keep it the same for new topics):
   1. title, lede, `.eq` formula block, `dl.symbols`
-  2. the boxed demo (`.demo-col > figure.demo`, sticky beside every block on desktop)
+  2. the boxed demo (`.demo-col > figure.demo`, sticky beside every block on desktop; `notebook.js` shifts the sticky `top` of a demo taller than the window so it scrolls with the page until its far edge shows, so long demos need no special handling. Any page with a demo loads `notebook.js`)
   3. Worked example: `.step` rows for Given / Find / Solution / Answer, driven by the demo's values
   4. Assumptions and Derivation as collapsed `details.more`
   5. Related cases/forms (`details#cases` > `ul.cases`, a mini SVG beside its formulas; never a highlighted table shared with the main formula), then the pager

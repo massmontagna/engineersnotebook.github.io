@@ -215,7 +215,8 @@ th .prep.live { margin-left: 0.6em; }
 }
 .topic > .col { grid-column: 1; }
 .topic > .demo-col { grid-column: 2; grid-row: 1 / span 4; }
-@media (min-width: 961px) and (min-height: 720px) { .topic > .demo-col { position: sticky; top: 24px; } }
+/* notebook.js moves `top` for a demo taller than the window, so it scrolls with the page until its far edge shows. */
+@media (min-width: 961px) { .topic > .demo-col { position: sticky; top: 24px; } }
 
 /* ---------- worked example ---------- */
 .step {

@@ -108,5 +108,27 @@
     started = true;
   }
 
+  // The sticky demo column normally pins 24px from the top. When it is taller than the window, shift that
+  // offset with each scroll: reading down, it rides up until its foot shows; scrolling back, down until its head shows.
+  function stickyDemo() {
+    const col = document.querySelector(".topic > .demo-col");
+    if (!col) return;
+    const GAP = 24, wide = window.matchMedia("(min-width: 961px)");
+    let top = GAP, lastY = window.scrollY;
+    function place() {
+      const dy = window.scrollY - lastY;
+      lastY = window.scrollY;
+      if (!wide.matches) return col.style.removeProperty("top");
+      const lowest = Math.min(GAP, window.innerHeight - col.offsetHeight - GAP);
+      top = Math.max(lowest, Math.min(GAP, top - dy));
+      col.style.top = top + "px";
+    }
+    window.addEventListener("scroll", place, { passive: true });
+    window.addEventListener("resize", place);
+    new ResizeObserver(place).observe(col); // sections opening or closing change its height
+    place();
+  }
+  stickyDemo();
+
   window.NB = { $, fmt, set, opt, attr, path, arrow, exaggerate, limit, demo, nb: " " };
 })();
