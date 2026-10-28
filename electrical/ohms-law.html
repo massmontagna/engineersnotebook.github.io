@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -142,6 +143,24 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The resistor is ohmic: its resistance stays constant. That holds for resistors and metal wires at steady temperature, but not for diodes, or lamps as they warm up.</li>
+          <li>The source and connecting wires are ideal, with no resistance of their own.</li>
+          <li>Direct current, or AC through a pure resistance.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>In a metal, free electrons drift at a speed proportional to the electric field, so the current density is <code><i class="v">J</i> = <i class="v">σ</i><sub>e</sub><i class="v">E</i></code>, where <i class="v">σ</i><sub>e</sub> is the conductivity.</li>
+          <li>Along a uniform wire, <code><i class="v">E</i> = <i class="v">V</i>/<i class="v">L</i></code> and <code><i class="v">J</i> = <i class="v">I</i>/<i class="v">A</i></code>, so <code><i class="v">I</i>/<i class="v">A</i> = <i class="v">σ</i><sub>e</sub><i class="v">V</i>/<i class="v">L</i></code>.</li>
+          <li>Rearrange: <code><i class="v">V</i> = <i class="v">I</i> · <i class="v">L</i>/(<i class="v">σ</i><sub>e</sub><i class="v">A</i>) = <i class="v">I</i><i class="v">R</i></code>, with <code><i class="v">R</i> = <i class="v">ρ</i><i class="v">L</i>/<i class="v">A</i></code> and <code><i class="v">ρ</i> = 1/<i class="v">σ</i><sub>e</sub></code>.</li>
+        </ol>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -174,24 +193,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The resistor is ohmic: its resistance stays constant. That holds for resistors and metal wires at steady temperature, but not for diodes, or lamps as they warm up.</li>
-          <li>The source and connecting wires are ideal, with no resistance of their own.</li>
-          <li>Direct current, or AC through a pure resistance.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>In a metal, free electrons drift at a speed proportional to the electric field, so the current density is <code><i class="v">J</i> = <i class="v">σ</i><sub>e</sub><i class="v">E</i></code>, where <i class="v">σ</i><sub>e</sub> is the conductivity.</li>
-          <li>Along a uniform wire, <code><i class="v">E</i> = <i class="v">V</i>/<i class="v">L</i></code> and <code><i class="v">J</i> = <i class="v">I</i>/<i class="v">A</i></code>, so <code><i class="v">I</i>/<i class="v">A</i> = <i class="v">σ</i><sub>e</sub><i class="v">V</i>/<i class="v">L</i></code>.</li>
-          <li>Rearrange: <code><i class="v">V</i> = <i class="v">I</i> · <i class="v">L</i>/(<i class="v">σ</i><sub>e</sub><i class="v">A</i>) = <i class="v">I</i><i class="v">R</i></code>, with <code><i class="v">R</i> = <i class="v">ρ</i><i class="v">L</i>/<i class="v">A</i></code> and <code><i class="v">ρ</i> = 1/<i class="v">σ</i><sub>e</sub></code>.</li>
-        </ol>
       </details>
 
       <nav class="pager" aria-label="Section pages">

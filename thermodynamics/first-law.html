@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -155,6 +156,28 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The system is closed: no mass crosses its boundary.</li>
+          <li>Heat into the system and work done by it are positive. Some texts count work done on the system instead and write Δ<i class="v">U</i> = <i class="v">Q</i> + <i class="v">W</i>.</li>
+          <li>The gas is ideal with constant heat capacities, so <i class="v">U</i> depends on temperature alone.</li>
+          <li>The process is slow enough that the gas is always close to equilibrium.</li>
+          <li>Changes in the system's bulk kinetic and potential energy are ignored.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Energy is conserved, so heat in either stays in the gas or leaves as work: <code><i class="v">Q</i> = Δ<i class="v">U</i> + <i class="v">W</i></code>.</li>
+          <li>For an ideal gas, <i class="v">U</i> depends only on temperature: <code>Δ<i class="v">U</i> = <i class="v">n</i><i class="v">c</i><sub>v</sub>Δ<i class="v">T</i></code>.</li>
+          <li>At constant pressure the gas pushes its boundary out: <code><i class="v">W</i> = <i class="v">p</i> Δ<i class="v">V</i> = <i class="v">n</i><i class="v">R</i> Δ<i class="v">T</i></code>.</li>
+          <li>So <code><i class="v">Q</i> = <i class="v">n</i>(<i class="v">c</i><sub>v</sub> + <i class="v">R</i>)Δ<i class="v">T</i> = <i class="v">n</i><i class="v">c</i><sub>p</sub>Δ<i class="v">T</i></code>, which gives Δ<i class="v">T</i> from <i class="v">Q</i>.</li>
+        </ol>
+        <p class="prose">At constant volume no work is done, so all of the heat raises <i class="v">U</i>: <span class="inline-eq"><i class="v">Q</i> = <i class="v">n</i><i class="v">c</i><sub>v</sub>Δ<i class="v">T</i></span>.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -180,28 +203,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The system is closed: no mass crosses its boundary.</li>
-          <li>Heat into the system and work done by it are positive. Some texts count work done on the system instead and write Δ<i class="v">U</i> = <i class="v">Q</i> + <i class="v">W</i>.</li>
-          <li>The gas is ideal with constant heat capacities, so <i class="v">U</i> depends on temperature alone.</li>
-          <li>The process is slow enough that the gas is always close to equilibrium.</li>
-          <li>Changes in the system's bulk kinetic and potential energy are ignored.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Energy is conserved, so heat in either stays in the gas or leaves as work: <code><i class="v">Q</i> = Δ<i class="v">U</i> + <i class="v">W</i></code>.</li>
-          <li>For an ideal gas, <i class="v">U</i> depends only on temperature: <code>Δ<i class="v">U</i> = <i class="v">n</i><i class="v">c</i><sub>v</sub>Δ<i class="v">T</i></code>.</li>
-          <li>At constant pressure the gas pushes its boundary out: <code><i class="v">W</i> = <i class="v">p</i> Δ<i class="v">V</i> = <i class="v">n</i><i class="v">R</i> Δ<i class="v">T</i></code>.</li>
-          <li>So <code><i class="v">Q</i> = <i class="v">n</i>(<i class="v">c</i><sub>v</sub> + <i class="v">R</i>)Δ<i class="v">T</i> = <i class="v">n</i><i class="v">c</i><sub>p</sub>Δ<i class="v">T</i></code>, which gives Δ<i class="v">T</i> from <i class="v">Q</i>.</li>
-        </ol>
-        <p class="prose">At constant volume no work is done, so all of the heat raises <i class="v">U</i>: <span class="inline-eq"><i class="v">Q</i> = <i class="v">n</i><i class="v">c</i><sub>v</sub>Δ<i class="v">T</i></span>.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

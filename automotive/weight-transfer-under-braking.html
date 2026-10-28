@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Weight transfer under braking · Engineer's Notebook</title>
-<meta name="description" content="Longitudinal weight transfer under braking, ΔW = mah/L, with a live demo of the axle loads, a worked example and acceleration and cornering forms.">
+<meta name="description" content="Longitudinal weight transfer under braking, ΔW = maₓh/L, with a live demo of the axle loads, a worked example and acceleration and cornering forms.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -43,19 +44,19 @@
       <h1 class="title">Weight transfer under braking</h1>
       <p class="lede">When a car brakes, the inertia of its mass acts at the centre of gravity and pitches load off the rear axle onto the front. The load transferred is:</p>
 
-      <div class="eq" role="math" aria-label="delta W equals m a h over L">
-        <span>Δ<i class="v">W</i> =</span><span class="frac"><span><i class="v">m</i>·<i class="v">a</i>·<i class="v">h</i></span><span><i class="v">L</i></span></span>
+      <div class="eq" role="math" aria-label="delta W equals m a x h over L">
+        <span>Δ<i class="v">W</i> =</span><span class="frac"><span><i class="v">m</i>·<i class="v">a</i><sub>x</sub>·<i class="v">h</i></span><span><i class="v">L</i></span></span>
       </div>
 
       <dl class="symbols" aria-label="Symbols and units">
         <dt>ΔW</dt><dd>load transferred</dd><dd class="u">N</dd>
         <dt>m</dt><dd>vehicle mass</dd><dd class="u">kg</dd>
-        <dt>a</dt><dd>deceleration</dd><dd class="u">m/s²</dd>
+        <dt>a<sub>x</sub></dt><dd>deceleration</dd><dd class="u">m/s²</dd>
         <dt>h</dt><dd>centre of gravity height</dd><dd class="u">m</dd>
         <dt>L</dt><dd>wheelbase</dd><dd class="u">m</dd>
         <dt>g</dt><dd>gravitational acceleration</dd><dd class="u">m/s²</dd>
-        <dt>f</dt><dd>static front share of weight</dd><dd class="u">—</dd>
-        <dt>b</dt><dd>CG distance ahead of the rear axle</dd><dd class="u">m</dd>
+        <dt>a</dt><dd>CG distance behind the front axle</dd><dd class="u">m</dd>
+        <dt>b</dt><dd>CG distance ahead of the rear axle, <i class="v">L</i> − <i class="v">a</i></dd><dd class="u">m</dd>
         <dt>t</dt><dd>track width</dd><dd class="u">m</dd>
         <dt>a<sub>y</sub></dt><dd>lateral acceleration</dd><dd class="u">m/s²</dd>
       </dl>
@@ -66,20 +67,20 @@
       <figure class="demo" id="demo">
         <svg class="fig" id="fig" viewBox="0 0 520 250" role="img" aria-labelledby="fig-desc">
           <desc id="fig-desc">Side view of a car facing right, with its centre of gravity marked. Arrows under each wheel show the axle loads while braking.</desc>
-          <path d="M70 150 L70 118 L150 112 L200 76 L330 76 L380 112 L450 120 L456 150 Z" class="s-ink f-tab" stroke-width="2"></path>
-          <circle cx="130" cy="152" r="28" class="s-ink f-sheet" stroke-width="3"></circle>
-          <circle cx="390" cy="152" r="28" class="s-ink f-sheet" stroke-width="3"></circle>
+          <path id="body" d="M120.5 150.0 L120.5 118.0 L200.5 112.0 L250.5 76.0 L350.0 76.0 L400.0 112.0 L470.0 120.0 L476.0 150.0 Z" class="s-ink f-tab" stroke-width="2"></path>
+          <circle id="wheel-r" cx="180.5" cy="152" r="28" class="s-ink f-sheet" stroke-width="3"></circle>
+          <circle cx="410" cy="152" r="28" class="s-ink f-sheet" stroke-width="3"></circle>
           <line x1="20" y1="180" x2="500" y2="180" class="s-ink" stroke-width="2"></line><path d="M20 180 L28 188 M32 180 L40 188 M44 180 L52 188 M56 180 L64 188 M68 180 L76 188 M80 180 L88 188 M92 180 L100 188 M104 180 L112 188 M116 180 L124 188 M128 180 L136 188 M140 180 L148 188 M152 180 L160 188 M164 180 L172 188 M176 180 L184 188 M188 180 L196 188 M200 180 L208 188 M212 180 L220 188 M224 180 L232 188 M236 180 L244 188 M248 180 L256 188 M260 180 L268 188 M272 180 L280 188 M284 180 L292 188 M296 180 L304 188 M308 180 L316 188 M320 180 L328 188 M332 180 L340 188 M344 180 L352 188 M356 180 L364 188 M368 180 L376 188 M380 180 L388 188 M392 180 L400 188 M404 180 L412 188 M416 180 L424 188 M428 180 L436 188 M440 180 L448 188 M452 180 L460 188 M464 180 L472 188 M476 180 L484 188 M488 180 L496 188" class="s-ink" stroke-width="1"></path>
-          <circle id="cg" r="7" class="f-ox" cx="273.0" cy="127.0"></circle>
-          <path id="inertia" class="s-ox f-ox" stroke-width="2.5" d="M283.0 127.0 L331.0 127.0 M331.0 133.6 L343.0 127.0 L331.0 120.4 Z"></path>
-          <text id="ma-label" class="t-ox" x="287.0" y="117.0">ma</text>
-          <path id="Wr" class="s-ink f-ink" stroke-width="3" d="M130.0 200.6 L130.0 200.0 M136.6 200.0 L130.0 188.0 L123.4 200.0 Z"></path>
-          <path id="Wf" class="s-ink f-ink" stroke-width="3" d="M390.0 219.4 L390.0 200.0 M396.6 200.0 L390.0 188.0 L383.4 200.0 Z"></path>
-          <text id="Wr-label" x="130" y="246" text-anchor="middle" class="t-ink">rear 4.22 kN</text>
-          <text id="Wf-label" x="390" y="246" text-anchor="middle" class="t-ink">front 10.5 kN</text>
+          <circle id="cg" r="7" class="f-ox" cx="306.7" cy="133.3"></circle>
+          <path id="inertia" class="s-ox f-ox" stroke-width="2.5" d="M316.7 133.3 L364.7 133.3 M364.7 139.8 L376.7 133.3 L364.7 126.7 Z"></path>
+          <text id="ma-label" class="t-ox" x="320.7" y="123.3">ma</text>
+          <path id="Wr" class="s-ink f-ink" stroke-width="3" d="M180.5 200.6 L180.5 200.0 M187.1 200.0 L180.5 188.0 L173.9 200.0 Z"></path>
+          <path id="Wf" class="s-ink f-ink" stroke-width="3" d="M410.0 219.4 L410.0 200.0 M416.6 200.0 L410.0 188.0 L403.4 200.0 Z"></path>
+          <text id="Wr-label" x="180.5" y="246" text-anchor="middle" class="t-ink">rear 4.22 kN</text>
+          <text id="Wf-label" x="410" y="246" text-anchor="middle" class="t-ink">front 10.5 kN</text>
           <text class="lbl" x="500" y="24" text-anchor="end">DIRECTION OF TRAVEL →</text>
         </svg>
-        <figcaption><b>Fig. 2.1-1</b>Axle-load arrows to scale with the car's weight; CG height to scale with the wheelbase.</figcaption>
+        <figcaption><b>Fig. 2.1-1</b>Car, wheelbase and CG position drawn to one scale; axle-load arrows to scale with the car's weight.</figcaption>
 
         <div class="controls">
           <div class="ctl">
@@ -89,10 +90,10 @@
             <span class="err" id="m-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
-            <label for="a-num"><i>a</i>Deceleration <span class="unit">g</span></label>
-            <input type="range" id="a-range" min="0" max="1.2" step="0.01" value="0.8" aria-label="Deceleration, g">
-            <input type="number" id="a-num" min="0" max="1.2" step="0.01" value="0.8" inputmode="decimal" data-name="a deceleration" data-unit="g" aria-describedby="a-err">
-            <span class="err" id="a-err" aria-live="polite"></span>
+            <label for="ax-num"><i>a<sub>x</sub></i>Deceleration <span class="unit">g</span></label>
+            <input type="range" id="ax-range" min="0" max="1.2" step="0.01" value="0.8" aria-label="Deceleration, g">
+            <input type="number" id="ax-num" min="0" max="1.2" step="0.01" value="0.8" inputmode="decimal" data-name="a deceleration" data-unit="g" aria-describedby="ax-err">
+            <span class="err" id="ax-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
             <label for="h-num"><i>h</i>CG height <span class="unit">mm</span></label>
@@ -107,10 +108,10 @@
             <span class="err" id="L-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
-            <label for="f-num"><i>f</i>Front share <span class="unit">%</span></label>
-            <input type="range" id="f-range" min="40" max="65" step="1" value="55" aria-label="Front share, %">
-            <input type="number" id="f-num" min="40" max="65" step="1" value="55" inputmode="numeric" data-name="a share" data-unit="%" aria-describedby="f-err">
-            <span class="err" id="f-err" aria-live="polite"></span>
+            <label for="a-num"><i>a</i>CG from front <span class="unit">mm</span></label>
+            <input type="range" id="a-range" min="0" max="2700" step="5" value="1215" aria-label="CG distance behind front axle, mm">
+            <input type="number" id="a-num" min="0" max="2700" step="5" value="1215" inputmode="numeric" data-name="a distance" data-unit="mm" aria-describedby="a-err">
+            <span class="err" id="a-err" aria-live="polite"></span>
           </div>
         </div>
 
@@ -119,7 +120,7 @@
             <tr><td><i class="v">W</i><sub>front</sub>, static</td><td id="out-Wfs">8.09 kN</td></tr>
             <tr><td><i class="v">W</i><sub>rear</sub>, braking</td><td id="out-Wr">4.22 kN</td></tr>
             <tr><td><i class="v">W</i><sub>front</sub>, braking</td><td id="out-Wf">10.5 kN</td></tr>
-            <tr class="key"><td>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><i class="v">h</i>/<i class="v">L</i></td><td id="out-dW">2.4 kN</td></tr>
+            <tr class="key"><td>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i>/<i class="v">L</i></td><td id="out-dW">2.4 kN</td></tr>
           </tbody>
         </table>
         <p class="readout" id="readout" aria-live="polite"></p>
@@ -135,10 +136,10 @@
         <span class="lbl">Given</span>
         <ul class="given">
           <li><span><i class="v">m</i></span><span class="what">vehicle mass</span><span id="g-m" class="live">1,500 kg</span></li>
-          <li><span><i class="v">a</i></span><span class="what">deceleration</span><span id="g-a" class="live">0.8 g</span></li>
+          <li><span><i class="v">a</i><sub>x</sub></span><span class="what">deceleration</span><span id="g-ax" class="live">0.8 g</span></li>
           <li><span><i class="v">h</i></span><span class="what">CG height</span><span id="g-h" class="live">550 mm</span></li>
           <li><span><i class="v">L</i></span><span class="what">wheelbase</span><span id="g-L" class="live">2,700 mm</span></li>
-          <li><span><i class="v">f</i></span><span class="what">static front share</span><span id="g-f" class="live">55%</span></li>
+          <li><span><i class="v">a</i></span><span class="what">CG behind front axle</span><span id="g-a" class="live">1,215 mm</span></li>
         </ul>
       </div>
       <div class="step">
@@ -148,10 +149,10 @@
       <div class="step">
         <span class="lbl">Solution</span>
         <div class="calc">
-          <span><i class="v">a</i> = <span id="w-a" class="live">0.8 × 9.81&nbsp;m/s² = 7.85&nbsp;m/s²</span></span>
-          <span>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><i class="v">h</i>/<i class="v">L</i> = <span id="w-dW" class="live">1,500&nbsp;kg × 7.85&nbsp;m/s² × 0.55&nbsp;m / 2.7&nbsp;m = 2.4&nbsp;kN</span></span>
-          <span><i class="v">W</i><sub>front</sub> = <i class="v">f</i><i class="v">m</i><i class="v">g</i> + Δ<i class="v">W</i> = <span id="w-Wf" class="live">0.55 × 14.7&nbsp;kN + 2.4&nbsp;kN = 10.5&nbsp;kN</span></span>
-          <span><i class="v">W</i><sub>rear</sub> = (1 − <i class="v">f</i>)<i class="v">m</i><i class="v">g</i> − Δ<i class="v">W</i> = <span id="w-Wr" class="live">0.45 × 14.7&nbsp;kN − 2.4&nbsp;kN = 4.22&nbsp;kN</span></span>
+          <span><i class="v">a</i><sub>x</sub> = <span id="w-ax" class="live">0.8 × 9.81&nbsp;m/s² = 7.85&nbsp;m/s²</span></span>
+          <span>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i>/<i class="v">L</i> = <span id="w-dW" class="live">1,500&nbsp;kg × 7.85&nbsp;m/s² × 0.55&nbsp;m / 2.7&nbsp;m = 2.4&nbsp;kN</span></span>
+          <span><i class="v">W</i><sub>front</sub> = <i class="v">m</i><i class="v">g</i>(<i class="v">L</i> − <i class="v">a</i>)/<i class="v">L</i> + Δ<i class="v">W</i> = <span id="w-Wf" class="live">14.7&nbsp;kN × 1.485&nbsp;m / 2.7&nbsp;m + 2.4&nbsp;kN = 10.5&nbsp;kN</span></span>
+          <span><i class="v">W</i><sub>rear</sub> = <i class="v">m</i><i class="v">g</i><i class="v">a</i>/<i class="v">L</i> − Δ<i class="v">W</i> = <span id="w-Wr" class="live">14.7&nbsp;kN × 1.215&nbsp;m / 2.7&nbsp;m − 2.4&nbsp;kN = 4.22&nbsp;kN</span></span>
         </div>
       </div>
       <div class="step">
@@ -165,6 +166,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The car is a rigid body. Suspension pitch, which moves the centre of gravity slightly, is ignored.</li>
+          <li>The road is level and aerodynamic forces are ignored.</li>
+          <li><i class="v">h</i> is the centre of gravity's height above the ground.</li>
+          <li>Total weight is unchanged: load moves between the axles. If the rear load reaches zero, the rear wheels lift.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>At rest, moments about the rear tyre contact patch give <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i></code>.</li>
+          <li>Braking adds an inertia force <code><i class="v">m</i><i class="v">a</i><sub>x</sub></code>, acting forwards at the centre of gravity, height <i class="v">h</i>. The braking forces act at ground level, so they have no moment about the contact patch.</li>
+          <li>So <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i> + <i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i></code>, and the front axle gains <code>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i>/<i class="v">L</i></code>.</li>
+          <li>Vertical balance: the rear axle loses the same amount.</li>
+        </ol>
+        <p class="prose">Transfer grows with CG height and shrinks with wheelbase. That is why long, low cars pitch less under braking.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -172,7 +194,7 @@
           <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M10 40 L10 32 L28 30 L38 20 L74 20 L86 30 L102 32 L102 40 Z" class="s-ink f-tab" stroke-width="1.5"/><circle cx="28" cy="40" r="7" class="s-ink f-sheet" stroke-width="1.5"/><circle cx="84" cy="40" r="7" class="s-ink f-sheet" stroke-width="1.5"/><path d="M56 10 L37 10 M37 6.1 L30 10 L37 13.9 Z" class="s-ox f-ox" stroke-width="2"/></svg>
           <div>
             <h3>Accelerating</h3>
-            <p class="f"><span><span>Δ<i class="v">W</i> = </span><span class="frac"><span><i class="v">m</i><i class="v">a</i><i class="v">h</i></span><span><i class="v">L</i></span></span></span><span><span>onto the rear axle</span></span></p>
+            <p class="f"><span><span>Δ<i class="v">W</i> = </span><span class="frac"><span><i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i></span><span><i class="v">L</i></span></span></span><span><span>onto the rear axle</span></span></p>
           </div>
         </li>
         <li>
@@ -190,27 +212,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The car is a rigid body. Suspension pitch, which moves the centre of gravity slightly, is ignored.</li>
-          <li>The road is level and aerodynamic forces are ignored.</li>
-          <li><i class="v">h</i> is the centre of gravity's height above the ground.</li>
-          <li>Total weight is unchanged: load moves between the axles. If the rear load reaches zero, the rear wheels lift.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>At rest, moments about the rear tyre contact patch give <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i></code>.</li>
-          <li>Braking adds an inertia force <code><i class="v">m</i><i class="v">a</i></code>, acting forwards at the centre of gravity, height <i class="v">h</i>. The braking forces act at ground level, so they have no moment about the contact patch.</li>
-          <li>So <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i> + <i class="v">m</i><i class="v">a</i><i class="v">h</i></code>, and the front axle gains <code>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><i class="v">h</i>/<i class="v">L</i></code>.</li>
-          <li>Vertical balance: the rear axle loses the same amount.</li>
-        </ol>
-        <p class="prose">Transfer grows with CG height and shrinks with wheelbase. That is why long, low cars pitch less under braking.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

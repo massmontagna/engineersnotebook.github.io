@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -156,6 +157,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The force acts along the bar's axis through the centroid, so stress is uniform across the section.</li>
+          <li>Stress is uniform only away from the ends, holes and changes of section (Saint-Venant's principle). Local stresses there are higher.</li>
+          <li>The material stays linear-elastic, below its yield strength.</li>
+          <li>In compression the same formulas hold for short bars. Slender bars buckle first.</li>
+          <li>Material properties are typical values. Use the supplier's figures for design.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Stress is force per unit area: <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code>.</li>
+          <li>Strain is extension per unit length: <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>
+          <li>In the elastic range they are proportional (Hooke's law): <code><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></code>.</li>
+          <li>Combine them: <code>Δ<i class="v">L</i> = <i class="v">ε</i><i class="v">L</i> = <i class="v">σ</i><i class="v">L</i>/<i class="v">E</i> = <i class="v">F</i><i class="v">L</i>/<i class="v">A</i><i class="v">E</i></code>.</li>
+        </ol>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -188,27 +210,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The force acts along the bar's axis through the centroid, so stress is uniform across the section.</li>
-          <li>Stress is uniform only away from the ends, holes and changes of section (Saint-Venant's principle). Local stresses there are higher.</li>
-          <li>The material stays linear-elastic, below its yield strength.</li>
-          <li>In compression the same formulas hold for short bars. Slender bars buckle first.</li>
-          <li>Material properties are typical values. Use the supplier's figures for design.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Stress is force per unit area: <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code>.</li>
-          <li>Strain is extension per unit length: <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>
-          <li>In the elastic range they are proportional (Hooke's law): <code><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></code>.</li>
-          <li>Combine them: <code>Δ<i class="v">L</i> = <i class="v">ε</i><i class="v">L</i> = <i class="v">σ</i><i class="v">L</i>/<i class="v">E</i> = <i class="v">F</i><i class="v">L</i>/<i class="v">A</i><i class="v">E</i></code>.</li>
-        </ol>
       </details>
 
       <nav class="pager" aria-label="Section pages">

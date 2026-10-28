@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -152,6 +153,29 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The cables are weightless, do not stretch and can only pull.</li>
+          <li>All three forces meet at the knot, so their moments about it are zero and Σ<i class="v">M</i> = 0 holds automatically. Σ<i class="v">F</i> = 0 does the work.</li>
+          <li>The anchors are rigid.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Draw the free body of the knot: <i class="v">T</i><sub>1</sub> pulls up and to the left at <i class="v">θ</i><sub>1</sub>, <i class="v">T</i><sub>2</sub> up and to the right at <i class="v">θ</i><sub>2</sub>, and the weight <i class="v">W</i> pulls straight down.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Horizontal: <code><i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> = <i class="v">T</i><sub>2</sub> cos <i class="v">θ</i><sub>2</sub></code>.</li>
+          <li>Vertical: <code><i class="v">T</i><sub>1</sub> sin <i class="v">θ</i><sub>1</sub> + <i class="v">T</i><sub>2</sub> sin <i class="v">θ</i><sub>2</sub> = <i class="v">W</i></code>.</li>
+          <li>Put <code><i class="v">T</i><sub>2</sub> = <i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> / cos <i class="v">θ</i><sub>2</sub></code> into the vertical equation and multiply by <code>cos <i class="v">θ</i><sub>2</sub></code>: <code><i class="v">T</i><sub>1</sub>(sin <i class="v">θ</i><sub>1</sub> cos <i class="v">θ</i><sub>2</sub> + cos <i class="v">θ</i><sub>1</sub> sin <i class="v">θ</i><sub>2</sub>) = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub></code>.</li>
+          <li>The bracket is <code>sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</code>, so <code><i class="v">T</i><sub>1</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</code>.</li>
+        </ol>
+        <p class="prose">Swapping the subscripts gives <i class="v">T</i><sub>2</sub>. As both cables flatten, the sine in the denominator shrinks and the tensions grow without limit, which is why a loaded line can never be pulled perfectly straight.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -177,29 +201,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The cables are weightless, do not stretch and can only pull.</li>
-          <li>All three forces meet at the knot, so their moments about it are zero and Σ<i class="v">M</i> = 0 holds automatically. Σ<i class="v">F</i> = 0 does the work.</li>
-          <li>The anchors are rigid.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Draw the free body of the knot: <i class="v">T</i><sub>1</sub> pulls up and to the left at <i class="v">θ</i><sub>1</sub>, <i class="v">T</i><sub>2</sub> up and to the right at <i class="v">θ</i><sub>2</sub>, and the weight <i class="v">W</i> pulls straight down.</p>
-        </div>
-        <ol class="derive prose">
-          <li>Horizontal: <code><i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> = <i class="v">T</i><sub>2</sub> cos <i class="v">θ</i><sub>2</sub></code>.</li>
-          <li>Vertical: <code><i class="v">T</i><sub>1</sub> sin <i class="v">θ</i><sub>1</sub> + <i class="v">T</i><sub>2</sub> sin <i class="v">θ</i><sub>2</sub> = <i class="v">W</i></code>.</li>
-          <li>Put <code><i class="v">T</i><sub>2</sub> = <i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> / cos <i class="v">θ</i><sub>2</sub></code> into the vertical equation and multiply by <code>cos <i class="v">θ</i><sub>2</sub></code>: <code><i class="v">T</i><sub>1</sub>(sin <i class="v">θ</i><sub>1</sub> cos <i class="v">θ</i><sub>2</sub> + cos <i class="v">θ</i><sub>1</sub> sin <i class="v">θ</i><sub>2</sub>) = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub></code>.</li>
-          <li>The bracket is <code>sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</code>, so <code><i class="v">T</i><sub>1</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</code>.</li>
-        </ol>
-        <p class="prose">Swapping the subscripts gives <i class="v">T</i><sub>2</sub>. As both cables flatten, the sine in the denominator shrinks and the tensions grow without limit, which is why a loaded line can never be pulled perfectly straight.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

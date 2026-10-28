@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -144,6 +145,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The material is isotropic and linear-elastic, and strains are small.</li>
+          <li>The stress is uniaxial: the sides are free to move.</li>
+          <li>For isotropic materials −1 < <i class="v">ν</i> ≤ 0.5. At 0.5 the volume never changes, which rubber nearly achieves.</li>
+          <li>Values are typical. Cork's ratio is close to zero, which is why a cork goes into a bottle without bulging.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Apply axial strain <i class="v">ε</i>. Each lateral direction then strains by <code>−<i class="v">ν</i><i class="v">ε</i></code>.</li>
+          <li>A block of volume <i class="v">V</i> becomes <code><i class="v">V</i>(1 + <i class="v">ε</i>)(1 − <i class="v">ν</i><i class="v">ε</i>)²</code>.</li>
+          <li>Expand and drop the squared terms, which are tiny for small strains: <code><i class="v">V</i>(1 + <i class="v">ε</i> − 2<i class="v">ν</i><i class="v">ε</i>)</code>.</li>
+          <li>So <code>Δ<i class="v">V</i>/<i class="v">V</i> = <i class="v">ε</i>(1 − 2<i class="v">ν</i>)</code>.</li>
+        </ol>
+        <p class="prose">With <span class="inline-eq"><i class="v">ν</i> = 0.5</span> the volume stays constant, which is why rubber is nearly incompressible yet easy to stretch.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related elastic constants</h2></summary>
       <ul class="cases">
@@ -169,27 +191,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The material is isotropic and linear-elastic, and strains are small.</li>
-          <li>The stress is uniaxial: the sides are free to move.</li>
-          <li>For isotropic materials −1 < <i class="v">ν</i> ≤ 0.5. At 0.5 the volume never changes, which rubber nearly achieves.</li>
-          <li>Values are typical. Cork's ratio is close to zero, which is why a cork goes into a bottle without bulging.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Apply axial strain <i class="v">ε</i>. Each lateral direction then strains by <code>−<i class="v">ν</i><i class="v">ε</i></code>.</li>
-          <li>A block of volume <i class="v">V</i> becomes <code><i class="v">V</i>(1 + <i class="v">ε</i>)(1 − <i class="v">ν</i><i class="v">ε</i>)²</code>.</li>
-          <li>Expand and drop the squared terms, which are tiny for small strains: <code><i class="v">V</i>(1 + <i class="v">ε</i> − 2<i class="v">ν</i><i class="v">ε</i>)</code>.</li>
-          <li>So <code>Δ<i class="v">V</i>/<i class="v">V</i> = <i class="v">ε</i>(1 − 2<i class="v">ν</i>)</code>.</li>
-        </ol>
-        <p class="prose">With <span class="inline-eq"><i class="v">ν</i> = 0.5</span> the volume stays constant, which is why rubber is nearly incompressible yet easy to stretch.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

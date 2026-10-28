@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -163,6 +164,28 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Friction follows the Coulomb model, with <i class="v">μ</i> independent of load, speed and slip. Real tyres grip best at around 10–15% slip and lose some <i class="v">μ</i> under heavier load.</li>
+          <li>Grip is the same in every direction, so the limit is a circle. Real tyres are closer to an ellipse.</li>
+          <li>The car is treated as one body on a level road with <i class="v">N</i> = <i class="v">m</i><i class="v">g</i>: no aerodynamic downforce.</li>
+          <li>Friction values are typical. The real value depends on the tyre, the surface and the temperature.</li>
+          <li>Stopping distance excludes the driver's reaction time.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>On a level road the tyres carry the car's weight: <code><i class="v">N</i> = <i class="v">m</i><i class="v">g</i></code>.</li>
+          <li>The friction force cannot exceed <code><i class="v">μ</i><i class="v">N</i> = <i class="v">μ</i><i class="v">m</i><i class="v">g</i></code>.</li>
+          <li>Newton's second law, <code><i class="v">F</i> = <i class="v">m</i><i class="v">a</i></code>, then caps the acceleration in any direction: <code><i class="v">a</i> ≤ <i class="v">μ</i><i class="v">g</i></code>.</li>
+          <li>Braking and cornering forces add as vectors, so the limit is <code>√(<i class="v">a</i><sub>x</sub>² + <i class="v">a</i><sub>y</sub>²) ≤ <i class="v">μ</i><i class="v">g</i></code>: the friction circle.</li>
+        </ol>
+        <p class="prose">Grip used for braking is not available for cornering. That is why braking hard in a corner can make the car run wide.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -190,31 +213,9 @@
       </ul>
       </details>
 
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Friction follows the Coulomb model, with <i class="v">μ</i> independent of load, speed and slip. Real tyres grip best at around 10–15% slip and lose some <i class="v">μ</i> under heavier load.</li>
-          <li>Grip is the same in every direction, so the limit is a circle. Real tyres are closer to an ellipse.</li>
-          <li>The car is treated as one body on a level road with <i class="v">N</i> = <i class="v">m</i><i class="v">g</i>: no aerodynamic downforce.</li>
-          <li>Friction values are typical. The real value depends on the tyre, the surface and the temperature.</li>
-          <li>Stopping distance excludes the driver's reaction time.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>On a level road the tyres carry the car's weight: <code><i class="v">N</i> = <i class="v">m</i><i class="v">g</i></code>.</li>
-          <li>The friction force cannot exceed <code><i class="v">μ</i><i class="v">N</i> = <i class="v">μ</i><i class="v">m</i><i class="v">g</i></code>.</li>
-          <li>Newton's second law, <code><i class="v">F</i> = <i class="v">m</i><i class="v">a</i></code>, then caps the acceleration in any direction: <code><i class="v">a</i> ≤ <i class="v">μ</i><i class="v">g</i></code>.</li>
-          <li>Braking and cornering forces add as vectors, so the limit is <code>√(<i class="v">a</i><sub>x</sub>² + <i class="v">a</i><sub>y</sub>²) ≤ <i class="v">μ</i><i class="v">g</i></code>: the friction circle.</li>
-        </ol>
-        <p class="prose">Grip used for braking is not available for cornering. That is why braking hard in a corner can make the car run wide.</p>
-      </details>
-
       <nav class="pager" aria-label="Section pages">
         <a href="weight-transfer-under-braking.html">← 2.1 Weight transfer under braking</a>
-        <a href="./">Automotive contents →</a>
+        <a href="jacking.html">3.1 Jacking →</a>
       </nav>
     </div>
   </article>

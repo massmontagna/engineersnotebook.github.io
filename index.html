@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="images/favicon.ico" sizes="32x32">
+<link rel="icon" href="images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="images/favicon-180.png">
 <link rel="stylesheet" href="assets/css/site.css">
@@ -42,13 +43,12 @@
 
   <div class="shelf">
     <section class="disc" id="mechanics" aria-labelledby="d-mech">
-      <header><h2 id="d-mech"><a href="mechanics/">Mechanics</a></h2><span class="count live">10 demos</span></header>
+      <header><h2 id="d-mech"><a href="mechanics/">Mechanics</a></h2><span class="count live">11 demos</span></header>
       <p>Forces, structures and motion.</p>
       <ol>
         <li class="live"><a href="mechanics/beam-deflection.html">Beam deflection</a><span class="k"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></span></li>
         <li class="live"><a href="mechanics/equilibrium.html">Equilibrium</a><span class="k">Σ<i class="v">F</i> = 0</span></li>
         <li class="live"><a href="mechanics/bending-stress.html">Bending stress</a><span class="k"><i class="v">σ</i> = <i class="v">M</i><i class="v">y</i>/<i class="v">I</i></span></li>
-        <li class="live"><a href="mechanics/constant-acceleration.html">Constant acceleration</a><span class="k"><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></span></li>
       </ol>
     </section>
 
@@ -93,45 +93,52 @@
     </section>
 
     <section class="disc" id="automotive" aria-labelledby="d-automotive">
-      <header><h2 id="d-automotive"><a href="automotive/">Automotive</a></h2><span class="count live">3 demos</span></header>
+      <header><h2 id="d-automotive"><a href="automotive/">Automotive</a></h2><span class="count live">5 demos</span></header>
       <p>Powertrains, braking and handling.</p>
       <ol>
         <li class="live"><a href="automotive/power-from-torque.html">Power from torque</a><span class="k"><i class="v">P</i> = <i class="v">T</i><i class="v">ω</i></span></li>
-        <li class="live"><a href="automotive/weight-transfer-under-braking.html">Weight transfer under braking</a><span class="k">Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><i class="v">h</i>/<i class="v">L</i></span></li>
+        <li class="live"><a href="automotive/weight-transfer-under-braking.html">Weight transfer under braking</a><span class="k">Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i>/<i class="v">L</i></span></li>
         <li class="live"><a href="automotive/tyre-friction-limit.html">Tyre friction limit</a><span class="k"><i class="v">F</i> ≤ <i class="v">μ</i><i class="v">N</i></span></li>
       </ol>
     </section>
   </div>
 
-  <h2 id="example">Example · <a href="mechanics/beam-deflection.html">Beam deflection</a></h2>
-  <section class="example" aria-labelledby="example">
-    <div>
-      <p class="muted">Mechanics · §2.3. A simply supported beam with one load at mid-span.</p>
-      <div class="eq" role="math" aria-label="delta max equals P L cubed over 48 E I">
-        <span><i class="v">δ</i><sub>max</sub> =</span>
-        <span class="frac"><span><i class="v">P</i>·<i class="v">L</i>³</span><span>48·<i class="v">E</i>·<i class="v">I</i></span></span>
-      </div>
-      <a class="go" href="mechanics/beam-deflection.html#demo">Open the demo and worked example</a>
-    </div>
-    <figure class="demo">
-      <svg viewBox="0 0 520 170" role="img" aria-label="Sketch of a simply supported beam with a central load, deflected.">
-        <line x1="40" y1="76" x2="480" y2="76" stroke="#4c5351" stroke-width="1" stroke-dasharray="4 4"/>
-        <path d="M40 76 Q260 128 480 76" fill="none" stroke="#16181a" stroke-width="4" stroke-linecap="round"/>
-        <line x1="260" y1="8" x2="260" y2="88" stroke="#b3261e" stroke-width="4"/>
-        <path d="M249 82 L260 98 L271 82 Z" fill="#b3261e"/>
-        <path d="M40 78 L28 98 L52 98 Z" fill="none" stroke="#16181a" stroke-width="2"/>
-        <circle cx="480" cy="86" r="8" fill="none" stroke="#16181a" stroke-width="2"/>
-        <line x1="40" y1="140" x2="480" y2="140" stroke="#4c5351" stroke-width="1"/>
-        <text x="260" y="162" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="13" fill="#4c5351">L</text>
-      </svg>
-      <figcaption><b>Fig. 2.3-1</b>On the page you can change the load, span, material and section.</figcaption>
-    </figure>
-  </section>
+  <h2 id="index">Index · A–Z</h2>
+  <ol class="az" aria-labelledby="index">
+    <li><a href="mechanics/axial-stress-and-strain.html">Axial stress and strain</a><span class="k"><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i>, <i class="v">ε</i> = <i class="v">σ</i>/<i class="v">E</i></span><span class="d">Mechanics</span></li>
+    <li><a href="mechanics/beam-deflection.html">Beam deflection</a><span class="k"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></span><span class="d">Mechanics</span></li>
+    <li><a href="mechanics/bending-moment.html">Bending moment</a><span class="k"><i class="v">M</i> = <i class="v">P</i><i class="v">L</i>/4</span><span class="d">Mechanics</span></li>
+    <li><a href="mechanics/bending-stress.html">Bending stress</a><span class="k"><i class="v">σ</i> = <i class="v">M</i><i class="v">y</i>/<i class="v">I</i></span><span class="d">Mechanics</span></li>
+    <li><a href="fluids/bernoullis-equation.html">Bernoulli's equation</a><span class="k"><i class="v">p</i> + ½<i class="v">ρ</i><i class="v">v</i>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i> = <i class="v">C</i></span><span class="d">Fluids</span></li>
+    <li><a href="mechanics/cantilevers.html">Cantilevers</a><span class="k"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/3<i class="v">E</i><i class="v">I</i></span><span class="d">Mechanics</span></li>
+    <li><a href="thermodynamics/conduction.html">Conduction</a><span class="k"><i class="v">q</i> = −<i class="v">k</i> d<i class="v">T</i>/d<i class="v">x</i></span><span class="d">Thermodynamics</span></li>
+    <li><a href="mechanics/constant-acceleration.html">Constant acceleration</a><span class="k"><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></span><span class="d">Mechanics</span></li>
+    <li><a href="fluids/continuity.html">Continuity</a><span class="k"><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub></span><span class="d">Fluids</span></li>
+    <li><a href="electrical/electrical-power.html">Electrical power</a><span class="k"><i class="v">P</i> = <i class="v">V</i><i class="v">I</i></span><span class="d">Electrical</span></li>
+    <li><a href="mechanics/equilibrium.html">Equilibrium</a><span class="k">Σ<i class="v">F</i> = 0, Σ<i class="v">M</i> = 0</span><span class="d">Mechanics</span></li>
+    <li><a href="thermodynamics/first-law.html">First law</a><span class="k">Δ<i class="v">U</i> = <i class="v">Q</i> − <i class="v">W</i></span><span class="d">Thermodynamics</span></li>
+    <li><a href="mechanics/free-body-diagrams.html">Free-body diagrams</a><span class="k"><i class="v">N</i> = <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></span><span class="d">Mechanics</span></li>
+    <li><a href="materials/hookes-law.html">Hooke's law</a><span class="k"><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></span><span class="d">Materials</span></li>
+    <li><a href="thermodynamics/ideal-gas-law.html">Ideal gas law</a><span class="k"><i class="v">p</i><i class="v">V</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i></span><span class="d">Thermodynamics</span></li>
+    <li><a href="automotive/jacking.html">Jacking</a><span class="k">Δ<i class="v">W</i><sub>J</sub>/Δ<i class="v">W</i> = <i class="v">h</i><sub>rc</sub>/<i class="v">h</i></span><span class="d">Automotive</span></li>
+    <li><a href="mechanics/mass-spring-damper.html">Mass–spring–damper</a><span class="k"><i class="v">ω</i><sub>n</sub> = √(<i class="v">k</i>/<i class="v">m</i>)</span><span class="d">Mechanics</span></li>
+    <li><a href="electrical/ohms-law.html">Ohm's law</a><span class="k"><i class="v">V</i> = <i class="v">I</i><i class="v">R</i></span><span class="d">Electrical</span></li>
+    <li><a href="materials/poissons-ratio.html">Poisson's ratio</a><span class="k"><i class="v">ν</i> = −<i class="v">ε</i><sub>lat</sub>/<i class="v">ε</i><sub>ax</sub></span><span class="d">Materials</span></li>
+    <li><a href="automotive/power-from-torque.html">Power from torque</a><span class="k"><i class="v">P</i> = <i class="v">T</i><i class="v">ω</i></span><span class="d">Automotive</span></li>
+    <li><a href="electrical/rc-time-constant.html">RC time constant</a><span class="k"><i class="v">τ</i> = <i class="v">R</i><i class="v">C</i></span><span class="d">Electrical</span></li>
+    <li><a href="mechanics/reactions-and-shear.html">Reactions and shear</a><span class="k"><i class="v">R</i><sub>A</sub> = <i class="v">P</i><i class="v">b</i>/<i class="v">L</i></span><span class="d">Mechanics</span></li>
+    <li><a href="fluids/reynolds-number.html">Reynolds number</a><span class="k"><i class="v">Re</i> = <i class="v">ρ</i><i class="v">v</i><i class="v">D</i>/<i class="v">μ</i></span><span class="d">Fluids</span></li>
+    <li><a href="mechanics/second-moment-of-area.html">Second moment of area</a><span class="k"><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12</span><span class="d">Mechanics</span></li>
+    <li><a href="materials/thermal-expansion.html">Thermal expansion</a><span class="k">Δ<i class="v">L</i> = <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></span><span class="d">Materials</span></li>
+    <li><a href="automotive/tyre-friction-limit.html">Tyre friction limit</a><span class="k"><i class="v">F</i> ≤ <i class="v">μ</i><i class="v">N</i></span><span class="d">Automotive</span></li>
+    <li><a href="automotive/load-sensitivity.html">Tyre load sensitivity</a><span class="k"><i class="v">μ</i> = <i class="v">μ</i><sub>0</sub> − <i class="v">k</i><i class="v">F</i><sub>z</sub></span><span class="d">Automotive</span></li>
+    <li><a href="automotive/weight-transfer-under-braking.html">Weight transfer under braking</a><span class="k">Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><sub>x</sub><i class="v">h</i>/<i class="v">L</i></span><span class="d">Automotive</span></li>
+  </ol>
 </main>
 
 <footer class="foot">
   <span>Engineer's Notebook</span>
-  <span>6 disciplines · 25 published topics</span>
+  <span>6 disciplines · 28 published topics</span>
 </footer>
 </body>
 </html>

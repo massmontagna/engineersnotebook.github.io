@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mass–spring–damper · Engineer's Notebook</title>
+<meta name="description" content="A mass on a spring, ωₙ = √(k/m), with an animated oscillation, then with a damper: critical damping 2√(km) and under-, critically and overdamped response. Live demos and worked examples.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#vibration">Vibration</a>
+  </nav>
+  <span class="ref">§5.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic" aria-labelledby="free">
+    <div class="col">
+      <h1 class="title">Mass–spring–damper</h1>
+      <p class="lede">Pull a mass on a spring and let go: it bobs at a frequency set only by its mass and the spring's stiffness. Add a damper and the motion dies away; how fast, and whether it overshoots, depends on how the damping compares with a critical value.</p>
+
+      <h2 id="free">1 · Free oscillation</h2>
+      <div class="eq" role="math" aria-label="omega n equals the square root of k over m">
+        <span><i class="v">ω</i><sub>n</sub> = √<span class="frac"><span><i class="v">k</i></span><span><i class="v">m</i></span></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units, free oscillation">
+        <dt>ω<sub>n</sub></dt><dd>natural frequency</dd><dd class="u">rad/s</dd>
+        <dt>k</dt><dd>spring stiffness</dd><dd class="u">N/m</dd>
+        <dt>m</dt><dd>mass</dd><dd class="u">kg</dd>
+        <dt>f</dt><dd>frequency, ω<sub>n</sub>/2π</dd><dd class="u">Hz</dd>
+        <dt>T</dt><dd>period, 1/<i class="v">f</i></dd><dd class="u">s</dd>
+        <dt>A</dt><dd>amplitude</dd><dd class="u">m</dd>
+        <dt>x</dt><dd>displacement from rest</dd><dd class="u">m</dd>
+        <dt>t</dt><dd>time</dd><dd class="u">s</dd>
+      </dl>
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 250" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A mass hanging from a spring, oscillating up and down. A pen beside it traces the displacement as a sine wave that scrolls to the right, with the amplitude and one period marked.</desc>
+          <path d="M50 20 L130 20" class="s-ink" stroke-width="2"></path><path d="M54 20 L62 12 M66 20 L74 12 M78 20 L86 12 M90 20 L98 12 M102 20 L110 12 M114 20 L122 12" class="s-ink" stroke-width="1"></path>
+          <path d="M40 145 L500 145" class="s-ink2 dash" stroke-width="1"></path>
+          <path id="amp" class="s-hair" stroke-width="1" d="M170.0 105.0 L500.0 105.0 M170.0 185.0 L500.0 185.0"></path>
+          <text id="amp-label" class="lbl" x="500" y="100.0" text-anchor="end">A = 40 mm</text>
+          <path id="spring" class="s-ink" stroke-width="2" d="M90.0 20.0 L90.0 28.0 L104.0 41.1 L76.0 54.2 L104.0 67.3 L76.0 80.4 L104.0 93.5 L76.0 106.6 L104.0 119.7 L76.0 132.8 L104.0 145.9 L90.0 159.0 L90.0 167.0"></path>
+          <rect id="mass" x="62" y="167.0" width="56" height="36" class="s-ink f-tab" stroke-width="2"></rect>
+          <text id="mass-label" x="90" y="190.0" text-anchor="middle" class="t-ink">m</text>
+          <path id="pen-link" class="s-ox dash" stroke-width="1" d="M118.0 185.0 L170.0 185.0"></path>
+          <path id="trace" class="s-ox" stroke-width="2" d="M170.0 185.0 L172.0 184.7 L174.0 183.8 L176.0 182.4 L178.0 180.4 L180.0 177.9 L182.0 174.9 L184.0 171.4 L186.0 167.6 L188.0 163.5 L190.0 159.0 L192.0 154.4 L194.0 149.6 L196.0 144.8 L198.0 140.0 L200.0 135.2 L202.0 130.6 L204.0 126.2 L206.0 122.1 L208.0 118.3 L210.0 114.9 L212.0 111.9 L214.0 109.4 L216.0 107.5 L218.0 106.1 L220.0 105.2 L222.0 105.0 L224.0 105.3 L226.0 106.3 L228.0 107.8 L230.0 109.8 L232.0 112.4 L234.0 115.4 L236.0 118.9 L238.0 122.7 L240.0 126.9 L242.0 131.3 L244.0 136.0 L246.0 140.8 L248.0 145.6 L250.0 150.4 L252.0 155.2 L254.0 159.8 L256.0 164.2 L258.0 168.3 L260.0 172.0 L262.0 175.4 L264.0 178.3 L266.0 180.8 L268.0 182.7 L270.0 184.0 L272.0 184.8 L274.0 185.0 L276.0 184.6 L278.0 183.6 L280.0 182.1 L282.0 180.0 L284.0 177.4 L286.0 174.3 L288.0 170.8 L290.0 167.0 L292.0 162.8 L294.0 158.3 L296.0 153.6 L298.0 148.9 L300.0 144.0 L302.0 139.2 L304.0 134.4 L306.0 129.9 L308.0 125.5 L310.0 121.4 L312.0 117.7 L314.0 114.3 L316.0 111.5 L318.0 109.1 L320.0 107.2 L322.0 105.9 L324.0 105.2 L326.0 105.0 L328.0 105.5 L330.0 106.5 L332.0 108.1 L334.0 110.2 L336.0 112.8 L338.0 115.9 L340.0 119.5 L342.0 123.4 L344.0 127.6 L346.0 132.1 L348.0 136.8 L350.0 141.5 L352.0 146.4 L354.0 151.2 L356.0 155.9 L358.0 160.5 L360.0 164.9 L362.0 168.9 L364.0 172.6 L366.0 175.9 L368.0 178.8 L370.0 181.1 L372.0 182.9 L374.0 184.2 L376.0 184.9 L378.0 185.0 L380.0 184.5 L382.0 183.4 L384.0 181.8 L386.0 179.6 L388.0 176.9 L390.0 173.8 L392.0 170.2 L394.0 166.3 L396.0 162.0 L398.0 157.5 L400.0 152.9 L402.0 148.1 L404.0 143.2 L406.0 138.4 L408.0 133.7 L410.0 129.1 L412.0 124.8 L414.0 120.8 L416.0 117.1 L418.0 113.8 L420.0 111.0 L422.0 108.7 L424.0 107.0 L426.0 105.7 L428.0 105.1 L430.0 105.0 L432.0 105.6 L434.0 106.7 L436.0 108.4 L438.0 110.6 L440.0 113.3 L442.0 116.5 L444.0 120.1 L446.0 124.0 L448.0 128.3 L450.0 132.8 L452.0 137.5 L454.0 142.3 L456.0 147.2 L458.0 152.0 L460.0 156.7 L462.0 161.2 L464.0 165.5 L466.0 169.5 L468.0 173.2 L470.0 176.4 L472.0 179.2 L474.0 181.4 L476.0 183.2 L478.0 184.3 L480.0 184.9 L482.0 184.9 L484.0 184.3 L486.0 183.2 L488.0 181.5 L490.0 179.2 L492.0 176.5 L494.0 173.2 L496.0 169.6 L498.0 165.6 L500.0 161.3"></path>
+          <circle id="pen" cx="170" cy="185.0" r="5" class="f-ox"></circle>
+          <path id="period" class="s-ink" stroke-width="1.5" d="M170.0 197.0 L170.0 205.0 M170.0 201.0 L273.7 201.0 M273.7 197.0 L273.7 205.0"></path>
+          <text id="period-label" class="t-ink" x="279.7" y="205.0">T = 0.628 s</text>
+          <text class="lbl" x="170" y="244">NOW</text>
+          <text class="lbl" x="500" y="244" text-anchor="end">2 S AGO →</text>
+          <text class="lbl" x="34" y="149" text-anchor="end">REST</text>
+        </svg>
+        <figcaption><b>Fig. 5.1-1</b>Real time. Displacement drawn to scale; the trace shows the last 2 s.</figcaption>
+        <button type="button" class="play" id="play" aria-pressed="false" hidden>Pause</button>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="m-num"><i>m</i>Mass <span class="unit">kg</span></label>
+            <input type="range" id="m-range" min="0.5" max="10" step="0.1" value="1" aria-label="Mass, kg">
+            <input type="number" id="m-num" min="0.5" max="10" step="0.1" value="1" inputmode="decimal" data-name="a mass" data-unit="kg" aria-describedby="m-err">
+            <span class="err" id="m-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="k-num"><i>k</i>Stiffness <span class="unit">N/m</span></label>
+            <input type="range" id="k-range" min="10" max="500" step="5" value="100" aria-label="Spring stiffness, N/m">
+            <input type="number" id="k-num" min="10" max="500" step="5" value="100" inputmode="numeric" data-name="a stiffness" data-unit="N/m" aria-describedby="k-err">
+            <span class="err" id="k-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="A-num"><i>A</i>Amplitude <span class="unit">mm</span></label>
+            <input type="range" id="A-range" min="10" max="60" step="1" value="40" aria-label="Amplitude, mm">
+            <input type="number" id="A-num" min="10" max="60" step="1" value="40" inputmode="numeric" data-name="an amplitude" data-unit="mm" aria-describedby="A-err">
+            <span class="err" id="A-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results, free oscillation">
+          <tbody>
+            <tr><td><i class="v">ω</i><sub>n</sub> = √(<i class="v">k</i>/<i class="v">m</i>)</td><td id="out-wn">10 rad/s</td></tr>
+            <tr><td><i class="v">T</i>, period</td><td id="out-T">0.628 s</td></tr>
+            <tr><td><i class="v">v</i><sub>max</sub> = <i class="v">A</i><i class="v">ω</i><sub>n</sub></td><td id="out-v">0.4 m/s</td></tr>
+            <tr class="key"><td><i class="v">f</i> = <i class="v">ω</i><sub>n</sub>/2π</td><td id="out-f">1.59 Hz</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite">The mass completes 1.59 cycles a second. Four times the mass halves the frequency; four times the stiffness doubles it.</p>
+        <noscript><p class="readout">The demos need JavaScript. The formulas and worked examples work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example: free oscillation</h2></summary>
+      <p class="legend">Uses the values in Fig. 5.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">m</i></span><span class="what">mass</span><span id="g-m" class="live">1 kg</span></li>
+          <li><span><i class="v">k</i></span><span class="what">spring stiffness</span><span id="g-k" class="live">100 N/m</span></li>
+          <li><span><i class="v">A</i></span><span class="what">amplitude</span><span id="g-A" class="live">40 mm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The natural frequency, the period and the mass's peak speed.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">ω</i><sub>n</sub> = √(<i class="v">k</i>/<i class="v">m</i>) = <span id="w-wn" class="live">√(100&nbsp;N/m / 1&nbsp;kg) = 10&nbsp;rad/s</span></span>
+          <span><i class="v">f</i> = <i class="v">ω</i><sub>n</sub>/2π = <span id="w-f" class="live">10&nbsp;rad/s / 2π = 1.59&nbsp;Hz</span></span>
+          <span><i class="v">T</i> = 1/<i class="v">f</i> = <span id="w-T" class="live">1 / 1.59&nbsp;Hz = 0.628&nbsp;s</span></span>
+          <span><i class="v">v</i><sub>max</sub> = <i class="v">A</i><i class="v">ω</i><sub>n</sub> = <span id="w-v" class="live">0.04&nbsp;m × 10&nbsp;rad/s = 0.4&nbsp;m/s</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">f</i> = </span><span id="w-ans">1.59 Hz</span></span>
+          <p class="answer-note" id="w-note">One cycle takes 0.628 s, and the mass passes the rest line at 0.4 m/s.</p>
+        </div>
+      </div>
+      </details>
+    </div>
+  </article>
+
+  <article class="topic" aria-labelledby="damping">
+    <div class="col">
+      <h2 id="damping">2 · Damping</h2>
+      <div class="eq" role="math" aria-label="c c equals 2 times the square root of k m; zeta equals c over c c">
+        <span><i class="v">c</i><sub>c</sub> = 2√(<i class="v">k</i><i class="v">m</i>),</span><span><i class="v">ζ</i> = <span class="frac"><span><i class="v">c</i></span><span><i class="v">c</i><sub>c</sub></span></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units, damping">
+        <dt>c</dt><dd>damping coefficient</dd><dd class="u">N·s/m</dd>
+        <dt>c<sub>c</sub></dt><dd>critical damping</dd><dd class="u">N·s/m</dd>
+        <dt>ζ</dt><dd>damping ratio</dd><dd class="u">—</dd>
+        <dt>ω<sub>d</sub></dt><dd>damped frequency</dd><dd class="u">rad/s</dd>
+        <dt>x<sub>0</sub></dt><dd>starting displacement</dd><dd class="u">m</dd>
+        <dt>δ</dt><dd>logarithmic decrement</dd><dd class="u">—</dd>
+      </dl>
+      <p class="legend">ζ &lt; 1 underdamped · ζ = 1 critically damped · ζ &gt; 1 overdamped</p>
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo2">
+        <svg class="fig" id="fig2" viewBox="0 0 520 240" role="img" aria-labelledby="fig2-desc">
+          <desc id="fig2-desc">Left, a mass hanging from a spring and a damper side by side. Right, its displacement after release from x0 against time, with the critically damped response for comparison.</desc>
+          <path d="M30 20 L150 20" class="s-ink" stroke-width="2"></path><path d="M34 20 L42 12 M46 20 L54 12 M58 20 L66 12 M70 20 L78 12 M82 20 L90 12 M94 20 L102 12 M106 20 L114 12 M118 20 L126 12 M130 20 L138 12 M142 20 L150 12" class="s-ink" stroke-width="1"></path>
+          <path d="M60 20 L60 40 L72 46 L48 58 L72 70 L48 82 L72 94 L48 106 L60 112 L60 130" class="s-ink" stroke-width="2"></path>
+          <path d="M120 20 L120 60 M106 60 L134 60 M110 52 L110 96 L130 96 L130 52 M120 76 L120 130" class="s-ink" stroke-width="2"></path>
+          <path d="M108 74 L132 74" class="s-ink" stroke-width="3"></path>
+          <rect x="40" y="130" width="100" height="40" class="s-ink f-tab" stroke-width="2"></rect>
+          <text x="90" y="155" text-anchor="middle" class="t-ink">m</text>
+          <text x="40" y="80" text-anchor="end" class="t-ink">k</text>
+          <text x="142" y="84" class="t-ink">c</text>
+          <path d="M180 110 L506 110 M500 113.3 L506 110 L500 106.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M180 200 L180 20 M183.3 20 L180 14 L176.7 20 Z" class="s-ink2 f-ink" stroke-width="1"></path>
+          <path d="M176 30 L184 30 M176 190 L184 190 M260 106 L260 114 M340 106 L340 114 M420 106 L420 114 M500 106 L500 114" class="s-ink2" stroke-width="1"></path>
+          <text x="172" y="34" text-anchor="end">x₀</text><text x="172" y="194" text-anchor="end">−x₀</text>
+          <text x="260" y="128" text-anchor="middle">1</text><text x="340" y="128" text-anchor="middle">2</text><text x="420" y="128" text-anchor="middle">3</text><text x="500" y="128" text-anchor="middle">4 s</text>
+          <text class="lbl" x="188" y="18">DISPLACEMENT x</text>
+          <path id="x-env" class="s-ink2" stroke-width="1" d="M180.0 30.0 L180.8 32.0 L181.6 33.9 L182.4 35.8 L183.2 37.6 L184.0 39.4 L184.8 41.1 L185.6 42.8 L186.4 44.5 L187.2 46.1 L188.0 47.7 L188.8 49.2 L189.6 50.7 L190.4 52.2 L191.2 53.6 L192.0 55.0 L192.8 56.4 L193.6 57.7 L194.4 59.0 L195.2 60.2 L196.0 61.5 L196.8 62.7 L197.6 63.8 L198.4 65.0 L199.2 66.1 L200.0 67.2 L200.8 68.2 L201.6 69.3 L202.4 70.3 L203.2 71.3 L204.0 72.2 L204.8 73.1 L205.6 74.1 L206.4 74.9 L207.2 75.8 L208.0 76.7 L208.8 77.5 L209.6 78.3 L210.4 79.1 L211.2 79.8 L212.0 80.6 L212.8 81.3 L213.6 82.0 L214.4 82.7 L215.2 83.4 L216.0 84.0 L216.8 84.7 L217.6 85.3 L218.4 85.9 L219.2 86.5 L220.0 87.1 L220.8 87.6 L221.6 88.2 L222.4 88.7 L223.2 89.3 L224.0 89.8 L224.8 90.3 L225.6 90.8 L226.4 91.2 L227.2 91.7 L228.0 92.1 L228.8 92.6 L229.6 93.0 L230.4 93.4 L231.2 93.8 L232.0 94.2 L232.8 94.6 L233.6 95.0 L234.4 95.4 L235.2 95.7 L236.0 96.1 L236.8 96.4 L237.6 96.8 L238.4 97.1 L239.2 97.4 L240.0 97.7 L240.8 98.0 L241.6 98.3 L242.4 98.6 L243.2 98.9 L244.0 99.2 L244.8 99.4 L245.6 99.7 L246.4 100.0 L247.2 100.2 L248.0 100.4 L248.8 100.7 L249.6 100.9 L250.4 101.1 L251.2 101.4 L252.0 101.6 L252.8 101.8 L253.6 102.0 L254.4 102.2 L255.2 102.4 L256.0 102.6 L256.8 102.7 L257.6 102.9 L258.4 103.1 L259.2 103.3 L260.0 103.4 L260.8 103.6 L261.6 103.8 L262.4 103.9 L263.2 104.1 L264.0 104.2 L264.8 104.3 L265.6 104.5 L266.4 104.6 L267.2 104.8 L268.0 104.9 L268.8 105.0 L269.6 105.1 L270.4 105.3 L271.2 105.4 L272.0 105.5 L272.8 105.6 L273.6 105.7 L274.4 105.8 L275.2 105.9 L276.0 106.0 L276.8 106.1 L277.6 106.2 L278.4 106.3 L279.2 106.4 L280.0 106.5 L280.8 106.6 L281.6 106.7 L282.4 106.7 L283.2 106.8 L284.0 106.9 L284.8 107.0 L285.6 107.0 L286.4 107.1 L287.2 107.2 L288.0 107.3 L288.8 107.3 L289.6 107.4 L290.4 107.5 L291.2 107.5 L292.0 107.6 L292.8 107.6 L293.6 107.7 L294.4 107.8 L295.2 107.8 L296.0 107.9 L296.8 107.9 L297.6 108.0 L298.4 108.0 L299.2 108.1 L300.0 108.1 L300.8 108.2 L301.6 108.2 L302.4 108.3 L303.2 108.3 L304.0 108.3 L304.8 108.4 L305.6 108.4 L306.4 108.5 L307.2 108.5 L308.0 108.5 L308.8 108.6 L309.6 108.6 L310.4 108.6 L311.2 108.7 L312.0 108.7 L312.8 108.7 L313.6 108.8 L314.4 108.8 L315.2 108.8 L316.0 108.9 L316.8 108.9 L317.6 108.9 L318.4 108.9 L319.2 109.0 L320.0 109.0 L320.8 109.0 L321.6 109.0 L322.4 109.1 L323.2 109.1 L324.0 109.1 L324.8 109.1 L325.6 109.2 L326.4 109.2 L327.2 109.2 L328.0 109.2 L328.8 109.2 L329.6 109.3 L330.4 109.3 L331.2 109.3 L332.0 109.3 L332.8 109.3 L333.6 109.3 L334.4 109.4 L335.2 109.4 L336.0 109.4 L336.8 109.4 L337.6 109.4 L338.4 109.4 L339.2 109.4 L340.0 109.5 L340.8 109.5 L341.6 109.5 L342.4 109.5 L343.2 109.5 L344.0 109.5 L344.8 109.5 L345.6 109.5 L346.4 109.6 L347.2 109.6 L348.0 109.6 L348.8 109.6 L349.6 109.6 L350.4 109.6 L351.2 109.6 L352.0 109.6 L352.8 109.6 L353.6 109.6 L354.4 109.7 L355.2 109.7 L356.0 109.7 L356.8 109.7 L357.6 109.7 L358.4 109.7 L359.2 109.7 L360.0 109.7 L360.8 109.7 L361.6 109.7 L362.4 109.7 L363.2 109.7 L364.0 109.7 L364.8 109.8 L365.6 109.8 L366.4 109.8 L367.2 109.8 L368.0 109.8 L368.8 109.8 L369.6 109.8 L370.4 109.8 L371.2 109.8 L372.0 109.8 L372.8 109.8 L373.6 109.8 L374.4 109.8 L375.2 109.8 L376.0 109.8 L376.8 109.8 L377.6 109.8 L378.4 109.8 L379.2 109.8 L380.0 109.8 L380.8 109.8 L381.6 109.9 L382.4 109.9 L383.2 109.9 L384.0 109.9 L384.8 109.9 L385.6 109.9 L386.4 109.9 L387.2 109.9 L388.0 109.9 L388.8 109.9 L389.6 109.9 L390.4 109.9 L391.2 109.9 L392.0 109.9 L392.8 109.9 L393.6 109.9 L394.4 109.9 L395.2 109.9 L396.0 109.9 L396.8 109.9 L397.6 109.9 L398.4 109.9 L399.2 109.9 L400.0 109.9 L400.8 109.9 L401.6 109.9 L402.4 109.9 L403.2 109.9 L404.0 109.9 L404.8 109.9 L405.6 109.9 L406.4 109.9 L407.2 109.9 L408.0 109.9 L408.8 109.9 L409.6 109.9 L410.4 109.9 L411.2 109.9 L412.0 109.9 L412.8 109.9 L413.6 109.9 L414.4 109.9 L415.2 109.9 L416.0 109.9 L416.8 110.0 L417.6 110.0 L418.4 110.0 L419.2 110.0 L420.0 110.0 L420.8 110.0 L421.6 110.0 L422.4 110.0 L423.2 110.0 L424.0 110.0 L424.8 110.0 L425.6 110.0 L426.4 110.0 L427.2 110.0 L428.0 110.0 L428.8 110.0 L429.6 110.0 L430.4 110.0 L431.2 110.0 L432.0 110.0 L432.8 110.0 L433.6 110.0 L434.4 110.0 L435.2 110.0 L436.0 110.0 L436.8 110.0 L437.6 110.0 L438.4 110.0 L439.2 110.0 L440.0 110.0 L440.8 110.0 L441.6 110.0 L442.4 110.0 L443.2 110.0 L444.0 110.0 L444.8 110.0 L445.6 110.0 L446.4 110.0 L447.2 110.0 L448.0 110.0 L448.8 110.0 L449.6 110.0 L450.4 110.0 L451.2 110.0 L452.0 110.0 L452.8 110.0 L453.6 110.0 L454.4 110.0 L455.2 110.0 L456.0 110.0 L456.8 110.0 L457.6 110.0 L458.4 110.0 L459.2 110.0 L460.0 110.0 L460.8 110.0 L461.6 110.0 L462.4 110.0 L463.2 110.0 L464.0 110.0 L464.8 110.0 L465.6 110.0 L466.4 110.0 L467.2 110.0 L468.0 110.0 L468.8 110.0 L469.6 110.0 L470.4 110.0 L471.2 110.0 L472.0 110.0 L472.8 110.0 L473.6 110.0 L474.4 110.0 L475.2 110.0 L476.0 110.0 L476.8 110.0 L477.6 110.0 L478.4 110.0 L479.2 110.0 L480.0 110.0 L480.8 110.0 L481.6 110.0 L482.4 110.0 L483.2 110.0 L484.0 110.0 L484.8 110.0 L485.6 110.0 L486.4 110.0 L487.2 110.0 L488.0 110.0 L488.8 110.0 L489.6 110.0 L490.4 110.0 L491.2 110.0 L492.0 110.0 L492.8 110.0 L493.6 110.0 L494.4 110.0 L495.2 110.0 L496.0 110.0 L496.8 110.0 L497.6 110.0 L498.4 110.0 L499.2 110.0 L500.0 110.0 M180.0 190.0 L180.8 188.0 L181.6 186.1 L182.4 184.2 L183.2 182.4 L184.0 180.6 L184.8 178.9 L185.6 177.2 L186.4 175.5 L187.2 173.9 L188.0 172.3 L188.8 170.8 L189.6 169.3 L190.4 167.8 L191.2 166.4 L192.0 165.0 L192.8 163.6 L193.6 162.3 L194.4 161.0 L195.2 159.8 L196.0 158.5 L196.8 157.3 L197.6 156.2 L198.4 155.0 L199.2 153.9 L200.0 152.8 L200.8 151.8 L201.6 150.7 L202.4 149.7 L203.2 148.7 L204.0 147.8 L204.8 146.9 L205.6 145.9 L206.4 145.1 L207.2 144.2 L208.0 143.3 L208.8 142.5 L209.6 141.7 L210.4 140.9 L211.2 140.2 L212.0 139.4 L212.8 138.7 L213.6 138.0 L214.4 137.3 L215.2 136.6 L216.0 136.0 L216.8 135.3 L217.6 134.7 L218.4 134.1 L219.2 133.5 L220.0 132.9 L220.8 132.4 L221.6 131.8 L222.4 131.3 L223.2 130.7 L224.0 130.2 L224.8 129.7 L225.6 129.2 L226.4 128.8 L227.2 128.3 L228.0 127.9 L228.8 127.4 L229.6 127.0 L230.4 126.6 L231.2 126.2 L232.0 125.8 L232.8 125.4 L233.6 125.0 L234.4 124.6 L235.2 124.3 L236.0 123.9 L236.8 123.6 L237.6 123.2 L238.4 122.9 L239.2 122.6 L240.0 122.3 L240.8 122.0 L241.6 121.7 L242.4 121.4 L243.2 121.1 L244.0 120.8 L244.8 120.6 L245.6 120.3 L246.4 120.0 L247.2 119.8 L248.0 119.6 L248.8 119.3 L249.6 119.1 L250.4 118.9 L251.2 118.6 L252.0 118.4 L252.8 118.2 L253.6 118.0 L254.4 117.8 L255.2 117.6 L256.0 117.4 L256.8 117.3 L257.6 117.1 L258.4 116.9 L259.2 116.7 L260.0 116.6 L260.8 116.4 L261.6 116.2 L262.4 116.1 L263.2 115.9 L264.0 115.8 L264.8 115.7 L265.6 115.5 L266.4 115.4 L267.2 115.2 L268.0 115.1 L268.8 115.0 L269.6 114.9 L270.4 114.7 L271.2 114.6 L272.0 114.5 L272.8 114.4 L273.6 114.3 L274.4 114.2 L275.2 114.1 L276.0 114.0 L276.8 113.9 L277.6 113.8 L278.4 113.7 L279.2 113.6 L280.0 113.5 L280.8 113.4 L281.6 113.3 L282.4 113.3 L283.2 113.2 L284.0 113.1 L284.8 113.0 L285.6 113.0 L286.4 112.9 L287.2 112.8 L288.0 112.7 L288.8 112.7 L289.6 112.6 L290.4 112.5 L291.2 112.5 L292.0 112.4 L292.8 112.4 L293.6 112.3 L294.4 112.2 L295.2 112.2 L296.0 112.1 L296.8 112.1 L297.6 112.0 L298.4 112.0 L299.2 111.9 L300.0 111.9 L300.8 111.8 L301.6 111.8 L302.4 111.7 L303.2 111.7 L304.0 111.7 L304.8 111.6 L305.6 111.6 L306.4 111.5 L307.2 111.5 L308.0 111.5 L308.8 111.4 L309.6 111.4 L310.4 111.4 L311.2 111.3 L312.0 111.3 L312.8 111.3 L313.6 111.2 L314.4 111.2 L315.2 111.2 L316.0 111.1 L316.8 111.1 L317.6 111.1 L318.4 111.1 L319.2 111.0 L320.0 111.0 L320.8 111.0 L321.6 111.0 L322.4 110.9 L323.2 110.9 L324.0 110.9 L324.8 110.9 L325.6 110.8 L326.4 110.8 L327.2 110.8 L328.0 110.8 L328.8 110.8 L329.6 110.7 L330.4 110.7 L331.2 110.7 L332.0 110.7 L332.8 110.7 L333.6 110.7 L334.4 110.6 L335.2 110.6 L336.0 110.6 L336.8 110.6 L337.6 110.6 L338.4 110.6 L339.2 110.6 L340.0 110.5 L340.8 110.5 L341.6 110.5 L342.4 110.5 L343.2 110.5 L344.0 110.5 L344.8 110.5 L345.6 110.5 L346.4 110.4 L347.2 110.4 L348.0 110.4 L348.8 110.4 L349.6 110.4 L350.4 110.4 L351.2 110.4 L352.0 110.4 L352.8 110.4 L353.6 110.4 L354.4 110.3 L355.2 110.3 L356.0 110.3 L356.8 110.3 L357.6 110.3 L358.4 110.3 L359.2 110.3 L360.0 110.3 L360.8 110.3 L361.6 110.3 L362.4 110.3 L363.2 110.3 L364.0 110.3 L364.8 110.2 L365.6 110.2 L366.4 110.2 L367.2 110.2 L368.0 110.2 L368.8 110.2 L369.6 110.2 L370.4 110.2 L371.2 110.2 L372.0 110.2 L372.8 110.2 L373.6 110.2 L374.4 110.2 L375.2 110.2 L376.0 110.2 L376.8 110.2 L377.6 110.2 L378.4 110.2 L379.2 110.2 L380.0 110.2 L380.8 110.2 L381.6 110.1 L382.4 110.1 L383.2 110.1 L384.0 110.1 L384.8 110.1 L385.6 110.1 L386.4 110.1 L387.2 110.1 L388.0 110.1 L388.8 110.1 L389.6 110.1 L390.4 110.1 L391.2 110.1 L392.0 110.1 L392.8 110.1 L393.6 110.1 L394.4 110.1 L395.2 110.1 L396.0 110.1 L396.8 110.1 L397.6 110.1 L398.4 110.1 L399.2 110.1 L400.0 110.1 L400.8 110.1 L401.6 110.1 L402.4 110.1 L403.2 110.1 L404.0 110.1 L404.8 110.1 L405.6 110.1 L406.4 110.1 L407.2 110.1 L408.0 110.1 L408.8 110.1 L409.6 110.1 L410.4 110.1 L411.2 110.1 L412.0 110.1 L412.8 110.1 L413.6 110.1 L414.4 110.1 L415.2 110.1 L416.0 110.1 L416.8 110.0 L417.6 110.0 L418.4 110.0 L419.2 110.0 L420.0 110.0 L420.8 110.0 L421.6 110.0 L422.4 110.0 L423.2 110.0 L424.0 110.0 L424.8 110.0 L425.6 110.0 L426.4 110.0 L427.2 110.0 L428.0 110.0 L428.8 110.0 L429.6 110.0 L430.4 110.0 L431.2 110.0 L432.0 110.0 L432.8 110.0 L433.6 110.0 L434.4 110.0 L435.2 110.0 L436.0 110.0 L436.8 110.0 L437.6 110.0 L438.4 110.0 L439.2 110.0 L440.0 110.0 L440.8 110.0 L441.6 110.0 L442.4 110.0 L443.2 110.0 L444.0 110.0 L444.8 110.0 L445.6 110.0 L446.4 110.0 L447.2 110.0 L448.0 110.0 L448.8 110.0 L449.6 110.0 L450.4 110.0 L451.2 110.0 L452.0 110.0 L452.8 110.0 L453.6 110.0 L454.4 110.0 L455.2 110.0 L456.0 110.0 L456.8 110.0 L457.6 110.0 L458.4 110.0 L459.2 110.0 L460.0 110.0 L460.8 110.0 L461.6 110.0 L462.4 110.0 L463.2 110.0 L464.0 110.0 L464.8 110.0 L465.6 110.0 L466.4 110.0 L467.2 110.0 L468.0 110.0 L468.8 110.0 L469.6 110.0 L470.4 110.0 L471.2 110.0 L472.0 110.0 L472.8 110.0 L473.6 110.0 L474.4 110.0 L475.2 110.0 L476.0 110.0 L476.8 110.0 L477.6 110.0 L478.4 110.0 L479.2 110.0 L480.0 110.0 L480.8 110.0 L481.6 110.0 L482.4 110.0 L483.2 110.0 L484.0 110.0 L484.8 110.0 L485.6 110.0 L486.4 110.0 L487.2 110.0 L488.0 110.0 L488.8 110.0 L489.6 110.0 L490.4 110.0 L491.2 110.0 L492.0 110.0 L492.8 110.0 L493.6 110.0 L494.4 110.0 L495.2 110.0 L496.0 110.0 L496.8 110.0 L497.6 110.0 L498.4 110.0 L499.2 110.0 L500.0 110.0"></path>
+          <path id="x-crit" class="s-ink dash" stroke-width="1.5" d="M180.0 30.0 L180.8 30.4 L181.6 31.4 L182.4 33.0 L183.2 34.9 L184.0 37.2 L184.8 39.8 L185.6 42.5 L186.4 45.3 L187.2 48.2 L188.0 51.1 L188.8 54.1 L189.6 57.0 L190.4 59.9 L191.2 62.7 L192.0 65.4 L192.8 68.0 L193.6 70.5 L194.4 73.0 L195.2 75.3 L196.0 77.5 L196.8 79.6 L197.6 81.6 L198.4 83.5 L199.2 85.3 L200.0 87.0 L200.8 88.6 L201.6 90.1 L202.4 91.5 L203.2 92.8 L204.0 94.1 L204.8 95.2 L205.6 96.3 L206.4 97.3 L207.2 98.3 L208.0 99.1 L208.8 99.9 L209.6 100.7 L210.4 101.4 L211.2 102.1 L212.0 102.7 L212.8 103.2 L213.6 103.8 L214.4 104.2 L215.2 104.7 L216.0 105.1 L216.8 105.5 L217.6 105.9 L218.4 106.2 L219.2 106.5 L220.0 106.8 L220.8 107.0 L221.6 107.3 L222.4 107.5 L223.2 107.7 L224.0 107.9 L224.8 108.0 L225.6 108.2 L226.4 108.4 L227.2 108.5 L228.0 108.6 L228.8 108.7 L229.6 108.8 L230.4 108.9 L231.2 109.0 L232.0 109.1 L232.8 109.2 L233.6 109.2 L234.4 109.3 L235.2 109.4 L236.0 109.4 L236.8 109.5 L237.6 109.5 L238.4 109.6 L239.2 109.6 L240.0 109.6 L240.8 109.7 L241.6 109.7 L242.4 109.7 L243.2 109.7 L244.0 109.8 L244.8 109.8 L245.6 109.8 L246.4 109.8 L247.2 109.8 L248.0 109.8 L248.8 109.9 L249.6 109.9 L250.4 109.9 L251.2 109.9 L252.0 109.9 L252.8 109.9 L253.6 109.9 L254.4 109.9 L255.2 109.9 L256.0 109.9 L256.8 109.9 L257.6 109.9 L258.4 110.0 L259.2 110.0 L260.0 110.0 L260.8 110.0 L261.6 110.0 L262.4 110.0 L263.2 110.0 L264.0 110.0 L264.8 110.0 L265.6 110.0 L266.4 110.0 L267.2 110.0 L268.0 110.0 L268.8 110.0 L269.6 110.0 L270.4 110.0 L271.2 110.0 L272.0 110.0 L272.8 110.0 L273.6 110.0 L274.4 110.0 L275.2 110.0 L276.0 110.0 L276.8 110.0 L277.6 110.0 L278.4 110.0 L279.2 110.0 L280.0 110.0 L280.8 110.0 L281.6 110.0 L282.4 110.0 L283.2 110.0 L284.0 110.0 L284.8 110.0 L285.6 110.0 L286.4 110.0 L287.2 110.0 L288.0 110.0 L288.8 110.0 L289.6 110.0 L290.4 110.0 L291.2 110.0 L292.0 110.0 L292.8 110.0 L293.6 110.0 L294.4 110.0 L295.2 110.0 L296.0 110.0 L296.8 110.0 L297.6 110.0 L298.4 110.0 L299.2 110.0 L300.0 110.0 L300.8 110.0 L301.6 110.0 L302.4 110.0 L303.2 110.0 L304.0 110.0 L304.8 110.0 L305.6 110.0 L306.4 110.0 L307.2 110.0 L308.0 110.0 L308.8 110.0 L309.6 110.0 L310.4 110.0 L311.2 110.0 L312.0 110.0 L312.8 110.0 L313.6 110.0 L314.4 110.0 L315.2 110.0 L316.0 110.0 L316.8 110.0 L317.6 110.0 L318.4 110.0 L319.2 110.0 L320.0 110.0 L320.8 110.0 L321.6 110.0 L322.4 110.0 L323.2 110.0 L324.0 110.0 L324.8 110.0 L325.6 110.0 L326.4 110.0 L327.2 110.0 L328.0 110.0 L328.8 110.0 L329.6 110.0 L330.4 110.0 L331.2 110.0 L332.0 110.0 L332.8 110.0 L333.6 110.0 L334.4 110.0 L335.2 110.0 L336.0 110.0 L336.8 110.0 L337.6 110.0 L338.4 110.0 L339.2 110.0 L340.0 110.0 L340.8 110.0 L341.6 110.0 L342.4 110.0 L343.2 110.0 L344.0 110.0 L344.8 110.0 L345.6 110.0 L346.4 110.0 L347.2 110.0 L348.0 110.0 L348.8 110.0 L349.6 110.0 L350.4 110.0 L351.2 110.0 L352.0 110.0 L352.8 110.0 L353.6 110.0 L354.4 110.0 L355.2 110.0 L356.0 110.0 L356.8 110.0 L357.6 110.0 L358.4 110.0 L359.2 110.0 L360.0 110.0 L360.8 110.0 L361.6 110.0 L362.4 110.0 L363.2 110.0 L364.0 110.0 L364.8 110.0 L365.6 110.0 L366.4 110.0 L367.2 110.0 L368.0 110.0 L368.8 110.0 L369.6 110.0 L370.4 110.0 L371.2 110.0 L372.0 110.0 L372.8 110.0 L373.6 110.0 L374.4 110.0 L375.2 110.0 L376.0 110.0 L376.8 110.0 L377.6 110.0 L378.4 110.0 L379.2 110.0 L380.0 110.0 L380.8 110.0 L381.6 110.0 L382.4 110.0 L383.2 110.0 L384.0 110.0 L384.8 110.0 L385.6 110.0 L386.4 110.0 L387.2 110.0 L388.0 110.0 L388.8 110.0 L389.6 110.0 L390.4 110.0 L391.2 110.0 L392.0 110.0 L392.8 110.0 L393.6 110.0 L394.4 110.0 L395.2 110.0 L396.0 110.0 L396.8 110.0 L397.6 110.0 L398.4 110.0 L399.2 110.0 L400.0 110.0 L400.8 110.0 L401.6 110.0 L402.4 110.0 L403.2 110.0 L404.0 110.0 L404.8 110.0 L405.6 110.0 L406.4 110.0 L407.2 110.0 L408.0 110.0 L408.8 110.0 L409.6 110.0 L410.4 110.0 L411.2 110.0 L412.0 110.0 L412.8 110.0 L413.6 110.0 L414.4 110.0 L415.2 110.0 L416.0 110.0 L416.8 110.0 L417.6 110.0 L418.4 110.0 L419.2 110.0 L420.0 110.0 L420.8 110.0 L421.6 110.0 L422.4 110.0 L423.2 110.0 L424.0 110.0 L424.8 110.0 L425.6 110.0 L426.4 110.0 L427.2 110.0 L428.0 110.0 L428.8 110.0 L429.6 110.0 L430.4 110.0 L431.2 110.0 L432.0 110.0 L432.8 110.0 L433.6 110.0 L434.4 110.0 L435.2 110.0 L436.0 110.0 L436.8 110.0 L437.6 110.0 L438.4 110.0 L439.2 110.0 L440.0 110.0 L440.8 110.0 L441.6 110.0 L442.4 110.0 L443.2 110.0 L444.0 110.0 L444.8 110.0 L445.6 110.0 L446.4 110.0 L447.2 110.0 L448.0 110.0 L448.8 110.0 L449.6 110.0 L450.4 110.0 L451.2 110.0 L452.0 110.0 L452.8 110.0 L453.6 110.0 L454.4 110.0 L455.2 110.0 L456.0 110.0 L456.8 110.0 L457.6 110.0 L458.4 110.0 L459.2 110.0 L460.0 110.0 L460.8 110.0 L461.6 110.0 L462.4 110.0 L463.2 110.0 L464.0 110.0 L464.8 110.0 L465.6 110.0 L466.4 110.0 L467.2 110.0 L468.0 110.0 L468.8 110.0 L469.6 110.0 L470.4 110.0 L471.2 110.0 L472.0 110.0 L472.8 110.0 L473.6 110.0 L474.4 110.0 L475.2 110.0 L476.0 110.0 L476.8 110.0 L477.6 110.0 L478.4 110.0 L479.2 110.0 L480.0 110.0 L480.8 110.0 L481.6 110.0 L482.4 110.0 L483.2 110.0 L484.0 110.0 L484.8 110.0 L485.6 110.0 L486.4 110.0 L487.2 110.0 L488.0 110.0 L488.8 110.0 L489.6 110.0 L490.4 110.0 L491.2 110.0 L492.0 110.0 L492.8 110.0 L493.6 110.0 L494.4 110.0 L495.2 110.0 L496.0 110.0 L496.8 110.0 L497.6 110.0 L498.4 110.0 L499.2 110.0 L500.0 110.0"></path>
+          <path id="x-curve" class="s-ox" stroke-width="2.5" d="M180.0 30.0 L180.8 30.4 L181.6 31.5 L182.4 33.4 L183.2 35.9 L184.0 39.0 L184.8 42.7 L185.6 46.8 L186.4 51.4 L187.2 56.3 L188.0 61.4 L188.8 66.8 L189.6 72.4 L190.4 78.0 L191.2 83.7 L192.0 89.4 L192.8 95.0 L193.6 100.5 L194.4 105.8 L195.2 110.8 L196.0 115.7 L196.8 120.2 L197.6 124.4 L198.4 128.3 L199.2 131.8 L200.0 134.9 L200.8 137.6 L201.6 139.9 L202.4 141.8 L203.2 143.3 L204.0 144.4 L204.8 145.2 L205.6 145.5 L206.4 145.5 L207.2 145.1 L208.0 144.4 L208.8 143.5 L209.6 142.2 L210.4 140.7 L211.2 138.9 L212.0 137.0 L212.8 134.9 L213.6 132.6 L214.4 130.3 L215.2 127.8 L216.0 125.3 L216.8 122.8 L217.6 120.3 L218.4 117.8 L219.2 115.3 L220.0 112.9 L220.8 110.6 L221.6 108.4 L222.4 106.4 L223.2 104.4 L224.0 102.6 L224.8 101.0 L225.6 99.5 L226.4 98.3 L227.2 97.1 L228.0 96.2 L228.8 95.5 L229.6 94.9 L230.4 94.5 L231.2 94.3 L232.0 94.2 L232.8 94.3 L233.6 94.5 L234.4 94.9 L235.2 95.4 L236.0 96.1 L236.8 96.8 L237.6 97.6 L238.4 98.5 L239.2 99.5 L240.0 100.5 L240.8 101.6 L241.6 102.7 L242.4 103.8 L243.2 104.9 L244.0 106.1 L244.8 107.2 L245.6 108.2 L246.4 109.3 L247.2 110.3 L248.0 111.2 L248.8 112.1 L249.6 112.9 L250.4 113.7 L251.2 114.4 L252.0 115.0 L252.8 115.5 L253.6 115.9 L254.4 116.3 L255.2 116.6 L256.0 116.8 L256.8 117.0 L257.6 117.0 L258.4 117.0 L259.2 116.9 L260.0 116.8 L260.8 116.6 L261.6 116.3 L262.4 116.0 L263.2 115.7 L264.0 115.3 L264.8 114.9 L265.6 114.4 L266.4 113.9 L267.2 113.5 L268.0 113.0 L268.8 112.5 L269.6 112.0 L270.4 111.5 L271.2 111.0 L272.0 110.5 L272.8 110.1 L273.6 109.6 L274.4 109.2 L275.2 108.9 L276.0 108.5 L276.8 108.2 L277.6 107.9 L278.4 107.7 L279.2 107.4 L280.0 107.3 L280.8 107.1 L281.6 107.0 L282.4 106.9 L283.2 106.9 L284.0 106.9 L284.8 106.9 L285.6 107.0 L286.4 107.0 L287.2 107.1 L288.0 107.3 L288.8 107.4 L289.6 107.6 L290.4 107.8 L291.2 107.9 L292.0 108.2 L292.8 108.4 L293.6 108.6 L294.4 108.8 L295.2 109.0 L296.0 109.2 L296.8 109.5 L297.6 109.7 L298.4 109.9 L299.2 110.1 L300.0 110.3 L300.8 110.4 L301.6 110.6 L302.4 110.7 L303.2 110.9 L304.0 111.0 L304.8 111.1 L305.6 111.2 L306.4 111.3 L307.2 111.3 L308.0 111.4 L308.8 111.4 L309.6 111.4 L310.4 111.4 L311.2 111.4 L312.0 111.3 L312.8 111.3 L313.6 111.2 L314.4 111.2 L315.2 111.1 L316.0 111.0 L316.8 111.0 L317.6 110.9 L318.4 110.8 L319.2 110.7 L320.0 110.6 L320.8 110.5 L321.6 110.4 L322.4 110.3 L323.2 110.2 L324.0 110.1 L324.8 110.0 L325.6 109.9 L326.4 109.8 L327.2 109.8 L328.0 109.7 L328.8 109.6 L329.6 109.6 L330.4 109.5 L331.2 109.5 L332.0 109.5 L332.8 109.4 L333.6 109.4 L334.4 109.4 L335.2 109.4 L336.0 109.4 L336.8 109.4 L337.6 109.4 L338.4 109.4 L339.2 109.4 L340.0 109.5 L340.8 109.5 L341.6 109.5 L342.4 109.6 L343.2 109.6 L344.0 109.6 L344.8 109.7 L345.6 109.7 L346.4 109.8 L347.2 109.8 L348.0 109.9 L348.8 109.9 L349.6 109.9 L350.4 110.0 L351.2 110.0 L352.0 110.1 L352.8 110.1 L353.6 110.1 L354.4 110.1 L355.2 110.2 L356.0 110.2 L356.8 110.2 L357.6 110.2 L358.4 110.2 L359.2 110.3 L360.0 110.3 L360.8 110.3 L361.6 110.3 L362.4 110.3 L363.2 110.3 L364.0 110.3 L364.8 110.3 L365.6 110.2 L366.4 110.2 L367.2 110.2 L368.0 110.2 L368.8 110.2 L369.6 110.2 L370.4 110.1 L371.2 110.1 L372.0 110.1 L372.8 110.1 L373.6 110.1 L374.4 110.1 L375.2 110.0 L376.0 110.0 L376.8 110.0 L377.6 110.0 L378.4 110.0 L379.2 110.0 L380.0 109.9 L380.8 109.9 L381.6 109.9 L382.4 109.9 L383.2 109.9 L384.0 109.9 L384.8 109.9 L385.6 109.9 L386.4 109.9 L387.2 109.9 L388.0 109.9 L388.8 109.9 L389.6 109.9 L390.4 109.9 L391.2 109.9 L392.0 109.9 L392.8 109.9 L393.6 109.9 L394.4 109.9 L395.2 109.9 L396.0 109.9 L396.8 109.9 L397.6 109.9 L398.4 110.0 L399.2 110.0 L400.0 110.0 L400.8 110.0 L401.6 110.0 L402.4 110.0 L403.2 110.0 L404.0 110.0 L404.8 110.0 L405.6 110.0 L406.4 110.0 L407.2 110.0 L408.0 110.0 L408.8 110.0 L409.6 110.0 L410.4 110.0 L411.2 110.1 L412.0 110.1 L412.8 110.1 L413.6 110.1 L414.4 110.1 L415.2 110.1 L416.0 110.1 L416.8 110.1 L417.6 110.0 L418.4 110.0 L419.2 110.0 L420.0 110.0 L420.8 110.0 L421.6 110.0 L422.4 110.0 L423.2 110.0 L424.0 110.0 L424.8 110.0 L425.6 110.0 L426.4 110.0 L427.2 110.0 L428.0 110.0 L428.8 110.0 L429.6 110.0 L430.4 110.0 L431.2 110.0 L432.0 110.0 L432.8 110.0 L433.6 110.0 L434.4 110.0 L435.2 110.0 L436.0 110.0 L436.8 110.0 L437.6 110.0 L438.4 110.0 L439.2 110.0 L440.0 110.0 L440.8 110.0 L441.6 110.0 L442.4 110.0 L443.2 110.0 L444.0 110.0 L444.8 110.0 L445.6 110.0 L446.4 110.0 L447.2 110.0 L448.0 110.0 L448.8 110.0 L449.6 110.0 L450.4 110.0 L451.2 110.0 L452.0 110.0 L452.8 110.0 L453.6 110.0 L454.4 110.0 L455.2 110.0 L456.0 110.0 L456.8 110.0 L457.6 110.0 L458.4 110.0 L459.2 110.0 L460.0 110.0 L460.8 110.0 L461.6 110.0 L462.4 110.0 L463.2 110.0 L464.0 110.0 L464.8 110.0 L465.6 110.0 L466.4 110.0 L467.2 110.0 L468.0 110.0 L468.8 110.0 L469.6 110.0 L470.4 110.0 L471.2 110.0 L472.0 110.0 L472.8 110.0 L473.6 110.0 L474.4 110.0 L475.2 110.0 L476.0 110.0 L476.8 110.0 L477.6 110.0 L478.4 110.0 L479.2 110.0 L480.0 110.0 L480.8 110.0 L481.6 110.0 L482.4 110.0 L483.2 110.0 L484.0 110.0 L484.8 110.0 L485.6 110.0 L486.4 110.0 L487.2 110.0 L488.0 110.0 L488.8 110.0 L489.6 110.0 L490.4 110.0 L491.2 110.0 L492.0 110.0 L492.8 110.0 L493.6 110.0 L494.4 110.0 L495.2 110.0 L496.0 110.0 L496.8 110.0 L497.6 110.0 L498.4 110.0 L499.2 110.0 L500.0 110.0"></path>
+          <text id="kind-label" class="lbl" x="500" y="220" text-anchor="end">UNDERDAMPED, ζ = 0.25</text>
+          <text class="lbl" x="188" y="220">DASHED: CRITICAL, ζ = 1</text>
+        </svg>
+        <figcaption><b>Fig. 5.1-2</b>Released from rest at x₀. Fixed axes: 4 s across. The thin grey lines are the decay envelope, ±x₀e<sup>−ζωₙt</sup>.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="m2-num"><i>m</i>Mass <span class="unit">kg</span></label>
+            <input type="range" id="m2-range" min="0.5" max="10" step="0.1" value="2" aria-label="Mass, kg">
+            <input type="number" id="m2-num" min="0.5" max="10" step="0.1" value="2" inputmode="decimal" data-name="a mass" data-unit="kg" aria-describedby="m2-err">
+            <span class="err" id="m2-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="k2-num"><i>k</i>Stiffness <span class="unit">N/m</span></label>
+            <input type="range" id="k2-range" min="20" max="500" step="5" value="200" aria-label="Spring stiffness, N/m">
+            <input type="number" id="k2-num" min="20" max="500" step="5" value="200" inputmode="numeric" data-name="a stiffness" data-unit="N/m" aria-describedby="k2-err">
+            <span class="err" id="k2-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="c-num"><i>c</i>Damping <span class="unit">N·s/m</span></label>
+            <input type="range" id="c-range" min="0" max="150" step="0.5" value="10" aria-label="Damping coefficient, N·s/m">
+            <input type="number" id="c-num" min="0" max="150" step="0.5" value="10" inputmode="decimal" data-name="a damping coefficient" data-unit="N·s/m" aria-describedby="c-err">
+            <span class="err" id="c-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results, damping">
+          <tbody>
+            <tr><td><i class="v">c</i><sub>c</sub> = 2√(<i class="v">k</i><i class="v">m</i>)</td><td id="out-cc">40 N·s/m</td></tr>
+            <tr><td><i class="v">ω</i><sub>d</sub>, damped</td><td id="out-wd">9.68 rad/s</td></tr>
+            <tr><td>Response</td><td id="out-kind">underdamped</td></tr>
+            <tr class="key"><td><i class="v">ζ</i> = <i class="v">c</i>/<i class="v">c</i><sub>c</sub></td><td id="out-z">0.25</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout2" aria-live="polite">Underdamped: it overshoots and rings at 9.68 rad/s, settling within 2% in about 1.6 s.</p>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <details class="more" id="worked2" open>
+        <summary><h2>Worked example: damping</h2></summary>
+      <p class="legend">Uses the values in Fig. 5.1-2. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">m</i></span><span class="what">mass</span><span id="g-m2" class="live">2 kg</span></li>
+          <li><span><i class="v">k</i></span><span class="what">spring stiffness</span><span id="g-k2" class="live">200 N/m</span></li>
+          <li><span><i class="v">c</i></span><span class="what">damping coefficient</span><span id="g-c" class="live">10 N·s/m</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The critical damping, the damping ratio, and whether the system is under-, critically or overdamped.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">c</i><sub>c</sub> = 2√(<i class="v">k</i><i class="v">m</i>) = <span id="w-cc" class="live">2√(200&nbsp;N/m × 2&nbsp;kg) = 40&nbsp;N·s/m</span></span>
+          <span><i class="v">ζ</i> = <i class="v">c</i>/<i class="v">c</i><sub>c</sub> = <span id="w-z" class="live">10 / 40 = 0.25</span></span>
+          <span><i class="v">ω</i><sub>n</sub> = √(<i class="v">k</i>/<i class="v">m</i>) = <span id="w-wn2" class="live">√(200&nbsp;N/m / 2&nbsp;kg) = 10&nbsp;rad/s</span></span>
+          <span><i class="v">ω</i><sub>d</sub> = <i class="v">ω</i><sub>n</sub>√(1 − <i class="v">ζ</i>²) = <span id="w-wd" class="live">10&nbsp;rad/s × √(1 − 0.25²) = 9.68&nbsp;rad/s</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box2"><span><i class="v">ζ</i> = </span><span id="w-ans2">0.25</span></span>
+          <p class="answer-note" id="w-note2">ζ is below 1, so it is underdamped and oscillates as it decays.</p>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The spring is linear (force <span class="inline-eq"><i class="v">k</i><i class="v">x</i></span>) and massless, and the damper is viscous (force <span class="inline-eq"><i class="v">c</i><i class="v">ẋ</i></span>).</li>
+          <li>The mass moves only up and down. Displacement is measured from where it hangs at rest, so gravity drops out.</li>
+          <li>Part 1 has no damping, so the oscillation never dies away. Part 2 releases the mass from rest at <i class="v">x</i><sub>0</sub>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Newton's second law for the mass: <code><i class="v">m</i><i class="v">ẍ</i> + <i class="v">c</i><i class="v">ẋ</i> + <i class="v">k</i><i class="v">x</i> = 0</code>.</li>
+          <li>With no damping, <code><i class="v">x</i> = <i class="v">A</i> cos <i class="v">ω</i><sub>n</sub><i class="v">t</i></code> solves it when <code><i class="v">ω</i><sub>n</sub>² = <i class="v">k</i>/<i class="v">m</i></code>.</li>
+          <li>With damping, try <code><i class="v">x</i> = e<sup><i class="v">r</i><i class="v">t</i></sup></code>: <code><i class="v">m</i><i class="v">r</i>² + <i class="v">c</i><i class="v">r</i> + <i class="v">k</i> = 0</code>, so <code><i class="v">r</i> = (−<i class="v">c</i> ± √(<i class="v">c</i>² − 4<i class="v">k</i><i class="v">m</i>)) / 2<i class="v">m</i></code>.</li>
+          <li>The roots change character where <code><i class="v">c</i>² = 4<i class="v">k</i><i class="v">m</i></code>, at the critical damping <code><i class="v">c</i><sub>c</sub> = 2√(<i class="v">k</i><i class="v">m</i>)</code>. Writing <code><i class="v">ζ</i> = <i class="v">c</i>/<i class="v">c</i><sub>c</sub></code> gives <code><i class="v">r</i> = −<i class="v">ζ</i><i class="v">ω</i><sub>n</sub> ± <i class="v">ω</i><sub>n</sub>√(<i class="v">ζ</i>² − 1)</code>.</li>
+          <li>For <i class="v">ζ</i> &lt; 1 the roots are complex: a decaying oscillation at <code><i class="v">ω</i><sub>d</sub> = <i class="v">ω</i><sub>n</sub>√(1 − <i class="v">ζ</i>²)</code>. At <i class="v">ζ</i> = 1 they coincide, and for <i class="v">ζ</i> &gt; 1 both are real and negative: decay with no oscillation.</li>
+        </ol>
+        <p class="prose">Critical damping returns the mass to rest fastest without overshooting. Car suspension sits well below it, around <span class="inline-eq"><i class="v">ζ</i> ≈ 0.2–0.4</span>, trading a little overshoot for comfort; a door closer runs near or above it.</p>
+      </details>
+
+      <details class="more" id="cases" open>
+        <summary><h2>Related forms</h2></summary>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M30 4 L82 4" class="s-ink" stroke-width="1.5"/><path d="M56 4 L56 10 L64 13 L48 19 L64 25 L48 31 L56 34 L56 38" class="s-ink" stroke-width="1.5"/><rect x="44" y="38" width="24" height="12" class="s-ink f-tab" stroke-width="1.5"/><path d="M80 26 L80 44 M76.5 38 L80 44 L83.5 38" class="s-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>From the static deflection</h3>
+            <p class="f"><span><span><i class="v">ω</i><sub>n</sub> = √</span><span class="frac"><span><i class="v">g</i></span><span><i class="v">δ</i><sub>st</sub></span></span></span><span><span>δ<sub>st</sub>: sag under its own weight</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L106 26" class="s-ink2" stroke-width="1"/><path d="M6 6 C14 6 16 44 26 44 S38 14 46 14 S58 36 66 36 S78 20 86 20 S98 30 106 28" class="s-ox" stroke-width="1.5"/><path d="M26 44 L26 48 M66 36 L66 48" class="s-ink2" stroke-width="1"/></svg>
+          <div>
+            <h3>Logarithmic decrement</h3>
+            <p class="f"><span><span><i class="v">δ</i> = ln</span><span class="frac"><span><i class="v">x</i><sub>n</sub></span><span><i class="v">x</i><sub>n+1</sub></span></span><span> = </span><span class="frac"><span>2π<i class="v">ζ</i></span><span>√(1 − <i class="v">ζ</i>²)</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L106 26" class="s-ink2" stroke-width="1"/><path d="M6 6 C14 6 16 44 26 44 S38 14 46 14 S58 32 66 30 S86 26 106 26" class="s-ox" stroke-width="1.5"/><path d="M70 20 L70 32" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Settling time, within 2%</h3>
+            <p class="f"><span><span><i class="v">t</i><sub>s</sub> ≈ </span><span class="frac"><span>4</span><span><i class="v">ζ</i><i class="v">ω</i><sub>n</sub></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="constant-acceleration.html">← 4.1 Constant acceleration</a>
+        <a href="./">Mechanics contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §5.1</span>
+  <a href="./#vibration">Back to Vibration</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/mass-spring-damper.js" defer></script>
+</body>
+</html>

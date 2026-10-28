@@ -72,8 +72,9 @@ a:hover { color: var(--ox); }
   text-transform: uppercase;
 }
 /* Baseline-aligned so the name lines up with the crumbs and ref; the icon centres on it. */
-.head .site { display: inline-flex; align-items: baseline; gap: 0.55em; text-decoration: none; }
-.head .site img { display: block; flex: none; align-self: center; }
+.head .site { display: inline-flex; flex: none; align-items: baseline; gap: 0.55em; text-decoration: none; white-space: nowrap; }
+/* Explicit size and ratio: Safari otherwise sizes the SVG from its 512px intrinsic box. */
+.head .site img { display: block; flex: none; align-self: center; width: 22px; height: 22px; }
 .head .crumbs { display: flex; gap: 0.6em; flex-wrap: wrap; flex: 1; justify-content: center; }
 .head .crumbs a { text-decoration: none; color: var(--ox); }
 .head .crumbs span[aria-hidden] { color: var(--ink-2); }
@@ -214,7 +215,8 @@ th .prep.live { margin-left: 0.6em; }
 }
 .topic > .col { grid-column: 1; }
 .topic > .demo-col { grid-column: 2; grid-row: 1 / span 4; }
-@media (min-width: 961px) and (min-height: 720px) { .topic > .demo-col { position: sticky; top: 24px; } }
+/* notebook.js moves `top` for a demo taller than the window, so it scrolls with the page until its far edge shows. */
+@media (min-width: 961px) { .topic > .demo-col { position: sticky; top: 24px; } }
 
 /* ---------- worked example ---------- */
 .step {
@@ -294,12 +296,17 @@ input[type="range"] { width: 100%; accent-color: var(--ox); }
 .results tr.key td { font-size: 1.0625rem; border-bottom: 2px solid var(--rule); }
 .results tr.key td:last-child { color: var(--ox); }
 .readout { margin-top: 12px; font: 400 0.9375rem/1.5 var(--serif); }
+/* Pause/play for an animated demo, ruled like the inputs. */
+.play { margin-top: 10px; padding: 6px 14px; font: 700 0.8125rem/1 var(--label); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); background: var(--ground); border: 1px solid var(--ink-2); border-radius: 0; cursor: pointer; }
+.play:hover { color: var(--ox); border-color: var(--ox); }
 
 /* ---------- demo figures (svg.fig: styled from the tokens, drawn by each topic script) ---------- */
 svg.fig text { font: 400 13px var(--mono); fill: var(--ink-2); }
 svg.fig text.lbl { font: 600 12px var(--label); letter-spacing: 0.04em; }
 svg.fig text.t-ink { fill: var(--ink); }
 svg.fig text.t-ox { fill: var(--ox); }
+/* A paper halo keeps a label legible where it crosses a line. */
+svg.fig text.halo { paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
 svg.fig .s-ink { stroke: var(--ink); fill: none; }
 svg.fig .s-ink2 { stroke: var(--ink-2); fill: none; }
 svg.fig .s-hair { stroke: var(--hair); fill: none; }
@@ -355,8 +362,9 @@ ul.plain li::marker { color: var(--ox); }
 
 /* ---------- home ---------- */
 .home-intro { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 3rem; flex-wrap: wrap; }
-.home-title { margin: 0; line-height: 0; }
-.home-title img { display: block; width: clamp(17rem, 40vw, 34rem); height: auto; }
+/* The h1 carries the width so Safari never shrinks the flex item below its logo. */
+.home-title { flex: none; width: clamp(17rem, 40vw, 34rem); max-width: 100%; margin: 0; line-height: 0; }
+.home-title img { display: block; width: 100%; height: auto; aspect-ratio: 1301 / 200; }
 .home-intro .lede { max-width: 28rem; margin-top: 0; }
 .shelf {
   display: grid;
@@ -379,15 +387,12 @@ ul.plain li::marker { color: var(--ox); }
 .disc li.live a { font-weight: 600; }
 .disc.soon h2 { color: var(--ink-2); }
 
-.example {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 26rem);
-  column-gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-.example .eq { justify-content: flex-start; margin-top: 1rem; }
-.example .go { display: inline-block; margin-top: 1rem; font-weight: 600; }
-.example .demo { padding: 14px 16px; }
+/* A–Z index: every topic, in three columns like the shelf above. */
+.az { list-style: none; padding: 0; columns: 3; column-gap: clamp(24px, 3vw, 48px); }
+.az li { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--hair); break-inside: avoid; font-size: 1rem; }
+.az a { font-weight: 600; }
+.az .k { font: 500 0.8125rem var(--mono); white-space: nowrap; }
+.az .d { grid-column: 1 / -1; font: 500 0.75rem var(--label); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
 
 /* ---------- mechanics index ---------- */
 .toc { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-top: 1.25rem; padding: 0; list-style: none; font: 700 0.8125rem var(--label); letter-spacing: 0.12em; text-transform: uppercase; }
@@ -418,12 +423,12 @@ tr.current th { font-weight: 600; }
 /* ---------- narrower screens ---------- */
 @media (max-width: 1180px) {
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .az { columns: 2; }
 }
 @media (max-width: 960px) {
-  .topic, .example { grid-template-columns: minmax(0, 1fr); }
+  .topic { grid-template-columns: minmax(0, 1fr); }
   .topic { grid-template-rows: none; }
   .topic > .demo-col { grid-column: 1; grid-row: auto; margin-top: 2rem; }
-  .example .demo { margin-top: 1.5rem; }
 }
 @media (max-width: 760px) {
   :root { --tabs-w: 0px; }
@@ -456,6 +461,7 @@ tr.current th { font-weight: 600; }
   }
   main { padding-top: 28px; }
   .shelf { grid-template-columns: minmax(0, 1fr); }
+  .az { columns: 1; }
   .symbols { grid-template-columns: 2.25rem 1fr auto; }
   .symbols dt:nth-of-type(even) { padding-left: 0; grid-column-start: auto; }
   .step { grid-template-columns: minmax(0, 1fr); row-gap: 6px; }

@@ -19,22 +19,23 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
 ## Architecture
 
 - **Pages:**
-  - `index.html` is the Contents page: a grid of six disciplines and one example.
-  - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 25 topics in all.
+  - `index.html` is the Contents page: a grid of six disciplines (three topics each), then an A–Z index of every topic.
+  - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 28 topics in all.
   - `mechanics/beam-deflection.html` is the original hand-written topic. Every other topic page follows its structure.
 - **Shared chrome is duplicated, not templated.** Each page repeats the running head, the right-edge discipline tabs (`ul.tabs`: Contents, Mechanics, Thermo, Fluids, Materials, Electrical, Automotive) and the footer.
-  - Adding a discipline or a page means editing the tab list on every page, plus the discipline index, the homepage list and the neighbouring pagers.
+  - Adding a discipline or a page means editing the tab list on every page, plus the discipline index, the homepage (its demo count, its A–Z index, the footer topic count, and its discipline list if the topic is among the first three, which is all it shows) and the neighbouring pagers.
   - Every discipline is published now. A future unpublished one would use `class="soon"` and link to its homepage section.
 - **Topic page order** (keep it the same for new topics):
   1. title, lede, `.eq` formula block, `dl.symbols`
-  2. the boxed demo (`.demo-col > figure.demo`, sticky beside every block on desktop)
+  2. the boxed demo (`.demo-col > figure.demo`, sticky beside every block on desktop; `notebook.js` shifts the sticky `top` of a demo taller than the window so it scrolls with the page until its far edge shows, so long demos need no special handling. Any page with a demo loads `notebook.js`)
   3. Worked example: `.step` rows for Given / Find / Solution / Answer, driven by the demo's values
-  4. Other load cases (`ul.cases`, a mini SVG beside its formulas; never a highlighted table shared with the main formula)
-  5. Assumptions and Derivation as collapsed `details.more`, then the pager
+  4. Assumptions and Derivation as collapsed `details.more`
+  5. Related cases/forms (`details#cases` > `ul.cases`, a mini SVG beside its formulas; never a highlighted table shared with the main formula), then the pager
 
   The source order is what puts the demo straight after the formula block on phones.
 - **Demo scripts** (`assets/js/<topic>.js`) find elements by id.
   - `beam-deflection.js` is self-contained. Every other topic loads `assets/js/notebook.js` first and calls `NB.demo(update)`. The helper binds every `.demo .ctl` (range/number pair `<key>-range`/`<key>-num`, or select `<key>-sel`), validates against the number input's `min`, `max`, `data-name` and `data-unit`, then calls `update(values)` and flashes the worked example. It also supplies `fmt`, `set`, `attr`, `opt`, `path`, `arrow`, `nice`, `exaggerate` and `limit`.
+  - A page with two demos (`mechanics/mass-spring-damper.html`) uses one `article.topic` per demo, each with its own worked example. Control keys must be unique across the page; one `NB.demo` call updates both, and the worked-example flash stays within the changed demo's article. Animated figures need a Pause button and start paused under reduced motion.
   - Demo figures use `svg.fig` with token classes from `site.css` (`s-ink`, `s-ox`, `f-tab`, `t-ox` and so on) instead of hex colours.
   - The HTML ships with each demo's default output already written in (worked example, results and figure), so pages read correctly without JavaScript. If you change a default, update those values too.
   - `beam-deflection.js` syncs each range input with its number input, validates against each field's min and max, redraws the SVG elastic curve with an auto-chosen exaggeration scale, fills the results table, and rewrites the worked-example `.live` spans, which flash on change.
@@ -55,4 +56,4 @@ Design work in this repo goes through the Impeccable skill (`/impeccable`, in `.
   - Ruled Not Raised: no shadows.
 - `.impeccable/surfaces/index-html.md`: the current direction contract for the three pages.
 
-Still not done: the homepage and `beam-deflection.html` SVGs still use hard-coded hex colours instead of the `svg.fig` token classes, and a few inline `style=` margins remain there.
+Still not done: the `beam-deflection.html` SVGs still use hard-coded hex colours instead of the `svg.fig` token classes, and a few inline `style=` margins remain there.

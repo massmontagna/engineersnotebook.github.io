@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -151,6 +152,29 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The block is treated as a particle: every force acts through one point, so tipping is not checked.</li>
+          <li>Friction follows the Coulomb model. It supplies whatever force is needed, up to <i class="v">μ</i><i class="v">N</i>, and beyond that the block slides.</li>
+          <li>One <i class="v">μ</i> is used for both starting and continued sliding. Real sliding friction is usually a little lower than static friction.</li>
+          <li><i class="v">g</i> = 9.81 m/s², and the slope is rigid and fixed.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Take axes along the slope and perpendicular to it. The weight <i class="v">m</i><i class="v">g</i> then has a component <span class="inline-eq"><i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></span> down the slope and <span class="inline-eq"><i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></span> into it.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Perpendicular to the slope: <code><i class="v">N</i> − <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i> = 0</code>, so <code><i class="v">N</i> = <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></code>.</li>
+          <li>Along the slope: <code><i class="v">F</i> − <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i> = 0</code>, so <code><i class="v">F</i> = <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></code>.</li>
+          <li>The block holds while <code><i class="v">F</i> ≤ <i class="v">μ</i><i class="v">N</i></code>, that is <code><i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i> ≤ <i class="v">μ</i><i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></code>.</li>
+        </ol>
+        <p class="prose">The mass cancels, so the block starts to slide when <span class="inline-eq">tan <i class="v">θ</i> = <i class="v">μ</i></span>, whatever it weighs. That angle is the angle of repose.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -176,29 +200,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The block is treated as a particle: every force acts through one point, so tipping is not checked.</li>
-          <li>Friction follows the Coulomb model. It supplies whatever force is needed, up to <i class="v">μ</i><i class="v">N</i>, and beyond that the block slides.</li>
-          <li>One <i class="v">μ</i> is used for both starting and continued sliding. Real sliding friction is usually a little lower than static friction.</li>
-          <li><i class="v">g</i> = 9.81 m/s², and the slope is rigid and fixed.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Take axes along the slope and perpendicular to it. The weight <i class="v">m</i><i class="v">g</i> then has a component <span class="inline-eq"><i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></span> down the slope and <span class="inline-eq"><i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></span> into it.</p>
-        </div>
-        <ol class="derive prose">
-          <li>Perpendicular to the slope: <code><i class="v">N</i> − <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i> = 0</code>, so <code><i class="v">N</i> = <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></code>.</li>
-          <li>Along the slope: <code><i class="v">F</i> − <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i> = 0</code>, so <code><i class="v">F</i> = <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></code>.</li>
-          <li>The block holds while <code><i class="v">F</i> ≤ <i class="v">μ</i><i class="v">N</i></code>, that is <code><i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i> ≤ <i class="v">μ</i><i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></code>.</li>
-        </ol>
-        <p class="prose">The mass cancels, so the block starts to slide when <span class="inline-eq">tan <i class="v">θ</i> = <i class="v">μ</i></span>, whatever it weighs. That angle is the angle of repose.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

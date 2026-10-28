@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -141,6 +142,26 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Direct current, or AC with RMS values and a resistive load (power factor 1).</li>
+          <li>For loads with a power factor below 1, such as motors, multiply by cos <i class="v">φ</i> to get the real power.</li>
+          <li>Voltage and current stay steady for the whole time <i class="v">t</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Voltage is energy per unit charge: <code><i class="v">V</i> = <i class="v">E</i>/<i class="v">q</i></code>.</li>
+          <li>Current is charge per unit time: <code><i class="v">I</i> = <i class="v">q</i>/<i class="v">t</i></code>.</li>
+          <li>Multiply them: <code><i class="v">V</i><i class="v">I</i> = <i class="v">E</i>/<i class="v">t</i></code>, which is power.</li>
+          <li>With Ohm's law, <code><i class="v">V</i> = <i class="v">I</i><i class="v">R</i></code>, this becomes <code><i class="v">P</i> = <i class="v">I</i>²<i class="v">R</i> = <i class="v">V</i>²/<i class="v">R</i></code>.</li>
+        </ol>
+        <p class="prose">One kilowatt-hour is 1 kW for one hour, or 3.6 MJ.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <ul class="cases">
@@ -166,26 +187,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Direct current, or AC with RMS values and a resistive load (power factor 1).</li>
-          <li>For loads with a power factor below 1, such as motors, multiply by cos <i class="v">φ</i> to get the real power.</li>
-          <li>Voltage and current stay steady for the whole time <i class="v">t</i>.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Voltage is energy per unit charge: <code><i class="v">V</i> = <i class="v">E</i>/<i class="v">q</i></code>.</li>
-          <li>Current is charge per unit time: <code><i class="v">I</i> = <i class="v">q</i>/<i class="v">t</i></code>.</li>
-          <li>Multiply them: <code><i class="v">V</i><i class="v">I</i> = <i class="v">E</i>/<i class="v">t</i></code>, which is power.</li>
-          <li>With Ohm's law, <code><i class="v">V</i> = <i class="v">I</i><i class="v">R</i></code>, this becomes <code><i class="v">P</i> = <i class="v">I</i>²<i class="v">R</i> = <i class="v">V</i>²/<i class="v">R</i></code>.</li>
-        </ol>
-        <p class="prose">One kilowatt-hour is 1 kW for one hour, or 3.6 MJ.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

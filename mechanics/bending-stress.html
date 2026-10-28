@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -154,6 +155,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Plane sections stay plane and perpendicular to the neutral axis as the beam bends.</li>
+          <li>The material is linear-elastic, with the same modulus in tension and compression.</li>
+          <li>The section is symmetric about the plane of bending, and the moment acts about a principal axis.</li>
+          <li>Here <i class="v">y</i> is positive below the neutral axis, so a sagging moment gives tension there.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>A fibre at distance <i class="v">y</i> from the neutral axis, in a beam bent to radius <i class="v">R</i>, has strain <code><i class="v">ε</i> = <i class="v">y</i>/<i class="v">R</i></code>.</li>
+          <li>Hooke's law gives <code><i class="v">σ</i> = <i class="v">E</i><i class="v">y</i>/<i class="v">R</i></code>, linear in <i class="v">y</i>.</li>
+          <li>There is no net axial force: <code>∫<i class="v">σ</i> d<i class="v">A</i> = (<i class="v">E</i>/<i class="v">R</i>)∫<i class="v">y</i> d<i class="v">A</i> = 0</code>, so the neutral axis passes through the centroid.</li>
+          <li>The stresses add up to the moment: <code><i class="v">M</i> = ∫<i class="v">σ</i><i class="v">y</i> d<i class="v">A</i> = (<i class="v">E</i>/<i class="v">R</i>)∫<i class="v">y</i>² d<i class="v">A</i> = <i class="v">E</i><i class="v">I</i>/<i class="v">R</i></code>.</li>
+        </ol>
+        <p class="prose">Eliminate <span class="inline-eq"><i class="v">E</i>/<i class="v">R</i></span> between the last two steps: <span class="inline-eq"><i class="v">σ</i>/<i class="v">y</i> = <i class="v">M</i>/<i class="v">I</i> = <i class="v">E</i>/<i class="v">R</i></span>. This is the engineer's bending equation.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -179,27 +201,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Plane sections stay plane and perpendicular to the neutral axis as the beam bends.</li>
-          <li>The material is linear-elastic, with the same modulus in tension and compression.</li>
-          <li>The section is symmetric about the plane of bending, and the moment acts about a principal axis.</li>
-          <li>Here <i class="v">y</i> is positive below the neutral axis, so a sagging moment gives tension there.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>A fibre at distance <i class="v">y</i> from the neutral axis, in a beam bent to radius <i class="v">R</i>, has strain <code><i class="v">ε</i> = <i class="v">y</i>/<i class="v">R</i></code>.</li>
-          <li>Hooke's law gives <code><i class="v">σ</i> = <i class="v">E</i><i class="v">y</i>/<i class="v">R</i></code>, linear in <i class="v">y</i>.</li>
-          <li>There is no net axial force: <code>∫<i class="v">σ</i> d<i class="v">A</i> = (<i class="v">E</i>/<i class="v">R</i>)∫<i class="v">y</i> d<i class="v">A</i> = 0</code>, so the neutral axis passes through the centroid.</li>
-          <li>The stresses add up to the moment: <code><i class="v">M</i> = ∫<i class="v">σ</i><i class="v">y</i> d<i class="v">A</i> = (<i class="v">E</i>/<i class="v">R</i>)∫<i class="v">y</i>² d<i class="v">A</i> = <i class="v">E</i><i class="v">I</i>/<i class="v">R</i></code>.</li>
-        </ol>
-        <p class="prose">Eliminate <span class="inline-eq"><i class="v">E</i>/<i class="v">R</i></span> between the last two steps: <span class="inline-eq"><i class="v">σ</i>/<i class="v">y</i> = <i class="v">M</i>/<i class="v">I</i> = <i class="v">E</i>/<i class="v">R</i></span>. This is the engineer's bending equation.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
 <link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
@@ -141,6 +142,25 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Acceleration is constant for the whole motion.</li>
+          <li>Motion is along a straight line, and <i class="v">u</i>, <i class="v">v</i>, <i class="v">a</i> and <i class="v">s</i> are signed along it.</li>
+          <li>Drag and other speed-dependent forces are ignored, or folded into a constant <i class="v">a</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Acceleration is the slope of the speed–time graph: <code><i class="v">v</i> = <i class="v">u</i> + <i class="v">a</i><i class="v">t</i></code>.</li>
+          <li>Distance is the area under it, a trapezium: <code><i class="v">s</i> = (<i class="v">u</i> + <i class="v">v</i>)<i class="v">t</i>/2</code>.</li>
+          <li>Take <code><i class="v">t</i> = (<i class="v">v</i> − <i class="v">u</i>)/<i class="v">a</i></code> from the first and substitute: <code><i class="v">s</i> = (<i class="v">u</i> + <i class="v">v</i>)(<i class="v">v</i> − <i class="v">u</i>)/2<i class="v">a</i> = (<i class="v">v</i>² − <i class="v">u</i>²)/2<i class="v">a</i></code>.</li>
+          <li>Rearrange: <code><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></code>.</li>
+        </ol>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>The other equations of motion</h2></summary>
       <ul class="cases">
@@ -175,28 +195,9 @@
       </ul>
       </details>
 
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Acceleration is constant for the whole motion.</li>
-          <li>Motion is along a straight line, and <i class="v">u</i>, <i class="v">v</i>, <i class="v">a</i> and <i class="v">s</i> are signed along it.</li>
-          <li>Drag and other speed-dependent forces are ignored, or folded into a constant <i class="v">a</i>.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Acceleration is the slope of the speed–time graph: <code><i class="v">v</i> = <i class="v">u</i> + <i class="v">a</i><i class="v">t</i></code>.</li>
-          <li>Distance is the area under it, a trapezium: <code><i class="v">s</i> = (<i class="v">u</i> + <i class="v">v</i>)<i class="v">t</i>/2</code>.</li>
-          <li>Take <code><i class="v">t</i> = (<i class="v">v</i> − <i class="v">u</i>)/<i class="v">a</i></code> from the first and substitute: <code><i class="v">s</i> = (<i class="v">u</i> + <i class="v">v</i>)(<i class="v">v</i> − <i class="v">u</i>)/2<i class="v">a</i> = (<i class="v">v</i>² − <i class="v">u</i>²)/2<i class="v">a</i></code>.</li>
-          <li>Rearrange: <code><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></code>.</li>
-        </ol>
-      </details>
-
       <nav class="pager" aria-label="Section pages">
         <a href="bending-stress.html">← 3.2 Bending stress</a>
-        <a href="./">Mechanics contents →</a>
+        <a href="mass-spring-damper.html">5.1 Mass–spring–damper →</a>
       </nav>
     </div>
   </article>

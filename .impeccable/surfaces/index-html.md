@@ -14,7 +14,7 @@ Students, working engineers, hobbyists. Job: grab a formula in seconds, or build
 
 ## User direction (confirmed in this round)
 - Keep the notebook style and the right-edge tabs; the tabs become disciplines (Contents, Mechanics, Thermo, Fluids, Materials, Electrical, Automotive).
-- Homepage leads with navigation to content across disciplines, with placeholder topics; one real example, not a lone featured formula.
+- Homepage leads with navigation to content across disciplines (three topics each), then an A–Z index of every topic with its discipline and formula.
 - Topic page in notebook order. The demo stays in its own box, as in version one. Given/Find structure for the working, but with version one's reference content.
 - Other load cases must not share a highlighted table with the main formula.
 - Ground: textured paper, subtly dynamic. Cool stock, not cream.

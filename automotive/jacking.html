@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacking · Engineer's Notebook</title>
+<meta name="description" content="How roll centre height splits cornering load transfer between body roll and jacking through the suspension links, with a live front-view demo, a worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Automotive</a><span aria-hidden="true">/</span>
+    <a href="./#handling">Handling</a>
+  </nav>
+  <span class="ref">§3.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="./" aria-current="true">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Jacking</h1>
+      <p class="lede">In a corner, load moves from the inner wheels to the outer ones. The roll centre height decides how: the share above it rolls the body onto the springs, and the share below it goes straight through the suspension links, jacking the body up.</p>
+
+      <div class="eq" role="math" aria-label="jacking share equals h r c over h; roll share equals h minus h r c, over h">
+        <span><span class="frac"><span>Δ<i class="v">W</i><sub>J</sub></span><span>Δ<i class="v">W</i></span></span> = <span class="frac"><span><i class="v">h</i><sub>rc</sub></span><span><i class="v">h</i></span></span>,</span><span><span class="frac"><span>Δ<i class="v">W</i><sub>R</sub></span><span>Δ<i class="v">W</i></span></span> = <span class="frac"><span><i class="v">h</i> − <i class="v">h</i><sub>rc</sub></span><span><i class="v">h</i></span></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>ΔW</dt><dd>total lateral load transfer</dd><dd class="u">N</dd>
+        <dt>ΔW<sub>J</sub></dt><dd>jacking share, through the links</dd><dd class="u">N</dd>
+        <dt>ΔW<sub>R</sub></dt><dd>roll share, through the springs</dd><dd class="u">N</dd>
+        <dt>h</dt><dd>centre of gravity height</dd><dd class="u">m</dd>
+        <dt>h<sub>rc</sub></dt><dd>roll centre height</dd><dd class="u">m</dd>
+        <dt>t</dt><dd>track width</dd><dd class="u">m</dd>
+        <dt>m</dt><dd>vehicle mass</dd><dd class="u">kg</dd>
+        <dt>a<sub>y</sub></dt><dd>lateral acceleration</dd><dd class="u">m/s²</dd>
+        <dt>K<sub>φ</sub></dt><dd>roll stiffness</dd><dd class="u">N·m/rad</dd>
+        <dt>F<sub>y</sub></dt><dd>tyre lateral force</dd><dd class="u">N</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 320" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Front view of a car turning left, with its centre of gravity and roll centre on the centreline. Dashed lines run from each tyre contact patch to the roll centre. A bar below splits the load transfer into jacking and roll.</desc>
+          <path id="body" d="M359.0 220.0 L398.0 200.5 L398.0 136.0 L390.5 115.0 L365.0 106.0 L348.5 43.0 L171.5 43.0 L155.0 106.0 L129.5 115.0 L122.0 136.0 L122.0 200.5 L161.0 220.0 Z" class="s-ink f-tab" stroke-width="2"></path>
+          <rect id="tyre-i" x="124.6" y="154" width="30.8" height="96" rx="6" class="s-ink f-sheet" stroke-width="2.5"></rect>
+          <rect id="tyre-o" x="364.6" y="154" width="30.8" height="96" rx="6" class="s-ink f-sheet" stroke-width="2.5"></rect>
+          <line x1="20" y1="250" x2="500" y2="250" class="s-ink" stroke-width="2"></line><path d="M20 250 L28 258 M32 250 L40 258 M44 250 L52 258 M56 250 L64 258 M68 250 L76 258 M80 250 L88 258 M92 250 L100 258 M104 250 L112 258 M116 250 L124 258 M128 250 L136 258 M140 250 L148 258 M152 250 L160 258 M164 250 L172 258 M176 250 L184 258 M188 250 L196 258 M200 250 L208 258 M212 250 L220 258 M224 250 L232 258 M236 250 L244 258 M248 250 L256 258 M260 250 L268 258 M272 250 L280 258 M284 250 L292 258 M296 250 L304 258 M308 250 L316 258 M320 250 L328 258 M332 250 L340 258 M344 250 L352 258 M356 250 L364 258 M368 250 L376 258 M380 250 L388 258 M392 250 L400 258 M404 250 L412 258 M416 250 L424 258 M428 250 L436 258 M440 250 L448 258 M452 250 L460 258 M464 250 L472 258 M476 250 L484 258 M488 250 L496 258" class="s-ink" stroke-width="1"></path>
+          <path id="link-lines" d="M140.0 250.0 L260.0 236.5 L380.0 250.0" class="s-ink2 dash" stroke-width="1.5"></path>
+          <path id="arm" d="M218.0 190.0 L210.0 190.0 M214.0 190.0 L214.0 236.5 M218.0 236.5 L210.0 236.5" class="s-ink" stroke-width="1.5"></path>
+          <path id="jack" class="s-ox f-ox" stroke-width="2.5" d="M260.0 228.5 L260.0 226.8 M265.5 226.8 L260.0 216.8 L254.5 226.8 Z"></path>
+          <circle id="rc" cx="260" cy="236.5" r="6" class="s-ox f-sheet" stroke-width="2.5"></circle>
+          <text id="rc-label" class="t-ox" x="248" y="240.5" text-anchor="end">RC</text>
+          <circle id="cg" cx="260" cy="190.0" r="7" class="f-ox"></circle>
+          <text id="cg-label" class="t-ox" x="248" y="194.0" text-anchor="end">CG</text>
+          <path id="inertia" class="s-ox f-ox" stroke-width="2.5" d="M270.0 190.0 L298.0 190.0 M298.0 196.6 L310.0 190.0 L298.0 183.4 Z"></path>
+          <text id="may-label" class="t-ox" x="274.0" y="180.0" display="inline">ma<tspan dy="4" font-size="10">y</tspan></text>
+          <text class="lbl" x="20" y="24">← TURN CENTRE</text>
+          <rect id="bar-jack" x="20" y="292" width="108.0" height="14" class="f-ox"></rect>
+          <rect id="bar-roll" x="128.0" y="292" width="372.0" height="14" class="f-tab"></rect>
+          <rect x="20" y="292" width="480" height="14" class="s-ink" stroke-width="1.5"></rect>
+          <text id="jack-label" class="lbl" x="20" y="284">JACKING 22.5%</text>
+          <text id="roll-label" class="lbl" x="500" y="284" text-anchor="end">ROLL 77.5%</text>
+        </svg>
+        <figcaption><b>Fig. 3.1-1</b>Car, track and heights drawn to one scale; the bracket is the roll arm. The jacking arrow and the bar scale with the jacking share.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="t-num"><i>t</i>Track <span class="unit">mm</span></label>
+            <input type="range" id="t-range" min="1200" max="2200" step="10" value="1600" aria-label="Track width, mm">
+            <input type="number" id="t-num" min="1200" max="2200" step="10" value="1600" inputmode="numeric" data-name="a track width" data-unit="mm" aria-describedby="t-err">
+            <span class="err" id="t-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="h-num"><i>h</i>CG height <span class="unit">mm</span></label>
+            <input type="range" id="h-range" min="200" max="700" step="5" value="400" aria-label="CG height, mm">
+            <input type="number" id="h-num" min="200" max="700" step="5" value="400" inputmode="numeric" data-name="a height" data-unit="mm" aria-describedby="h-err">
+            <span class="err" id="h-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="ay-num"><i>a<sub>y</sub></i>Lateral <span class="unit">g</span></label>
+            <input type="range" id="ay-range" min="0" max="2" step="0.05" value="1" aria-label="Lateral acceleration, g">
+            <input type="number" id="ay-num" min="0" max="2" step="0.05" value="1" inputmode="decimal" data-name="an acceleration" data-unit="g" aria-describedby="ay-err">
+            <span class="err" id="ay-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="rc-num"><i>h<sub>rc</sub></i>Roll centre <span class="unit">mm</span></label>
+            <input type="range" id="rc-range" min="-150" max="400" step="5" value="90" aria-label="Roll centre height, mm">
+            <input type="number" id="rc-num" min="-150" max="400" step="5" value="90" inputmode="numeric" data-name="a height" data-unit="mm" aria-describedby="rc-err">
+            <span class="err" id="rc-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td>Roll, Δ<i class="v">W</i><sub>R</sub>/Δ<i class="v">W</i></td><td id="out-roll">77.5%</td></tr>
+            <tr><td>Roll arm, <i class="v">h</i> − <i class="v">h</i><sub>rc</sub></td><td id="out-arm">310 mm</td></tr>
+            <tr><td>Transfer, Δ<i class="v">W</i>/<i class="v">m</i><i class="v">g</i></td><td id="out-dW">25% of weight</td></tr>
+            <tr class="key"><td>Jacking, <i class="v">h</i><sub>rc</sub>/<i class="v">h</i></td><td id="out-jack">22.5%</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite">Low roll centre: most of the transfer comes through body roll and the springs.</p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
+      <p class="legend">Uses the values in Fig. 3.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">a</i><sub>y</sub></span><span class="what">lateral acceleration</span><span id="g-ay" class="live">1 g</span></li>
+          <li><span><i class="v">h</i></span><span class="what">CG height</span><span id="g-h" class="live">400 mm</span></li>
+          <li><span><i class="v">t</i></span><span class="what">track width</span><span id="g-t" class="live">1,600 mm</span></li>
+          <li><span><i class="v">h</i><sub>rc</sub></span><span class="what">roll centre height</span><span id="g-rc" class="live">90 mm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>How the load transfer splits between jacking and roll, and how much of the car's weight moves across.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span>Δ<i class="v">W</i><sub>J</sub>/Δ<i class="v">W</i> = <i class="v">h</i><sub>rc</sub>/<i class="v">h</i> = <span id="w-jack" class="live">90 mm / 400 mm = 22.5%</span></span>
+          <span>Δ<i class="v">W</i><sub>R</sub>/Δ<i class="v">W</i> = 1 − <i class="v">h</i><sub>rc</sub>/<i class="v">h</i> = <span id="w-roll" class="live">1 − 22.5% = 77.5%</span></span>
+          <span>Δ<i class="v">W</i>/<i class="v">m</i><i class="v">g</i> = (<i class="v">a</i><sub>y</sub>/<i class="v">g</i>)·<i class="v">h</i>/<i class="v">t</i> = <span id="w-dW" class="live">1 × 400 mm / 1,600 mm = 25%</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span>Jacking = </span><span id="w-ans">22.5%</span></span>
+          <p class="answer-note" id="w-note">Roll takes the other 77.5%. 25% of the car's weight moves to the outer wheels.</p>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Steady cornering on a level road. The whole car is treated as one axle, with one roll centre and one track.</li>
+          <li>The roll centre lies on the centreline and stays put. In practice it moves as the body rolls and the suspension compresses.</li>
+          <li>Roll angle is small, so the CG's sideways shift as the body rolls is ignored.</li>
+          <li>"Jacking share" is the load that goes through the links. The vertical jacking force that comes with it is under Related forms.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Cornering puts an inertia force <code><i class="v">m</i><i class="v">a</i><sub>y</sub></code> at the CG, height <i class="v">h</i>. Moments about the outer contact patch give the total transfer, <code>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><sub>y</sub><i class="v">h</i>/<i class="v">t</i></code>.</li>
+          <li>Move the force down to the roll centre. That leaves the same force at height <i class="v">h</i><sub>rc</sub>, plus a roll moment <code><i class="v">m</i><i class="v">a</i><sub>y</sub>(<i class="v">h</i> − <i class="v">h</i><sub>rc</sub>)</code>.</li>
+          <li>A sideways force at the roll centre causes no roll, so it passes straight through the links: <code>Δ<i class="v">W</i><sub>J</sub> = <i class="v">m</i><i class="v">a</i><sub>y</sub><i class="v">h</i><sub>rc</sub>/<i class="v">t</i></code>.</li>
+          <li>The roll moment rolls the body onto the springs and anti-roll bars: <code>Δ<i class="v">W</i><sub>R</sub> = <i class="v">m</i><i class="v">a</i><sub>y</sub>(<i class="v">h</i> − <i class="v">h</i><sub>rc</sub>)/<i class="v">t</i></code>.</li>
+          <li>Dividing each by Δ<i class="v">W</i>: the jacking share is <code><i class="v">h</i><sub>rc</sub>/<i class="v">h</i></code> and the roll share <code>1 − <i class="v">h</i><sub>rc</sub>/<i class="v">h</i></code>.</li>
+        </ol>
+        <p class="prose">The total transfer does not depend on the roll centre; only the split does. A low roll centre means a long roll arm and more body roll. A high one means less roll but more jacking. Below ground, the jacking share turns negative: the links pull the body down and the springs carry more than the whole transfer.</p>
+      </details>
+
+      <details class="more" id="cases" open>
+        <summary><h2>Related forms</h2></summary>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M4 48 L108 48" class="s-ink" stroke-width="1"/><rect x="24" y="33" width="11" height="15" rx="2" class="s-ink f-ink" stroke-width="1.5"/><rect x="77" y="33" width="11" height="15" rx="2" class="s-ink f-ink" stroke-width="1.5"/><path d="M24 22 L30 22 L30 25 L24 25 Z M82 22 L88 22 L88 25 L82 25 Z" class="s-ink f-tab" stroke-width="1.2"/><path d="M31 25 L37 10 L75 10 L81 25 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M34 23 L39 12.5 L73 12.5 L78 23 Z" class="s-ink2 f-sheet" stroke-width="1"/><path d="M20 41 L20 29 L24 25 L88 25 L92 29 L92 41 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M24 29 L35 29 L35 33 L24 33 Z M77 29 L88 29 L88 33 L77 33 Z M44 30 L68 30 L68 35 L44 35 Z" class="s-ink2 f-sheet" stroke-width="1"/><path d="M20 37.5 L92 37.5" class="s-ink2" stroke-width="1"/><circle cx="56" cy="27" r="3" class="f-ox"/><path d="M60 27 L99 27 M99 30.9 L106 27 L99 23.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Total lateral transfer</h3>
+            <p class="f"><span><span>Δ<i class="v">W</i> = </span><span class="frac"><span><i class="v">m</i><i class="v">a</i><sub>y</sub><i class="v">h</i></span><span><i class="v">t</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M8 46 L104 46" class="s-ink" stroke-width="1"/><path d="M14 46 L56 22 L98 46" class="s-ink2 dash" stroke-width="1"/><circle cx="56" cy="22" r="3" class="s-ox f-sheet" stroke-width="1.5"/><path d="M56 18 L56 6 M52.5 9 L56 2 L59.5 9 Z" class="s-ox f-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Jacking force, links aimed at the roll centre</h3>
+            <p class="f"><span><span><i class="v">F</i><sub>J</sub> = (<i class="v">F</i><sub>y,o</sub> − <i class="v">F</i><sub>y,i</sub>)</span><span class="frac"><span>2<i class="v">h</i><sub>rc</sub></span><span><i class="v">t</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M4 48 L108 48" class="s-ink" stroke-width="1"/><rect x="24" y="33" width="11" height="15" rx="2" class="s-ink f-ink" stroke-width="1.5"/><rect x="77" y="33" width="11" height="15" rx="2" class="s-ink f-ink" stroke-width="1.5"/><g transform="rotate(5 56 41)"><path d="M24 22 L30 22 L30 25 L24 25 Z M82 22 L88 22 L88 25 L82 25 Z" class="s-ink f-tab" stroke-width="1.2"/><path d="M31 25 L37 10 L75 10 L81 25 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M34 23 L39 12.5 L73 12.5 L78 23 Z" class="s-ink2 f-sheet" stroke-width="1"/><path d="M20 41 L20 29 L24 25 L88 25 L92 29 L92 41 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M24 29 L35 29 L35 33 L24 33 Z M77 29 L88 29 L88 33 L77 33 Z M44 30 L68 30 L68 35 L44 35 Z" class="s-ink2 f-sheet" stroke-width="1"/><path d="M20 37.5 L92 37.5" class="s-ink2" stroke-width="1"/></g><path d="M56 4 L56 48" class="s-ink2 dash" stroke-width="1"/><path d="M56 41 L59.3 4.1" class="s-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Roll angle</h3>
+            <p class="f"><span><span><i class="v">φ</i> = </span><span class="frac"><span><i class="v">m</i><i class="v">a</i><sub>y</sub>(<i class="v">h</i> − <i class="v">h</i><sub>rc</sub>)</span><span><i class="v">K</i><sub>φ</sub></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M4 48 L108 48" class="s-ink" stroke-width="1"/><g transform="rotate(8 88 48)"><rect x="24" y="33" width="11" height="15" rx="2" class="s-ink f-ink" stroke-width="1.5"/><rect x="77" y="33" width="11" height="15" rx="2" class="s-ink f-ink" stroke-width="1.5"/><path d="M24 22 L30 22 L30 25 L24 25 Z M82 22 L88 22 L88 25 L82 25 Z" class="s-ink f-tab" stroke-width="1.2"/><path d="M31 25 L37 10 L75 10 L81 25 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M34 23 L39 12.5 L73 12.5 L78 23 Z" class="s-ink2 f-sheet" stroke-width="1"/><path d="M20 41 L20 29 L24 25 L88 25 L92 29 L92 41 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M24 29 L35 29 L35 33 L24 33 Z M77 29 L88 29 L88 33 L77 33 Z M44 30 L68 30 L68 35 L44 35 Z" class="s-ink2 f-sheet" stroke-width="1"/><path d="M20 37.5 L92 37.5" class="s-ink2" stroke-width="1"/></g></svg>
+          <div>
+            <h3>Inner wheels lift</h3>
+            <p class="f"><span><span><i class="v">a</i><sub>y</sub> = </span><span class="frac"><span><i class="v">g</i><i class="v">t</i></span><span>2<i class="v">h</i></span></span></span><span><span>rigid car, no roll</span></span></p>
+          </div>
+        </li>
+      </ul>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="tyre-friction-limit.html">← 2.2 Tyre friction limit</a>
+        <a href="load-sensitivity.html">3.2 Tyre load sensitivity →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Automotive §3.1</span>
+  <a href="./#handling">Back to Handling</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/jacking.js" defer></script>
+</body>
+</html>
