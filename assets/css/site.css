@@ -296,6 +296,9 @@ input[type="range"] { width: 100%; accent-color: var(--ox); }
 .results tr.key td { font-size: 1.0625rem; border-bottom: 2px solid var(--rule); }
 .results tr.key td:last-child { color: var(--ox); }
 .readout { margin-top: 12px; font: 400 0.9375rem/1.5 var(--serif); }
+/* Pause/play for an animated demo, ruled like the inputs. */
+.play { margin-top: 10px; padding: 6px 14px; font: 700 0.8125rem/1 var(--label); letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); background: var(--ground); border: 1px solid var(--ink-2); border-radius: 0; cursor: pointer; }
+.play:hover { color: var(--ox); border-color: var(--ox); }
 
 /* ---------- demo figures (svg.fig: styled from the tokens, drawn by each topic script) ---------- */
 svg.fig text { font: 400 13px var(--mono); fill: var(--ink-2); }

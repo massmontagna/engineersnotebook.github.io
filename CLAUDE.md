@@ -20,7 +20,7 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
 
 - **Pages:**
   - `index.html` is the Contents page: a grid of six disciplines (three topics each), then an A–Z index of every topic.
-  - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 27 topics in all.
+  - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 28 topics in all.
   - `mechanics/beam-deflection.html` is the original hand-written topic. Every other topic page follows its structure.
 - **Shared chrome is duplicated, not templated.** Each page repeats the running head, the right-edge discipline tabs (`ul.tabs`: Contents, Mechanics, Thermo, Fluids, Materials, Electrical, Automotive) and the footer.
   - Adding a discipline or a page means editing the tab list on every page, plus the discipline index, the homepage (its demo count, its A–Z index, the footer topic count, and its discipline list if the topic is among the first three, which is all it shows) and the neighbouring pagers.
@@ -35,6 +35,7 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   The source order is what puts the demo straight after the formula block on phones.
 - **Demo scripts** (`assets/js/<topic>.js`) find elements by id.
   - `beam-deflection.js` is self-contained. Every other topic loads `assets/js/notebook.js` first and calls `NB.demo(update)`. The helper binds every `.demo .ctl` (range/number pair `<key>-range`/`<key>-num`, or select `<key>-sel`), validates against the number input's `min`, `max`, `data-name` and `data-unit`, then calls `update(values)` and flashes the worked example. It also supplies `fmt`, `set`, `attr`, `opt`, `path`, `arrow`, `nice`, `exaggerate` and `limit`.
+  - A page with two demos (`mechanics/mass-spring-damper.html`) uses one `article.topic` per demo, each with its own worked example. Control keys must be unique across the page; one `NB.demo` call updates both, and the worked-example flash stays within the changed demo's article. Animated figures need a Pause button and start paused under reduced motion.
   - Demo figures use `svg.fig` with token classes from `site.css` (`s-ink`, `s-ox`, `f-tab`, `t-ox` and so on) instead of hex colours.
   - The HTML ships with each demo's default output already written in (worked example, results and figure), so pages read correctly without JavaScript. If you change a default, update those values too.
   - `beam-deflection.js` syncs each range input with its number input, validates against each field's min and max, redraws the SVG elastic curve with an auto-chosen exaggeration scale, fills the results table, and rewrites the worked-example `.live` spans, which flash on change.

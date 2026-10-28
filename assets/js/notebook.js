@@ -58,18 +58,19 @@
   function demo(update) {
     let started = false, flashTimer = 0;
 
-    // Mark the worked example's live values each time the demo changes them.
-    function flash() {
-      const live = document.querySelectorAll(".worked-live .live");
+    // Mark the worked example's live values each time the demo changes them. A page with
+    // several demos has one .topic per demo, so only the changed demo's example flashes.
+    function flash(ctl) {
+      const live = (ctl.closest(".topic") || document).querySelectorAll(".worked-live .live");
       live.forEach((el) => el.classList.remove("flash"));
       void document.body.offsetWidth; // restart the animation
       live.forEach((el) => el.classList.add("flash"));
       clearTimeout(flashTimer);
       flashTimer = setTimeout(() => live.forEach((el) => el.classList.remove("flash")), 900);
     }
-    function run() {
+    function run(ctl) {
       update(values);
-      if (started) flash();
+      if (started) flash(ctl);
     }
 
     document.querySelectorAll(".demo .ctl").forEach((ctl) => {
@@ -77,7 +78,7 @@
       if (sel) {
         const key = sel.id.replace(/-sel$/, "");
         values[key] = Number(sel.value);
-        sel.addEventListener("change", () => { values[key] = Number(sel.value); run(); });
+        sel.addEventListener("change", () => { values[key] = Number(sel.value); run(ctl); });
         return;
       }
       const num = ctl.querySelector('input[type="number"]'), range = ctl.querySelector('input[type="range"]');
@@ -89,7 +90,7 @@
         if (from !== num) num.value = v;
         num.removeAttribute("aria-invalid");
         err.textContent = "";
-        run();
+        run(ctl);
       }
       range.addEventListener("input", () => accept(Number(range.value), range));
       num.addEventListener("input", () => {
@@ -104,15 +105,13 @@
       });
     });
 
-    run();
+    update(values);
     started = true;
   }
 
   // The sticky demo column normally pins 24px from the top. When it is taller than the window, shift that
   // offset with each scroll: reading down, it rides up until its foot shows; scrolling back, down until its head shows.
-  function stickyDemo() {
-    const col = document.querySelector(".topic > .demo-col");
-    if (!col) return;
+  function stickyDemo(col) {
     const GAP = 24, wide = window.matchMedia("(min-width: 961px)");
     let top = GAP, lastY = window.scrollY;
     function place() {
@@ -128,7 +127,7 @@
     new ResizeObserver(place).observe(col); // sections opening or closing change its height
     place();
   }
-  stickyDemo();
+  document.querySelectorAll(".topic > .demo-col").forEach(stickyDemo);
 
   window.NB = { $, fmt, set, opt, attr, path, arrow, exaggerate, limit, demo, nb: " " };
 })();
