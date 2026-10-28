@@ -149,6 +149,29 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Loads add by superposition: the moment from each load is found alone and the results summed. This holds for linear-elastic beams with small deflections.</li>
+          <li>A sagging moment, which bends the beam concave upwards, is positive.</li>
+          <li>The supports are simple, so the moment is zero at each end.</li>
+          <li>The beam's own weight is ignored unless it is included in <i class="v">w</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Each support carries <span class="inline-eq"><i class="v">R</i> = <i class="v">P</i>/2 + <i class="v">w</i><i class="v">L</i>/2</span>. Cut the beam at distance <i class="v">x</i> from the left support, with <span class="inline-eq"><i class="v">x</i> ≤ <i class="v">L</i>/2</span>, and take moments of the forces to the left of the cut.</p>
+        </div>
+        <ol class="derive prose">
+          <li><code><i class="v">M</i>(<i class="v">x</i>) = <i class="v">R</i><i class="v">x</i> − <i class="v">w</i><i class="v">x</i>²/2</code>, since the uniform load on the left part, <code><i class="v">w</i><i class="v">x</i></code>, acts at <code><i class="v">x</i>/2</code>.</li>
+          <li>Substitute <i class="v">R</i>: <code><i class="v">M</i>(<i class="v">x</i>) = <i class="v">P</i><i class="v">x</i>/2 + <i class="v">w</i><i class="v">x</i>(<i class="v">L</i> − <i class="v">x</i>)/2</code>.</li>
+          <li>At mid-span, <code><i class="v">x</i> = <i class="v">L</i>/2</code>: <code><i class="v">M</i> = <i class="v">P</i><i class="v">L</i>/4 + <i class="v">w</i><i class="v">L</i>²/8</code>.</li>
+        </ol>
+        <p class="prose">The point-load term grows linearly to mid-span and the uniform-load term is a parabola. Both peak at the centre, so their maxima add.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <p class="legend">Maximum bending moment for other common beams.</p>
@@ -182,29 +205,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Loads add by superposition: the moment from each load is found alone and the results summed. This holds for linear-elastic beams with small deflections.</li>
-          <li>A sagging moment, which bends the beam concave upwards, is positive.</li>
-          <li>The supports are simple, so the moment is zero at each end.</li>
-          <li>The beam's own weight is ignored unless it is included in <i class="v">w</i>.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Each support carries <span class="inline-eq"><i class="v">R</i> = <i class="v">P</i>/2 + <i class="v">w</i><i class="v">L</i>/2</span>. Cut the beam at distance <i class="v">x</i> from the left support, with <span class="inline-eq"><i class="v">x</i> ≤ <i class="v">L</i>/2</span>, and take moments of the forces to the left of the cut.</p>
-        </div>
-        <ol class="derive prose">
-          <li><code><i class="v">M</i>(<i class="v">x</i>) = <i class="v">R</i><i class="v">x</i> − <i class="v">w</i><i class="v">x</i>²/2</code>, since the uniform load on the left part, <code><i class="v">w</i><i class="v">x</i></code>, acts at <code><i class="v">x</i>/2</code>.</li>
-          <li>Substitute <i class="v">R</i>: <code><i class="v">M</i>(<i class="v">x</i>) = <i class="v">P</i><i class="v">x</i>/2 + <i class="v">w</i><i class="v">x</i>(<i class="v">L</i> − <i class="v">x</i>)/2</code>.</li>
-          <li>At mid-span, <code><i class="v">x</i> = <i class="v">L</i>/2</code>: <code><i class="v">M</i> = <i class="v">P</i><i class="v">L</i>/4 + <i class="v">w</i><i class="v">L</i>²/8</code>.</li>
-        </ol>
-        <p class="prose">The point-load term grows linearly to mid-span and the uniform-load term is a parabola. Both peak at the centre, so their maxima add.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

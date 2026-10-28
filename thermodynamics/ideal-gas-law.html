@@ -146,6 +146,30 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The molecules take up negligible volume and do not attract each other.</li>
+          <li>This holds well for air and most gases near room conditions, and less well at high pressure or close to condensing.</li>
+          <li>Pressure and temperature are absolute: add 273.15 to °C, and use absolute rather than gauge pressure.</li>
+          <li>The gas is in equilibrium, with one pressure and temperature throughout.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Three experimental laws each hold two quantities fixed and relate the other two.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Boyle: at fixed <i class="v">n</i> and <i class="v">T</i>, <code><i class="v">p</i><i class="v">V</i></code> is constant.</li>
+          <li>Charles: at fixed <i class="v">n</i> and <i class="v">p</i>, <code><i class="v">V</i> ∝ <i class="v">T</i></code>.</li>
+          <li>Avogadro: at fixed <i class="v">p</i> and <i class="v">T</i>, <code><i class="v">V</i> ∝ <i class="v">n</i></code>.</li>
+          <li>Together, <code><i class="v">p</i><i class="v">V</i> ∝ <i class="v">n</i><i class="v">T</i></code>. The constant is the same for every ideal gas, <code><i class="v">R</i> = 8.314 J/(mol·K)</code>, so <code><i class="v">p</i><i class="v">V</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i></code>.</li>
+        </ol>
+        <p class="prose">Kinetic theory gives the same result from molecules bouncing off the walls: pressure comes from their impacts, and temperature measures their mean kinetic energy.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <p class="legend">For dry air, <i class="v">R</i><sub>s</sub> ≈ 287 J/(kg·K).</p>
@@ -172,30 +196,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The molecules take up negligible volume and do not attract each other.</li>
-          <li>This holds well for air and most gases near room conditions, and less well at high pressure or close to condensing.</li>
-          <li>Pressure and temperature are absolute: add 273.15 to °C, and use absolute rather than gauge pressure.</li>
-          <li>The gas is in equilibrium, with one pressure and temperature throughout.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Three experimental laws each hold two quantities fixed and relate the other two.</p>
-        </div>
-        <ol class="derive prose">
-          <li>Boyle: at fixed <i class="v">n</i> and <i class="v">T</i>, <code><i class="v">p</i><i class="v">V</i></code> is constant.</li>
-          <li>Charles: at fixed <i class="v">n</i> and <i class="v">p</i>, <code><i class="v">V</i> ∝ <i class="v">T</i></code>.</li>
-          <li>Avogadro: at fixed <i class="v">p</i> and <i class="v">T</i>, <code><i class="v">V</i> ∝ <i class="v">n</i></code>.</li>
-          <li>Together, <code><i class="v">p</i><i class="v">V</i> ∝ <i class="v">n</i><i class="v">T</i></code>. The constant is the same for every ideal gas, <code><i class="v">R</i> = 8.314 J/(mol·K)</code>, so <code><i class="v">p</i><i class="v">V</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i></code>.</li>
-        </ol>
-        <p class="prose">Kinetic theory gives the same result from molecules bouncing off the walls: pressure comes from their impacts, and temperature measures their mean kinetic energy.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

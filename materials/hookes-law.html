@@ -142,6 +142,26 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The material is linear-elastic: below its limit of proportionality, which for most metals is close to yield.</li>
+          <li>The material is isotropic and the stress is uniaxial.</li>
+          <li>Beyond yield the demo draws an idealised flat plateau (elastic–perfectly plastic). Real metals strain-harden.</li>
+          <li>Material properties are typical values. Use the supplier's figures for design.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>In a tensile test, stress is <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code> and strain is <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>
+          <li>Plotted against each other, the first part of the curve is a straight line through the origin.</li>
+          <li>Its slope is Young's modulus: <code><i class="v">E</i> = <i class="v">σ</i>/<i class="v">ε</i></code>, so <code><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></code>.</li>
+        </ol>
+        <p class="prose">Robert Hooke published it for springs in 1678 as <span class="inline-eq">ut tensio, sic vis</span>: as the extension, so the force.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <ul class="cases">
@@ -167,26 +187,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The material is linear-elastic: below its limit of proportionality, which for most metals is close to yield.</li>
-          <li>The material is isotropic and the stress is uniaxial.</li>
-          <li>Beyond yield the demo draws an idealised flat plateau (elastic–perfectly plastic). Real metals strain-harden.</li>
-          <li>Material properties are typical values. Use the supplier's figures for design.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>In a tensile test, stress is <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code> and strain is <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>
-          <li>Plotted against each other, the first part of the curve is a straight line through the origin.</li>
-          <li>Its slope is Young's modulus: <code><i class="v">E</i> = <i class="v">σ</i>/<i class="v">ε</i></code>, so <code><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></code>.</li>
-        </ol>
-        <p class="prose">Robert Hooke published it for springs in 1678 as <span class="inline-eq">ut tensio, sic vis</span>: as the extension, so the force.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

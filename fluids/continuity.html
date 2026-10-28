@@ -141,6 +141,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Flow is steady: nothing changes with time and no fluid builds up between the sections.</li>
+          <li>The fluid is incompressible. That suits liquids, and gases well below about a third of the speed of sound.</li>
+          <li><i class="v">v</i> is the mean speed over the section. The real speed is highest at the centre and zero at the wall.</li>
+          <li>No leaks and no branches between the sections.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>In a short time Δ<i class="v">t</i>, the fluid entering section 1 fills a volume <code><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub>Δ<i class="v">t</i></code>.</li>
+          <li>In the same time the fluid leaving section 2 fills <code><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub>Δ<i class="v">t</i></code>.</li>
+          <li>Mass is conserved and none is stored between them: <code><i class="v">ρ</i><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub>Δ<i class="v">t</i> = <i class="v">ρ</i><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub>Δ<i class="v">t</i></code>.</li>
+          <li>With <i class="v">ρ</i> constant, <code><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub></code>.</li>
+        </ol>
+        <p class="prose">For round pipes <span class="inline-eq"><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub>(<i class="v">D</i><sub>1</sub>/<i class="v">D</i><sub>2</sub>)²</span>: halving the diameter makes the flow four times faster.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -166,27 +187,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Flow is steady: nothing changes with time and no fluid builds up between the sections.</li>
-          <li>The fluid is incompressible. That suits liquids, and gases well below about a third of the speed of sound.</li>
-          <li><i class="v">v</i> is the mean speed over the section. The real speed is highest at the centre and zero at the wall.</li>
-          <li>No leaks and no branches between the sections.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>In a short time Δ<i class="v">t</i>, the fluid entering section 1 fills a volume <code><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub>Δ<i class="v">t</i></code>.</li>
-          <li>In the same time the fluid leaving section 2 fills <code><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub>Δ<i class="v">t</i></code>.</li>
-          <li>Mass is conserved and none is stored between them: <code><i class="v">ρ</i><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub>Δ<i class="v">t</i> = <i class="v">ρ</i><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub>Δ<i class="v">t</i></code>.</li>
-          <li>With <i class="v">ρ</i> constant, <code><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub></code>.</li>
-        </ol>
-        <p class="prose">For round pipes <span class="inline-eq"><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub>(<i class="v">D</i><sub>1</sub>/<i class="v">D</i><sub>2</sub>)²</span>: halving the diameter makes the flow four times faster.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

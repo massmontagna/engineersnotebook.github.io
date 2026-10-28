@@ -29,8 +29,8 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   1. title, lede, `.eq` formula block, `dl.symbols`
   2. the boxed demo (`.demo-col > figure.demo`, sticky beside every block on desktop)
   3. Worked example: `.step` rows for Given / Find / Solution / Answer, driven by the demo's values
-  4. Other load cases (`ul.cases`, a mini SVG beside its formulas; never a highlighted table shared with the main formula)
-  5. Assumptions and Derivation as collapsed `details.more`, then the pager
+  4. Assumptions and Derivation as collapsed `details.more`
+  5. Related cases/forms (`details#cases` > `ul.cases`, a mini SVG beside its formulas; never a highlighted table shared with the main formula), then the pager
 
   The source order is what puts the demo straight after the formula block on phones.
 - **Demo scripts** (`assets/js/<topic>.js`) find elements by id.

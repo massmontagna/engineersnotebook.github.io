@@ -172,6 +172,30 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Flow is steady and incompressible.</li>
+          <li>There is no friction. Real pipes lose head to friction, so the real outlet pressure is lower.</li>
+          <li>The equation applies along one streamline, or between sections where the flow is uniform.</li>
+          <li>No pump or turbine sits between the two points.</li>
+          <li>Pressures here are gauge. Absolute pressure is gauge plus about 101.3 kPa, and water starts to boil (cavitate) near 2.3 kPa absolute at 20 °C.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Follow a small volume <i class="v">V</i> of fluid from section 1 to section 2.</p>
+        </div>
+        <ol class="derive prose">
+          <li>The pressure difference does work on it: <code>(<i class="v">p</i><sub>1</sub> − <i class="v">p</i><sub>2</sub>)<i class="v">V</i></code>.</li>
+          <li>Its kinetic energy rises by <code>½<i class="v">ρ</i><i class="v">V</i>(<i class="v">v</i><sub>2</sub>² − <i class="v">v</i><sub>1</sub>²)</code>, and its potential energy by <code><i class="v">ρ</i><i class="v">V</i><i class="v">g</i>(<i class="v">h</i><sub>2</sub> − <i class="v">h</i><sub>1</sub>)</code>.</li>
+          <li>With no friction, work in equals energy gained. Divide by <i class="v">V</i> and collect each section's terms:</li>
+          <li><code><i class="v">p</i><sub>1</sub> + ½<i class="v">ρ</i><i class="v">v</i><sub>1</sub>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i><sub>1</sub> = <i class="v">p</i><sub>2</sub> + ½<i class="v">ρ</i><i class="v">v</i><sub>2</sub>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i><sub>2</sub></code>.</li>
+        </ol>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <ul class="cases">
@@ -197,30 +221,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Flow is steady and incompressible.</li>
-          <li>There is no friction. Real pipes lose head to friction, so the real outlet pressure is lower.</li>
-          <li>The equation applies along one streamline, or between sections where the flow is uniform.</li>
-          <li>No pump or turbine sits between the two points.</li>
-          <li>Pressures here are gauge. Absolute pressure is gauge plus about 101.3 kPa, and water starts to boil (cavitate) near 2.3 kPa absolute at 20 °C.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Follow a small volume <i class="v">V</i> of fluid from section 1 to section 2.</p>
-        </div>
-        <ol class="derive prose">
-          <li>The pressure difference does work on it: <code>(<i class="v">p</i><sub>1</sub> − <i class="v">p</i><sub>2</sub>)<i class="v">V</i></code>.</li>
-          <li>Its kinetic energy rises by <code>½<i class="v">ρ</i><i class="v">V</i>(<i class="v">v</i><sub>2</sub>² − <i class="v">v</i><sub>1</sub>²)</code>, and its potential energy by <code><i class="v">ρ</i><i class="v">V</i><i class="v">g</i>(<i class="v">h</i><sub>2</sub> − <i class="v">h</i><sub>1</sub>)</code>.</li>
-          <li>With no friction, work in equals energy gained. Divide by <i class="v">V</i> and collect each section's terms:</li>
-          <li><code><i class="v">p</i><sub>1</sub> + ½<i class="v">ρ</i><i class="v">v</i><sub>1</sub>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i><sub>1</sub> = <i class="v">p</i><sub>2</sub> + ½<i class="v">ρ</i><i class="v">v</i><sub>2</sub>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i><sub>2</sub></code>.</li>
-        </ol>
       </details>
 
       <nav class="pager" aria-label="Section pages">

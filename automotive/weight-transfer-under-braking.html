@@ -166,6 +166,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The car is a rigid body. Suspension pitch, which moves the centre of gravity slightly, is ignored.</li>
+          <li>The road is level and aerodynamic forces are ignored.</li>
+          <li><i class="v">h</i> is the centre of gravity's height above the ground.</li>
+          <li>Total weight is unchanged: load moves between the axles. If the rear load reaches zero, the rear wheels lift.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>At rest, moments about the rear tyre contact patch give <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i></code>.</li>
+          <li>Braking adds an inertia force <code><i class="v">m</i><i class="v">a</i></code>, acting forwards at the centre of gravity, height <i class="v">h</i>. The braking forces act at ground level, so they have no moment about the contact patch.</li>
+          <li>So <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i> + <i class="v">m</i><i class="v">a</i><i class="v">h</i></code>, and the front axle gains <code>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><i class="v">h</i>/<i class="v">L</i></code>.</li>
+          <li>Vertical balance: the rear axle loses the same amount.</li>
+        </ol>
+        <p class="prose">Transfer grows with CG height and shrinks with wheelbase. That is why long, low cars pitch less under braking.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -191,27 +212,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The car is a rigid body. Suspension pitch, which moves the centre of gravity slightly, is ignored.</li>
-          <li>The road is level and aerodynamic forces are ignored.</li>
-          <li><i class="v">h</i> is the centre of gravity's height above the ground.</li>
-          <li>Total weight is unchanged: load moves between the axles. If the rear load reaches zero, the rear wheels lift.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>At rest, moments about the rear tyre contact patch give <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i></code>.</li>
-          <li>Braking adds an inertia force <code><i class="v">m</i><i class="v">a</i></code>, acting forwards at the centre of gravity, height <i class="v">h</i>. The braking forces act at ground level, so they have no moment about the contact patch.</li>
-          <li>So <code><i class="v">W</i><sub>front</sub><i class="v">L</i> = <i class="v">m</i><i class="v">g</i><i class="v">b</i> + <i class="v">m</i><i class="v">a</i><i class="v">h</i></code>, and the front axle gains <code>Δ<i class="v">W</i> = <i class="v">m</i><i class="v">a</i><i class="v">h</i>/<i class="v">L</i></code>.</li>
-          <li>Vertical balance: the rear axle loses the same amount.</li>
-        </ol>
-        <p class="prose">Transfer grows with CG height and shrinks with wheelbase. That is why long, low cars pitch less under braking.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

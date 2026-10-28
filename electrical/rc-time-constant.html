@@ -159,6 +159,24 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The capacitor starts uncharged, and the supply switches on as an ideal step at <i class="v">t</i> = 0.</li>
+          <li>Components are ideal: no capacitor leakage, and any source resistance is included in <i class="v">R</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Round the loop, the supply voltage splits between resistor and capacitor: <code><i class="v">V</i> = <i class="v">i</i><i class="v">R</i> + <i class="v">v</i><sub>C</sub></code>.</li>
+          <li>The capacitor's current is <code><i class="v">i</i> = <i class="v">C</i> d<i class="v">v</i><sub>C</sub>/d<i class="v">t</i></code>, so <code><i class="v">R</i><i class="v">C</i> d<i class="v">v</i><sub>C</sub>/d<i class="v">t</i> + <i class="v">v</i><sub>C</sub> = <i class="v">V</i></code>.</li>
+          <li>With <code><i class="v">v</i><sub>C</sub>(0) = 0</code>, the solution is <code><i class="v">v</i><sub>C</sub> = <i class="v">V</i>(1 − e<sup>−<i class="v">t</i>/<i class="v">R</i><i class="v">C</i></sup>)</code>.</li>
+        </ol>
+        <p class="prose">At <span class="inline-eq"><i class="v">t</i> = <i class="v">τ</i></span> the capacitor reaches <span class="inline-eq">1 − 1/e ≈ 63.2%</span> of <i class="v">V</i>. After 5τ it is above 99%, usually taken as fully charged.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <ul class="cases">
@@ -184,24 +202,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The capacitor starts uncharged, and the supply switches on as an ideal step at <i class="v">t</i> = 0.</li>
-          <li>Components are ideal: no capacitor leakage, and any source resistance is included in <i class="v">R</i>.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Round the loop, the supply voltage splits between resistor and capacitor: <code><i class="v">V</i> = <i class="v">i</i><i class="v">R</i> + <i class="v">v</i><sub>C</sub></code>.</li>
-          <li>The capacitor's current is <code><i class="v">i</i> = <i class="v">C</i> d<i class="v">v</i><sub>C</sub>/d<i class="v">t</i></code>, so <code><i class="v">R</i><i class="v">C</i> d<i class="v">v</i><sub>C</sub>/d<i class="v">t</i> + <i class="v">v</i><sub>C</sub> = <i class="v">V</i></code>.</li>
-          <li>With <code><i class="v">v</i><sub>C</sub>(0) = 0</code>, the solution is <code><i class="v">v</i><sub>C</sub> = <i class="v">V</i>(1 − e<sup>−<i class="v">t</i>/<i class="v">R</i><i class="v">C</i></sup>)</code>.</li>
-        </ol>
-        <p class="prose">At <span class="inline-eq"><i class="v">t</i> = <i class="v">τ</i></span> the capacitor reaches <span class="inline-eq">1 − 1/e ≈ 63.2%</span> of <i class="v">V</i>. After 5τ it is above 99%, usually taken as fully charged.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

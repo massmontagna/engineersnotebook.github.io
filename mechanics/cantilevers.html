@@ -163,6 +163,30 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The root is fully fixed: no movement or rotation at the wall. Real fixings rotate a little, which adds deflection.</li>
+          <li>The beam is straight, prismatic and made of one linear-elastic material.</li>
+          <li>Deflections are small compared with the length, so the slope squared is negligible.</li>
+          <li>Shear deformation and the beam's own weight are ignored.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Measure <i class="v">x</i> from the wall, with <i class="v">y</i> positive upwards. An end load gives a hogging moment <span class="inline-eq"><i class="v">M</i> = −<i class="v">P</i>(<i class="v">L</i> − <i class="v">x</i>)</span> at <i class="v">x</i>.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Start from the bending equation: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>″ = −<i class="v">P</i>(<i class="v">L</i> − <i class="v">x</i>)</code>.</li>
+          <li>Integrate once: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>′ = −<i class="v">P</i>(<i class="v">L</i><i class="v">x</i> − <i class="v">x</i>²/2) + <i class="v">C</i>₁</code>. The slope is zero at the wall, so <code><i class="v">C</i>₁ = 0</code>.</li>
+          <li>Integrate again: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i>(<i class="v">L</i><i class="v">x</i>²/2 − <i class="v">x</i>³/6) + <i class="v">C</i>₂</code>. The deflection is zero at the wall, so <code><i class="v">C</i>₂ = 0</code>.</li>
+          <li>At the tip, <code><i class="v">x</i> = <i class="v">L</i></code>: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i><i class="v">L</i>³/3</code>.</li>
+        </ol>
+        <p class="prose">So <span class="inline-eq"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/3<i class="v">E</i><i class="v">I</i></span>, sixteen times the mid-span deflection of the same beam simply supported over the same length with a central load. The tip slope is <span class="inline-eq"><i class="v">θ</i> = <i class="v">P</i><i class="v">L</i>²/2<i class="v">E</i><i class="v">I</i></span>.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Other load cases</h2></summary>
       <p class="legend">Same symbols. <i class="v">δ</i> and <i class="v">θ</i> are at the free end; <i class="v">M</i> is at the wall.</p>
@@ -189,30 +213,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The root is fully fixed: no movement or rotation at the wall. Real fixings rotate a little, which adds deflection.</li>
-          <li>The beam is straight, prismatic and made of one linear-elastic material.</li>
-          <li>Deflections are small compared with the length, so the slope squared is negligible.</li>
-          <li>Shear deformation and the beam's own weight are ignored.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Measure <i class="v">x</i> from the wall, with <i class="v">y</i> positive upwards. An end load gives a hogging moment <span class="inline-eq"><i class="v">M</i> = −<i class="v">P</i>(<i class="v">L</i> − <i class="v">x</i>)</span> at <i class="v">x</i>.</p>
-        </div>
-        <ol class="derive prose">
-          <li>Start from the bending equation: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>″ = −<i class="v">P</i>(<i class="v">L</i> − <i class="v">x</i>)</code>.</li>
-          <li>Integrate once: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>′ = −<i class="v">P</i>(<i class="v">L</i><i class="v">x</i> − <i class="v">x</i>²/2) + <i class="v">C</i>₁</code>. The slope is zero at the wall, so <code><i class="v">C</i>₁ = 0</code>.</li>
-          <li>Integrate again: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i>(<i class="v">L</i><i class="v">x</i>²/2 − <i class="v">x</i>³/6) + <i class="v">C</i>₂</code>. The deflection is zero at the wall, so <code><i class="v">C</i>₂ = 0</code>.</li>
-          <li>At the tip, <code><i class="v">x</i> = <i class="v">L</i></code>: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i><i class="v">L</i>³/3</code>.</li>
-        </ol>
-        <p class="prose">So <span class="inline-eq"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/3<i class="v">E</i><i class="v">I</i></span>, sixteen times the mid-span deflection of the same beam simply supported over the same length with a central load. The tip slope is <span class="inline-eq"><i class="v">θ</i> = <i class="v">P</i><i class="v">L</i>²/2<i class="v">E</i><i class="v">I</i></span>.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

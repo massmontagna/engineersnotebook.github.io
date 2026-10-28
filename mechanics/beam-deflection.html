@@ -172,6 +172,30 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The beam is straight, prismatic and made of one linear-elastic material.</li>
+          <li>Deflections are small compared with the span, so the slope squared is negligible.</li>
+          <li>Shear deformation is ignored. This is reasonable when the span is more than about ten times the depth.</li>
+          <li>The beam's own weight is ignored. Add it as a uniform load if it matters.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Measure <i class="v">x</i> from the left support, with <i class="v">y</i> positive upwards. Each support carries <span class="inline-eq"><i class="v">P</i>/2</span>, so for the left half of the beam the bending moment is <span class="inline-eq"><i class="v">M</i> = <i class="v">P</i><i class="v">x</i>/2</span>.</p>
+        </div>
+        <ol class="derive prose" style="margin-top:0.9rem">
+          <li>Start from the bending equation: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>″ = <i class="v">P</i><i class="v">x</i>/2</code>.</li>
+          <li>Integrate once: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>′ = <i class="v">P</i><i class="v">x</i>²/4 + <i class="v">C</i>₁</code>. By symmetry the slope is zero at mid-span, so <code><i class="v">C</i>₁ = −<i class="v">P</i><i class="v">L</i>²/16</code>.</li>
+          <li>Integrate again: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = <i class="v">P</i><i class="v">x</i>³/12 − <i class="v">P</i><i class="v">L</i>²<i class="v">x</i>/16 + <i class="v">C</i>₂</code>. The deflection is zero at the support, so <code><i class="v">C</i>₂ = 0</code>.</li>
+          <li>At mid-span, <code><i class="v">x</i> = <i class="v">L</i>/2</code>: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i><i class="v">L</i>³/48</code>.</li>
+        </ol>
+        <p class="prose" style="margin-top:0.9rem">The minus sign means the beam deflects downwards, so its magnitude is <span class="inline-eq"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></span>. The slope at the support is <span class="inline-eq"><i class="v">C</i>₁/<i class="v">E</i><i class="v">I</i></span>, which gives <span class="inline-eq"><i class="v">θ</i> = <i class="v">P</i><i class="v">L</i>²/16<i class="v">E</i><i class="v">I</i></span>.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Other load cases</h2></summary>
       <p class="legend">Same symbols. <i class="v">M</i> is the maximum moment; <i class="v">θ</i> is the slope at a support for simply supported beams, and at the free end for cantilevers.</p>
@@ -198,30 +222,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The beam is straight, prismatic and made of one linear-elastic material.</li>
-          <li>Deflections are small compared with the span, so the slope squared is negligible.</li>
-          <li>Shear deformation is ignored. This is reasonable when the span is more than about ten times the depth.</li>
-          <li>The beam's own weight is ignored. Add it as a uniform load if it matters.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Measure <i class="v">x</i> from the left support, with <i class="v">y</i> positive upwards. Each support carries <span class="inline-eq"><i class="v">P</i>/2</span>, so for the left half of the beam the bending moment is <span class="inline-eq"><i class="v">M</i> = <i class="v">P</i><i class="v">x</i>/2</span>.</p>
-        </div>
-        <ol class="derive prose" style="margin-top:0.9rem">
-          <li>Start from the bending equation: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>″ = <i class="v">P</i><i class="v">x</i>/2</code>.</li>
-          <li>Integrate once: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>′ = <i class="v">P</i><i class="v">x</i>²/4 + <i class="v">C</i>₁</code>. By symmetry the slope is zero at mid-span, so <code><i class="v">C</i>₁ = −<i class="v">P</i><i class="v">L</i>²/16</code>.</li>
-          <li>Integrate again: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = <i class="v">P</i><i class="v">x</i>³/12 − <i class="v">P</i><i class="v">L</i>²<i class="v">x</i>/16 + <i class="v">C</i>₂</code>. The deflection is zero at the support, so <code><i class="v">C</i>₂ = 0</code>.</li>
-          <li>At mid-span, <code><i class="v">x</i> = <i class="v">L</i>/2</code>: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i><i class="v">L</i>³/48</code>.</li>
-        </ol>
-        <p class="prose" style="margin-top:0.9rem">The minus sign means the beam deflects downwards, so its magnitude is <span class="inline-eq"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></span>. The slope at the support is <span class="inline-eq"><i class="v">C</i>₁/<i class="v">E</i><i class="v">I</i></span>, which gives <span class="inline-eq"><i class="v">θ</i> = <i class="v">P</i><i class="v">L</i>²/16<i class="v">E</i><i class="v">I</i></span>.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

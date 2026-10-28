@@ -163,6 +163,28 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Conditions are steady: temperatures no longer change with time.</li>
+          <li>Heat flows in one direction, straight through the wall. Edges and corners are ignored.</li>
+          <li><i class="v">k</i> is constant over the temperature range, and no heat is generated inside the wall.</li>
+          <li>The face temperatures are known. In practice the air films on each face add resistance, so use surface rather than room temperatures.</li>
+          <li>Conductivities are typical values. Real figures vary with density, moisture and grade.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Fourier's law: <code><i class="v">q</i> = −<i class="v">k</i> d<i class="v">T</i>/d<i class="v">x</i></code>.</li>
+          <li>In steady state with no heat generated, the same flux passes every plane, so <i class="v">q</i> is constant through the wall.</li>
+          <li>With <i class="v">k</i> constant, d<i class="v">T</i>/d<i class="v">x</i> is constant too: the temperature falls linearly, <code>d<i class="v">T</i>/d<i class="v">x</i> = −(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>.</li>
+          <li>So <code><i class="v">q</i> = <i class="v">k</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>, and over area <i class="v">A</i>, <code><i class="v">Φ</i> = <i class="v">k</i><i class="v">A</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>.</li>
+        </ol>
+        <p class="prose">The minus sign in Fourier's law says heat flows down the temperature gradient, from hot to cold.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -188,28 +210,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>Conditions are steady: temperatures no longer change with time.</li>
-          <li>Heat flows in one direction, straight through the wall. Edges and corners are ignored.</li>
-          <li><i class="v">k</i> is constant over the temperature range, and no heat is generated inside the wall.</li>
-          <li>The face temperatures are known. In practice the air films on each face add resistance, so use surface rather than room temperatures.</li>
-          <li>Conductivities are typical values. Real figures vary with density, moisture and grade.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Fourier's law: <code><i class="v">q</i> = −<i class="v">k</i> d<i class="v">T</i>/d<i class="v">x</i></code>.</li>
-          <li>In steady state with no heat generated, the same flux passes every plane, so <i class="v">q</i> is constant through the wall.</li>
-          <li>With <i class="v">k</i> constant, d<i class="v">T</i>/d<i class="v">x</i> is constant too: the temperature falls linearly, <code>d<i class="v">T</i>/d<i class="v">x</i> = −(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>.</li>
-          <li>So <code><i class="v">q</i> = <i class="v">k</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>, and over area <i class="v">A</i>, <code><i class="v">Φ</i> = <i class="v">k</i><i class="v">A</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>.</li>
-        </ol>
-        <p class="prose">The minus sign in Fourier's law says heat flows down the temperature gradient, from hot to cold.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

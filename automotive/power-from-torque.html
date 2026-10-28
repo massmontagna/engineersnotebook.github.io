@@ -135,6 +135,26 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The shaft turns at a steady speed.</li>
+          <li><i class="v">T</i> is the torque measured at the shaft (brake torque).</li>
+          <li>The demo assumes the same torque at every speed to show the proportionality. Real engines follow a torque curve.</li>
+          <li>No losses. Power through a gearbox is reduced by its efficiency.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>A torque turning a shaft through angle <i class="v">θ</i> does work <code><i class="v">W</i> = <i class="v">T</i><i class="v">θ</i></code>.</li>
+          <li>Power is the rate of doing work: <code><i class="v">P</i> = d<i class="v">W</i>/d<i class="v">t</i> = <i class="v">T</i> d<i class="v">θ</i>/d<i class="v">t</i> = <i class="v">T</i><i class="v">ω</i></code>.</li>
+          <li>Engine speed in rpm converts to angular speed as <code><i class="v">ω</i> = 2π<i class="v">N</i>/60</code>.</li>
+        </ol>
+        <p class="prose">1 mechanical horsepower is 745.7 W. The 9549 in the everyday form is 60,000/2π.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <ul class="cases">
@@ -160,26 +180,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The shaft turns at a steady speed.</li>
-          <li><i class="v">T</i> is the torque measured at the shaft (brake torque).</li>
-          <li>The demo assumes the same torque at every speed to show the proportionality. Real engines follow a torque curve.</li>
-          <li>No losses. Power through a gearbox is reduced by its efficiency.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>A torque turning a shaft through angle <i class="v">θ</i> does work <code><i class="v">W</i> = <i class="v">T</i><i class="v">θ</i></code>.</li>
-          <li>Power is the rate of doing work: <code><i class="v">P</i> = d<i class="v">W</i>/d<i class="v">t</i> = <i class="v">T</i> d<i class="v">θ</i>/d<i class="v">t</i> = <i class="v">T</i><i class="v">ω</i></code>.</li>
-          <li>Engine speed in rpm converts to angular speed as <code><i class="v">ω</i> = 2π<i class="v">N</i>/60</code>.</li>
-        </ol>
-        <p class="prose">1 mechanical horsepower is 745.7 W. The 9549 in the everyday form is 60,000/2π.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

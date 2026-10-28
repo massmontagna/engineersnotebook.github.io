@@ -148,6 +148,27 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li><i class="v">α</i> is constant over the temperature range. In reality it varies with temperature.</li>
+          <li>The whole bar is at one uniform temperature.</li>
+          <li>The material is isotropic and free to expand, with nothing restraining it.</li>
+          <li>Values are typical. Concrete varies with its aggregate, roughly 7–12 × 10⁻⁶/K.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>The coefficient is defined as the fractional change in length per kelvin: <code><i class="v">α</i> = (1/<i class="v">L</i>) d<i class="v">L</i>/d<i class="v">T</i></code>.</li>
+          <li>For small changes, <code>Δ<i class="v">L</i> ≈ <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></code>.</li>
+          <li>If the ends are fixed, the thermal strain <code><i class="v">α</i> Δ<i class="v">T</i></code> must be cancelled by an equal and opposite elastic strain <code><i class="v">σ</i>/<i class="v">E</i></code>.</li>
+          <li>So a restrained bar carries <code><i class="v">σ</i> = −<i class="v">E</i><i class="v">α</i> Δ<i class="v">T</i></code>: compression when heated, tension when cooled.</li>
+        </ol>
+        <p class="prose">This restrained stress is why rails, bridges and pipework need expansion joints: it does not depend on the bar's length.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <ul class="cases">
@@ -173,27 +194,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li><i class="v">α</i> is constant over the temperature range. In reality it varies with temperature.</li>
-          <li>The whole bar is at one uniform temperature.</li>
-          <li>The material is isotropic and free to expand, with nothing restraining it.</li>
-          <li>Values are typical. Concrete varies with its aggregate, roughly 7–12 × 10⁻⁶/K.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>The coefficient is defined as the fractional change in length per kelvin: <code><i class="v">α</i> = (1/<i class="v">L</i>) d<i class="v">L</i>/d<i class="v">T</i></code>.</li>
-          <li>For small changes, <code>Δ<i class="v">L</i> ≈ <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></code>.</li>
-          <li>If the ends are fixed, the thermal strain <code><i class="v">α</i> Δ<i class="v">T</i></code> must be cancelled by an equal and opposite elastic strain <code><i class="v">σ</i>/<i class="v">E</i></code>.</li>
-          <li>So a restrained bar carries <code><i class="v">σ</i> = −<i class="v">E</i><i class="v">α</i> Δ<i class="v">T</i></code>: compression when heated, tension when cooled.</li>
-        </ol>
-        <p class="prose">This restrained stress is why rails, bridges and pipework need expansion joints: it does not depend on the bar's length.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

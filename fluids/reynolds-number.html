@@ -148,6 +148,25 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The thresholds, laminar below about 2,300 and turbulent above about 4,000, are for fully developed flow in smooth, straight, round pipes.</li>
+          <li>Transition is not sharp. Very smooth, undisturbed pipes can stay laminar well above 2,300.</li>
+          <li>Fluid properties are typical values at 20 °C. Viscosity changes strongly with temperature, especially for oils and glycerol.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Inertial force on a parcel of fluid scales as dynamic pressure times area: <code><i class="v">ρ</i><i class="v">v</i>² · <i class="v">D</i>²</code>.</li>
+          <li>Viscous force scales as shear stress times area: <code>(<i class="v">μ</i><i class="v">v</i>/<i class="v">D</i>) · <i class="v">D</i>² = <i class="v">μ</i><i class="v">v</i><i class="v">D</i></code>.</li>
+          <li>Their ratio is <code><i class="v">ρ</i><i class="v">v</i>²<i class="v">D</i>² / <i class="v">μ</i><i class="v">v</i><i class="v">D</i> = <i class="v">ρ</i><i class="v">v</i><i class="v">D</i>/<i class="v">μ</i></code>.</li>
+        </ol>
+        <p class="prose">When <i class="v">Re</i> is large, inertia wins and small disturbances grow into turbulence. When it is small, viscosity damps them out.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related forms</h2></summary>
       <p class="legend">On a flat plate, transition to turbulence starts near <i class="v">Re</i><sub>x</sub> ≈ 5 × 10⁵.</p>
@@ -174,25 +193,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The thresholds, laminar below about 2,300 and turbulent above about 4,000, are for fully developed flow in smooth, straight, round pipes.</li>
-          <li>Transition is not sharp. Very smooth, undisturbed pipes can stay laminar well above 2,300.</li>
-          <li>Fluid properties are typical values at 20 °C. Viscosity changes strongly with temperature, especially for oils and glycerol.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <ol class="derive prose">
-          <li>Inertial force on a parcel of fluid scales as dynamic pressure times area: <code><i class="v">ρ</i><i class="v">v</i>² · <i class="v">D</i>²</code>.</li>
-          <li>Viscous force scales as shear stress times area: <code>(<i class="v">μ</i><i class="v">v</i>/<i class="v">D</i>) · <i class="v">D</i>² = <i class="v">μ</i><i class="v">v</i><i class="v">D</i></code>.</li>
-          <li>Their ratio is <code><i class="v">ρ</i><i class="v">v</i>²<i class="v">D</i>² / <i class="v">μ</i><i class="v">v</i><i class="v">D</i> = <i class="v">ρ</i><i class="v">v</i><i class="v">D</i>/<i class="v">μ</i></code>.</li>
-        </ol>
-        <p class="prose">When <i class="v">Re</i> is large, inertia wins and small disturbances grow into turbulence. When it is small, viscosity damps them out.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">

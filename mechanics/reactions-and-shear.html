@@ -153,6 +153,30 @@
     </div>
 
     <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The supports are a pin and a roller, so with only vertical loads there is no horizontal reaction.</li>
+          <li>The beam is statically determinate: its reactions come from equilibrium alone and do not depend on its stiffness.</li>
+          <li>The beam's own weight is ignored. Add it as a uniform load if it matters.</li>
+          <li>Shear is positive when the part of the beam left of a cut is pushed up.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Take moments about support A, with the load at distance <i class="v">a</i> and support B at <i class="v">L</i>.</p>
+        </div>
+        <ol class="derive prose">
+          <li><code>Σ<i class="v">M</i><sub>A</sub> = <i class="v">R</i><sub>B</sub><i class="v">L</i> − <i class="v">P</i><i class="v">a</i> = 0</code>, so <code><i class="v">R</i><sub>B</sub> = <i class="v">P</i><i class="v">a</i>/<i class="v">L</i></code>.</li>
+          <li><code>Σ<i class="v">F</i> = <i class="v">R</i><sub>A</sub> + <i class="v">R</i><sub>B</sub> − <i class="v">P</i> = 0</code>, so <code><i class="v">R</i><sub>A</sub> = <i class="v">P</i>(1 − <i class="v">a</i>/<i class="v">L</i>) = <i class="v">P</i><i class="v">b</i>/<i class="v">L</i></code>.</li>
+          <li>Cut the beam at <code><i class="v">x</i> < <i class="v">a</i></code>. The only force left of the cut is <i class="v">R</i><sub>A</sub>, so <code><i class="v">V</i> = <i class="v">R</i><sub>A</sub></code>.</li>
+          <li>Cut at <code><i class="v">x</i> > <i class="v">a</i></code>: <code><i class="v">V</i> = <i class="v">R</i><sub>A</sub> − <i class="v">P</i> = −<i class="v">R</i><sub>B</sub></code>.</li>
+        </ol>
+        <p class="prose">The shear jumps by <i class="v">P</i> under the load. With the load at mid-span, <span class="inline-eq"><i class="v">a</i> = <i class="v">b</i> = <i class="v">L</i>/2</span> and each support carries <span class="inline-eq"><i class="v">P</i>/2</span>.</p>
+      </details>
+
       <details class="more" id="cases" open>
         <summary><h2>Related cases</h2></summary>
       <p class="legend">Reactions and largest shear force <i class="v">V</i> for other common beams.</p>
@@ -179,30 +203,6 @@
           </div>
         </li>
       </ul>
-      </details>
-
-      <details class="more" id="assumptions" open>
-        <summary><h2>Assumptions</h2></summary>
-        <ul class="plain prose">
-          <li>The supports are a pin and a roller, so with only vertical loads there is no horizontal reaction.</li>
-          <li>The beam is statically determinate: its reactions come from equilibrium alone and do not depend on its stiffness.</li>
-          <li>The beam's own weight is ignored. Add it as a uniform load if it matters.</li>
-          <li>Shear is positive when the part of the beam left of a cut is pushed up.</li>
-        </ul>
-      </details>
-
-      <details class="more" id="derivation" open>
-        <summary><h2>Derivation</h2></summary>
-        <div class="prose">
-          <p>Take moments about support A, with the load at distance <i class="v">a</i> and support B at <i class="v">L</i>.</p>
-        </div>
-        <ol class="derive prose">
-          <li><code>Σ<i class="v">M</i><sub>A</sub> = <i class="v">R</i><sub>B</sub><i class="v">L</i> − <i class="v">P</i><i class="v">a</i> = 0</code>, so <code><i class="v">R</i><sub>B</sub> = <i class="v">P</i><i class="v">a</i>/<i class="v">L</i></code>.</li>
-          <li><code>Σ<i class="v">F</i> = <i class="v">R</i><sub>A</sub> + <i class="v">R</i><sub>B</sub> − <i class="v">P</i> = 0</code>, so <code><i class="v">R</i><sub>A</sub> = <i class="v">P</i>(1 − <i class="v">a</i>/<i class="v">L</i>) = <i class="v">P</i><i class="v">b</i>/<i class="v">L</i></code>.</li>
-          <li>Cut the beam at <code><i class="v">x</i> < <i class="v">a</i></code>. The only force left of the cut is <i class="v">R</i><sub>A</sub>, so <code><i class="v">V</i> = <i class="v">R</i><sub>A</sub></code>.</li>
-          <li>Cut at <code><i class="v">x</i> > <i class="v">a</i></code>: <code><i class="v">V</i> = <i class="v">R</i><sub>A</sub> − <i class="v">P</i> = −<i class="v">R</i><sub>B</sub></code>.</li>
-        </ol>
-        <p class="prose">The shear jumps by <i class="v">P</i> under the load. With the load at mid-span, <span class="inline-eq"><i class="v">a</i> = <i class="v">b</i> = <i class="v">L</i>/2</span> and each support carries <span class="inline-eq"><i class="v">P</i>/2</span>.</p>
       </details>
 
       <nav class="pager" aria-label="Section pages">
