@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Materials</a><span aria-hidden="true">/</span>
     <a href="./#elasticity">Elasticity</a>
@@ -65,13 +68,14 @@
         <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
           <desc id="fig-desc">A stress–strain graph. A straight elastic line rises to the yield strength, then an idealised flat line continues. A point marks the chosen strain.</desc>
 <path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">STRAIN ε, µε</text><text class="lbl" x="68" y="22">STRESS σ, MPa</text>
-          <path id="el" class="s-ink" stroke-width="2.5" d="M60.0 200.0 L280.0 112.0"></path>
-          <path id="pl" class="s-ink2 dash" stroke-width="2" d="M280.0 112.0 L460.0 112.0"></path>
-          <path id="drop" class="s-ox dash" stroke-width="1" d="M60.0 136.0 L220.0 136.0 L220.0 200.0"></path>
-          <circle id="pt" r="5" class="f-ox" cx="220.0" cy="136.0"></circle>
-          <text id="pt-label" class="t-ox" x="230.0" y="156.0" text-anchor="start">σ = 200 MPa</text>
-          <text id="fy-label" x="54" text-anchor="end" y="116.0">275</text>
-          <text id="emax-label" x="460" y="218" text-anchor="middle">2,500</text>
+          <text x="54" y="44" text-anchor="end">1,000</text>
+          <path id="el" class="s-ink" stroke-width="2.5" d="M60.0 200.0 L115.0 156.0"></path>
+          <path id="pl" class="s-ink2 dash" stroke-width="2" d="M115.0 156.0 L460.0 156.0"></path>
+          <path id="drop" class="s-ox dash" stroke-width="1" d="M60.0 168.0 L100.0 168.0 L100.0 200.0"></path>
+          <circle id="pt" r="5" class="f-ox" cx="100.0" cy="168.0"></circle>
+          <text id="pt-label" class="t-ox" x="110.0" y="188.0" text-anchor="start">σ = 200 MPa</text>
+          <text id="fy-label" x="54" text-anchor="end" y="160.0">275</text>
+          <text id="emax-label" x="460" y="218" text-anchor="middle">10,000</text>
         </svg>
         <figcaption><b>Fig. 1.1-1</b>Beyond yield the dashed line is an idealised plateau; real metals harden.</figcaption>
 
@@ -105,7 +109,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -132,10 +137,12 @@
           <p class="answer-note" id="w-note">That is 72.7% of the yield strength of steel S275 (275 MPa).</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Related forms</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Related forms</h2></summary>
       <ul class="cases">
         <li>
           <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="16" width="52" height="28" class="s-ink f-tab" stroke-width="1.5"/><path d="M30 10 L75 10 M75 13.9 L82 10 L75 6.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
@@ -159,8 +166,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li>The material is linear-elastic: below its limit of proportionality, which for most metals is close to yield.</li>
@@ -170,7 +178,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <ol class="derive prose">
           <li>In a tensile test, stress is <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code> and strain is <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>

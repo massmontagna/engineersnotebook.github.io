@@ -3,7 +3,6 @@
 (function () {
   const $ = (id) => document.getElementById(id);
   const SUP = { "-": "⁻", 0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹" };
-  const SCALES = [1, 2, 5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000];
   const values = {};
 
   function fmt(n, digits) {
@@ -37,19 +36,10 @@
     return path([[x1, y1], [bx, by]]) + " " + path([[bx - uy * w, by + ux * w], [x2, y2], [bx + uy * w, by - ux * w]]) + " Z";
   }
 
-  // Smallest round axis limit (1, 2, 2.5 or 5 × 10ⁿ) at or above x.
-  function nice(x) {
-    if (!(x > 0)) return 1;
-    const e = 10 ** Math.floor(Math.log10(x));
-    for (const m of [1, 2, 2.5, 5, 10]) if (m * e >= x * (1 - 1e-9)) return m * e;
-  }
-
-  // Largest round exaggeration that keeps a drawn displacement within max SVG units.
-  function exaggerate(trueAmp, max) {
-    let scale = 1;
-    for (const s of SCALES) if (trueAmp * s <= max) scale = s;
-    const fits = trueAmp <= max;
-    return { amp: Math.min(trueAmp * scale, max), label: fits ? "drawn ×" + scale.toLocaleString("en-GB") : "not to scale" };
+  // Displacement drawn at a fixed exaggeration, clipped at max SVG units so the figure never rescales.
+  function exaggerate(trueAmp, scale, max) {
+    const amp = trueAmp * scale;
+    return { amp: Math.min(amp, max), label: "drawn ×" + scale.toLocaleString("en-GB") + (amp > max ? ", off scale" : "") };
   }
 
   // Narrow a control's allowed range when it depends on another input, clamping its value.
@@ -118,5 +108,5 @@
     started = true;
   }
 
-  window.NB = { $, fmt, set, opt, attr, path, arrow, nice, exaggerate, limit, demo, nb: " " };
+  window.NB = { $, fmt, set, opt, attr, path, arrow, exaggerate, limit, demo, nb: " " };
 })();

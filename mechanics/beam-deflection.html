@@ -8,13 +8,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
 <link rel="stylesheet" href="../assets/css/site.css">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
 
 <header class="head">
-  <a class="site" href="../">Engineer's Notebook</a>
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
   <nav class="crumbs" aria-label="Breadcrumb">
     <a href="./">Mechanics</a><span aria-hidden="true">/</span>
     <a href="./#beams">Beams</a>
@@ -132,7 +135,8 @@
     </div>
 
     <div class="col worked-live">
-      <h2 id="worked">Worked example</h2>
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
       <p class="legend">Uses the values in Fig. 2.3-1. Change them and the working updates.</p>
       <div class="step">
         <span class="lbl">Given</span>
@@ -163,10 +167,12 @@
           <p class="answer-note" id="w-note">Span over deflection: L/3,641.</p>
         </div>
       </div>
+      </details>
     </div>
 
     <div class="col">
-      <h2 id="cases">Other load cases</h2>
+      <details class="more" id="cases" open>
+        <summary><h2>Other load cases</h2></summary>
       <p class="legend">Same symbols. <i class="v">M</i> is the maximum moment; <i class="v">θ</i> is the slope at a support for simply supported beams, and at the free end for cantilevers.</p>
       <ul class="cases">
         <li>
@@ -191,8 +197,9 @@
           </div>
         </li>
       </ul>
+      </details>
 
-      <details class="more" id="assumptions">
+      <details class="more" id="assumptions" open>
         <summary><h2>Assumptions</h2></summary>
         <ul class="plain prose">
           <li>The beam is straight, prismatic and made of one linear-elastic material.</li>
@@ -202,7 +209,7 @@
         </ul>
       </details>
 
-      <details class="more" id="derivation">
+      <details class="more" id="derivation" open>
         <summary><h2>Derivation</h2></summary>
         <div class="prose">
           <p>Measure <i class="v">x</i> from the left support, with <i class="v">y</i> positive upwards. Each support carries <span class="inline-eq"><i class="v">P</i>/2</span>, so for the left half of the beam the bending moment is <span class="inline-eq"><i class="v">M</i> = <i class="v">P</i><i class="v">x</i>/2</span>.</p>

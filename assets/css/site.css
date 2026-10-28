@@ -71,7 +71,9 @@ a:hover { color: var(--ox); }
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.head .site { text-decoration: none; }
+/* Baseline-aligned so the name lines up with the crumbs and ref; the icon centres on it. */
+.head .site { display: inline-flex; align-items: baseline; gap: 0.55em; text-decoration: none; }
+.head .site img { display: block; flex: none; align-self: center; }
 .head .crumbs { display: flex; gap: 0.6em; flex-wrap: wrap; flex: 1; justify-content: center; }
 .head .crumbs a { text-decoration: none; color: var(--ox); }
 .head .crumbs span[aria-hidden] { color: var(--ink-2); }
@@ -207,9 +209,11 @@ th .prep.live { margin-left: 0.6em; }
   grid-template-columns: minmax(0, var(--measure)) minmax(340px, 1fr);
   column-gap: clamp(32px, 5vw, 72px);
   align-items: start;
+  /* The demo spans every row; the last, flexible row absorbs its extra height so collapsed sections don't stretch. */
+  grid-template-rows: auto auto auto 1fr;
 }
 .topic > .col { grid-column: 1; }
-.topic > .demo-col { grid-column: 2; grid-row: 1 / span 2; }
+.topic > .demo-col { grid-column: 2; grid-row: 1 / span 4; }
 @media (min-width: 961px) and (min-height: 720px) { .topic > .demo-col { position: sticky; top: 24px; } }
 
 /* ---------- worked example ---------- */
@@ -329,7 +333,7 @@ details.more > summary { list-style: none; cursor: pointer; }
 details.more > summary::-webkit-details-marker { display: none; }
 details.more > summary h2 { display: flex; justify-content: space-between; align-items: center; margin: 2.25rem 0 0; padding-bottom: 10px; }
 details.more[open] > summary h2 { margin-bottom: 1rem; }
-details.more:first-of-type > summary h2 { margin-top: 3.5rem; }
+.worked-live > details.more > summary h2 { margin-top: 3.5rem; }
 details.more > summary h2::after {
   content: "";
   width: 8px; height: 8px;
@@ -351,7 +355,8 @@ ul.plain li::marker { color: var(--ox); }
 
 /* ---------- home ---------- */
 .home-intro { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 3rem; flex-wrap: wrap; }
-.home-title { font: 700 clamp(2.75rem, 6vw, 4.75rem)/0.98 var(--serif); letter-spacing: -0.03em; }
+.home-title { margin: 0; line-height: 0; }
+.home-title img { display: block; width: clamp(17rem, 40vw, 34rem); height: auto; }
 .home-intro .lede { max-width: 28rem; margin-top: 0; }
 .shelf {
   display: grid;
@@ -416,6 +421,7 @@ tr.current th { font-weight: 600; }
 }
 @media (max-width: 960px) {
   .topic, .example { grid-template-columns: minmax(0, 1fr); }
+  .topic { grid-template-rows: none; }
   .topic > .demo-col { grid-column: 1; grid-row: auto; margin-top: 2rem; }
   .example .demo { margin-top: 1.5rem; }
 }

@@ -1,7 +1,7 @@
 // Speed–time graph for constant acceleration: live demo for Mechanics §4.1.
 (function () {
-  const { fmt, set, attr, path, nice, nb } = NB;
-  const OX = 60, OY = 200, W = 400, H = 165; // graph origin and plotting size
+  const { fmt, set, attr, path, nb } = NB;
+  const OX = 60, OY = 200, W = 400, H = 165, TMAX = 20, VMAX = 40; // graph origin and plotting size; axes in s and m/s
 
   NB.demo(function (v) {
     const u = v.u, a = v.a, s = v.s, v2 = u * u + 2 * a * s;
@@ -19,18 +19,19 @@
       ["area", "line"].forEach((id) => attr(id, { d: "" }));
       ["u-label", "v-label", "t-label", "s-label"].forEach((id) => set(id, ""));
     } else {
-      const tm = nice(t), vm = nice(Math.max(u, vf));
+      const tm = TMAX, vm = VMAX; // the plot clips the line beyond these; labels stay inside it
+      const inX = (x) => Math.min(x, OX + W), inY = (y) => Math.max(y, OY - H + 12);
       const X = (tt) => OX + (W * tt) / tm, Y = (vv) => OY - (H * vv) / vm;
       const p0 = [X(0), Y(u)], p1 = [X(t), Y(vf)];
       attr("area", { d: path([[OX, OY], p0, p1, [p1[0], OY]]) + " Z" });
       attr("line", { d: path([p0, p1]) });
       attr("u-label", { y: (p0[1] + 4).toFixed(1) });
-      attr("v-label", { x: p1[0].toFixed(1), y: (p1[1] - 10).toFixed(1), "text-anchor": "end" });
-      attr("t-label", { x: p1[0].toFixed(1) });
-      attr("s-label", { x: ((OX + p1[0]) / 2).toFixed(1), y: ((OY + (p0[1] + p1[1]) / 2) / 2 + 4).toFixed(1) });
+      attr("v-label", { x: inX(p1[0]).toFixed(1), y: inY(p1[1] - 10).toFixed(1), "text-anchor": "end" });
+      attr("t-label", { x: inX(p1[0]).toFixed(1) });
+      attr("s-label", { x: ((OX + inX(p1[0])) / 2).toFixed(1), y: inY((OY + (inY(p0[1]) + inY(p1[1])) / 2) / 2 + 4).toFixed(1) });
       set("u-label", "u = " + fmt(u));
       set("v-label", "v = " + fmt(vf) + " m/s");
-      set("t-label", "t = " + fmt(t) + " s");
+      set("t-label", "t = " + fmt(t) + " s" + (t > tm || Math.max(u, vf) > vm ? ", off scale" : ""));
       set("s-label", "s = " + fmt(state === "stops" ? (u * u) / (-2 * a) : s) + " m");
     }
 

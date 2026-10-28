@@ -1,19 +1,20 @@
 // Shaft power at constant torque: live demo for Automotive §1.1.
 (function () {
-  const { fmt, set, attr, path, nice, nb } = NB;
-  const OX = 60, OY = 200, W = 400, H = 160, NMAX = 9000; // plot origin, size and speed axis limit
+  const { fmt, set, attr, path, nb } = NB;
+  const OX = 60, OY = 200, W = 400, H = 160, NMAX = 9000, PMAX = 500; // plot origin and size; axes in rpm and kW
 
   NB.demo(function (v) {
     const w = (2 * Math.PI * v.N) / 60, P = v.T * w, kW = P / 1000, hp = P / 745.7;
-    const top = (v.T * 2 * Math.PI * NMAX) / 60 / 1000, pm = nice(top);
+    const top = (v.T * 2 * Math.PI * NMAX) / 60 / 1000, pm = PMAX, off = kW > pm;
     const X = (n) => OX + (W * n) / NMAX, Y = (k) => OY - (H * k) / pm;
 
-    attr("line", { d: path([[OX, OY], [X(NMAX), Y(top)]]) });
-    const p = [X(v.N), Y(kW)];
+    const nEnd = Math.min(NMAX, (NMAX * pm) / top); // line stops where it leaves the top of the plot
+    attr("line", { d: path([[OX, OY], [X(nEnd), Y((top * nEnd) / NMAX)]]) });
+    const p = [X(v.N), Y(Math.min(kW, pm))]; // pinned to the top edge when off scale
     attr("pt", { cx: p[0].toFixed(1), cy: p[1].toFixed(1) });
     attr("drop", { d: path([[OX, p[1]], p, [p[0], OY]]) });
     attr("pt-label", { x: (p[0] - 10).toFixed(1), y: (p[1] - 10).toFixed(1), "text-anchor": "end" });
-    set("pt-label", "P = " + fmt(kW) + " kW");
+    set("pt-label", "P = " + fmt(kW) + " kW" + (off ? ", off scale" : ""));
     set("pmax-label", fmt(pm));
 
     set("out-w", fmt(w) + " rad/s");
