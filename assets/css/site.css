@@ -72,8 +72,9 @@ a:hover { color: var(--ox); }
   text-transform: uppercase;
 }
 /* Baseline-aligned so the name lines up with the crumbs and ref; the icon centres on it. */
-.head .site { display: inline-flex; align-items: baseline; gap: 0.55em; text-decoration: none; }
-.head .site img { display: block; flex: none; align-self: center; }
+.head .site { display: inline-flex; flex: none; align-items: baseline; gap: 0.55em; text-decoration: none; white-space: nowrap; }
+/* Explicit size and ratio: Safari otherwise sizes the SVG from its 512px intrinsic box. */
+.head .site img { display: block; flex: none; align-self: center; width: 22px; height: 22px; }
 .head .crumbs { display: flex; gap: 0.6em; flex-wrap: wrap; flex: 1; justify-content: center; }
 .head .crumbs a { text-decoration: none; color: var(--ox); }
 .head .crumbs span[aria-hidden] { color: var(--ink-2); }
@@ -355,8 +356,9 @@ ul.plain li::marker { color: var(--ox); }
 
 /* ---------- home ---------- */
 .home-intro { display: flex; justify-content: space-between; align-items: end; gap: 1.5rem 3rem; flex-wrap: wrap; }
-.home-title { margin: 0; line-height: 0; }
-.home-title img { display: block; width: clamp(17rem, 40vw, 34rem); height: auto; }
+/* The h1 carries the width so Safari never shrinks the flex item below its logo. */
+.home-title { flex: none; width: clamp(17rem, 40vw, 34rem); max-width: 100%; margin: 0; line-height: 0; }
+.home-title img { display: block; width: 100%; height: auto; aspect-ratio: 1301 / 200; }
 .home-intro .lede { max-width: 28rem; margin-top: 0; }
 .shelf {
   display: grid;
