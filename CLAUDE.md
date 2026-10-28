@@ -16,6 +16,8 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   - Ignores already applied live in `.impeccable/config.json`.
   - Known false positives: `flat-type-hierarchy` (it misreads `clamp()` headings), `design-system-color` on `.frac` borders (they use `currentColor`), and `cramped-padding` on the unboxed `.disc h2`.
 
+- **Releasing:** every page links `site.css` and its scripts with a version query (`?v=1.0.3`). GitHub Pages serves them with a 4-hour cache, so when a release changes CSS or JS, bump the version on every page (one find-and-replace) or returning visitors get new HTML with stale styles.
+
 ## Architecture
 
 - **Pages:**
