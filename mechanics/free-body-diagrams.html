@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free-body diagrams · Engineer's Notebook</title>
+<meta name="description" content="How to draw a free-body diagram, shown on a block resting on a slope: N = mg cos θ and F = mg sin θ, with a live demo, a worked example and related cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#statics">Statics</a>
+  </nav>
+  <span class="ref">§1.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Free-body diagrams</h1>
+      <p class="lede">Cut one body free, replace everything touching it with the force it exerts, and the forces left must balance. For a block resting on a slope at angle <i class="v">θ</i>:</p>
+
+      <div class="eq" role="math" aria-label="N equals m g cos theta; F equals m g sin theta">
+        <span><i class="v">N</i> = <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i>,</span><span><i class="v">F</i> = <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>m</dt><dd>mass</dd><dd class="u">kg</dd>
+        <dt>g</dt><dd>gravitational acceleration</dd><dd class="u">m/s²</dd>
+        <dt>θ</dt><dd>slope angle</dd><dd class="u">°</dd>
+        <dt>W</dt><dd>weight, <i class="v">m</i><i class="v">g</i></dd><dd class="u">N</dd>
+        <dt>N</dt><dd>normal force</dd><dd class="u">N</dd>
+        <dt>F</dt><dd>friction force</dd><dd class="u">N</dd>
+        <dt>μ</dt><dd>coefficient of friction</dd><dd class="u">—</dd>
+        <dt>P</dt><dd>applied force</dd><dd class="u">N</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Left, a block resting on a slope. Right, the same block drawn on its own with the three forces on it: weight straight down, the normal force perpendicular to the slope and friction up the slope.</desc>
+<line x1="10" y1="210" x2="250" y2="210" class="s-ink" stroke-width="2"></line><path d="M10 210 L18 218 M22 210 L30 218 M34 210 L42 218 M46 210 L54 218 M58 210 L66 218 M70 210 L78 218 M82 210 L90 218 M94 210 L102 218 M106 210 L114 218 M118 210 L126 218 M130 210 L138 218 M142 210 L150 218 M154 210 L162 218 M166 210 L174 218 M178 210 L186 218 M190 210 L198 218 M202 210 L210 218 M214 210 L222 218 M226 210 L234 218 M238 210 L246 218" class="s-ink" stroke-width="1"></path>
+          <path id="slope" class="s-ink f-tab" stroke-width="2" d="M30.0 210.0 L227.3 210.0 L227.3 138.2 Z"></path>
+          <path id="block" class="s-ink f-sheet" stroke-width="2" d="M116.5 178.5 L169.1 159.4 L156.8 125.6 L104.1 144.7 Z"></path>
+          <path id="angle-arc" class="s-ink2" stroke-width="1" d="M70 210 A40 40 0 0 0 67.6 196.3"></path>
+          <text id="angle-label" x="76" y="204">θ = 20°</text>
+          <line x1="272" y1="16" x2="272" y2="228" class="s-hair" stroke-width="1"></line>
+          <text class="lbl" x="290" y="28">FREE BODY</text>
+          <path id="fb-block" class="s-ink f-sheet" stroke-width="2" d="M374.8 151.5 L427.5 132.3 L415.2 98.5 L362.5 117.7 Z"></path>
+          <path id="arr-W" class="s-ink f-ink" stroke-width="2.5" d="M395.0 125.0 L395.0 193.0 M388.4 193.0 L395.0 205.0 L401.6 193.0 Z"></path>
+          <path id="arr-N" class="s-ink f-ink" stroke-width="2.5" d="M395.0 125.0 L373.4 65.6 M379.6 63.4 L369.3 54.4 L367.2 67.9 Z"></path>
+          <path id="arr-F" class="s-ox f-ox" stroke-width="2.5" d="M395.0 125.0 L409.4 119.7 M411.7 125.9 L420.7 115.6 L407.2 113.5 Z"></path>
+          <text id="lab-W" class="t-ink" text-anchor="middle" x="409" y="205">W</text>
+          <text id="lab-N" class="t-ink" text-anchor="middle" x="364.5" y="45.2">N</text>
+          <text id="lab-F" class="t-ox" text-anchor="middle" x="435.7" y="114.2"></text>
+        </svg>
+        <figcaption><b>Fig. 1.1-1</b>Arrow lengths are to scale with the weight.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="m-num"><i>m</i>Mass <span class="unit">kg</span></label>
+            <input type="range" id="m-range" min="1" max="200" step="1" value="10" aria-label="Mass, kg">
+            <input type="number" id="m-num" min="1" max="200" step="1" value="10" inputmode="numeric" data-name="a mass" data-unit="kg" aria-describedby="m-err">
+            <span class="err" id="m-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="th-num"><i>θ</i>Slope <span class="unit">°</span></label>
+            <input type="range" id="th-range" min="0" max="45" step="1" value="20" aria-label="Slope, °">
+            <input type="number" id="th-num" min="0" max="45" step="1" value="20" inputmode="numeric" data-name="an angle" data-unit="°" aria-describedby="th-err">
+            <span class="err" id="th-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="mu-num"><i>μ</i>Friction</label>
+            <input type="range" id="mu-range" min="0" max="1" step="0.01" value="0.5" aria-label="Friction">
+            <input type="number" id="mu-num" min="0" max="1" step="0.01" value="0.5" inputmode="decimal" data-name="a friction coefficient" data-unit="" aria-describedby="mu-err">
+            <span class="err" id="mu-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">W</i> = <i class="v">m</i><i class="v">g</i></td><td id="out-W">98.1 N</td></tr>
+            <tr><td><i class="v">N</i> = <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></td><td id="out-N">92.2 N</td></tr>
+            <tr><td><i class="v">μ</i><i class="v">N</i>, friction available</td><td id="out-Fmax">46.1 N</td></tr>
+            <tr class="key"><td><i class="v">F</i> = <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></td><td id="out-F">33.6 N</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">m</i></span><span class="what">mass of the block</span><span id="g-m" class="live">10 kg</span></li>
+          <li><span><i class="v">θ</i></span><span class="what">slope angle</span><span id="g-th" class="live">20°</span></li>
+          <li><span><i class="v">μ</i></span><span class="what">coefficient of friction</span><span id="g-mu" class="live">0.5</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The normal force <i class="v">N</i> and the friction force <i class="v">F</i> that holds the block, and whether friction can supply it.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">W</i> = <i class="v">m</i><i class="v">g</i> = <span id="w-W" class="live">10&nbsp;kg × 9.81&nbsp;m/s² = 98.1&nbsp;N</span></span>
+          <span><i class="v">N</i> = <i class="v">W</i> cos <i class="v">θ</i> = <span id="w-N" class="live">98.1&nbsp;N × cos 20° = 92.2&nbsp;N</span></span>
+          <span><i class="v">F</i> = <i class="v">W</i> sin <i class="v">θ</i> = <span id="w-F" class="live">98.1&nbsp;N × sin 20° = 33.6&nbsp;N</span></span>
+          <span><i class="v">μ</i><i class="v">N</i> = <span id="w-Fmax" class="live">0.5 × 92.2&nbsp;N = 46.1&nbsp;N</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">F</i> = </span><span id="w-ans">33.6 N</span></span>
+          <p class="answer-note" id="w-note">Friction can supply up to 46.1 N, so the block holds.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="4" y1="40" x2="108" y2="40" class="s-ink" stroke-width="2"/><path d="M4 40 L12 48 M16 40 L24 48 M28 40 L36 48 M40 40 L48 48 M52 40 L60 48 M64 40 L72 48 M76 40 L84 48 M88 40 L96 48 M100 40 L108 48" class="s-ink" stroke-width="1"/><rect x="30" y="20" width="34" height="20" class="s-ink f-sheet" stroke-width="1.5"/><path d="M66 30 L93 30 M93 33.9 L100 30 L93 26.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Level ground, horizontal pull <i class="v">P</i></h3>
+            <p class="f"><span><span><i class="v">N</i> = <i class="v">m</i><i class="v">g</i></span></span><span><span><i class="v">F</i> = <i class="v">P</i> ≤ <i class="v">μ</i><i class="v">m</i><i class="v">g</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="30" y1="6" x2="82" y2="6" class="s-ink" stroke-width="2"/><path d="M30 6 L38 -2 M42 6 L50 -2 M54 6 L62 -2 M66 6 L74 -2" class="s-ink" stroke-width="1"/><line x1="56" y1="6" x2="56" y2="26" class="s-ink" stroke-width="1.5"/><rect x="44" y="26" width="24" height="20" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Mass hanging on a cord</h3>
+            <p class="f"><span><span><i class="v">T</i> = <i class="v">m</i><i class="v">g</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 46 L106 46 L106 10 Z" class="s-ink f-tab" stroke-width="1.5"/><path d="M52 33.6 L70.6 23.8 L76.2 34.4 L57.6 44.2 Z" class="s-ink f-sheet" stroke-width="1.5"/><path d="M40 38 L51.8 31.8 M53.6 35.2 L58 28.5 L50 28.4 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Pushed up a slope at steady speed</h3>
+            <p class="f"><span><span><i class="v">P</i> = <i class="v">m</i><i class="v">g</i>(sin <i class="v">θ</i> + <i class="v">μ</i> cos <i class="v">θ</i>)</span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The block is treated as a particle: every force acts through one point, so tipping is not checked.</li>
+          <li>Friction follows the Coulomb model. It supplies whatever force is needed, up to <i class="v">μ</i><i class="v">N</i>, and beyond that the block slides.</li>
+          <li>One <i class="v">μ</i> is used for both starting and continued sliding. Real sliding friction is usually a little lower than static friction.</li>
+          <li><i class="v">g</i> = 9.81 m/s², and the slope is rigid and fixed.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Take axes along the slope and perpendicular to it. The weight <i class="v">m</i><i class="v">g</i> then has a component <span class="inline-eq"><i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></span> down the slope and <span class="inline-eq"><i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></span> into it.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Perpendicular to the slope: <code><i class="v">N</i> − <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i> = 0</code>, so <code><i class="v">N</i> = <i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></code>.</li>
+          <li>Along the slope: <code><i class="v">F</i> − <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i> = 0</code>, so <code><i class="v">F</i> = <i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i></code>.</li>
+          <li>The block holds while <code><i class="v">F</i> ≤ <i class="v">μ</i><i class="v">N</i></code>, that is <code><i class="v">m</i><i class="v">g</i> sin <i class="v">θ</i> ≤ <i class="v">μ</i><i class="v">m</i><i class="v">g</i> cos <i class="v">θ</i></code>.</li>
+        </ol>
+        <p class="prose">The mass cancels, so the block starts to slide when <span class="inline-eq">tan <i class="v">θ</i> = <i class="v">μ</i></span>, whatever it weighs. That angle is the angle of repose.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="./">← Mechanics contents</a>
+        <a href="equilibrium.html">1.2 Equilibrium →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §1.1</span>
+  <a href="./#statics">Back to Statics</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/free-body-diagrams.js" defer></script>
+</body>
+</html>

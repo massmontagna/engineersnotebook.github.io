@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ideal gas law · Engineer's Notebook</title>
+<meta name="description" content="The ideal gas law, pV = nRT, with a live pressure–volume demo, a worked example on your own values and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Thermodynamics</a><span aria-hidden="true">/</span>
+    <a href="./#gases">Gases</a>
+  </nav>
+  <span class="ref">§1.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="./" aria-current="true">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Ideal gas law</h1>
+      <p class="lede">For most gases near everyday conditions, pressure, volume, amount and absolute temperature are tied by one equation:</p>
+
+      <div class="eq" role="math" aria-label="p V equals n R T">
+        <span><i class="v">p</i><i class="v">V</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>p</dt><dd>absolute pressure</dd><dd class="u">Pa</dd>
+        <dt>V</dt><dd>volume</dd><dd class="u">m³</dd>
+        <dt>n</dt><dd>amount of gas</dd><dd class="u">mol</dd>
+        <dt>R</dt><dd>molar gas constant, 8.314</dd><dd class="u">J/(mol·K)</dd>
+        <dt>T</dt><dd>absolute temperature</dd><dd class="u">K</dd>
+        <dt>m</dt><dd>mass</dd><dd class="u">kg</dd>
+        <dt>R<sub>s</sub></dt><dd>specific gas constant, R/M</dd><dd class="u">J/(kg·K)</dd>
+        <dt>M</dt><dd>molar mass</dd><dd class="u">kg/mol</dd>
+        <dt>ρ</dt><dd>density</dd><dd class="u">kg/m³</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A pressure–volume graph. A curve shows every state at the chosen temperature, and a marked point shows the current volume and pressure.</desc>
+<path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">VOLUME V, L</text><text class="lbl" x="68" y="22">PRESSURE p, kPa</text>
+          <path id="iso" class="s-ink" stroke-width="2" d="M79.5 40.0 L85.8 79.3 L92.2 103.1 L98.5 119.0 L104.9 130.5 L111.2 139.1 L117.5 145.8 L123.9 151.2 L130.2 155.6 L136.6 159.3 L142.9 162.4 L149.3 165.0 L155.6 167.4 L161.9 169.4 L168.3 171.2 L174.6 172.8 L181.0 174.2 L187.3 175.5 L193.6 176.7 L200.0 177.7 L206.3 178.7 L212.7 179.6 L219.0 180.4 L225.4 181.1 L231.7 181.8 L238.0 182.5 L244.4 183.1 L250.7 183.6 L257.1 184.2 L263.4 184.7 L269.7 185.1 L276.1 185.6 L282.4 186.0 L288.8 186.4 L295.1 186.7 L301.5 187.1 L307.8 187.4 L314.1 187.7 L320.5 188.0 L326.8 188.3 L333.2 188.6 L339.5 188.8 L345.8 189.1 L352.2 189.3 L358.5 189.5 L364.9 189.8 L371.2 190.0 L377.6 190.2 L383.9 190.4 L390.2 190.6 L396.6 190.7 L402.9 190.9 L409.3 191.1 L415.6 191.2 L421.9 191.4 L428.3 191.5 L434.6 191.7 L441.0 191.8 L447.3 191.9 L453.7 192.1 L460.0 192.2"></path>
+          <path id="drop" class="s-ox dash" stroke-width="1" d="M60.0 167.5 L156.0 167.5 L156.0 200.0"></path>
+          <circle id="pt" r="5" class="f-ox" cx="156.0" cy="167.5"></circle>
+          <text id="pt-label" class="t-ox" x="166.0" y="159.5">p = 102 kPa</text>
+          <text id="pmax-label" x="54" y="39" text-anchor="end">500</text>
+          <text id="vmax-label" x="460" y="218" text-anchor="middle">100</text>
+          <text id="iso-label" x="466" text-anchor="end" y="182.2">T = 293.2 K</text>
+        </svg>
+        <figcaption><b>Fig. 1.1-1</b>The curve is an isotherm: every state of this gas at the chosen temperature.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="n-num"><i>n</i>Amount <span class="unit">mol</span></label>
+            <input type="range" id="n-range" min="0.01" max="10" step="0.01" value="1" aria-label="Amount, mol">
+            <input type="number" id="n-num" min="0.01" max="10" step="0.01" value="1" inputmode="decimal" data-name="an amount" data-unit="mol" aria-describedby="n-err">
+            <span class="err" id="n-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="T-num"><i>T</i>Temperature <span class="unit">°C</span></label>
+            <input type="range" id="T-range" min="-50" max="500" step="1" value="20" aria-label="Temperature, °C">
+            <input type="number" id="T-num" min="-50" max="500" step="1" value="20" inputmode="decimal" data-name="a temperature" data-unit="°C" aria-describedby="T-err">
+            <span class="err" id="T-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="V-num"><i>V</i>Volume <span class="unit">L</span></label>
+            <input type="range" id="V-range" min="1" max="100" step="0.5" value="24" aria-label="Volume, L">
+            <input type="number" id="V-num" min="1" max="100" step="0.5" value="24" inputmode="decimal" data-name="a volume" data-unit="L" aria-describedby="V-err">
+            <span class="err" id="V-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">T</i> in kelvin</td><td id="out-TK">293.15 K</td></tr>
+            <tr><td><i class="v">n</i><i class="v">R</i><i class="v">T</i></td><td id="out-nRT">2,440 J</td></tr>
+            <tr class="key"><td><i class="v">p</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i>/<i class="v">V</i></td><td id="out-p">102 kPa</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">n</i></span><span class="what">amount of gas</span><span id="g-n" class="live">1 mol</span></li>
+          <li><span><i class="v">T</i></span><span class="what">temperature</span><span id="g-T" class="live">20 °C</span></li>
+          <li><span><i class="v">V</i></span><span class="what">volume</span><span id="g-V" class="live">24 L</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The pressure <i class="v">p</i> of the gas.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">T</i> = <span id="w-T" class="live">20 + 273.15 = 293.15&nbsp;K</span></span>
+          <span><i class="v">p</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i>/<i class="v">V</i></span>
+          <span class="sub-line live" id="w-sub">= 1&nbsp;mol × 8.314&nbsp;J/(mol·K) × 293.15&nbsp;K / 0.024&nbsp;m³</span>
+          <span class="sub-line live" id="w-p">= 1.02 × 10⁵&nbsp;Pa</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">p</i> = </span><span id="w-ans">102 kPa</span></span>
+          <p class="answer-note" id="w-note">That is 1.02 bar, or 1 times standard atmospheric pressure (101.325 kPa).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <p class="legend">For dry air, <i class="v">R</i><sub>s</sub> ≈ 287 J/(kg·K).</p>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="8" width="52" height="38" class="s-ink f-sheet" stroke-width="1.5"/><rect x="31" y="20" width="50" height="25" class="f-tab"/><line x1="30" y1="20" x2="82" y2="20" class="s-ink" stroke-width="3"/><line x1="56" y1="20" x2="56" y2="4" class="s-ink" stroke-width="2"/></svg>
+          <div>
+            <h3>Per unit mass</h3>
+            <p class="f"><span><span><i class="v">p</i><i class="v">V</i> = <i class="v">m</i><i class="v">R</i><sub>s</sub><i class="v">T</i></span></span><span><span><i class="v">R</i><sub>s</sub> = </span><span class="frac"><span><i class="v">R</i></span><span><i class="v">M</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><path d="M20 10 Q34 38 100 40" class="s-ink" stroke-width="1.5"/><path d="M20 20 Q40 40 100 42" class="s-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Fixed amount, two states</h3>
+            <p class="f"><span><span class="frac"><span><i class="v">p</i><sub>1</sub><i class="v">V</i><sub>1</sub></span><span><i class="v">T</i><sub>1</sub></span></span><span> = </span><span class="frac"><span><i class="v">p</i><sub>2</sub><i class="v">V</i><sub>2</sub></span><span><i class="v">T</i><sub>2</sub></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="8" width="52" height="38" class="s-ink f-sheet" stroke-width="1.5"/><rect x="31" y="20" width="50" height="25" class="f-tab"/><line x1="30" y1="20" x2="82" y2="20" class="s-ink" stroke-width="3"/><line x1="56" y1="20" x2="56" y2="4" class="s-ink" stroke-width="2"/></svg>
+          <div>
+            <h3>Density</h3>
+            <p class="f"><span><span><i class="v">ρ</i> = </span><span class="frac"><span><i class="v">p</i></span><span><i class="v">R</i><sub>s</sub><i class="v">T</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The molecules take up negligible volume and do not attract each other.</li>
+          <li>This holds well for air and most gases near room conditions, and less well at high pressure or close to condensing.</li>
+          <li>Pressure and temperature are absolute: add 273.15 to °C, and use absolute rather than gauge pressure.</li>
+          <li>The gas is in equilibrium, with one pressure and temperature throughout.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Three experimental laws each hold two quantities fixed and relate the other two.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Boyle: at fixed <i class="v">n</i> and <i class="v">T</i>, <code><i class="v">p</i><i class="v">V</i></code> is constant.</li>
+          <li>Charles: at fixed <i class="v">n</i> and <i class="v">p</i>, <code><i class="v">V</i> ∝ <i class="v">T</i></code>.</li>
+          <li>Avogadro: at fixed <i class="v">p</i> and <i class="v">T</i>, <code><i class="v">V</i> ∝ <i class="v">n</i></code>.</li>
+          <li>Together, <code><i class="v">p</i><i class="v">V</i> ∝ <i class="v">n</i><i class="v">T</i></code>. The constant is the same for every ideal gas, <code><i class="v">R</i> = 8.314 J/(mol·K)</code>, so <code><i class="v">p</i><i class="v">V</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i></code>.</li>
+        </ol>
+        <p class="prose">Kinetic theory gives the same result from molecules bouncing off the walls: pressure comes from their impacts, and temperature measures their mean kinetic energy.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="./">← Thermodynamics contents</a>
+        <a href="first-law.html">1.2 First law →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Thermodynamics §1.1</span>
+  <a href="./#gases">Back to Gases</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/ideal-gas-law.js" defer></script>
+</body>
+</html>

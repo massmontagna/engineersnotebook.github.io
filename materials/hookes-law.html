@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hooke's law · Engineer's Notebook</title>
+<meta name="description" content="Hooke's law for materials, σ = Eε, with a live stress–strain demo up to yield, a worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Materials</a><span aria-hidden="true">/</span>
+    <a href="./#elasticity">Elasticity</a>
+  </nav>
+  <span class="ref">§1.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="./" aria-current="true">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Hooke's law</h1>
+      <p class="lede">Up to its elastic limit, a material's stress is proportional to its strain. The constant of proportionality is Young's modulus:</p>
+
+      <div class="eq" role="math" aria-label="sigma equals E epsilon">
+        <span><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>σ</dt><dd>stress</dd><dd class="u">Pa</dd>
+        <dt>E</dt><dd>Young's modulus</dd><dd class="u">Pa</dd>
+        <dt>ε</dt><dd>strain</dd><dd class="u">—</dd>
+        <dt>f<sub>y</sub></dt><dd>yield strength</dd><dd class="u">Pa</dd>
+        <dt>µε</dt><dd>microstrain, 10⁻⁶</dd><dd class="u">—</dd>
+        <dt>τ</dt><dd>shear stress</dd><dd class="u">Pa</dd>
+        <dt>G</dt><dd>shear modulus</dd><dd class="u">Pa</dd>
+        <dt>γ</dt><dd>shear strain</dd><dd class="u">rad</dd>
+        <dt>F</dt><dd>force</dd><dd class="u">N</dd>
+        <dt>x</dt><dd>extension</dd><dd class="u">m</dd>
+        <dt>k</dt><dd>stiffness</dd><dd class="u">N/m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A stress–strain graph. A straight elastic line rises to the yield strength, then an idealised flat line continues. A point marks the chosen strain.</desc>
+<path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">STRAIN ε, µε</text><text class="lbl" x="68" y="22">STRESS σ, MPa</text>
+          <path id="el" class="s-ink" stroke-width="2.5" d="M60.0 200.0 L280.0 112.0"></path>
+          <path id="pl" class="s-ink2 dash" stroke-width="2" d="M280.0 112.0 L460.0 112.0"></path>
+          <path id="drop" class="s-ox dash" stroke-width="1" d="M60.0 136.0 L220.0 136.0 L220.0 200.0"></path>
+          <circle id="pt" r="5" class="f-ox" cx="220.0" cy="136.0"></circle>
+          <text id="pt-label" class="t-ox" x="230.0" y="156.0" text-anchor="start">σ = 200 MPa</text>
+          <text id="fy-label" x="54" text-anchor="end" y="116.0">275</text>
+          <text id="emax-label" x="460" y="218" text-anchor="middle">2,500</text>
+        </svg>
+        <figcaption><b>Fig. 1.1-1</b>Beyond yield the dashed line is an idealised plateau; real metals harden.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="E-sel"><i>E</i>Material</label>
+            <select id="E-sel">
+              <option value="200" data-name="steel S275" data-fy="275">Steel S275 · 200 GPa</option>
+              <option value="69" data-name="aluminium 6061-T6" data-fy="276">Aluminium 6061-T6 · 69 GPa</option>
+              <option value="114" data-name="titanium Ti-6Al-4V" data-fy="880">Titanium Ti-6Al-4V · 114 GPa</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="e-num"><i>ε</i>Strain <span class="unit">µε</span></label>
+            <input type="range" id="e-range" min="0" max="10000" step="10" value="1000" aria-label="Strain, µε">
+            <input type="number" id="e-num" min="0" max="10000" step="10" value="1000" inputmode="numeric" data-name="a strain" data-unit="µε" aria-describedby="e-err">
+            <span class="err" id="e-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">ε</i><sub>y</sub> = <i class="v">f</i><sub>y</sub>/<i class="v">E</i></td><td id="out-ey">1.38 × 10⁻³</td></tr>
+            <tr><td><i class="v">ε</i></td><td id="out-e">1 × 10⁻³</td></tr>
+            <tr class="key"><td><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></td><td id="out-s">200 MPa</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">E</i></span><span class="what"><span id="g-name" class="live">steel S275</span></span><span id="g-E" class="live">200 GPa</span></li>
+          <li><span><i class="v">ε</i></span><span class="what">strain</span><span id="g-e" class="live">1,000 µε</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The stress <i class="v">σ</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">ε</i> = <span id="w-e" class="live">1,000 × 10⁻⁶ = 1 × 10⁻³</span></span>
+          <span><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i> = <span id="w-s" class="live">2 × 10⁵&nbsp;MPa × 1 × 10⁻³ = 200&nbsp;MPa</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">σ</i> = </span><span id="w-ans">200 MPa</span></span>
+          <p class="answer-note" id="w-note">That is 72.7% of the yield strength of steel S275 (275 MPa).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="16" width="52" height="28" class="s-ink f-tab" stroke-width="1.5"/><path d="M30 10 L75 10 M75 13.9 L82 10 L75 6.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Shear</h3>
+            <p class="f"><span><span><i class="v">τ</i> = <i class="v">G</i><i class="v">γ</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="10" y1="14" x2="10" y2="40" class="s-ink" stroke-width="3"/><path d="M2 22 L10 14 M2 32 L10 24" class="s-ink" stroke-width="1"/><path d="M10 26 L20 26 L26 16 L36 36 L46 16 L56 36 L66 16 L72 26 L82 26" class="s-ink" stroke-width="1.5"/><path d="M84 26 L99 26 M99 29.9 L106 26 L99 22.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Spring</h3>
+            <p class="f"><span><span><i class="v">F</i> = <i class="v">k</i><i class="v">x</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="10" y1="14" x2="10" y2="40" class="s-ink" stroke-width="3"/><path d="M2 22 L10 14 M2 32 L10 24" class="s-ink" stroke-width="1"/><rect x="10" y="20" width="74" height="12" class="s-ink f-tab" stroke-width="1.5"/><path d="M86 26 L99 26 M99 29.9 L106 26 L99 22.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Bar as a spring</h3>
+            <p class="f"><span><span><i class="v">k</i> = </span><span class="frac"><span><i class="v">A</i><i class="v">E</i></span><span><i class="v">L</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The material is linear-elastic: below its limit of proportionality, which for most metals is close to yield.</li>
+          <li>The material is isotropic and the stress is uniaxial.</li>
+          <li>Beyond yield the demo draws an idealised flat plateau (elastic–perfectly plastic). Real metals strain-harden.</li>
+          <li>Material properties are typical values. Use the supplier's figures for design.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>In a tensile test, stress is <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code> and strain is <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>
+          <li>Plotted against each other, the first part of the curve is a straight line through the origin.</li>
+          <li>Its slope is Young's modulus: <code><i class="v">E</i> = <i class="v">σ</i>/<i class="v">ε</i></code>, so <code><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></code>.</li>
+        </ol>
+        <p class="prose">Robert Hooke published it for springs in 1678 as <span class="inline-eq">ut tensio, sic vis</span>: as the extension, so the force.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="./">← Materials contents</a>
+        <a href="poissons-ratio.html">1.2 Poisson's ratio →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Materials §1.1</span>
+  <a href="./#elasticity">Back to Elasticity</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/hookes-law.js" defer></script>
+</body>
+</html>

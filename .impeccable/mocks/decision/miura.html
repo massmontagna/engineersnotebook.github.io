@@ -1,0 +1,31 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#F6F6F3;color:#1D1D1B;font:400 17px/1.55 Barlow,sans-serif;position:relative}
+.top{height:56px;display:flex;align-items:center;padding:0 48px;gap:36px;border-bottom:1px solid #C9C6BF;font:500 15px Barlow}
+.top b{font-weight:600;font-size:19px}
+.top span{color:#5E5A54}
+.top span.on{color:#1D1D1B;border-bottom:2px solid #C9A227}
+.packet{position:absolute;left:48px;top:96px;width:1344px;height:150px;background:#C9A227;clip-path:polygon(0 0,100% 0,96% 100%,4% 100%);display:flex;align-items:center;padding:0 130px;gap:48px}
+.packet h1{font:600 46px/1 Barlow;color:#1D1D1B;width:420px}
+.packet .f{font:500 44px 'JetBrains Mono';background:#F6F6F3;padding:12px 28px}
+.packet small{font:400 13px 'JetBrains Mono';margin-left:auto;text-align:right;color:#1D1D1B}
+.sheet{position:absolute;left:48px;top:268px;width:1344px;height:600px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:
+linear-gradient(115deg,transparent 49.8%,#9DB7D6 50%,transparent 50.4%) 0 0/336px 100px,
+linear-gradient(65deg,transparent 49.8%,#B3AEA4 50%,transparent 50.4%) 0 0/336px 100px}
+.cell{padding:22px 28px;border-right:1px solid #C9C6BF}
+.cell h3{font:600 12px 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;color:#5E5A54;margin-bottom:10px}
+.cell p{font-size:16px;background:#F6F6F3;display:inline}
+.cell .big{font:500 28px 'JetBrains Mono';background:#F6F6F3;display:inline-block;padding:2px 8px;margin:6px 0}
+.demo{grid-column:3/5;background:#fff;border:1px solid #1D1D1B;margin:18px;padding:16px}
+</style></head><body>
+<div class="top"><b>Engineer's Notebook</b><span class="on">Mechanics</span><span>Formulae</span><span>About</span></div>
+<div class="packet"><h1>Beam deflection</h1><div class="f">δ = P·L³ / 48·E·I</div><small>CREASE 2.3<br>PULL TO UNFOLD ↓</small></div>
+<div class="sheet">
+<div class="cell"><h3>2.3.a Setup</h3><p>Simply supported beam, point load P at mid-span, uniform section, elastic range.</p></div>
+<div class="cell"><h3>2.3.b Derivation</h3><p>Integrate the bending equation twice with end deflection zero and symmetric slope.</p><br><span class="big">EI·y″ = M</span></div>
+<div class="demo"><h3 style="font:600 12px 'JetBrains Mono';letter-spacing:.12em;color:#5E5A54">2.3.c DEMO · PLAYABLE</h3>
+<svg viewBox="0 0 520 170" width="100%"><path d="M30 80 Q260 150 490 80" fill="none" stroke="#1D1D1B" stroke-width="3"/><path d="M260 14V66" stroke="#C9A227" stroke-width="5"/><path d="M250 60l10 14 10-14z" fill="#C9A227"/><path d="M22 86l8-10 8 10z M482 86l8-10 8 10z" fill="#1D1D1B"/></svg>
+<div style="font:400 13px 'JetBrains Mono'">P 2.0 kN · L 1.5 m · δ max 4.7 mm</div></div>
+</div></body></html>

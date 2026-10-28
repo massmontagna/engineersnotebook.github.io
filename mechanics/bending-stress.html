@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bending stress · Engineer's Notebook</title>
+<meta name="description" content="Bending stress in a beam, σ = My/I, with a live demo of the linear stress distribution across a rectangular section, a worked example and related cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#stress">Stress</a>
+  </nav>
+  <span class="ref">§3.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Bending stress</h1>
+      <p class="lede">A beam bending under a moment <i class="v">M</i> is squeezed on one face and stretched on the other. The stress grows linearly with distance <i class="v">y</i> from the neutral axis:</p>
+
+      <div class="eq" role="math" aria-label="sigma equals M y over I">
+        <span><i class="v">σ</i> =</span><span class="frac"><span><i class="v">M</i>·<i class="v">y</i></span><span><i class="v">I</i></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>σ</dt><dd>bending stress</dd><dd class="u">Pa</dd>
+        <dt>M</dt><dd>bending moment</dd><dd class="u">N·m</dd>
+        <dt>y</dt><dd>distance from the neutral axis</dd><dd class="u">m</dd>
+        <dt>I</dt><dd>second moment of area</dd><dd class="u">m⁴</dd>
+        <dt>Z</dt><dd>section modulus, I/y<sub>max</sub></dd><dd class="u">m³</dd>
+        <dt>b</dt><dd>section width</dd><dd class="u">m</dd>
+        <dt>h</dt><dd>section depth</dd><dd class="u">m</dd>
+        <dt>R</dt><dd>radius of curvature</dd><dd class="u">m</dd>
+        <dt>E</dt><dd>Young's modulus</dd><dd class="u">Pa</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Left, a rectangular cross-section with its neutral axis and a marked fibre. Right, the bending stress diagram: compression at the top, tension at the bottom, zero at the neutral axis.</desc>
+          <rect id="sec" class="s-ink f-tab" stroke-width="2" x="85.0" y="30.0" width="90.0" height="180.0"></rect>
+          <line x1="20" y1="120" x2="480" y2="120" class="s-ink2 dash" stroke-width="1"></line>
+          <text x="500" y="114" class="lbl" text-anchor="end">NEUTRAL AXIS</text>
+          <line id="pt-line" class="s-ox dash" stroke-width="1" x1="130" y1="165.0" x2="340" y2="165.0"></line>
+          <circle id="pt" r="5" class="f-ox" cx="130" cy="165.0"></circle>
+          <path id="sd" class="s-ink f-tab" stroke-width="1.5" d="M340 30.0 L230 30.0 L340 120 L450 210.0 L340 210.0 Z"></path>
+          <line x1="340" y1="30" x2="340" y2="210" class="s-ink" stroke-width="1.5"></line>
+          <path id="pt-arrow" class="s-ox f-ox" stroke-width="2.5" d="M340.0 165.0 L385.0 165.0 M385.0 170.5 L395.0 165.0 L385.0 159.5 Z"></path>
+          <text id="pt-label" class="t-ox" x="403.0" y="181.0" text-anchor="start">σ = 3.75 MPa</text>
+          <text id="top-label" text-anchor="end" x="224" y="34.0">C −7.5</text>
+          <text id="bot-label" x="456" y="214.0">T +7.5</text>
+        </svg>
+        <figcaption><b>Fig. 3.2-1</b>Under a sagging moment the top is in compression (C) and the bottom in tension (T).</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="M-num"><i>M</i>Moment <span class="unit">kN·m</span></label>
+            <input type="range" id="M-range" min="0.1" max="200" step="0.1" value="5" aria-label="Moment, kN·m">
+            <input type="number" id="M-num" min="0.1" max="200" step="0.1" value="5" inputmode="decimal" data-name="a moment" data-unit="kN·m" aria-describedby="M-err">
+            <span class="err" id="M-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="b-num"><i>b</i>Width <span class="unit">mm</span></label>
+            <input type="range" id="b-range" min="10" max="300" step="1" value="100" aria-label="Width, mm">
+            <input type="number" id="b-num" min="10" max="300" step="1" value="100" inputmode="numeric" data-name="a width" data-unit="mm" aria-describedby="b-err">
+            <span class="err" id="b-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="h-num"><i>h</i>Depth <span class="unit">mm</span></label>
+            <input type="range" id="h-range" min="10" max="600" step="1" value="200" aria-label="Depth, mm">
+            <input type="number" id="h-num" min="10" max="600" step="1" value="200" inputmode="numeric" data-name="a depth" data-unit="mm" aria-describedby="h-err">
+            <span class="err" id="h-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="y-num"><i>y</i>Fibre <span class="unit">mm</span></label>
+            <input type="range" id="y-range" min="-100" max="100" step="1" value="50" aria-label="Fibre, mm">
+            <input type="number" id="y-num" min="-100" max="100" step="1" value="50" inputmode="decimal" data-name="a position" data-unit="mm" aria-describedby="y-err">
+            <span class="err" id="y-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12</td><td id="out-I">6.67 × 10⁷ mm⁴</td></tr>
+            <tr><td><i class="v">σ</i><sub>max</sub> = <i class="v">M</i>/<i class="v">Z</i></td><td id="out-smax">±7.5 MPa</td></tr>
+            <tr class="key"><td><i class="v">σ</i> = <i class="v">M</i><i class="v">y</i>/<i class="v">I</i></td><td id="out-s">3.75 MPa</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 3.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">M</i></span><span class="what">sagging bending moment</span><span id="g-M" class="live">5 kN·m</span></li>
+          <li><span><i class="v">b</i>×<i class="v">h</i></span><span class="what">rectangular section</span><span id="g-bh" class="live">100 × 200 mm</span></li>
+          <li><span><i class="v">y</i></span><span class="what">fibre below the neutral axis</span><span id="g-y" class="live">50 mm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The bending stress at the fibre <i class="v">y</i> from the neutral axis.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12 = <span id="w-I" class="live">100&nbsp;mm × (200&nbsp;mm)³ / 12 = 6.667 × 10⁷&nbsp;mm⁴</span></span>
+          <span><i class="v">σ</i> = <i class="v">M</i><i class="v">y</i>/<i class="v">I</i></span>
+          <span class="sub-line live" id="w-sub">= 5 × 10⁶&nbsp;N·mm × 50&nbsp;mm / 6.667 × 10⁷&nbsp;mm⁴</span>
+          <span class="sub-line live" id="w-s">= 3.75&nbsp;N/mm² = 3.75&nbsp;MPa</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">σ</i> = </span><span id="w-ans">3.75 MPa</span></span>
+          <p class="answer-note" id="w-note">The extreme fibres, at y = ±100 mm, carry ±7.5 MPa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="40" y="6" width="32" height="40" class="s-ink f-tab" stroke-width="1.5"/><line x1="26" y1="26" x2="86" y2="26" class="s-ink2 dash" stroke-width="1"/></svg>
+          <div>
+            <h3>Extreme fibre, rectangle</h3>
+            <p class="f"><span><span><i class="v">σ</i><sub>max</sub> = </span><span class="frac"><span><i class="v">M</i></span><span><i class="v">Z</i></span></span></span><span><span><i class="v">Z</i> = </span><span class="frac"><span><i class="v">b</i><i class="v">h</i>²</span><span>6</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><circle cx="56" cy="26" r="20" class="s-ink f-tab" stroke-width="1.5"/><line x1="26" y1="26" x2="86" y2="26" class="s-ink2 dash" stroke-width="1"/></svg>
+          <div>
+            <h3>Solid round bar</h3>
+            <p class="f"><span><span><i class="v">σ</i><sub>max</sub> = </span><span class="frac"><span>32<i class="v">M</i></span><span>π<i class="v">d</i>³</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="8" y="18" width="80" height="16" class="s-ink f-tab" stroke-width="1.5"/><path d="M90 26 L101 26 M101 29.9 L108 26 L101 22.1 Z" class="s-ox f-ox" stroke-width="2"/><path d="M14 12 A10 10 0 0 0 14 40" class="s-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Axial force plus bending</h3>
+            <p class="f"><span><span><i class="v">σ</i> = </span><span class="frac"><span><i class="v">F</i></span><span><i class="v">A</i></span></span><span> ± </span><span class="frac"><span><i class="v">M</i><i class="v">y</i></span><span><i class="v">I</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Plane sections stay plane and perpendicular to the neutral axis as the beam bends.</li>
+          <li>The material is linear-elastic, with the same modulus in tension and compression.</li>
+          <li>The section is symmetric about the plane of bending, and the moment acts about a principal axis.</li>
+          <li>Here <i class="v">y</i> is positive below the neutral axis, so a sagging moment gives tension there.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>A fibre at distance <i class="v">y</i> from the neutral axis, in a beam bent to radius <i class="v">R</i>, has strain <code><i class="v">ε</i> = <i class="v">y</i>/<i class="v">R</i></code>.</li>
+          <li>Hooke's law gives <code><i class="v">σ</i> = <i class="v">E</i><i class="v">y</i>/<i class="v">R</i></code>, linear in <i class="v">y</i>.</li>
+          <li>There is no net axial force: <code>∫<i class="v">σ</i> d<i class="v">A</i> = (<i class="v">E</i>/<i class="v">R</i>)∫<i class="v">y</i> d<i class="v">A</i> = 0</code>, so the neutral axis passes through the centroid.</li>
+          <li>The stresses add up to the moment: <code><i class="v">M</i> = ∫<i class="v">σ</i><i class="v">y</i> d<i class="v">A</i> = (<i class="v">E</i>/<i class="v">R</i>)∫<i class="v">y</i>² d<i class="v">A</i> = <i class="v">E</i><i class="v">I</i>/<i class="v">R</i></code>.</li>
+        </ol>
+        <p class="prose">Eliminate <span class="inline-eq"><i class="v">E</i>/<i class="v">R</i></span> between the last two steps: <span class="inline-eq"><i class="v">σ</i>/<i class="v">y</i> = <i class="v">M</i>/<i class="v">I</i> = <i class="v">E</i>/<i class="v">R</i></span>. This is the engineer's bending equation.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="axial-stress-and-strain.html">← 3.1 Axial stress and strain</a>
+        <a href="constant-acceleration.html">4.1 Constant acceleration →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §3.2</span>
+  <a href="./#stress">Back to Stress</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/bending-stress.js" defer></script>
+</body>
+</html>

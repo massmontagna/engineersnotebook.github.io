@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reynolds number · Engineer's Notebook</title>
+<meta name="description" content="The Reynolds number, Re = ρvD/μ, and whether pipe flow is laminar or turbulent, with a live demo, a worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Fluids</a><span aria-hidden="true">/</span>
+    <a href="./#flow">Flow</a>
+  </nav>
+  <span class="ref">§1.3</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="./" aria-current="true">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Reynolds number</h1>
+      <p class="lede">The Reynolds number compares a flow's inertia with its viscosity. In a pipe it predicts whether the flow is smooth and layered or chaotic:</p>
+
+      <div class="eq" role="math" aria-label="R e equals rho v D over mu">
+        <span><i class="v">Re</i> =</span><span class="frac"><span><i class="v">ρ</i>·<i class="v">v</i>·<i class="v">D</i></span><span><i class="v">μ</i></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>Re</dt><dd>Reynolds number</dd><dd class="u">—</dd>
+        <dt>ρ</dt><dd>density</dd><dd class="u">kg/m³</dd>
+        <dt>v</dt><dd>mean flow speed</dd><dd class="u">m/s</dd>
+        <dt>D</dt><dd>pipe diameter</dd><dd class="u">m</dd>
+        <dt>μ</dt><dd>dynamic viscosity</dd><dd class="u">Pa·s</dd>
+        <dt>ν</dt><dd>kinematic viscosity, μ/ρ</dd><dd class="u">m²/s</dd>
+        <dt>x</dt><dd>distance from a plate's leading edge</dd><dd class="u">m</dd>
+        <dt>D<sub>h</sub></dt><dd>hydraulic diameter</dd><dd class="u">m</dd>
+        <dt>P</dt><dd>wetted perimeter</dd><dd class="u">m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Flow in a pipe. Streamlines are straight when the flow is laminar and tangled when it is turbulent. At the right, the velocity profile is pointed for laminar flow and flat for turbulent flow.</desc>
+          <line x1="20" y1="40" x2="500" y2="40" class="s-ink" stroke-width="3"></line>
+          <line x1="20" y1="160" x2="500" y2="160" class="s-ink" stroke-width="3"></line>
+          <path id="lines" class="s-ink2" stroke-width="1.5" d="M20.0 52.0 L25.0 52.0 L30.0 52.0 L35.0 52.0 L40.0 52.0 L45.0 52.0 L50.0 52.0 L55.0 52.0 L60.0 52.0 L65.0 52.0 L70.0 52.0 L75.0 52.0 L80.0 52.0 L85.0 52.0 L90.0 52.0 L95.0 52.0 L100.0 52.0 L105.0 52.0 L110.0 52.0 L115.0 52.0 L120.0 52.0 L125.0 52.0 L130.0 52.0 L135.0 52.0 L140.0 52.0 L145.0 52.0 L150.0 52.0 L155.0 52.0 L160.0 52.0 L165.0 52.0 L170.0 52.0 L175.0 52.0 L180.0 52.0 L185.0 52.0 L190.0 52.0 L195.0 52.0 L200.0 52.0 L205.0 52.0 L210.0 52.0 L215.0 52.0 L220.0 52.0 L225.0 52.0 L230.0 52.0 L235.0 52.0 L240.0 52.0 L245.0 52.0 L250.0 52.0 L255.0 52.0 L260.0 52.0 L265.0 52.0 L270.0 52.0 L275.0 52.0 L280.0 52.0 L285.0 52.0 L290.0 52.0 L295.0 52.0 L300.0 52.0 L305.0 52.0 L310.0 52.0 L315.0 52.0 L320.0 52.0 L325.0 52.0 L330.0 52.0 L335.0 52.0 L340.0 52.0 L345.0 52.0 L350.0 52.0 L355.0 52.0 L360.0 52.0 L365.0 52.0 L370.0 52.0 M20.0 68.0 L25.0 68.0 L30.0 68.0 L35.0 68.0 L40.0 68.0 L45.0 68.0 L50.0 68.0 L55.0 68.0 L60.0 68.0 L65.0 68.0 L70.0 68.0 L75.0 68.0 L80.0 68.0 L85.0 68.0 L90.0 68.0 L95.0 68.0 L100.0 68.0 L105.0 68.0 L110.0 68.0 L115.0 68.0 L120.0 68.0 L125.0 68.0 L130.0 68.0 L135.0 68.0 L140.0 68.0 L145.0 68.0 L150.0 68.0 L155.0 68.0 L160.0 68.0 L165.0 68.0 L170.0 68.0 L175.0 68.0 L180.0 68.0 L185.0 68.0 L190.0 68.0 L195.0 68.0 L200.0 68.0 L205.0 68.0 L210.0 68.0 L215.0 68.0 L220.0 68.0 L225.0 68.0 L230.0 68.0 L235.0 68.0 L240.0 68.0 L245.0 68.0 L250.0 68.0 L255.0 68.0 L260.0 68.0 L265.0 68.0 L270.0 68.0 L275.0 68.0 L280.0 68.0 L285.0 68.0 L290.0 68.0 L295.0 68.0 L300.0 68.0 L305.0 68.0 L310.0 68.0 L315.0 68.0 L320.0 68.0 L325.0 68.0 L330.0 68.0 L335.0 68.0 L340.0 68.0 L345.0 68.0 L350.0 68.0 L355.0 68.0 L360.0 68.0 L365.0 68.0 L370.0 68.0 M20.0 84.0 L25.0 84.0 L30.0 84.0 L35.0 84.0 L40.0 84.0 L45.0 84.0 L50.0 84.0 L55.0 84.0 L60.0 84.0 L65.0 84.0 L70.0 84.0 L75.0 84.0 L80.0 84.0 L85.0 84.0 L90.0 84.0 L95.0 84.0 L100.0 84.0 L105.0 84.0 L110.0 84.0 L115.0 84.0 L120.0 84.0 L125.0 84.0 L130.0 84.0 L135.0 84.0 L140.0 84.0 L145.0 84.0 L150.0 84.0 L155.0 84.0 L160.0 84.0 L165.0 84.0 L170.0 84.0 L175.0 84.0 L180.0 84.0 L185.0 84.0 L190.0 84.0 L195.0 84.0 L200.0 84.0 L205.0 84.0 L210.0 84.0 L215.0 84.0 L220.0 84.0 L225.0 84.0 L230.0 84.0 L235.0 84.0 L240.0 84.0 L245.0 84.0 L250.0 84.0 L255.0 84.0 L260.0 84.0 L265.0 84.0 L270.0 84.0 L275.0 84.0 L280.0 84.0 L285.0 84.0 L290.0 84.0 L295.0 84.0 L300.0 84.0 L305.0 84.0 L310.0 84.0 L315.0 84.0 L320.0 84.0 L325.0 84.0 L330.0 84.0 L335.0 84.0 L340.0 84.0 L345.0 84.0 L350.0 84.0 L355.0 84.0 L360.0 84.0 L365.0 84.0 L370.0 84.0 M20.0 100.0 L25.0 100.0 L30.0 100.0 L35.0 100.0 L40.0 100.0 L45.0 100.0 L50.0 100.0 L55.0 100.0 L60.0 100.0 L65.0 100.0 L70.0 100.0 L75.0 100.0 L80.0 100.0 L85.0 100.0 L90.0 100.0 L95.0 100.0 L100.0 100.0 L105.0 100.0 L110.0 100.0 L115.0 100.0 L120.0 100.0 L125.0 100.0 L130.0 100.0 L135.0 100.0 L140.0 100.0 L145.0 100.0 L150.0 100.0 L155.0 100.0 L160.0 100.0 L165.0 100.0 L170.0 100.0 L175.0 100.0 L180.0 100.0 L185.0 100.0 L190.0 100.0 L195.0 100.0 L200.0 100.0 L205.0 100.0 L210.0 100.0 L215.0 100.0 L220.0 100.0 L225.0 100.0 L230.0 100.0 L235.0 100.0 L240.0 100.0 L245.0 100.0 L250.0 100.0 L255.0 100.0 L260.0 100.0 L265.0 100.0 L270.0 100.0 L275.0 100.0 L280.0 100.0 L285.0 100.0 L290.0 100.0 L295.0 100.0 L300.0 100.0 L305.0 100.0 L310.0 100.0 L315.0 100.0 L320.0 100.0 L325.0 100.0 L330.0 100.0 L335.0 100.0 L340.0 100.0 L345.0 100.0 L350.0 100.0 L355.0 100.0 L360.0 100.0 L365.0 100.0 L370.0 100.0 M20.0 116.0 L25.0 116.0 L30.0 116.0 L35.0 116.0 L40.0 116.0 L45.0 116.0 L50.0 116.0 L55.0 116.0 L60.0 116.0 L65.0 116.0 L70.0 116.0 L75.0 116.0 L80.0 116.0 L85.0 116.0 L90.0 116.0 L95.0 116.0 L100.0 116.0 L105.0 116.0 L110.0 116.0 L115.0 116.0 L120.0 116.0 L125.0 116.0 L130.0 116.0 L135.0 116.0 L140.0 116.0 L145.0 116.0 L150.0 116.0 L155.0 116.0 L160.0 116.0 L165.0 116.0 L170.0 116.0 L175.0 116.0 L180.0 116.0 L185.0 116.0 L190.0 116.0 L195.0 116.0 L200.0 116.0 L205.0 116.0 L210.0 116.0 L215.0 116.0 L220.0 116.0 L225.0 116.0 L230.0 116.0 L235.0 116.0 L240.0 116.0 L245.0 116.0 L250.0 116.0 L255.0 116.0 L260.0 116.0 L265.0 116.0 L270.0 116.0 L275.0 116.0 L280.0 116.0 L285.0 116.0 L290.0 116.0 L295.0 116.0 L300.0 116.0 L305.0 116.0 L310.0 116.0 L315.0 116.0 L320.0 116.0 L325.0 116.0 L330.0 116.0 L335.0 116.0 L340.0 116.0 L345.0 116.0 L350.0 116.0 L355.0 116.0 L360.0 116.0 L365.0 116.0 L370.0 116.0 M20.0 132.0 L25.0 132.0 L30.0 132.0 L35.0 132.0 L40.0 132.0 L45.0 132.0 L50.0 132.0 L55.0 132.0 L60.0 132.0 L65.0 132.0 L70.0 132.0 L75.0 132.0 L80.0 132.0 L85.0 132.0 L90.0 132.0 L95.0 132.0 L100.0 132.0 L105.0 132.0 L110.0 132.0 L115.0 132.0 L120.0 132.0 L125.0 132.0 L130.0 132.0 L135.0 132.0 L140.0 132.0 L145.0 132.0 L150.0 132.0 L155.0 132.0 L160.0 132.0 L165.0 132.0 L170.0 132.0 L175.0 132.0 L180.0 132.0 L185.0 132.0 L190.0 132.0 L195.0 132.0 L200.0 132.0 L205.0 132.0 L210.0 132.0 L215.0 132.0 L220.0 132.0 L225.0 132.0 L230.0 132.0 L235.0 132.0 L240.0 132.0 L245.0 132.0 L250.0 132.0 L255.0 132.0 L260.0 132.0 L265.0 132.0 L270.0 132.0 L275.0 132.0 L280.0 132.0 L285.0 132.0 L290.0 132.0 L295.0 132.0 L300.0 132.0 L305.0 132.0 L310.0 132.0 L315.0 132.0 L320.0 132.0 L325.0 132.0 L330.0 132.0 L335.0 132.0 L340.0 132.0 L345.0 132.0 L350.0 132.0 L355.0 132.0 L360.0 132.0 L365.0 132.0 L370.0 132.0 M20.0 148.0 L25.0 148.0 L30.0 148.0 L35.0 148.0 L40.0 148.0 L45.0 148.0 L50.0 148.0 L55.0 148.0 L60.0 148.0 L65.0 148.0 L70.0 148.0 L75.0 148.0 L80.0 148.0 L85.0 148.0 L90.0 148.0 L95.0 148.0 L100.0 148.0 L105.0 148.0 L110.0 148.0 L115.0 148.0 L120.0 148.0 L125.0 148.0 L130.0 148.0 L135.0 148.0 L140.0 148.0 L145.0 148.0 L150.0 148.0 L155.0 148.0 L160.0 148.0 L165.0 148.0 L170.0 148.0 L175.0 148.0 L180.0 148.0 L185.0 148.0 L190.0 148.0 L195.0 148.0 L200.0 148.0 L205.0 148.0 L210.0 148.0 L215.0 148.0 L220.0 148.0 L225.0 148.0 L230.0 148.0 L235.0 148.0 L240.0 148.0 L245.0 148.0 L250.0 148.0 L255.0 148.0 L260.0 148.0 L265.0 148.0 L270.0 148.0 L275.0 148.0 L280.0 148.0 L285.0 148.0 L290.0 148.0 L295.0 148.0 L300.0 148.0 L305.0 148.0 L310.0 148.0 L315.0 148.0 L320.0 148.0 L325.0 148.0 L330.0 148.0 L335.0 148.0 L340.0 148.0 L345.0 148.0 L350.0 148.0 L355.0 148.0 L360.0 148.0 L365.0 148.0 L370.0 148.0 "></path>
+          <line x1="380" y1="40" x2="380" y2="160" class="s-ink2 dash" stroke-width="1"></line>
+          <path id="prof-arrows" class="s-ox f-ox" stroke-width="1.5" d="M380.0 55.2 L408.0 55.2 M408.0 59.6 L416.0 55.2 L408.0 50.8 Z M380.0 77.6 L456.0 77.6 M456.0 82.0 L464.0 77.6 L456.0 73.2 Z M380.0 100.0 L472.0 100.0 M472.0 104.4 L480.0 100.0 L472.0 95.6 Z M380.0 122.4 L456.0 122.4 M456.0 126.8 L464.0 122.4 L456.0 118.0 Z M380.0 144.8 L408.0 144.8 M408.0 149.2 L416.0 144.8 L408.0 140.4 Z "></path>
+          <path id="prof" class="s-ox" stroke-width="2.5" d="M380.0 44.0 L389.8 46.8 L399.0 49.6 L407.8 52.4 L416.0 55.2 L423.8 58.0 L431.0 60.8 L437.8 63.6 L444.0 66.4 L449.8 69.2 L455.0 72.0 L459.8 74.8 L464.0 77.6 L467.8 80.4 L471.0 83.2 L473.8 86.0 L476.0 88.8 L477.8 91.6 L479.0 94.4 L479.8 97.2 L480.0 100.0 L479.8 102.8 L479.0 105.6 L477.8 108.4 L476.0 111.2 L473.8 114.0 L471.0 116.8 L467.8 119.6 L464.0 122.4 L459.8 125.2 L455.0 128.0 L449.8 130.8 L444.0 133.6 L437.8 136.4 L431.0 139.2 L423.8 142.0 L416.0 144.8 L407.8 147.6 L399.0 150.4 L389.8 153.2 L380.0 156.0"></path>
+          <text id="regime" class="lbl t-ox" x="20" y="186">LAMINAR</text>
+          <text id="re-label" x="500" y="186" text-anchor="end">Re = 1,497</text>
+        </svg>
+        <figcaption><b>Fig. 1.3-1</b>Profile at right: speed across the pipe. Streamlines are schematic.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="fl-sel"><i>ρ</i>Fluid</label>
+            <select id="fl-sel">
+              <option value="0" data-name="water at 20 °C" data-rho="998" data-mu="0.001">Water, 20 °C</option>
+              <option value="1" data-name="air at 20 °C" data-rho="1.204" data-mu="0.0000181">Air, 20 °C</option>
+              <option value="2" data-name="glycerol at 20 °C" data-rho="1260" data-mu="1.41">Glycerol, 20 °C</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="v-num"><i>v</i>Speed <span class="unit">m/s</span></label>
+            <input type="range" id="v-range" min="0.01" max="20" step="0.01" value="0.03" aria-label="Speed, m/s">
+            <input type="number" id="v-num" min="0.01" max="20" step="0.01" value="0.03" inputmode="decimal" data-name="a speed" data-unit="m/s" aria-describedby="v-err">
+            <span class="err" id="v-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="D-num"><i>D</i>Diameter <span class="unit">mm</span></label>
+            <input type="range" id="D-range" min="1" max="1000" step="1" value="50" aria-label="Diameter, mm">
+            <input type="number" id="D-num" min="1" max="1000" step="1" value="50" inputmode="numeric" data-name="a diameter" data-unit="mm" aria-describedby="D-err">
+            <span class="err" id="D-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">ν</i> = <i class="v">μ</i>/<i class="v">ρ</i></td><td id="out-nu">1 × 10⁻⁶ m²/s</td></tr>
+            <tr><td>Regime</td><td id="out-reg">laminar</td></tr>
+            <tr class="key"><td><i class="v">Re</i> = <i class="v">ρ</i><i class="v">v</i><i class="v">D</i>/<i class="v">μ</i></td><td id="out-Re">1,497</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.3-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">ρ</i></span><span class="what"><span id="g-name" class="live">water at 20 °C</span></span><span id="g-rho" class="live">998 kg/m³</span></li>
+          <li><span><i class="v">μ</i></span><span class="what">dynamic viscosity</span><span id="g-mu" class="live">1 × 10⁻³ Pa·s</span></li>
+          <li><span><i class="v">v</i></span><span class="what">mean speed</span><span id="g-v" class="live">0.03 m/s</span></li>
+          <li><span><i class="v">D</i></span><span class="what">pipe diameter</span><span id="g-D" class="live">50 mm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The Reynolds number, and whether the flow is laminar or turbulent.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">Re</i> = <i class="v">ρ</i><i class="v">v</i><i class="v">D</i>/<i class="v">μ</i></span>
+          <span class="sub-line live" id="w-sub">= 998&nbsp;kg/m³ × 0.03&nbsp;m/s × 0.05&nbsp;m / 1 × 10⁻³&nbsp;Pa·s</span>
+          <span class="sub-line live" id="w-Re">= 1,497</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">Re</i> = </span><span id="w-ans">1,497</span></span>
+          <p class="answer-note" id="w-note">Pipe flow is laminar below about 2,300 and turbulent above about 4,000, so this flow is laminar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <p class="legend">On a flat plate, transition to turbulence starts near <i class="v">Re</i><sub>x</sub> ≈ 5 × 10⁵.</p>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 14 L48 14 L64 14 L106 14 M6 38 L48 38 L64 38 L106 38" class="s-ink" stroke-width="1.5"/><path d="M30 26 L73 26 M73 29.9 L80 26 L73 22.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>With kinematic viscosity</h3>
+            <p class="f"><span><span><i class="v">Re</i> = </span><span class="frac"><span><i class="v">v</i><i class="v">D</i></span><span><i class="v">ν</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="14" y1="40" x2="104" y2="40" class="s-ink" stroke-width="3"/><path d="M14 40 Q60 34 104 22" class="s-ox" stroke-width="1.5"/><path d="M6 20 L23 20 M23 23.9 L30 20 L23 16.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Flat plate, distance <i class="v">x</i> along it</h3>
+            <p class="f"><span><span><i class="v">Re</i><sub>x</sub> = </span><span class="frac"><span><i class="v">ρ</i><i class="v">v</i><i class="v">x</i></span><span><i class="v">μ</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="12" width="52" height="28" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Non-circular duct</h3>
+            <p class="f"><span><span><i class="v">D</i><sub>h</sub> = </span><span class="frac"><span>4<i class="v">A</i></span><span><i class="v">P</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The thresholds, laminar below about 2,300 and turbulent above about 4,000, are for fully developed flow in smooth, straight, round pipes.</li>
+          <li>Transition is not sharp. Very smooth, undisturbed pipes can stay laminar well above 2,300.</li>
+          <li>Fluid properties are typical values at 20 °C. Viscosity changes strongly with temperature, especially for oils and glycerol.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Inertial force on a parcel of fluid scales as dynamic pressure times area: <code><i class="v">ρ</i><i class="v">v</i>² · <i class="v">D</i>²</code>.</li>
+          <li>Viscous force scales as shear stress times area: <code>(<i class="v">μ</i><i class="v">v</i>/<i class="v">D</i>) · <i class="v">D</i>² = <i class="v">μ</i><i class="v">v</i><i class="v">D</i></code>.</li>
+          <li>Their ratio is <code><i class="v">ρ</i><i class="v">v</i>²<i class="v">D</i>² / <i class="v">μ</i><i class="v">v</i><i class="v">D</i> = <i class="v">ρ</i><i class="v">v</i><i class="v">D</i>/<i class="v">μ</i></code>.</li>
+        </ol>
+        <p class="prose">When <i class="v">Re</i> is large, inertia wins and small disturbances grow into turbulence. When it is small, viscosity damps them out.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="bernoullis-equation.html">← 1.2 Bernoulli's equation</a>
+        <a href="./">Fluids contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Fluids §1.3</span>
+  <a href="./#flow">Back to Flow</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/reynolds-number.js" defer></script>
+</body>
+</html>

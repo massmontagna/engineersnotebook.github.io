@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thermal expansion · Engineer's Notebook</title>
+<meta name="description" content="Linear thermal expansion, ΔL = αLΔT, with a live demo, a worked example, and the stress that builds when expansion is prevented.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Materials</a><span aria-hidden="true">/</span>
+    <a href="./#thermal">Thermal</a>
+  </nav>
+  <span class="ref">§2.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="./" aria-current="true">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Thermal expansion</h1>
+      <p class="lede">Most materials grow when heated. Over a moderate temperature range the change in length is proportional to the original length and to the temperature change:</p>
+
+      <div class="eq" role="math" aria-label="delta L equals alpha L delta T">
+        <span>Δ<i class="v">L</i> = <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>ΔL</dt><dd>change in length</dd><dd class="u">m</dd>
+        <dt>α</dt><dd>coefficient of linear expansion</dd><dd class="u">1/K</dd>
+        <dt>L</dt><dd>original length</dd><dd class="u">m</dd>
+        <dt>ΔT</dt><dd>temperature change</dd><dd class="u">K</dd>
+        <dt>A</dt><dd>area</dd><dd class="u">m²</dd>
+        <dt>V</dt><dd>volume</dd><dd class="u">m³</dd>
+        <dt>E</dt><dd>Young's modulus</dd><dd class="u">Pa</dd>
+        <dt>σ</dt><dd>stress</dd><dd class="u">Pa</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 170" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A bar resting on a roller, drawn at its original length with a dashed end mark, and at its heated length.</desc>
+          <rect id="bar" x="40" y="60" height="30" class="s-ink f-tab" stroke-width="2" width="438.4"></rect>
+          <line x1="440" y1="46" x2="440" y2="104" class="s-ink2 dash" stroke-width="1"></line>
+          <path d="M40 92 L30 108 L50 108 Z" class="s-ink" stroke-width="2"></path>
+          <text id="dL-label" y="44" class="t-ox" x="478.4" text-anchor="end">ΔL = 4.8 mm</text>
+          <line x1="40" y1="130" x2="440" y2="130" class="s-ink2" stroke-width="1"></line>
+          <line x1="440" y1="124" x2="440" y2="136" class="s-ink2" stroke-width="1"></line>
+          <text id="len-label" x="44" y="152">L = 10 m</text>
+          <text id="scale-label" class="lbl" x="500" y="152" text-anchor="end">change drawn ×200</text>
+        </svg>
+        <figcaption><b>Fig. 2.1-1</b>Change in length exaggerated; scale noted under the bar.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="a-sel"><i>α</i>Material</label>
+            <select id="a-sel">
+              <option value="12" data-name="steel" data-e="200">Steel · 12 × 10⁻⁶/K</option>
+              <option value="23" data-name="aluminium" data-e="69">Aluminium · 23 × 10⁻⁶/K</option>
+              <option value="17" data-name="copper" data-e="117">Copper · 17 × 10⁻⁶/K</option>
+              <option value="10" data-name="concrete" data-e="30">Concrete · 10 × 10⁻⁶/K</option>
+              <option value="1.2" data-name="Invar" data-e="141">Invar · 1.2 × 10⁻⁶/K</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="L-num"><i>L</i>Length <span class="unit">m</span></label>
+            <input type="range" id="L-range" min="0.1" max="100" step="0.1" value="10" aria-label="Length, m">
+            <input type="number" id="L-num" min="0.1" max="100" step="0.1" value="10" inputmode="decimal" data-name="a length" data-unit="m" aria-describedby="L-err">
+            <span class="err" id="L-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="dT-num"><i>ΔT</i>Temperature change <span class="unit">K</span></label>
+            <input type="range" id="dT-range" min="-100" max="300" step="1" value="40" aria-label="Temperature change, K">
+            <input type="number" id="dT-num" min="-100" max="300" step="1" value="40" inputmode="decimal" data-name="a temperature change" data-unit="K" aria-describedby="dT-err">
+            <span class="err" id="dT-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">α</i> Δ<i class="v">T</i>, strain</td><td id="out-e">4.8 × 10⁻⁴</td></tr>
+            <tr><td><i class="v">E</i><i class="v">α</i> Δ<i class="v">T</i> if restrained</td><td id="out-s">−96 MPa</td></tr>
+            <tr class="key"><td>Δ<i class="v">L</i> = <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></td><td id="out-dL">4.8 mm</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 2.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">α</i></span><span class="what"><span id="g-name" class="live">steel</span></span><span id="g-a" class="live">12 × 10⁻⁶ /K</span></li>
+          <li><span><i class="v">L</i></span><span class="what">original length</span><span id="g-L" class="live">10 m</span></li>
+          <li><span>Δ<i class="v">T</i></span><span class="what">temperature change</span><span id="g-dT" class="live">40 K</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The change in length Δ<i class="v">L</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span>Δ<i class="v">L</i> = <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></span>
+          <span class="sub-line live" id="w-sub">= 12 × 10⁻⁶&nbsp;/K × 10&nbsp;m × 40&nbsp;K</span>
+          <span class="sub-line live" id="w-dL">= 4.8 × 10⁻³&nbsp;m</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span>Δ<i class="v">L</i> = </span><span id="w-ans">4.8 mm</span></span>
+          <p class="answer-note" id="w-note">If both ends were fixed, the stress would be −EαΔT = −96 MPa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="12" width="44" height="28" class="s-ink f-tab" stroke-width="1.5"/><rect x="30" y="8" width="50" height="34" class="s-ox dash" stroke-width="1"/></svg>
+          <div>
+            <h3>Area</h3>
+            <p class="f"><span><span>Δ<i class="v">A</i> ≈ 2<i class="v">α</i><i class="v">A</i> Δ<i class="v">T</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M34 18 L46 10 L82 10 L82 34 L70 42 L34 42 Z M34 18 L70 18 L82 10 M70 18 L70 42" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Volume</h3>
+            <p class="f"><span><span>Δ<i class="v">V</i> ≈ 3<i class="v">α</i><i class="v">V</i> Δ<i class="v">T</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="14" y1="12" x2="14" y2="42" class="s-ink" stroke-width="3"/><path d="M6 20 L14 12 M6 30 L14 22 M6 40 L14 32" class="s-ink" stroke-width="1"/><line x1="98" y1="12" x2="98" y2="42" class="s-ink" stroke-width="3"/><path d="M106 20 L98 12 M106 30 L98 22 M106 40 L98 32" class="s-ink" stroke-width="1"/><rect x="14" y="20" width="84" height="14" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Bar fixed at both ends</h3>
+            <p class="f"><span><span><i class="v">σ</i> = −<i class="v">E</i><i class="v">α</i> Δ<i class="v">T</i></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li><i class="v">α</i> is constant over the temperature range. In reality it varies with temperature.</li>
+          <li>The whole bar is at one uniform temperature.</li>
+          <li>The material is isotropic and free to expand, with nothing restraining it.</li>
+          <li>Values are typical. Concrete varies with its aggregate, roughly 7–12 × 10⁻⁶/K.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>The coefficient is defined as the fractional change in length per kelvin: <code><i class="v">α</i> = (1/<i class="v">L</i>) d<i class="v">L</i>/d<i class="v">T</i></code>.</li>
+          <li>For small changes, <code>Δ<i class="v">L</i> ≈ <i class="v">α</i><i class="v">L</i> Δ<i class="v">T</i></code>.</li>
+          <li>If the ends are fixed, the thermal strain <code><i class="v">α</i> Δ<i class="v">T</i></code> must be cancelled by an equal and opposite elastic strain <code><i class="v">σ</i>/<i class="v">E</i></code>.</li>
+          <li>So a restrained bar carries <code><i class="v">σ</i> = −<i class="v">E</i><i class="v">α</i> Δ<i class="v">T</i></code>: compression when heated, tension when cooled.</li>
+        </ol>
+        <p class="prose">This restrained stress is why rails, bridges and pipework need expansion joints: it does not depend on the bar's length.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="poissons-ratio.html">← 1.2 Poisson's ratio</a>
+        <a href="./">Materials contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Materials §2.1</span>
+  <a href="./#thermal">Back to Thermal</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/thermal-expansion.js" defer></script>
+</body>
+</html>

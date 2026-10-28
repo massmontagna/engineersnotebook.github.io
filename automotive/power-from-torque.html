@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power from torque · Engineer's Notebook</title>
+<meta name="description" content="Shaft power from torque and speed, P = Tω, with a live demo in kW and hp, a worked example and gearbox and tractive-force forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Automotive</a><span aria-hidden="true">/</span>
+    <a href="./#powertrain">Powertrain</a>
+  </nav>
+  <span class="ref">§1.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="./" aria-current="true">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Power from torque</h1>
+      <p class="lede">A rotating shaft delivers power equal to its torque times its angular speed. Engine power figures come straight from this:</p>
+
+      <div class="eq" role="math" aria-label="P equals T omega">
+        <span><i class="v">P</i> = <i class="v">T</i><i class="v">ω</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>P</dt><dd>power</dd><dd class="u">W</dd>
+        <dt>T</dt><dd>torque</dd><dd class="u">N·m</dd>
+        <dt>ω</dt><dd>angular speed</dd><dd class="u">rad/s</dd>
+        <dt>N</dt><dd>rotational speed</dd><dd class="u">rpm</dd>
+        <dt>G</dt><dd>gear ratio</dd><dd class="u">—</dd>
+        <dt>η</dt><dd>efficiency</dd><dd class="u">—</dd>
+        <dt>F</dt><dd>tractive force</dd><dd class="u">N</dd>
+        <dt>r</dt><dd>wheel radius</dd><dd class="u">m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Power against engine speed for a constant torque: a straight line from the origin. A point marks the chosen engine speed.</desc>
+<path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">ENGINE SPEED N, rpm</text><text class="lbl" x="68" y="22">POWER P, kW</text>
+          <text x="460" y="218" text-anchor="middle">9,000</text>
+          <path id="line" class="s-ink" stroke-width="2.5" d="M60.0 200.0 L460.0 109.5"></path>
+          <path id="drop" class="s-ox dash" stroke-width="1" d="M60.0 159.8 L237.8 159.8 L237.8 200.0"></path>
+          <circle id="pt" r="5" class="f-ox" cx="237.8" cy="159.8"></circle>
+          <text id="pt-label" class="t-ox" x="227.8" y="149.8" text-anchor="end">P = 126 kW</text>
+          <text id="pmax-label" x="54" y="39" text-anchor="end">500</text>
+        </svg>
+        <figcaption><b>Fig. 1.1-1</b>At constant torque, power rises in proportion to speed. Real engines follow a torque curve.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="T-num"><i>T</i>Torque <span class="unit">N·m</span></label>
+            <input type="range" id="T-range" min="1" max="1000" step="1" value="300" aria-label="Torque, N·m">
+            <input type="number" id="T-num" min="1" max="1000" step="1" value="300" inputmode="numeric" data-name="a torque" data-unit="N·m" aria-describedby="T-err">
+            <span class="err" id="T-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="N-num"><i>N</i>Engine speed <span class="unit">rpm</span></label>
+            <input type="range" id="N-range" min="500" max="9000" step="50" value="4000" aria-label="Engine speed, rpm">
+            <input type="number" id="N-num" min="500" max="9000" step="50" value="4000" inputmode="numeric" data-name="a speed" data-unit="rpm" aria-describedby="N-err">
+            <span class="err" id="N-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">ω</i> = 2π<i class="v">N</i>/60</td><td id="out-w">419 rad/s</td></tr>
+            <tr><td><i class="v">P</i> in horsepower</td><td id="out-hp">169 hp</td></tr>
+            <tr class="key"><td><i class="v">P</i> = <i class="v">T</i><i class="v">ω</i></td><td id="out-P">126 kW</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">T</i></span><span class="what">shaft torque</span><span id="g-T" class="live">300 N·m</span></li>
+          <li><span><i class="v">N</i></span><span class="what">engine speed</span><span id="g-N" class="live">4,000 rpm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The power delivered <i class="v">P</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">ω</i> = 2π<i class="v">N</i>/60 = <span id="w-w" class="live">2π × 4,000&nbsp;rpm / 60 = 419&nbsp;rad/s</span></span>
+          <span><i class="v">P</i> = <i class="v">T</i><i class="v">ω</i> = <span id="w-P" class="live">300&nbsp;N·m × 419&nbsp;rad/s = 126&nbsp;kW</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">P</i> = </span><span id="w-ans">126 kW</span></span>
+          <p class="answer-note" id="w-note">That is 169 hp (1 hp = 745.7 W).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><circle cx="34" cy="26" r="18" class="s-ink f-tab" stroke-width="1.5"/><circle cx="82" cy="26" r="10" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Through a gearbox, ratio <i class="v">G</i></h3>
+            <p class="f"><span><span><i class="v">T</i><sub>out</sub> = <i class="v">G</i><i class="v">η</i><i class="v">T</i><sub>in</sub></span></span><span><span><i class="v">ω</i><sub>out</sub> = </span><span class="frac"><span><i class="v">ω</i><sub>in</sub></span><span><i class="v">G</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><circle cx="40" cy="24" r="18" class="s-ink f-sheet" stroke-width="2"/><line x1="4" y1="42" x2="108" y2="42" class="s-ink" stroke-width="2"/><path d="M4 42 L12 50 M16 42 L24 50 M28 42 L36 50 M40 42 L48 50 M52 42 L60 50 M64 42 L72 50 M76 42 L84 50 M88 42 L96 50 M100 42 L108 50" class="s-ink" stroke-width="1"/><path d="M40 46 L83 46 M83 49.9 L90 46 L83 42.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Tractive force at the wheel</h3>
+            <p class="f"><span><span><i class="v">F</i> = </span><span class="frac"><span><i class="v">T</i><sub>wheel</sub></span><span><i class="v">r</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><line x1="14" y1="44" x2="100" y2="10" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>In everyday units</h3>
+            <p class="f"><span><span><i class="v">P</i> [kW] = </span><span class="frac"><span><i class="v">T</i> [N·m] × <i class="v">N</i> [rpm]</span><span>9549</span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The shaft turns at a steady speed.</li>
+          <li><i class="v">T</i> is the torque measured at the shaft (brake torque).</li>
+          <li>The demo assumes the same torque at every speed to show the proportionality. Real engines follow a torque curve.</li>
+          <li>No losses. Power through a gearbox is reduced by its efficiency.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>A torque turning a shaft through angle <i class="v">θ</i> does work <code><i class="v">W</i> = <i class="v">T</i><i class="v">θ</i></code>.</li>
+          <li>Power is the rate of doing work: <code><i class="v">P</i> = d<i class="v">W</i>/d<i class="v">t</i> = <i class="v">T</i> d<i class="v">θ</i>/d<i class="v">t</i> = <i class="v">T</i><i class="v">ω</i></code>.</li>
+          <li>Engine speed in rpm converts to angular speed as <code><i class="v">ω</i> = 2π<i class="v">N</i>/60</code>.</li>
+        </ol>
+        <p class="prose">1 mechanical horsepower is 745.7 W. The 9549 in the everyday form is 60,000/2π.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="./">← Automotive contents</a>
+        <a href="weight-transfer-under-braking.html">2.1 Weight transfer under braking →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Automotive §1.1</span>
+  <a href="./#powertrain">Back to Powertrain</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/power-from-torque.js" defer></script>
+</body>
+</html>

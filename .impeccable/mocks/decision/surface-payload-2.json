@@ -1,0 +1,43 @@
+{
+  "title": "Restructure Engineer's Notebook",
+  "question": "Second hand, steered: the demo stays in its own box, Given/Find carries the working, and the first version's reference content comes back. Lock one, steer, or re-roll.",
+  "options": [
+    {
+      "id": "formula-header",
+      "kind": "assigned",
+      "kicker": "THE ROLL",
+      "label": "Formula, then worked example",
+      "thesis": "The formula and the demo box open the page together; a Given/Find worked example runs underneath on your demo values.",
+      "palette": ["#E8EBEA", "#16181A", "#B3261E", "#F6F7F6"],
+      "materials": ["paper grain", "boxed demo", "label gutter"],
+      "viewport": "Left: title, one line, ruled formula and symbols. Right: the full demo box from version one. Below: Given, Find, Solution, Answer, then other load cases as their own small section.",
+      "risk": "Closest to version one; the worked example must not feel like an appendix.",
+      "html": ".impeccable/mocks/decision/formula-header.html"
+    },
+    {
+      "id": "gutter-sheet",
+      "kind": "dealt",
+      "label": "Labelled sheet",
+      "thesis": "One labelled gutter runs the whole page: Given, Sketch, Solution, Answer, Reference, with the demo box spanning the Sketch row.",
+      "palette": ["#E8EBEA", "#16181A", "#B3261E", "#F6F7F6"],
+      "materials": ["paper grain", "label gutter", "full-width demo box"],
+      "viewport": "Gutter labels on the left. Given as a compact value table, then the demo box across the full width, then Solution with numbers substituted, boxed answer, and a Reference row with cases and symbols.",
+      "risk": "Long on scroll; the demo sits below Given rather than in the first glance.",
+      "html": ".impeccable/mocks/decision/gutter-sheet.html"
+    },
+    {
+      "id": "quick-ref",
+      "kind": "dealt",
+      "label": "Quick reference + example",
+      "thesis": "A one-line reference strip for formula-grabbers on top; below it, Given sits beside the demo box and the solution follows.",
+      "palette": ["#E8EBEA", "#16181A", "#B3261E", "#F6F7F6"],
+      "materials": ["paper grain", "reference strip", "boxed demo"],
+      "viewport": "Title, then a ruled strip holding the formula, symbols and units in one row. Then Given (editable values) left, demo box right, Solution and boxed Answer under both.",
+      "risk": "The strip gets crowded on topics with many symbols.",
+      "html": ".impeccable/mocks/decision/quick-ref.html"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code"},
+  "steer": true
+}

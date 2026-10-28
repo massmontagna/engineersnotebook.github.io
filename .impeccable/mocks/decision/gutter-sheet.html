@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;color:#16181a;font:400 17px/1.55 'Source Serif 4',serif;position:relative;
+background:#e8ebea url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .12 0 0 0 0 .12 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+.head{position:absolute;left:72px;right:144px;top:28px;display:flex;justify-content:space-between;border-bottom:4px double #16181a;padding-bottom:10px;font:700 13px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase}
+.head .c{color:#b3261e}.head .r{font:500 13px 'JetBrains Mono'}
+.tabs{position:absolute;right:0;top:88px;width:72px;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.tabs div{width:52px;height:96px;background:#d2d8d6;border-radius:10px 0 0 10px;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font:700 12px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase}
+.tabs .on{width:72px;background:#b3261e;color:#f6f7f6}.tabs .soon{color:#4c5351}
+h1{font:700 50px/1 'Source Serif 4';letter-spacing:-.02em}
+.lab{font:700 13px 'Archivo Narrow';letter-spacing:.14em;text-transform:uppercase}
+.v{font:italic 500 1.12em 'Source Serif 4'}
+.eq{font:500 30px 'JetBrains Mono'}
+.demo{background:#f6f7f6;border:1px solid #16181a;padding:14px 18px}
+.demo svg{width:100%;display:block}
+.demo .cap{font:500 12px 'Archivo Narrow';color:#4c5351;border-top:1px solid #c3c9c7;padding-top:6px;margin-top:4px}
+.demo .c{display:grid;grid-template-columns:90px 1fr 70px;gap:10px;align-items:center;border-bottom:1px solid #c3c9c7;padding:6px 0;font:600 13px 'Archivo Narrow'}
+.demo .c i{font:italic 500 15px 'Source Serif 4';margin-right:4px}
+.demo .bar{height:4px;background:#c3c9c7;position:relative}.demo .bar:before{content:"";position:absolute;left:0;top:0;bottom:0;width:22%;background:#b3261e}
+.demo .n{border:1px solid #4c5351;font:500 12px 'JetBrains Mono';padding:3px 6px}
+.demo .r{display:flex;justify-content:space-between;font:500 14px 'JetBrains Mono';border-bottom:1px solid #c3c9c7;padding:6px 0}
+.demo .r.k{border-bottom:2px solid #16181a;font-size:16px}.demo .r.k b{color:#b3261e;font-weight:500}
+table{border-collapse:collapse;width:100%;font:500 14px 'JetBrains Mono'}
+td{border-bottom:1px solid #c3c9c7;padding:7px 6px}
+td.s{font:italic 500 17px 'Source Serif 4';width:40px}
+td.x{text-align:right}td.x span{border:1px solid #4c5351;padding:2px 8px}
+.box{display:inline-block;border:2px solid #b3261e;padding:6px 16px;font:500 28px 'JetBrains Mono';color:#b3261e}
+.sub{font:500 15px 'JetBrains Mono';color:#4c5351}
+.row{position:absolute;left:72px;right:144px;display:grid;grid-template-columns:140px 1fr;border-top:1px solid #16181a;padding-top:10px}
+.demo{display:grid;grid-template-columns:1.25fr 1fr;gap:28px}
+</style></head><body><div class="head"><span>Engineer's Notebook</span><span class="c">Mechanics / Beams</span><span class="r">§2.3</span></div>
+<div class="tabs"><div>Contents</div><div class="on">Mechanics</div><div class="soon">Thermo</div><div class="soon">Fluids</div><div class="soon">Materials</div><div class="soon">Electrical</div><div class="soon">Automotive</div></div>
+<h1 style="position:absolute;left:72px;top:96px">Beam deflection</h1>
+<p style="position:absolute;left:212px;top:158px;width:760px">A simply supported beam carries one load at mid-span. How far does it sag?</p>
+<div class="row" style="top:206px"><span class="lab">Given</span>
+<table style="width:760px"><tr><td class="s">P</td><td>point load at mid-span</td><td class="x"><span>2.0</span> kN</td><td class="s">E</td><td>steel</td><td class="x"><span>200</span> GPa</td></tr><tr><td class="s">L</td><td>span</td><td class="x"><span>1.50</span> m</td><td class="s">b×h</td><td>rectangle</td><td class="x"><span>40×80</span> mm</td></tr></table></div>
+<div class="row" style="top:320px"><span class="lab">Sketch</span>
+<div class="demo"><div><svg viewBox="0 0 520 150"><line x1="34" y1="66" x2="486" y2="66" stroke="#4c5351" stroke-dasharray="5 5"/><path d="M34 66 Q260 116 486 66" fill="none" stroke="#16181a" stroke-width="4"/><line x1="260" y1="6" x2="260" y2="80" stroke="#b3261e" stroke-width="5"/><path d="M248 74 L260 92 L272 74Z" fill="#b3261e"/><path d="M34 68 L22 90 L46 90Z" fill="none" stroke="#16181a" stroke-width="2"/><circle cx="486" cy="78" r="8" fill="none" stroke="#16181a" stroke-width="2"/><line x1="34" y1="126" x2="486" y2="126" stroke="#4c5351"/></svg>
+<div class="cap">FIG. 2.3-1 · deflection drawn ×200</div></div><div><div class="c"><span><i>P</i>Load kN</span><div class="bar"></div><span class="n">2</span></div>
+<div class="c"><span><i>L</i>Span m</span><div class="bar"></div><span class="n">1.5</span></div>
+<div class="c"><span><i>b</i>Width mm</span><div class="bar"></div><span class="n">40</span></div>
+<div class="c"><span><i>h</i>Depth mm</span><div class="bar"></div><span class="n">80</span></div>
+<div class="r"><span>I = bh³/12</span><span>1.71 × 10⁶ mm⁴</span></div>
+<div class="r k"><span>δmax = PL³/48EI</span><b>0.412 mm</b></div></div></div></div>
+<div class="row" style="top:650px"><span class="lab">Solution</span><div><div class="eq"><span class="v">δ</span> = <span class="v">PL</span>³ / 48<span class="v">EI</span></div><div class="sub" style="margin-top:6px">= 2000 × 1.5³ / (48 × 200×10⁹ × 1.71×10⁻⁶)</div></div></div>
+<div class="row" style="top:790px"><span class="lab">Answer</span><div><span class="box"><span class="v">δ</span> = 0.412 mm</span></div></div>
+</body></html>

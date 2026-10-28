@@ -1,0 +1,37 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Archivo+Narrow:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#F3EFE4;color:#16140F;font:400 18px/1.55 'Source Serif 4',serif;position:relative}
+.tabs{position:absolute;right:0;top:60px;width:64px}
+.tabs div{height:84px;margin-bottom:6px;background:#D9D2BF;border-radius:10px 0 0 10px;font:700 13px 'Archivo Narrow';letter-spacing:.1em;text-transform:uppercase;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;transform-origin:center}
+.tabs div.on{background:#B3261E;color:#F3EFE4;width:64px;margin-left:-14px}
+.head{position:absolute;left:80px;right:140px;top:36px;display:flex;justify-content:space-between;font:700 14px 'Archivo Narrow';letter-spacing:.14em;text-transform:uppercase;border-bottom:3px double #16140F;padding-bottom:8px}
+.col{position:absolute;left:80px;top:100px;width:560px}
+.col2{position:absolute;left:700px;top:100px;width:560px}
+h1{font:700 52px/1.05 'Source Serif 4';margin-bottom:6px}
+.sec{font:700 14px 'Archivo Narrow';letter-spacing:.14em;text-transform:uppercase;color:#B3261E;margin-bottom:14px}
+table{border-collapse:collapse;width:100%;font:400 15px 'JetBrains Mono';margin:14px 0}
+th{font:700 13px 'Archivo Narrow';letter-spacing:.1em;text-transform:uppercase;text-align:left;border-top:2px solid #16140F;border-bottom:1px solid #16140F;padding:6px 8px}
+td{border-bottom:1px solid #D9D2BF;padding:7px 8px}
+tr.hi td{background:#E9DFC4;font-weight:500}
+.fig{border:1px solid #16140F;background:#FBF9F2;padding:14px;margin-top:6px}
+.fig small{display:block;font:500 13px 'Archivo Narrow';letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+.eq{font:500 34px 'JetBrains Mono';text-align:center;border-top:1px solid #16140F;border-bottom:1px solid #16140F;padding:14px;margin:14px 0}
+.pg{position:absolute;bottom:26px;left:80px;font:500 14px 'Archivo Narrow';letter-spacing:.1em}
+</style></head><body>
+<div class="head"><span>Engineer's Notebook</span><span>Mechanics · Beams</span><span>Page 214</span></div>
+<div class="col"><div class="sec">Section 2 · Beams</div><h1>Beam deflection</h1>
+<p style="margin-top:10px">A simply supported beam under a central point load deflects most at mid-span. The result below holds for a uniform section in the elastic range.</p>
+<div class="eq">δ = P L³ / 48 E I</div>
+<table><tr><th>Case</th><th>δ max</th><th>M max</th></tr>
+<tr class="hi"><td>Central point load</td><td>PL³/48EI</td><td>PL/4</td></tr>
+<tr><td>Uniform load w</td><td>5wL⁴/384EI</td><td>wL²/8</td></tr>
+<tr><td>Cantilever, end load</td><td>PL³/3EI</td><td>PL</td></tr></table></div>
+<div class="col2"><div class="sec" style="visibility:hidden">x</div>
+<div class="fig"><svg viewBox="0 0 520 180" width="100%"><path d="M30 80 Q260 150 490 80" fill="none" stroke="#16140F" stroke-width="3"/><path d="M30 80H490" stroke="#8C8F8A" stroke-dasharray="4 4"/><path d="M260 14V66" stroke="#B3261E" stroke-width="5"/><path d="M250 60l10 14 10-14z" fill="#B3261E"/><path d="M22 86l8-10 8 10z M482 86l8-10 8 10z" fill="#16140F"/></svg>
+<small>Fig. 214-1 · Drag load, span and section; deflection updates live</small></div>
+<table><tr><th>Input</th><th>Value</th></tr><tr><td>P</td><td>2.0 kN</td></tr><tr><td>L</td><td>1.5 m</td></tr><tr><td>E (steel)</td><td>200 GPa</td></tr><tr><td>I</td><td>8.0e-6 m⁴</td></tr><tr class="hi"><td>δ max</td><td>4.7 mm</td></tr></table></div>
+<div class="tabs"><div>Statics</div><div class="on">Beams</div><div>Stress</div><div>Kinematics</div><div>Index</div></div>
+<div class="pg">214</div>
+</body></html>

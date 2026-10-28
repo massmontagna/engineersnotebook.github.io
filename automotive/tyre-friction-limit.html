@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyre friction limit · Engineer's Notebook</title>
+<meta name="description" content="The tyre friction limit, F ≤ μN, shown as a friction circle combining braking and cornering, with stopping distance, a worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Automotive</a><span aria-hidden="true">/</span>
+    <a href="./#braking">Braking and grip</a>
+  </nav>
+  <span class="ref">§2.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="./" aria-current="true">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Tyre friction limit</h1>
+      <p class="lede">A tyre can push on the road only as hard as friction allows. The total grip force, braking and cornering combined, is capped at:</p>
+
+      <div class="eq" role="math" aria-label="F is at most mu N">
+        <span><i class="v">F</i> ≤ <i class="v">μ</i><i class="v">N</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>F</dt><dd>tyre force</dd><dd class="u">N</dd>
+        <dt>μ</dt><dd>coefficient of friction</dd><dd class="u">—</dd>
+        <dt>N</dt><dd>normal load</dd><dd class="u">N</dd>
+        <dt>a</dt><dd>acceleration</dd><dd class="u">m/s²</dd>
+        <dt>g</dt><dd>gravitational acceleration</dd><dd class="u">m/s²</dd>
+        <dt>m</dt><dd>vehicle mass</dd><dd class="u">kg</dd>
+        <dt>v</dt><dd>speed</dd><dd class="u">m/s</dd>
+        <dt>r</dt><dd>corner radius</dd><dd class="u">m</dd>
+        <dt>d</dt><dd>stopping distance</dd><dd class="u">m</dd>
+        <dt>θ</dt><dd>slope angle</dd><dd class="u">°</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 260" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A friction circle. Its radius is the most acceleration the tyres can give. An arrow from the centre shows the combined braking and cornering demand; inside the circle the tyres grip, outside they slide.</desc>
+          <circle cx="200" cy="130" r="50" class="s-hair dash" stroke-width="1"></circle>
+          <circle cx="200" cy="130" r="100" class="s-hair dash" stroke-width="1"></circle>
+          <text x="204" y="76" class="lbl">0.5 g</text>
+          <text x="204" y="26" class="lbl">1 g</text>
+          <circle id="circle" cx="200" cy="130" class="s-ink f-tab" stroke-width="2" r="90"></circle>
+          <line x1="70" y1="130" x2="330" y2="130" class="s-ink2" stroke-width="1"></line>
+          <line x1="200" y1="6" x2="200" y2="254" class="s-ink2" stroke-width="1"></line>
+          <text class="lbl" x="206" y="252">BRAKING</text>
+          <text class="lbl" x="330" y="146" text-anchor="end">CORNERING</text>
+          <path id="vec" class="s-ox f-ox" stroke-width="3" d="M200.0 130.0 L232.5 170.6 M227.3 174.8 L240.0 180.0 L237.7 166.5 Z"></path>
+          <circle id="pt" r="5" class="f-ox" cx="240.0" cy="180.0"></circle>
+          <text id="use-label" class="lbl t-ox" x="370" y="60">GRIP USED</text>
+          <text id="use" x="370" y="84" class="t-ox">71.1%</text>
+          <text class="lbl" x="370" y="130">LIMIT μg</text>
+          <text id="lim" x="370" y="154" class="t-ink">0.9 g</text>
+        </svg>
+        <figcaption><b>Fig. 2.2-1</b>Circle radius μg, drawn at 100 units per g. Grey rings mark 0.5 g and 1 g.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="mu-sel"><i>μ</i>Surface</label>
+            <select id="mu-sel">
+              <option value="0.9" data-name="dry asphalt">Dry asphalt · 0.9</option>
+              <option value="0.6" data-name="wet asphalt">Wet asphalt · 0.6</option>
+              <option value="0.2" data-name="packed snow">Packed snow · 0.2</option>
+              <option value="0.1" data-name="ice">Ice · 0.1</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="ab-num"><i>a</i>Braking <span class="unit">g</span></label>
+            <input type="range" id="ab-range" min="0" max="1.2" step="0.01" value="0.5" aria-label="Braking, g">
+            <input type="number" id="ab-num" min="0" max="1.2" step="0.01" value="0.5" inputmode="decimal" data-name="a deceleration" data-unit="g" aria-describedby="ab-err">
+            <span class="err" id="ab-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="al-num"><i>a</i>Cornering <span class="unit">g</span></label>
+            <input type="range" id="al-range" min="0" max="1.2" step="0.01" value="0.4" aria-label="Cornering, g">
+            <input type="number" id="al-num" min="0" max="1.2" step="0.01" value="0.4" inputmode="decimal" data-name="a lateral acceleration" data-unit="g" aria-describedby="al-err">
+            <span class="err" id="al-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="v-num"><i>v</i>Speed <span class="unit">km/h</span></label>
+            <input type="range" id="v-range" min="10" max="200" step="1" value="100" aria-label="Speed, km/h">
+            <input type="number" id="v-num" min="10" max="200" step="1" value="100" inputmode="numeric" data-name="a speed" data-unit="km/h" aria-describedby="v-err">
+            <span class="err" id="v-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">a</i><sub>max</sub> = <i class="v">μ</i><i class="v">g</i></td><td id="out-amax">0.9 g</td></tr>
+            <tr><td><i class="v">a</i> = √(<i class="v">a</i><sub>x</sub>² + <i class="v">a</i><sub>y</sub>²)</td><td id="out-a">0.64 g</td></tr>
+            <tr><td><i class="v">d</i> = <i class="v">v</i>²/2<i class="v">μ</i><i class="v">g</i></td><td id="out-d">43.7 m</td></tr>
+            <tr class="key"><td><i class="v">a</i>/<i class="v">a</i><sub>max</sub>, grip used</td><td id="out-use">71.1%</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 2.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">μ</i></span><span class="what"><span id="g-name" class="live">dry asphalt</span></span><span id="g-mu" class="live">0.9</span></li>
+          <li><span><i class="v">a</i><sub>x</sub></span><span class="what">braking</span><span id="g-ab" class="live">0.5 g</span></li>
+          <li><span><i class="v">a</i><sub>y</sub></span><span class="what">cornering</span><span id="g-al" class="live">0.4 g</span></li>
+          <li><span><i class="v">v</i></span><span class="what">speed</span><span id="g-v" class="live">100 km/h</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>How much of the available grip the manoeuvre uses.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">a</i><sub>max</sub> = <i class="v">μ</i><i class="v">g</i> = <span id="w-amax" class="live">0.9 × 9.81&nbsp;m/s² = 8.83&nbsp;m/s²</span></span>
+          <span><i class="v">a</i> = √(<i class="v">a</i><sub>x</sub>² + <i class="v">a</i><sub>y</sub>²) = <span id="w-a" class="live">√(0.5² + 0.4²) g = 0.64&nbsp;g = 6.28&nbsp;m/s²</span></span>
+          <span><i class="v">a</i>/<i class="v">a</i><sub>max</sub> = <span id="w-use" class="live">0.64&nbsp;g / 0.9&nbsp;g = 71.1%</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">a</i>/<i class="v">a</i><sub>max</sub> = </span><span id="w-ans">71.1%</span></span>
+          <p class="answer-note" id="w-note">Within the limit. Braking hard from 100 km/h on dry asphalt, the shortest stop is 43.7 m.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M10 40 L10 32 L28 30 L38 20 L74 20 L86 30 L102 32 L102 40 Z" class="s-ink f-tab" stroke-width="1.5"/><circle cx="28" cy="40" r="7" class="s-ink f-sheet" stroke-width="1.5"/><circle cx="84" cy="40" r="7" class="s-ink f-sheet" stroke-width="1.5"/><line x1="4" y1="47" x2="108" y2="47" class="s-ink" stroke-width="2"/><path d="M4 47 L12 55 M16 47 L24 55 M28 47 L36 55 M40 47 L48 55 M52 47 L60 55 M64 47 L72 55 M76 47 L84 55 M88 47 L96 55 M100 47 L108 55" class="s-ink" stroke-width="1"/></svg>
+          <div>
+            <h3>Shortest stopping distance</h3>
+            <p class="f"><span><span><i class="v">d</i> = </span><span class="frac"><span><i class="v">v</i>²</span><span>2<i class="v">μ</i><i class="v">g</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M10 44 A60 60 0 0 1 100 20" class="s-ink2 dash" stroke-width="1.5"/><circle cx="64" cy="22" r="5" class="f-ox"/></svg>
+          <div>
+            <h3>Fastest speed round a flat corner</h3>
+            <p class="f"><span><span><i class="v">v</i> = √(<i class="v">μ</i><i class="v">g</i><i class="v">r</i>)</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 46 L106 46 L106 14 Z" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Steepest slope a parked car holds</h3>
+            <p class="f"><span><span>tan <i class="v">θ</i> = <i class="v">μ</i></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Friction follows the Coulomb model, with <i class="v">μ</i> independent of load, speed and slip. Real tyres grip best at around 10–15% slip and lose some <i class="v">μ</i> under heavier load.</li>
+          <li>Grip is the same in every direction, so the limit is a circle. Real tyres are closer to an ellipse.</li>
+          <li>The car is treated as one body on a level road with <i class="v">N</i> = <i class="v">m</i><i class="v">g</i>: no aerodynamic downforce.</li>
+          <li>Friction values are typical. The real value depends on the tyre, the surface and the temperature.</li>
+          <li>Stopping distance excludes the driver's reaction time.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>On a level road the tyres carry the car's weight: <code><i class="v">N</i> = <i class="v">m</i><i class="v">g</i></code>.</li>
+          <li>The friction force cannot exceed <code><i class="v">μ</i><i class="v">N</i> = <i class="v">μ</i><i class="v">m</i><i class="v">g</i></code>.</li>
+          <li>Newton's second law, <code><i class="v">F</i> = <i class="v">m</i><i class="v">a</i></code>, then caps the acceleration in any direction: <code><i class="v">a</i> ≤ <i class="v">μ</i><i class="v">g</i></code>.</li>
+          <li>Braking and cornering forces add as vectors, so the limit is <code>√(<i class="v">a</i><sub>x</sub>² + <i class="v">a</i><sub>y</sub>²) ≤ <i class="v">μ</i><i class="v">g</i></code>: the friction circle.</li>
+        </ol>
+        <p class="prose">Grip used for braking is not available for cornering. That is why braking hard in a corner can make the car run wide.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="weight-transfer-under-braking.html">← 2.1 Weight transfer under braking</a>
+        <a href="./">Automotive contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Automotive §2.2</span>
+  <a href="./#braking">Back to Braking and grip</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/tyre-friction-limit.js" defer></script>
+</body>
+</html>

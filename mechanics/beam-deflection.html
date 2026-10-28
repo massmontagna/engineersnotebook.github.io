@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beam deflection · Engineer's Notebook</title>
+<meta name="description" content="Maximum deflection of a simply supported beam under a central point load, δ = PL³/48EI, with a live demo, a worked example on your own values and other load cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#beams">Beams</a>
+  </nav>
+  <span class="ref">§2.3</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Beam deflection</h1>
+      <p class="lede">A simply supported beam with one load at mid-span sags most at the centre. The maximum deflection is:</p>
+
+      <div class="eq" role="math" aria-label="delta max equals P L cubed over 48 E I">
+        <span><i class="v">δ</i><sub>max</sub> =</span>
+        <span class="frac"><span><i class="v">P</i>·<i class="v">L</i>³</span><span>48·<i class="v">E</i>·<i class="v">I</i></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>δ</dt><dd>deflection</dd><dd class="u">m</dd>
+        <dt>P</dt><dd>point load</dd><dd class="u">N</dd>
+        <dt>L</dt><dd>span</dd><dd class="u">m</dd>
+        <dt>E</dt><dd>Young's modulus</dd><dd class="u">Pa</dd>
+        <dt>I</dt><dd>second moment of area</dd><dd class="u">m⁴</dd>
+        <dt>M</dt><dd>bending moment</dd><dd class="u">N·m</dd>
+        <dt>b</dt><dd>section width</dd><dd class="u">m</dd>
+        <dt>h</dt><dd>section depth</dd><dd class="u">m</dd>
+        <dt>θ</dt><dd>slope</dd><dd class="u">rad</dd>
+        <dt>w</dt><dd>load per length</dd><dd class="u">N/m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg id="beam" viewBox="0 0 520 180" role="img" aria-labelledby="beam-desc">
+          <desc id="beam-desc">A beam on a pin support at the left and a roller at the right, with a point load at mid-span. The deflected shape is drawn below the unloaded position.</desc>
+          <line x1="40" y1="86" x2="480" y2="86" stroke="#4c5351" stroke-width="1" stroke-dasharray="4 4"/>
+          <path id="beam-curve" d="M40 86 L480 86" fill="none" stroke="#16181a" stroke-width="4" stroke-linecap="round"/>
+          <g id="load">
+            <line x1="260" y1="14" x2="260" y2="70" stroke="#b3261e" stroke-width="4"/>
+            <path d="M249 64 L260 80 L271 64 Z" fill="#b3261e"/>
+            <text id="load-label" x="272" y="30" font-family="JetBrains Mono, monospace" font-size="13" fill="#b3261e">P = 2 kN</text>
+          </g>
+          <path d="M40 88 L28 108 L52 108 Z" fill="none" stroke="#16181a" stroke-width="2"/>
+          <line x1="22" y1="112" x2="58" y2="112" stroke="#16181a" stroke-width="2"/>
+          <circle cx="480" cy="96" r="8" fill="none" stroke="#16181a" stroke-width="2"/>
+          <line x1="462" y1="106" x2="498" y2="106" stroke="#16181a" stroke-width="2"/>
+          <line x1="40" y1="150" x2="480" y2="150" stroke="#4c5351" stroke-width="1"/>
+          <line x1="40" y1="144" x2="40" y2="156" stroke="#4c5351" stroke-width="1"/>
+          <line x1="480" y1="144" x2="480" y2="156" stroke="#4c5351" stroke-width="1"/>
+          <text id="span-label" x="40" y="172" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="13" fill="#4c5351">L = 1.50 m</text>
+          <text id="scale-label" x="480" y="172" text-anchor="end" font-family="Archivo Narrow, sans-serif" font-size="12" fill="#4c5351">deflection drawn ×1</text>
+        </svg>
+        <figcaption><b>Fig. 2.3-1</b>Deflection exaggerated; scale noted under the beam.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="P-num"><i>P</i>Load <span class="unit">kN</span></label>
+            <input type="range" id="P-range" min="0.1" max="50" step="0.1" value="2" aria-label="Load, kilonewtons">
+            <input type="number" id="P-num" min="0.1" max="50" step="0.1" value="2" inputmode="decimal" aria-describedby="P-err">
+            <span class="err" id="P-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="L-num"><i>L</i>Span <span class="unit">m</span></label>
+            <input type="range" id="L-range" min="0.5" max="10" step="0.05" value="1.5" aria-label="Span, metres">
+            <input type="number" id="L-num" min="0.5" max="10" step="0.05" value="1.5" inputmode="decimal" aria-describedby="L-err">
+            <span class="err" id="L-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="E-sel"><i>E</i>Material</label>
+            <select id="E-sel">
+              <option value="200" data-name="steel">Steel · 200 GPa</option>
+              <option value="69" data-name="aluminium">Aluminium · 69 GPa</option>
+              <option value="11" data-name="timber (C24)">Timber C24 · 11 GPa</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="b-num"><i>b</i>Width <span class="unit">mm</span></label>
+            <input type="range" id="b-range" min="5" max="300" step="1" value="40" aria-label="Section width, millimetres">
+            <input type="number" id="b-num" min="5" max="300" step="1" value="40" inputmode="numeric" aria-describedby="b-err">
+            <span class="err" id="b-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="h-num"><i>h</i>Depth <span class="unit">mm</span></label>
+            <input type="range" id="h-range" min="5" max="500" step="1" value="80" aria-label="Section depth, millimetres">
+            <input type="number" id="h-num" min="5" max="500" step="1" value="80" inputmode="numeric" aria-describedby="h-err">
+            <span class="err" id="h-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12</td><td id="out-I">—</td></tr>
+            <tr><td><i class="v">M</i><sub>max</sub> = <i class="v">P</i><i class="v">L</i>/4</td><td id="out-M">—</td></tr>
+            <tr><td><i class="v">θ</i><sub>end</sub> = <i class="v">P</i><i class="v">L</i>²/16<i class="v">E</i><i class="v">I</i></td><td id="out-T">—</td></tr>
+            <tr class="key"><td><i class="v">δ</i><sub>max</sub> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></td><td id="out-D">—</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 2.3-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><i class="v">P</i><span class="what">point load at mid-span</span><span id="g-P" class="live">2 kN</span></li>
+          <li><i class="v">L</i><span class="what">span between supports</span><span id="g-L" class="live">1.5 m</span></li>
+          <li><i class="v">E</i><span class="what" id="g-Ename">steel</span><span id="g-E" class="live">200 GPa</span></li>
+          <li><span><i class="v">b</i>×<i class="v">h</i></span><span class="what">rectangular section</span><span id="g-bh" class="live">40 × 80 mm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The maximum deflection <i class="v">δ</i> at mid-span.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12 = <span id="w-I" class="live">1.707 × 10⁻⁶&nbsp;m⁴</span></span>
+          <span><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></span>
+          <span class="sub-line live" id="w-sub">= 2,000&nbsp;N × (1.5&nbsp;m)³ / (48 × 2 × 10¹¹&nbsp;Pa × 1.707 × 10⁻⁶&nbsp;m⁴)</span>
+          <span class="sub-line live" id="w-m">= 4.12 × 10⁻⁴&nbsp;m</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><i class="v">δ</i> = <span id="w-ans">0.412 mm</span></span>
+          <p class="answer-note" id="w-note">Span over deflection: L/3,641.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Other load cases</h2>
+      <p class="legend">Same symbols. <i class="v">M</i> is the maximum moment; <i class="v">θ</i> is the slope at a support for simply supported beams, and at the free end for cantilevers.</p>
+      <ul class="cases">
+        <li>
+          <svg viewBox="0 0 112 52" aria-hidden="true"><g stroke="#16181a" fill="none" stroke-width="1.5"><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/><path d="M8 31 L2 42 L14 42 Z"/><circle cx="104" cy="36" r="5"/></g><g stroke="#b3261e" stroke-width="1.5"><line x1="8" y1="8" x2="104" y2="8"/><path d="M14 8V24M28 8V24M42 8V24M56 8V24M70 8V24M84 8V24M98 8V24"/></g></svg>
+          <div>
+            <h3>Simply supported, uniform load</h3>
+            <p class="f"><span><i class="v">δ</i> = <span class="frac"><span>5<i class="v">w</i><i class="v">L</i>⁴</span><span>384<i class="v">E</i><i class="v">I</i></span></span></span><span><i class="v">M</i> = <span class="frac"><span><i class="v">w</i><i class="v">L</i>²</span><span>8</span></span></span><span><i class="v">θ</i> = <span class="frac"><span><i class="v">w</i><i class="v">L</i>³</span><span>24<i class="v">E</i><i class="v">I</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg viewBox="0 0 112 52" aria-hidden="true"><g stroke="#16181a" fill="none" stroke-width="1.5"><line x1="8" y1="6" x2="8" y2="48" stroke-width="3"/><path d="M2 12 L8 6 M2 22 L8 16 M2 32 L8 26 M2 42 L8 36"/><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/></g><g stroke="#b3261e" fill="#b3261e" stroke-width="2"><line x1="102" y1="6" x2="102" y2="22"/><path d="M97 20 L102 28 L107 20 Z" stroke="none"/></g></svg>
+          <div>
+            <h3>Cantilever, end load</h3>
+            <p class="f"><span><i class="v">δ</i> = <span class="frac"><span><i class="v">P</i><i class="v">L</i>³</span><span>3<i class="v">E</i><i class="v">I</i></span></span></span><span><i class="v">M</i> = <span><i class="v">P</i><i class="v">L</i></span></span><span><i class="v">θ</i> = <span class="frac"><span><i class="v">P</i><i class="v">L</i>²</span><span>2<i class="v">E</i><i class="v">I</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg viewBox="0 0 112 52" aria-hidden="true"><g stroke="#16181a" fill="none" stroke-width="1.5"><line x1="8" y1="6" x2="8" y2="48" stroke-width="3"/><path d="M2 12 L8 6 M2 22 L8 16 M2 32 L8 26 M2 42 L8 36"/><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/></g><g stroke="#b3261e" stroke-width="1.5"><line x1="12" y1="8" x2="104" y2="8"/><path d="M20 8V24M34 8V24M48 8V24M62 8V24M76 8V24M90 8V24M102 8V24"/></g></svg>
+          <div>
+            <h3>Cantilever, uniform load</h3>
+            <p class="f"><span><i class="v">δ</i> = <span class="frac"><span><i class="v">w</i><i class="v">L</i>⁴</span><span>8<i class="v">E</i><i class="v">I</i></span></span></span><span><i class="v">M</i> = <span class="frac"><span><i class="v">w</i><i class="v">L</i>²</span><span>2</span></span></span><span><i class="v">θ</i> = <span class="frac"><span><i class="v">w</i><i class="v">L</i>³</span><span>6<i class="v">E</i><i class="v">I</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The beam is straight, prismatic and made of one linear-elastic material.</li>
+          <li>Deflections are small compared with the span, so the slope squared is negligible.</li>
+          <li>Shear deformation is ignored. This is reasonable when the span is more than about ten times the depth.</li>
+          <li>The beam's own weight is ignored. Add it as a uniform load if it matters.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Measure <i class="v">x</i> from the left support, with <i class="v">y</i> positive upwards. Each support carries <span class="inline-eq"><i class="v">P</i>/2</span>, so for the left half of the beam the bending moment is <span class="inline-eq"><i class="v">M</i> = <i class="v">P</i><i class="v">x</i>/2</span>.</p>
+        </div>
+        <ol class="derive prose" style="margin-top:0.9rem">
+          <li>Start from the bending equation: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>″ = <i class="v">P</i><i class="v">x</i>/2</code>.</li>
+          <li>Integrate once: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i>′ = <i class="v">P</i><i class="v">x</i>²/4 + <i class="v">C</i>₁</code>. By symmetry the slope is zero at mid-span, so <code><i class="v">C</i>₁ = −<i class="v">P</i><i class="v">L</i>²/16</code>.</li>
+          <li>Integrate again: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = <i class="v">P</i><i class="v">x</i>³/12 − <i class="v">P</i><i class="v">L</i>²<i class="v">x</i>/16 + <i class="v">C</i>₂</code>. The deflection is zero at the support, so <code><i class="v">C</i>₂ = 0</code>.</li>
+          <li>At mid-span, <code><i class="v">x</i> = <i class="v">L</i>/2</code>: <code><i class="v">E</i><i class="v">I</i>·<i class="v">y</i> = −<i class="v">P</i><i class="v">L</i>³/48</code>.</li>
+        </ol>
+        <p class="prose" style="margin-top:0.9rem">The minus sign means the beam deflects downwards, so its magnitude is <span class="inline-eq"><i class="v">δ</i> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></span>. The slope at the support is <span class="inline-eq"><i class="v">C</i>₁/<i class="v">E</i><i class="v">I</i></span>, which gives <span class="inline-eq"><i class="v">θ</i> = <i class="v">P</i><i class="v">L</i>²/16<i class="v">E</i><i class="v">I</i></span>.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="bending-moment.html">← 2.2 Bending moment</a>
+        <a href="cantilevers.html">2.4 Cantilevers →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §2.3</span>
+  <a href="./#beams">Back to Beams</a>
+</footer>
+
+<script src="../assets/js/beam-deflection.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conduction · Engineer's Notebook</title>
+<meta name="description" content="Heat conduction by Fourier's law, q = −k dT/dx, through a plane wall, with a live temperature-profile demo, a worked example and related cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Thermodynamics</a><span aria-hidden="true">/</span>
+    <a href="./#heat-transfer">Heat transfer</a>
+  </nav>
+  <span class="ref">§2.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="./" aria-current="true">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Conduction</h1>
+      <p class="lede">Heat flows through a solid from hot to cold, at a rate set by the material's conductivity and the temperature gradient. This is Fourier's law:</p>
+
+      <div class="eq" role="math" aria-label="q equals minus k d T by d x">
+        <span><i class="v">q</i> = −<i class="v">k</i></span><span class="frac"><span>d<i class="v">T</i></span><span>d<i class="v">x</i></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>q</dt><dd>heat flux</dd><dd class="u">W/m²</dd>
+        <dt>k</dt><dd>thermal conductivity</dd><dd class="u">W/(m·K)</dd>
+        <dt>T</dt><dd>temperature</dd><dd class="u">K</dd>
+        <dt>x</dt><dd>distance through the material</dd><dd class="u">m</dd>
+        <dt>Φ</dt><dd>heat flow rate</dd><dd class="u">W</dd>
+        <dt>A</dt><dd>area</dd><dd class="u">m²</dd>
+        <dt>L</dt><dd>wall thickness</dd><dd class="u">m</dd>
+        <dt>h</dt><dd>convection coefficient</dd><dd class="u">W/(m²·K)</dd>
+        <dt>ℓ</dt><dd>pipe length</dd><dd class="u">m</dd>
+        <dt>r</dt><dd>radius</dd><dd class="u">m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 220" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A wall seen edge-on, hot side on the left and cold side on the right. A line shows the temperature falling straight through the wall, and an arrow shows the heat flow.</desc>
+          <rect x="200" y="30" width="120" height="150" class="s-ink f-tab" stroke-width="2"></rect>
+          <text id="k-label" x="260" y="112" text-anchor="middle" class="t-ink">k = 0.7</text>
+          <text id="L-label" x="260" y="22" text-anchor="middle">L = 100 mm</text>
+          <path id="prof" class="s-ox" stroke-width="3" stroke-linejoin="round" d="M40.0 55.0 L200.0 55.0 L320.0 155.0 L480.0 155.0"></path>
+          <text id="T1-label" x="40" y="47.0">T₁ = 20 °C</text>
+          <text id="T2-label" x="480" text-anchor="end" y="147.0">T₂ = 0 °C</text>
+          <path id="flow" class="s-ox f-ox" stroke-width="2.5" d="M210.0 210.0 L298.0 210.0 M298.0 216.6 L310.0 210.0 L298.0 203.4 Z"></path>
+          <text id="q-label" x="260" y="200" text-anchor="middle" class="t-ox">q = 140 W/m²</text>
+        </svg>
+        <figcaption><b>Fig. 2.1-1</b>Wall shown at a fixed width. The temperature scale fits the two faces.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="k-sel"><i>k</i>Material</label>
+            <select id="k-sel">
+              <option value="0.7" data-name="brick">Brick · 0.7 W/(m·K)</option>
+              <option value="1.4" data-name="concrete">Concrete · 1.4 W/(m·K)</option>
+              <option value="50" data-name="mild steel">Mild steel · 50 W/(m·K)</option>
+              <option value="385" data-name="copper">Copper · 385 W/(m·K)</option>
+              <option value="0.04" data-name="mineral wool">Mineral wool · 0.04 W/(m·K)</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="L-num"><i>L</i>Thickness <span class="unit">mm</span></label>
+            <input type="range" id="L-range" min="1" max="500" step="1" value="100" aria-label="Thickness, mm">
+            <input type="number" id="L-num" min="1" max="500" step="1" value="100" inputmode="numeric" data-name="a thickness" data-unit="mm" aria-describedby="L-err">
+            <span class="err" id="L-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="A-num"><i>A</i>Area <span class="unit">m²</span></label>
+            <input type="range" id="A-range" min="0.1" max="100" step="0.1" value="10" aria-label="Area, m²">
+            <input type="number" id="A-num" min="0.1" max="100" step="0.1" value="10" inputmode="decimal" data-name="an area" data-unit="m²" aria-describedby="A-err">
+            <span class="err" id="A-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="T1-num"><i>T₁</i>Hot side <span class="unit">°C</span></label>
+            <input type="range" id="T1-range" min="-20" max="200" step="1" value="20" aria-label="Hot side, °C">
+            <input type="number" id="T1-num" min="-20" max="200" step="1" value="20" inputmode="decimal" data-name="a temperature" data-unit="°C" aria-describedby="T1-err">
+            <span class="err" id="T1-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="T2-num"><i>T₂</i>Cold side <span class="unit">°C</span></label>
+            <input type="range" id="T2-range" min="-20" max="200" step="1" value="0" aria-label="Cold side, °C">
+            <input type="number" id="T2-num" min="-20" max="200" step="1" value="0" inputmode="decimal" data-name="a temperature" data-unit="°C" aria-describedby="T2-err">
+            <span class="err" id="T2-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td>d<i class="v">T</i>/d<i class="v">x</i></td><td id="out-grad">−200 K/m</td></tr>
+            <tr><td><i class="v">q</i> = <i class="v">k</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></td><td id="out-q">140 W/m²</td></tr>
+            <tr class="key"><td><i class="v">Φ</i> = <i class="v">q</i><i class="v">A</i></td><td id="out-Phi">1.4 kW</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 2.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">k</i></span><span class="what"><span id="g-kname" class="live">brick</span></span><span id="g-k" class="live">0.7 W/(m·K)</span></li>
+          <li><span><i class="v">L</i></span><span class="what">wall thickness</span><span id="g-L" class="live">100 mm</span></li>
+          <li><span><i class="v">A</i></span><span class="what">wall area</span><span id="g-A" class="live">10 m²</span></li>
+          <li><span><i class="v">T</i><sub>1</sub></span><span class="what">hot face</span><span id="g-T1" class="live">20 °C</span></li>
+          <li><span><i class="v">T</i><sub>2</sub></span><span class="what">cold face</span><span id="g-T2" class="live">0 °C</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The rate of heat flow <i class="v">Φ</i> through the wall.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">q</i> = <i class="v">k</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i> = <span id="w-q" class="live">0.7&nbsp;W/(m·K) × (20 − 0)&nbsp;K / 0.1&nbsp;m = 140&nbsp;W/m²</span></span>
+          <span><i class="v">Φ</i> = <i class="v">q</i><i class="v">A</i> = <span id="w-Phi" class="live">140&nbsp;W/m² × 10&nbsp;m² = 1,400&nbsp;W</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">Φ</i> = </span><span id="w-ans">1.4 kW</span></span>
+          <p class="answer-note" id="w-note">Over 24 hours that is 33.6 kWh.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="6" width="18" height="40" class="s-ink f-tab" stroke-width="1.5"/><rect x="48" y="6" width="12" height="40" class="s-ink f-sheet" stroke-width="1.5"/><rect x="60" y="6" width="22" height="40" class="s-ink f-tab" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Layers in series</h3>
+            <p class="f"><span><span><i class="v">Φ</i> = </span><span class="frac"><span><i class="v">A</i> Δ<i class="v">T</i></span><span>Σ(<i class="v">L</i>/<i class="v">k</i>)</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><circle cx="56" cy="26" r="20" class="s-ink f-tab" stroke-width="1.5"/><circle cx="56" cy="26" r="11" class="s-ink f-sheet" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Pipe wall</h3>
+            <p class="f"><span><span><i class="v">Φ</i> = </span><span class="frac"><span>2π<i class="v">k</i><i class="v">ℓ</i> Δ<i class="v">T</i></span><span>ln(<i class="v">r</i><sub>2</sub>/<i class="v">r</i><sub>1</sub>)</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="20" y="30" width="72" height="14" class="s-ink f-tab" stroke-width="1.5"/><path d="M30 24 Q36 16 30 8 M52 24 Q58 16 52 8 M74 24 Q80 16 74 8" class="s-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Convection at a surface</h3>
+            <p class="f"><span><span><i class="v">Φ</i> = <i class="v">h</i><i class="v">A</i> Δ<i class="v">T</i></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Conditions are steady: temperatures no longer change with time.</li>
+          <li>Heat flows in one direction, straight through the wall. Edges and corners are ignored.</li>
+          <li><i class="v">k</i> is constant over the temperature range, and no heat is generated inside the wall.</li>
+          <li>The face temperatures are known. In practice the air films on each face add resistance, so use surface rather than room temperatures.</li>
+          <li>Conductivities are typical values. Real figures vary with density, moisture and grade.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Fourier's law: <code><i class="v">q</i> = −<i class="v">k</i> d<i class="v">T</i>/d<i class="v">x</i></code>.</li>
+          <li>In steady state with no heat generated, the same flux passes every plane, so <i class="v">q</i> is constant through the wall.</li>
+          <li>With <i class="v">k</i> constant, d<i class="v">T</i>/d<i class="v">x</i> is constant too: the temperature falls linearly, <code>d<i class="v">T</i>/d<i class="v">x</i> = −(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>.</li>
+          <li>So <code><i class="v">q</i> = <i class="v">k</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>, and over area <i class="v">A</i>, <code><i class="v">Φ</i> = <i class="v">k</i><i class="v">A</i>(<i class="v">T</i><sub>1</sub> − <i class="v">T</i><sub>2</sub>)/<i class="v">L</i></code>.</li>
+        </ol>
+        <p class="prose">The minus sign in Fourier's law says heat flows down the temperature gradient, from hot to cold.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="first-law.html">← 1.2 First law</a>
+        <a href="./">Thermodynamics contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Thermodynamics §2.1</span>
+  <a href="./#heat-transfer">Back to Heat transfer</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/conduction.js" defer></script>
+</body>
+</html>

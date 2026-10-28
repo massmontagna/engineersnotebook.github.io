@@ -1,0 +1,43 @@
+{
+  "title": "Restructure Engineer's Notebook",
+  "question": "Same notebook world and right-edge tabs, three new structures. In all three, the tabs become disciplines, the homepage leads with navigation, and the ground gets a subtle moving paper grain. Lock one, steer, or re-roll.",
+  "options": [
+    {
+      "id": "sketch-first",
+      "kind": "assigned",
+      "kicker": "THE ROLL",
+      "label": "Sketch first",
+      "thesis": "The page opens on a big annotated sketch you can drag; the working follows underneath.",
+      "palette": ["#E8EBEA", "#16181A", "#B3261E", "#F6F7F6"],
+      "materials": ["paper grain", "dimension lines", "ruled working"],
+      "viewport": "A one-line problem, then a full-width beam sketch with load, span and section set directly on the drawing; formula and live answer sit under it.",
+      "risk": "Inputs on the drawing need clear affordances, or people will miss that they can drag.",
+      "html": ".impeccable/mocks/decision/sketch-first.html"
+    },
+    {
+      "id": "margin-notes",
+      "kind": "dealt",
+      "label": "Margin notes",
+      "thesis": "One calm column in notebook order, with symbols and units written in the margin beside where they're used.",
+      "palette": ["#E8EBEA", "#16181A", "#B3261E", "#F6F7F6"],
+      "materials": ["paper grain", "margin rule", "hand-placed notes"],
+      "viewport": "Problem, then sketch and inputs in the column, then the formula with each symbol defined in the right margin next to it.",
+      "risk": "On phones the margin folds inline, so it needs careful ordering.",
+      "html": ".impeccable/mocks/decision/margin-notes.html"
+    },
+    {
+      "id": "given-find",
+      "kind": "dealt",
+      "label": "Given / Find",
+      "thesis": "Every topic is a worked problem in the classic engineering format: Given, Find, Sketch, Solution, Answer.",
+      "palette": ["#E8EBEA", "#16181A", "#B3261E", "#F6F7F6"],
+      "materials": ["paper grain", "label gutter", "boxed answer"],
+      "viewport": "A ruled label gutter on the left. Given (editable values) and Sketch side by side; Solution shows the formula with your numbers substituted; Answer boxed in oxblood.",
+      "risk": "Reads like homework if the copy is too formal.",
+      "html": ".impeccable/mocks/decision/given-find.html"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code"},
+  "steer": true
+}

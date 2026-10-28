@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RC time constant · Engineer's Notebook</title>
+<meta name="description" content="The RC time constant, τ = RC, and the capacitor charging curve, with a live demo, a worked example and discharge and RL forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Electrical</a><span aria-hidden="true">/</span>
+    <a href="./#dc-circuits">DC circuits</a>
+  </nav>
+  <span class="ref">§1.3</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="./" aria-current="true">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">RC time constant</h1>
+      <p class="lede">A capacitor charging through a resistor approaches the supply voltage exponentially. The time constant sets the pace:</p>
+
+      <div class="eq" role="math" aria-label="tau equals R C">
+        <span><i class="v">τ</i> = <i class="v">R</i><i class="v">C</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>τ</dt><dd>time constant</dd><dd class="u">s</dd>
+        <dt>R</dt><dd>resistance</dd><dd class="u">Ω</dd>
+        <dt>C</dt><dd>capacitance</dd><dd class="u">F</dd>
+        <dt>V</dt><dd>supply voltage</dd><dd class="u">V</dd>
+        <dt>v<sub>C</sub></dt><dd>capacitor voltage</dd><dd class="u">V</dd>
+        <dt>t</dt><dd>time since switch-on</dd><dd class="u">s</dd>
+        <dt>i</dt><dd>current</dd><dd class="u">A</dd>
+        <dt>L</dt><dd>inductance</dd><dd class="u">H</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">The charging curve of a capacitor: voltage rises steeply at first and levels off towards the supply voltage. Time is marked in multiples of the time constant, and a point marks the chosen time.</desc>
+<path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">TIME t</text><text class="lbl" x="68" y="22">VOLTAGE v, V</text>
+          <line x1="60" y1="40" x2="460" y2="40" class="s-ink2 dash" stroke-width="1"></line>
+          <text id="V-label" x="460" y="34" text-anchor="end">V = 5 V</text>
+          <path d="M140 200 L140 98.9 L60 98.9" class="s-ink2 dash" stroke-width="1"></path>
+          <text x="54" y="103" text-anchor="end">63%</text>
+          <path id="curve" class="s-ink" stroke-width="2.5" d="M60.0 200.0 L68.0 184.8 L76.0 171.0 L84.0 158.5 L92.0 147.3 L100.0 137.0 L108.0 127.8 L116.0 119.5 L124.0 111.9 L132.0 105.1 L140.0 98.9 L148.0 93.3 L156.0 88.2 L164.0 83.6 L172.0 79.5 L180.0 75.7 L188.0 72.3 L196.0 69.2 L204.0 66.4 L212.0 63.9 L220.0 61.7 L228.0 59.6 L236.0 57.7 L244.0 56.0 L252.0 54.5 L260.0 53.1 L268.0 51.9 L276.0 50.8 L284.0 49.7 L292.0 48.8 L300.0 48.0 L308.0 47.2 L316.0 46.5 L324.0 45.9 L332.0 45.3 L340.0 44.8 L348.0 44.4 L356.0 44.0 L364.0 43.6 L372.0 43.2 L380.0 42.9 L388.0 42.7 L396.0 42.4 L404.0 42.2 L412.0 42.0 L420.0 41.8 L428.0 41.6 L436.0 41.5 L444.0 41.3 L452.0 41.2 L460.0 41.1"></path>
+          <text x="140" y="218" text-anchor="middle">τ</text>
+          <text x="220" y="218" text-anchor="middle">2τ</text>
+          <text x="300" y="218" text-anchor="middle">3τ</text>
+          <text x="380" y="218" text-anchor="middle">4τ</text>
+          <text id="tau-label" class="lbl" x="60" y="232">τ = 1 s</text>
+          <path id="drop" class="s-ox dash" stroke-width="1" d="M60.0 98.9 L140.0 98.9 L140.0 200.0"></path>
+          <circle id="pt" r="5" class="f-ox" cx="140.0" cy="98.9"></circle>
+          <text id="pt-label" class="t-ox" x="150.0" y="116.9" text-anchor="start">v = 3.16 V</text>
+        </svg>
+        <figcaption><b>Fig. 1.3-1</b>Time in multiples of τ. After one τ the capacitor reaches 63% of the supply.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="R-num"><i>R</i>Resistance <span class="unit">kΩ</span></label>
+            <input type="range" id="R-range" min="0.1" max="1000" step="0.1" value="10" aria-label="Resistance, kΩ">
+            <input type="number" id="R-num" min="0.1" max="1000" step="0.1" value="10" inputmode="decimal" data-name="a resistance" data-unit="kΩ" aria-describedby="R-err">
+            <span class="err" id="R-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="C-num"><i>C</i>Capacitance <span class="unit">µF</span></label>
+            <input type="range" id="C-range" min="0.1" max="1000" step="0.1" value="100" aria-label="Capacitance, µF">
+            <input type="number" id="C-num" min="0.1" max="1000" step="0.1" value="100" inputmode="decimal" data-name="a capacitance" data-unit="µF" aria-describedby="C-err">
+            <span class="err" id="C-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="V-num"><i>V</i>Supply <span class="unit">V</span></label>
+            <input type="range" id="V-range" min="1" max="50" step="0.5" value="5" aria-label="Supply, V">
+            <input type="number" id="V-num" min="1" max="50" step="0.5" value="5" inputmode="decimal" data-name="a voltage" data-unit="V" aria-describedby="V-err">
+            <span class="err" id="V-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="k-num"><i>t</i>Time <span class="unit">× τ</span></label>
+            <input type="range" id="k-range" min="0" max="5" step="0.05" value="1" aria-label="Time, × τ">
+            <input type="number" id="k-num" min="0" max="5" step="0.05" value="1" inputmode="decimal" data-name="a time" data-unit="× τ" aria-describedby="k-err">
+            <span class="err" id="k-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">τ</i> = <i class="v">R</i><i class="v">C</i></td><td id="out-tau">1 s</td></tr>
+            <tr><td><i class="v">t</i></td><td id="out-t">1 s</td></tr>
+            <tr><td><i class="v">i</i> = (<i class="v">V</i>/<i class="v">R</i>)e<sup>−<i class="v">t</i>/<i class="v">τ</i></sup></td><td id="out-i">0.184 mA</td></tr>
+            <tr class="key"><td><i class="v">v</i><sub>C</sub> = <i class="v">V</i>(1 − e<sup>−<i class="v">t</i>/<i class="v">τ</i></sup>)</td><td id="out-v">3.16 V</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.3-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">R</i></span><span class="what">series resistance</span><span id="g-R" class="live">10 kΩ</span></li>
+          <li><span><i class="v">C</i></span><span class="what">capacitance</span><span id="g-C" class="live">100 µF</span></li>
+          <li><span><i class="v">V</i></span><span class="what">supply voltage</span><span id="g-V" class="live">5 V</span></li>
+          <li><span><i class="v">t</i></span><span class="what">time since switch-on</span><span id="g-t" class="live">1τ = 1 s</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The capacitor voltage <i class="v">v</i><sub>C</sub> at time <i class="v">t</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">τ</i> = <i class="v">R</i><i class="v">C</i> = <span id="w-tau" class="live">10,000&nbsp;Ω × 1 × 10⁻⁴&nbsp;F = 1 s</span></span>
+          <span><i class="v">v</i><sub>C</sub> = <i class="v">V</i>(1 − e<sup>−<i class="v">t</i>/<i class="v">τ</i></sup>)</span>
+          <span class="sub-line live" id="w-sub">= 5&nbsp;V × (1 − e^(−1))</span>
+          <span class="sub-line live" id="w-v">= 3.16&nbsp;V</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">v</i><sub>C</sub> = </span><span id="w-ans">3.16 V</span></span>
+          <p class="answer-note" id="w-note">After 5τ = 5 s it is above 99% charged.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><path d="M14 8 Q34 40 104 42" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Discharge from <i class="v">V</i><sub>0</sub></h3>
+            <p class="f"><span><span><i class="v">v</i><sub>C</sub> = <i class="v">V</i><sub>0</sub>e<sup>−<i class="v">t</i>/<i class="v">τ</i></sup></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L24 26 M88 26 L106 26" class="s-ink" stroke-width="1.5"/><path d="M24 26 Q30 12 36 26 Q42 12 48 26 Q54 12 60 26 Q66 12 72 26 Q78 12 88 26" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>RL circuit</h3>
+            <p class="f"><span><span><i class="v">τ</i> = </span><span class="frac"><span><i class="v">L</i></span><span><i class="v">R</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><path d="M14 44 Q34 10 104 8" class="s-ink" stroke-width="2"/><path d="M14 22 L60 22 L60 44" class="s-ox dash" stroke-width="1"/></svg>
+          <div>
+            <h3>Time to reach a voltage</h3>
+            <p class="f"><span><span><i class="v">t</i> = −<i class="v">τ</i> ln(1 − </span><span class="frac"><span><i class="v">v</i><sub>C</sub></span><span><i class="v">V</i></span></span><span>)</span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The capacitor starts uncharged, and the supply switches on as an ideal step at <i class="v">t</i> = 0.</li>
+          <li>Components are ideal: no capacitor leakage, and any source resistance is included in <i class="v">R</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Round the loop, the supply voltage splits between resistor and capacitor: <code><i class="v">V</i> = <i class="v">i</i><i class="v">R</i> + <i class="v">v</i><sub>C</sub></code>.</li>
+          <li>The capacitor's current is <code><i class="v">i</i> = <i class="v">C</i> d<i class="v">v</i><sub>C</sub>/d<i class="v">t</i></code>, so <code><i class="v">R</i><i class="v">C</i> d<i class="v">v</i><sub>C</sub>/d<i class="v">t</i> + <i class="v">v</i><sub>C</sub> = <i class="v">V</i></code>.</li>
+          <li>With <code><i class="v">v</i><sub>C</sub>(0) = 0</code>, the solution is <code><i class="v">v</i><sub>C</sub> = <i class="v">V</i>(1 − e<sup>−<i class="v">t</i>/<i class="v">R</i><i class="v">C</i></sup>)</code>.</li>
+        </ol>
+        <p class="prose">At <span class="inline-eq"><i class="v">t</i> = <i class="v">τ</i></span> the capacitor reaches <span class="inline-eq">1 − 1/e ≈ 63.2%</span> of <i class="v">V</i>. After 5τ it is above 99%, usually taken as fully charged.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="electrical-power.html">← 1.2 Electrical power</a>
+        <a href="./">Electrical contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Electrical §1.3</span>
+  <a href="./#dc-circuits">Back to DC circuits</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/rc-time-constant.js" defer></script>
+</body>
+</html>
