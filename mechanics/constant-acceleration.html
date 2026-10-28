@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Constant acceleration · Engineer's Notebook</title>
+<meta name="description" content="The equations of motion for constant acceleration, v² = u² + 2as, with a live speed–time graph, a worked example and the other suvat equations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#kinematics">Kinematics</a>
+  </nav>
+  <span class="ref">§4.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Constant acceleration</h1>
+      <p class="lede">When acceleration is constant, speed, distance and time are tied together by the equations of motion. Without needing the time:</p>
+
+      <div class="eq" role="math" aria-label="v squared equals u squared plus 2 a s">
+        <span><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>u</dt><dd>initial speed</dd><dd class="u">m/s</dd>
+        <dt>v</dt><dd>final speed</dd><dd class="u">m/s</dd>
+        <dt>a</dt><dd>acceleration</dd><dd class="u">m/s²</dd>
+        <dt>s</dt><dd>displacement</dd><dd class="u">m</dd>
+        <dt>t</dt><dd>time</dd><dd class="u">s</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A speed–time graph. A straight line runs from the initial speed to the final speed, and the shaded area beneath it is the distance travelled.</desc>
+<path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">TIME t</text><text class="lbl" x="68" y="22">SPEED v</text>
+          <path id="area" class="f-tint" d="M60.0 200.0 L60.0 158.8 L460.0 76.3 L460.0 200.0 Z"></path>
+          <path id="line" class="s-ox" stroke-width="3" stroke-linecap="round" d="M60.0 158.8 L460.0 76.3"></path>
+          <text id="u-label" x="54" text-anchor="end" y="162.8">u = 5</text>
+          <text id="v-label" class="t-ox" x="460.0" y="66.3" text-anchor="end">v = 15 m/s</text>
+          <text id="t-label" y="218" text-anchor="middle" x="460.0">t = 5 s</text>
+          <text id="s-label" text-anchor="middle" class="t-ox" x="260.0" y="162.8">s = 50 m</text>
+        </svg>
+        <figcaption><b>Fig. 4.1-1</b>The area under the line is the distance travelled.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="u-num"><i>u</i>Initial speed <span class="unit">m/s</span></label>
+            <input type="range" id="u-range" min="0" max="50" step="0.5" value="5" aria-label="Initial speed, m/s">
+            <input type="number" id="u-num" min="0" max="50" step="0.5" value="5" inputmode="decimal" data-name="a speed" data-unit="m/s" aria-describedby="u-err">
+            <span class="err" id="u-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="a-num"><i>a</i>Acceleration <span class="unit">m/s²</span></label>
+            <input type="range" id="a-range" min="-10" max="10" step="0.1" value="2" aria-label="Acceleration, m/s²">
+            <input type="number" id="a-num" min="-10" max="10" step="0.1" value="2" inputmode="decimal" data-name="an acceleration" data-unit="m/s²" aria-describedby="a-err">
+            <span class="err" id="a-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="s-num"><i>s</i>Distance <span class="unit">m</span></label>
+            <input type="range" id="s-range" min="1" max="500" step="1" value="50" aria-label="Distance, m">
+            <input type="number" id="s-num" min="1" max="500" step="1" value="50" inputmode="numeric" data-name="a distance" data-unit="m" aria-describedby="s-err">
+            <span class="err" id="s-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">t</i> = (<i class="v">v</i> − <i class="v">u</i>)/<i class="v">a</i></td><td id="out-t">5 s</td></tr>
+            <tr><td>(<i class="v">u</i> + <i class="v">v</i>)/2, mean speed</td><td id="out-avg">10 m/s</td></tr>
+            <tr class="key"><td><i class="v">v</i> = √(<i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i>)</td><td id="out-v">15 m/s</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 4.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">u</i></span><span class="what">initial speed</span><span id="g-u" class="live">5 m/s</span></li>
+          <li><span><i class="v">a</i></span><span class="what">constant acceleration</span><span id="g-a" class="live">2 m/s²</span></li>
+          <li><span><i class="v">s</i></span><span class="what">distance travelled</span><span id="g-s" class="live">50 m</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The final speed <i class="v">v</i> and the time taken <i class="v">t</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></span>
+          <span class="sub-line live" id="w-sub">= (5&nbsp;m/s)² + 2 × 2&nbsp;m/s² × 50&nbsp;m = 225&nbsp;m²/s²</span>
+          <span><i class="v">v</i> = <span id="w-v" class="live">√225 = 15&nbsp;m/s</span></span>
+          <span><i class="v">t</i> = <span id="w-t" class="live">(v − u)/a = (15 − 5)&nbsp;m/s / 2&nbsp;m/s² = 5&nbsp;s</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">v</i> = </span><span id="w-ans">15 m/s</span></span>
+          <p class="answer-note" id="w-note">That is 54 km/h, reached after 5 s.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">The other equations of motion</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><line x1="14" y1="34" x2="100" y2="10" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Speed after time <i class="v">t</i></h3>
+            <p class="f"><span><span><i class="v">v</i> = <i class="v">u</i> + <i class="v">a</i><i class="v">t</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 44 L14 34 L100 10 L100 44 Z" class="f-tint"/><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><line x1="14" y1="34" x2="100" y2="10" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Distance from time</h3>
+            <p class="f"><span><span><i class="v">s</i> = <i class="v">u</i><i class="v">t</i> + ½<i class="v">a</i><i class="v">t</i>²</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 44 L14 30 L100 14 L100 44 Z" class="f-tint"/><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><line x1="14" y1="30" x2="100" y2="14" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Distance from mean speed</h3>
+            <p class="f"><span><span><i class="v">s</i> = ½(<i class="v">u</i> + <i class="v">v</i>)<i class="v">t</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 44 L14 10 L90 44 L90 44 Z" class="f-tint"/><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><line x1="14" y1="10" x2="90" y2="44" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Stopping distance from <i class="v">u</i></h3>
+            <p class="f"><span><span><i class="v">s</i> = </span><span class="frac"><span><i class="v">u</i>²</span><span>2<i class="v">a</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Acceleration is constant for the whole motion.</li>
+          <li>Motion is along a straight line, and <i class="v">u</i>, <i class="v">v</i>, <i class="v">a</i> and <i class="v">s</i> are signed along it.</li>
+          <li>Drag and other speed-dependent forces are ignored, or folded into a constant <i class="v">a</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Acceleration is the slope of the speed–time graph: <code><i class="v">v</i> = <i class="v">u</i> + <i class="v">a</i><i class="v">t</i></code>.</li>
+          <li>Distance is the area under it, a trapezium: <code><i class="v">s</i> = (<i class="v">u</i> + <i class="v">v</i>)<i class="v">t</i>/2</code>.</li>
+          <li>Take <code><i class="v">t</i> = (<i class="v">v</i> − <i class="v">u</i>)/<i class="v">a</i></code> from the first and substitute: <code><i class="v">s</i> = (<i class="v">u</i> + <i class="v">v</i>)(<i class="v">v</i> − <i class="v">u</i>)/2<i class="v">a</i> = (<i class="v">v</i>² − <i class="v">u</i>²)/2<i class="v">a</i></code>.</li>
+          <li>Rearrange: <code><i class="v">v</i>² = <i class="v">u</i>² + 2<i class="v">a</i><i class="v">s</i></code>.</li>
+        </ol>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="bending-stress.html">← 3.2 Bending stress</a>
+        <a href="./">Mechanics contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §4.1</span>
+  <a href="./#kinematics">Back to Kinematics</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/constant-acceleration.js" defer></script>
+</body>
+</html>

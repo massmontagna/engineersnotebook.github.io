@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>First law · Engineer's Notebook</title>
+<meta name="description" content="The first law of thermodynamics, ΔU = Q − W, shown on an ideal gas heated at constant pressure or volume, with a live energy-split demo and worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Thermodynamics</a><span aria-hidden="true">/</span>
+    <a href="./#gases">Gases</a>
+  </nav>
+  <span class="ref">§1.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="./" aria-current="true">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">First law</h1>
+      <p class="lede">Energy is conserved. Heat <i class="v">Q</i> added to a closed system either raises its internal energy <i class="v">U</i> or leaves as work <i class="v">W</i> done by the system:</p>
+
+      <div class="eq" role="math" aria-label="delta U equals Q minus W">
+        <span>Δ<i class="v">U</i> = <i class="v">Q</i> − <i class="v">W</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>U</dt><dd>internal energy</dd><dd class="u">J</dd>
+        <dt>Q</dt><dd>heat added to the system</dd><dd class="u">J</dd>
+        <dt>W</dt><dd>work done by the system</dd><dd class="u">J</dd>
+        <dt>n</dt><dd>amount of gas</dd><dd class="u">mol</dd>
+        <dt>c<sub>v</sub></dt><dd>molar heat capacity, constant volume</dd><dd class="u">J/(mol·K)</dd>
+        <dt>c<sub>p</sub></dt><dd>molar heat capacity, constant pressure</dd><dd class="u">J/(mol·K)</dd>
+        <dt>R</dt><dd>molar gas constant, 8.314</dd><dd class="u">J/(mol·K)</dd>
+        <dt>T</dt><dd>temperature</dd><dd class="u">K</dd>
+        <dt>p</dt><dd>pressure</dd><dd class="u">Pa</dd>
+        <dt>V</dt><dd>volume</dd><dd class="u">m³</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Two bars. The top bar is the heat added. The bottom bar splits the same length into the rise in internal energy and the work done by the gas.</desc>
+          <text class="lbl" x="20" y="61">HEAT IN, Q</text>
+          <rect id="bar-Q" x="150" y="40" height="34" class="s-ink f-tab" stroke-width="1.5" width="330"></rect>
+          <text id="Q-label" y="62" class="t-ink" x="160">Q = 5 kJ</text>
+          <text class="lbl" x="20" y="131">GOES TO</text>
+          <rect id="bar-U" x="150" y="110" height="34" class="f-ox" width="235.7"></rect>
+          <rect id="bar-W" y="110" height="34" class="s-ink f-sheet" stroke-width="1.5" x="385.7" width="94.3" visibility="visible"></rect>
+          <text id="U-label" y="166" text-anchor="middle" class="t-ox" x="267.9">ΔU = 3.57 kJ</text>
+          <text id="W-label" y="186" text-anchor="middle" class="t-ink" x="432.9">W = 1.43 kJ</text>
+        </svg>
+        <figcaption><b>Fig. 1.2-1</b>Q = ΔU + W: the two lower parts always add up to the heat in.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="Q-num"><i>Q</i>Heat in <span class="unit">kJ</span></label>
+            <input type="range" id="Q-range" min="0.1" max="50" step="0.1" value="5" aria-label="Heat in, kJ">
+            <input type="number" id="Q-num" min="0.1" max="50" step="0.1" value="5" inputmode="decimal" data-name="an amount of heat" data-unit="kJ" aria-describedby="Q-err">
+            <span class="err" id="Q-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="n-num"><i>n</i>Amount <span class="unit">mol</span></label>
+            <input type="range" id="n-range" min="0.1" max="10" step="0.1" value="1" aria-label="Amount, mol">
+            <input type="number" id="n-num" min="0.1" max="10" step="0.1" value="1" inputmode="decimal" data-name="an amount" data-unit="mol" aria-describedby="n-err">
+            <span class="err" id="n-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="gas-sel"><i>c</i>Gas</label>
+            <select id="gas-sel">
+              <option value="2.5" data-name="diatomic gas (air, N₂, O₂)">Diatomic (air) · cᵥ = 2.5R</option>
+              <option value="1.5" data-name="monatomic gas (He, Ar)">Monatomic (He, Ar) · cᵥ = 1.5R</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="proc-sel"><i>p</i>Process</label>
+            <select id="proc-sel">
+              <option value="1" data-name="constant pressure">Constant pressure</option>
+              <option value="0" data-name="constant volume">Constant volume</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td>Δ<i class="v">T</i></td><td id="out-dT">172 K</td></tr>
+            <tr><td><i class="v">W</i></td><td id="out-W">1.43 kJ</td></tr>
+            <tr class="key"><td>Δ<i class="v">U</i> = <i class="v">Q</i> − <i class="v">W</i></td><td id="out-U">3.57 kJ</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">Q</i></span><span class="what">heat added</span><span id="g-Q" class="live">5 kJ</span></li>
+          <li><span><i class="v">n</i></span><span class="what">amount of gas</span><span id="g-n" class="live">1 mol</span></li>
+          <li><span><i class="v">c</i><sub>v</sub></span><span class="what"><span id="g-gas" class="live">diatomic gas (air, N₂, O₂)</span></span><span id="g-cv" class="live">2.5R</span></li>
+          <li><span></span><span class="what">process</span><span id="g-proc" class="live">constant pressure</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The change in internal energy Δ<i class="v">U</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">c</i> = <span id="w-c" class="live">cₚ = cᵥ + R = 29.1&nbsp;J/(mol·K)</span></span>
+          <span>Δ<i class="v">T</i> = <i class="v">Q</i>/<i class="v">n</i><i class="v">c</i> = <span id="w-dT" class="live">5,000&nbsp;J / (1&nbsp;mol × 29.1&nbsp;J/(mol·K)) = 172&nbsp;K</span></span>
+          <span><i class="v">W</i> = <span id="w-W" class="live">nRΔT = 1&nbsp;mol × 8.314&nbsp;J/(mol·K) × 172&nbsp;K = 1.43&nbsp;kJ</span></span>
+          <span>Δ<i class="v">U</i> = <i class="v">Q</i> − <i class="v">W</i> = <span id="w-U" class="live">5&nbsp;kJ − 1.43&nbsp;kJ = 3.57&nbsp;kJ</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span>Δ<i class="v">U</i> = </span><span id="w-ans">3.57 kJ</span></span>
+          <p class="answer-note" id="w-note">71.4% of the heat went into internal energy, raising the temperature by 172 K.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><path d="M20 10 Q34 38 100 40" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Isothermal, ideal gas</h3>
+            <p class="f"><span><span>Δ<i class="v">U</i> = 0</span></span><span><span><i class="v">Q</i> = <i class="v">W</i> = <i class="v">n</i><i class="v">R</i><i class="v">T</i> ln(</span><span class="frac"><span><i class="v">V</i><sub>2</sub></span><span><i class="v">V</i><sub>1</sub></span></span><span>)</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><path d="M20 6 Q30 40 100 42" class="s-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Adiabatic, no heat</h3>
+            <p class="f"><span><span><i class="v">Q</i> = 0</span></span><span><span>Δ<i class="v">U</i> = −<i class="v">W</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M14 6 L14 44 L106 44" class="s-ink2" stroke-width="1"/><path d="M24 12 L90 12 L90 38 L24 38 Z" class="s-ox f-tint" stroke-width="2"/></svg>
+          <div>
+            <h3>Complete cycle</h3>
+            <p class="f"><span><span>Δ<i class="v">U</i> = 0</span></span><span><span><i class="v">Q</i><sub>net</sub> = <i class="v">W</i><sub>net</sub></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The system is closed: no mass crosses its boundary.</li>
+          <li>Heat into the system and work done by it are positive. Some texts count work done on the system instead and write Δ<i class="v">U</i> = <i class="v">Q</i> + <i class="v">W</i>.</li>
+          <li>The gas is ideal with constant heat capacities, so <i class="v">U</i> depends on temperature alone.</li>
+          <li>The process is slow enough that the gas is always close to equilibrium.</li>
+          <li>Changes in the system's bulk kinetic and potential energy are ignored.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Energy is conserved, so heat in either stays in the gas or leaves as work: <code><i class="v">Q</i> = Δ<i class="v">U</i> + <i class="v">W</i></code>.</li>
+          <li>For an ideal gas, <i class="v">U</i> depends only on temperature: <code>Δ<i class="v">U</i> = <i class="v">n</i><i class="v">c</i><sub>v</sub>Δ<i class="v">T</i></code>.</li>
+          <li>At constant pressure the gas pushes its boundary out: <code><i class="v">W</i> = <i class="v">p</i> Δ<i class="v">V</i> = <i class="v">n</i><i class="v">R</i> Δ<i class="v">T</i></code>.</li>
+          <li>So <code><i class="v">Q</i> = <i class="v">n</i>(<i class="v">c</i><sub>v</sub> + <i class="v">R</i>)Δ<i class="v">T</i> = <i class="v">n</i><i class="v">c</i><sub>p</sub>Δ<i class="v">T</i></code>, which gives Δ<i class="v">T</i> from <i class="v">Q</i>.</li>
+        </ol>
+        <p class="prose">At constant volume no work is done, so all of the heat raises <i class="v">U</i>: <span class="inline-eq"><i class="v">Q</i> = <i class="v">n</i><i class="v">c</i><sub>v</sub>Δ<i class="v">T</i></span>.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="ideal-gas-law.html">← 1.1 Ideal gas law</a>
+        <a href="conduction.html">2.1 Conduction →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Thermodynamics §1.2</span>
+  <a href="./#gases">Back to Gases</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/first-law.js" defer></script>
+</body>
+</html>

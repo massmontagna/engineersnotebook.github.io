@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reactions and shear · Engineer's Notebook</title>
+<meta name="description" content="Support reactions and the shear force diagram for a simply supported beam with a point load, R_A = Pb/L and R_B = Pa/L, with a live demo and worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#beams">Beams</a>
+  </nav>
+  <span class="ref">§2.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Reactions and shear</h1>
+      <p class="lede">A simply supported beam carries a point load <i class="v">P</i> at distance <i class="v">a</i> from support A. Taking moments about each support gives the reactions:</p>
+
+      <div class="eq" role="math" aria-label="R A equals P b over L; R B equals P a over L">
+        <span><i class="v">R</i><sub>A</sub> = <span class="frac"><span><i class="v">P</i>·<i class="v">b</i></span><span><i class="v">L</i></span></span>,</span><span><i class="v">R</i><sub>B</sub> = <span class="frac"><span><i class="v">P</i>·<i class="v">a</i></span><span><i class="v">L</i></span></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>P</dt><dd>point load</dd><dd class="u">N</dd>
+        <dt>L</dt><dd>span</dd><dd class="u">m</dd>
+        <dt>a</dt><dd>load distance from A</dd><dd class="u">m</dd>
+        <dt>b</dt><dd>load distance from B, L − a</dd><dd class="u">m</dd>
+        <dt>R<sub>A</sub></dt><dd>reaction at A</dd><dd class="u">N</dd>
+        <dt>R<sub>B</sub></dt><dd>reaction at B</dd><dd class="u">N</dd>
+        <dt>V</dt><dd>shear force</dd><dd class="u">N</dd>
+        <dt>w</dt><dd>load per length</dd><dd class="u">N/m</dd>
+        <dt>x</dt><dd>distance from A</dd><dd class="u">m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 260" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A beam on a pin at A and a roller at B, with a point load that can move along it. Arrows show the two support reactions, and below the beam the shear force diagram steps from plus R A to minus R B under the load.</desc>
+          <line x1="40" y1="70" x2="480" y2="70" class="s-ink" stroke-width="4" stroke-linecap="round"></line>
+          <path d="M40 72 L28 92 L52 92 Z" class="s-ink" stroke-width="2"></path><line x1="22" y1="96" x2="58" y2="96" class="s-ink" stroke-width="2"></line><circle cx="480" cy="80" r="8" class="s-ink" stroke-width="2"></circle><line x1="462" y1="90" x2="498" y2="90" class="s-ink" stroke-width="2"></line>
+          <text class="lbl" x="22" y="64" text-anchor="end">A</text>
+          <text class="lbl" x="498" y="64">B</text>
+          <path id="load" class="s-ox f-ox" stroke-width="4" d="M186.7 8.0 L186.7 50.0 M177.9 50.0 L186.7 66.0 L195.5 50.0 Z"></path>
+          <text id="load-label" y="22" class="t-ox" x="196.7" text-anchor="start">P = 10 kN at a = 2 m</text>
+          <path id="RA" class="s-ink f-ink" stroke-width="2.5" d="M40.0 124.7 L40.0 108.0 M45.5 108.0 L40.0 98.0 L34.5 108.0 Z"></path>
+          <path id="RB" class="s-ink f-ink" stroke-width="2.5" d="M480.0 113.3 L480.0 108.0 M485.5 108.0 L480.0 98.0 L474.5 108.0 Z"></path>
+          <text id="RA-label" x="54" y="126" class="t-ink">R = 6.67 kN</text>
+          <text id="RB-label" x="466" y="126" class="t-ink" text-anchor="end">R = 3.33 kN</text>
+          <text class="lbl" x="40" y="148">SHEAR FORCE V</text>
+          <line x1="40" y1="200" x2="480" y2="200" class="s-ink2" stroke-width="1"></line>
+          <path id="sfd" class="s-ink f-tab" stroke-width="1.5" d="M40.0 200.0 L40.0 176.0 L186.7 176.0 L186.7 212.0 L480.0 212.0 L480.0 200.0 Z"></path>
+          <text id="VA-label" text-anchor="middle" x="113.3" y="170.0">+6.67 kN</text>
+          <text id="VB-label" text-anchor="middle" x="333.3" y="228.0">−3.33 kN</text>
+        </svg>
+        <figcaption><b>Fig. 2.1-1</b>Reaction arrows and shear diagram are drawn to scale with the load.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="P-num"><i>P</i>Load <span class="unit">kN</span></label>
+            <input type="range" id="P-range" min="0.1" max="100" step="0.1" value="10" aria-label="Load, kN">
+            <input type="number" id="P-num" min="0.1" max="100" step="0.1" value="10" inputmode="decimal" data-name="a load" data-unit="kN" aria-describedby="P-err">
+            <span class="err" id="P-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="L-num"><i>L</i>Span <span class="unit">m</span></label>
+            <input type="range" id="L-range" min="1" max="20" step="0.1" value="6" aria-label="Span, m">
+            <input type="number" id="L-num" min="1" max="20" step="0.1" value="6" inputmode="decimal" data-name="a span" data-unit="m" aria-describedby="L-err">
+            <span class="err" id="L-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="a-num"><i>a</i>Position <span class="unit">m</span></label>
+            <input type="range" id="a-range" min="0" max="20" step="0.1" value="2" aria-label="Position, m">
+            <input type="number" id="a-num" min="0" max="20" step="0.1" value="2" inputmode="decimal" data-name="a position" data-unit="m" aria-describedby="a-err">
+            <span class="err" id="a-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">R</i><sub>A</sub> = <i class="v">P</i><i class="v">b</i>/<i class="v">L</i></td><td id="out-RA">6.67 kN</td></tr>
+            <tr><td><i class="v">R</i><sub>B</sub> = <i class="v">P</i><i class="v">a</i>/<i class="v">L</i></td><td id="out-RB">3.33 kN</td></tr>
+            <tr class="key"><td>|<i class="v">V</i>|<sub>max</sub></td><td id="out-V">6.67 kN</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 2.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">P</i></span><span class="what">point load</span><span id="g-P" class="live">10 kN</span></li>
+          <li><span><i class="v">L</i></span><span class="what">span between supports</span><span id="g-L" class="live">6 m</span></li>
+          <li><span><i class="v">a</i></span><span class="what">load distance from A</span><span id="g-a" class="live">2 m</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The support reactions <i class="v">R</i><sub>A</sub> and <i class="v">R</i><sub>B</sub>, and the largest shear force.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">b</i> = <i class="v">L</i> − <i class="v">a</i> = <span id="w-b" class="live">6&nbsp;m − 2&nbsp;m = 4&nbsp;m</span></span>
+          <span>Σ<i class="v">M</i><sub>A</sub> = 0: <i class="v">R</i><sub>B</sub><i class="v">L</i> = <i class="v">P</i><i class="v">a</i></span>
+          <span><i class="v">R</i><sub>B</sub> = <i class="v">P</i><i class="v">a</i>/<i class="v">L</i> = <span id="w-RB" class="live">10&nbsp;kN × 2&nbsp;m / 6&nbsp;m = 3.33&nbsp;kN</span></span>
+          <span>Σ<i class="v">F</i> = 0: <i class="v">R</i><sub>A</sub> = <i class="v">P</i> − <i class="v">R</i><sub>B</sub> = <span id="w-RA" class="live">10&nbsp;kN − 3.33&nbsp;kN = 6.67&nbsp;kN</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">R</i><sub>A</sub> = <span id="w-ansA" class="live">6.67 kN</span>, <i class="v">R</i><sub>B</sub> = </span><span id="w-ans">3.33 kN</span></span>
+          <p class="answer-note" id="w-note">Shear equals the reaction at A left of the load and minus the reaction at B right of it, so the largest is 6.67 kN.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <p class="legend">Reactions and largest shear force <i class="v">V</i> for other common beams.</p>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/><path d="M8 31 L2 42 L14 42 Z"/><circle cx="104" cy="36" r="5"/></g><path d="M56 4 L56 20 M52.1 20 L56 27 L59.9 20 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Simply supported, central load</h3>
+            <p class="f"><span><span><i class="v">R</i> = </span><span class="frac"><span><i class="v">P</i></span><span>2</span></span></span><span><span><i class="v">V</i> = </span><span class="frac"><span><i class="v">P</i></span><span>2</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/><path d="M8 31 L2 42 L14 42 Z"/><circle cx="104" cy="36" r="5"/></g><g class="s-ox" stroke-width="1.5"><line x1="8" y1="8" x2="104" y2="8"/><path d="M14 8V24M28 8V24M42 8V24M56 8V24M70 8V24M84 8V24M98 8V24"/></g></svg>
+          <div>
+            <h3>Simply supported, uniform load</h3>
+            <p class="f"><span><span><i class="v">R</i> = </span><span class="frac"><span><i class="v">w</i><i class="v">L</i></span><span>2</span></span></span><span><span><i class="v">V</i><sub>max</sub> = </span><span class="frac"><span><i class="v">w</i><i class="v">L</i></span><span>2</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="6" x2="8" y2="48" stroke-width="3"/><path d="M2 12 L8 6 M2 22 L8 16 M2 32 L8 26 M2 42 L8 36"/><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/></g><path d="M102 4 L102 20 M98.2 20 L102 27 L105.8 20 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Cantilever, end load</h3>
+            <p class="f"><span><span><i class="v">R</i> = <i class="v">P</i></span></span><span><span><i class="v">V</i> = <i class="v">P</i></span></span><span><span><i class="v">M</i><sub>wall</sub> = <i class="v">P</i><i class="v">L</i></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The supports are a pin and a roller, so with only vertical loads there is no horizontal reaction.</li>
+          <li>The beam is statically determinate: its reactions come from equilibrium alone and do not depend on its stiffness.</li>
+          <li>The beam's own weight is ignored. Add it as a uniform load if it matters.</li>
+          <li>Shear is positive when the part of the beam left of a cut is pushed up.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Take moments about support A, with the load at distance <i class="v">a</i> and support B at <i class="v">L</i>.</p>
+        </div>
+        <ol class="derive prose">
+          <li><code>Σ<i class="v">M</i><sub>A</sub> = <i class="v">R</i><sub>B</sub><i class="v">L</i> − <i class="v">P</i><i class="v">a</i> = 0</code>, so <code><i class="v">R</i><sub>B</sub> = <i class="v">P</i><i class="v">a</i>/<i class="v">L</i></code>.</li>
+          <li><code>Σ<i class="v">F</i> = <i class="v">R</i><sub>A</sub> + <i class="v">R</i><sub>B</sub> − <i class="v">P</i> = 0</code>, so <code><i class="v">R</i><sub>A</sub> = <i class="v">P</i>(1 − <i class="v">a</i>/<i class="v">L</i>) = <i class="v">P</i><i class="v">b</i>/<i class="v">L</i></code>.</li>
+          <li>Cut the beam at <code><i class="v">x</i> < <i class="v">a</i></code>. The only force left of the cut is <i class="v">R</i><sub>A</sub>, so <code><i class="v">V</i> = <i class="v">R</i><sub>A</sub></code>.</li>
+          <li>Cut at <code><i class="v">x</i> > <i class="v">a</i></code>: <code><i class="v">V</i> = <i class="v">R</i><sub>A</sub> − <i class="v">P</i> = −<i class="v">R</i><sub>B</sub></code>.</li>
+        </ol>
+        <p class="prose">The shear jumps by <i class="v">P</i> under the load. With the load at mid-span, <span class="inline-eq"><i class="v">a</i> = <i class="v">b</i> = <i class="v">L</i>/2</span> and each support carries <span class="inline-eq"><i class="v">P</i>/2</span>.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="equilibrium.html">← 1.2 Equilibrium</a>
+        <a href="bending-moment.html">2.2 Bending moment →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §2.1</span>
+  <a href="./#beams">Back to Beams</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/reactions-and-shear.js" defer></script>
+</body>
+</html>

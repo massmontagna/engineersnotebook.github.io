@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bending moment · Engineer's Notebook</title>
+<meta name="description" content="Bending moment in a simply supported beam, M = PL/4 under a central point load plus wL²/8 from a uniform load, with a live bending moment diagram and worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#beams">Beams</a>
+  </nav>
+  <span class="ref">§2.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Bending moment</h1>
+      <p class="lede">The bending moment at a section is the sum of the moments of every force on one side of it. For a simply supported beam with a central point load, it peaks under the load:</p>
+
+      <div class="eq" role="math" aria-label="M max equals P L over 4">
+        <span><i class="v">M</i><sub>max</sub> =</span><span class="frac"><span><i class="v">P</i>·<i class="v">L</i></span><span>4</span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>M</dt><dd>bending moment</dd><dd class="u">N·m</dd>
+        <dt>P</dt><dd>point load</dd><dd class="u">N</dd>
+        <dt>w</dt><dd>uniform load</dd><dd class="u">N/m</dd>
+        <dt>L</dt><dd>span</dd><dd class="u">m</dd>
+        <dt>x</dt><dd>distance from left support</dd><dd class="u">m</dd>
+        <dt>a</dt><dd>load distance from left support</dd><dd class="u">m</dd>
+        <dt>b</dt><dd>load distance from right support</dd><dd class="u">m</dd>
+        <dt>R</dt><dd>support reaction</dd><dd class="u">N</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 250" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A simply supported beam with a central point load and a uniform load along it. Below, the bending moment diagram curves down to its maximum at mid-span.</desc>
+          <g id="udl" class="s-ox" stroke-width="1.5" visibility="visible">
+            <line x1="40" y1="44" x2="480" y2="44"></line>
+            <path d="M40 44V64M84 44V64M128 44V64M172 44V64M216 44V64M304 44V64M348 44V64M392 44V64M436 44V64M480 44V64"></path>
+          </g>
+          <text id="udl-label" x="44" y="38" class="t-ox" visibility="visible">w = 2 kN/m</text>
+          <g id="load" visibility="visible"><path d="M260 6 L260 52 M252.3 52 L260 66 L267.7 52 Z" class="s-ox f-ox" stroke-width="4"></path></g>
+          <text id="load-label" x="270" y="22" class="t-ox" visibility="visible">P = 10 kN</text>
+          <line x1="40" y1="70" x2="480" y2="70" class="s-ink" stroke-width="4" stroke-linecap="round"></line>
+          <path d="M40 72 L28 92 L52 92 Z" class="s-ink" stroke-width="2"></path><line x1="22" y1="96" x2="58" y2="96" class="s-ink" stroke-width="2"></line><circle cx="480" cy="80" r="8" class="s-ink" stroke-width="2"></circle><line x1="462" y1="90" x2="498" y2="90" class="s-ink" stroke-width="2"></line>
+          <text class="lbl" x="40" y="132">BENDING MOMENT M</text>
+          <line x1="40" y1="145" x2="480" y2="145" class="s-ink2" stroke-width="1"></line>
+          <path id="bmd" class="s-ink f-tab" stroke-width="1.5" d="M40.0 145.0 L40.0 145.0 L51.0 150.1 L62.0 155.0 L73.0 159.8 L84.0 164.5 L95.0 169.0 L106.0 173.4 L117.0 177.6 L128.0 181.8 L139.0 185.7 L150.0 189.5 L161.0 193.2 L172.0 196.8 L183.0 200.1 L194.0 203.4 L205.0 206.5 L216.0 209.5 L227.0 212.3 L238.0 215.0 L249.0 217.6 L260.0 220.0 L271.0 217.6 L282.0 215.0 L293.0 212.3 L304.0 209.5 L315.0 206.5 L326.0 203.4 L337.0 200.1 L348.0 196.8 L359.0 193.2 L370.0 189.5 L381.0 185.7 L392.0 181.7 L403.0 177.6 L414.0 173.4 L425.0 169.0 L436.0 164.5 L447.0 159.8 L458.0 155.0 L469.0 150.1 L480.0 145.0 L480.0 145.0 Z"></path>
+          <text id="M-label" x="260" text-anchor="middle" class="t-ox" y="238">M = 24 kN·m</text>
+        </svg>
+        <figcaption><b>Fig. 2.2-1</b>Sagging moment is drawn below the axis, on the tension side.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="P-num"><i>P</i>Point load <span class="unit">kN</span></label>
+            <input type="range" id="P-range" min="0" max="100" step="0.5" value="10" aria-label="Point load, kN">
+            <input type="number" id="P-num" min="0" max="100" step="0.5" value="10" inputmode="decimal" data-name="a load" data-unit="kN" aria-describedby="P-err">
+            <span class="err" id="P-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="w-num"><i>w</i>Uniform load <span class="unit">kN/m</span></label>
+            <input type="range" id="w-range" min="0" max="50" step="0.5" value="2" aria-label="Uniform load, kN/m">
+            <input type="number" id="w-num" min="0" max="50" step="0.5" value="2" inputmode="decimal" data-name="a load" data-unit="kN/m" aria-describedby="w-err">
+            <span class="err" id="w-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="L-num"><i>L</i>Span <span class="unit">m</span></label>
+            <input type="range" id="L-range" min="1" max="20" step="0.1" value="6" aria-label="Span, m">
+            <input type="number" id="L-num" min="1" max="20" step="0.1" value="6" inputmode="decimal" data-name="a span" data-unit="m" aria-describedby="L-err">
+            <span class="err" id="L-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">M</i><sub>P</sub> = <i class="v">P</i><i class="v">L</i>/4</td><td id="out-MP">15 kN·m</td></tr>
+            <tr><td><i class="v">M</i><sub>w</sub> = <i class="v">w</i><i class="v">L</i>²/8</td><td id="out-Mw">9 kN·m</td></tr>
+            <tr class="key"><td><i class="v">M</i><sub>max</sub> = <i class="v">M</i><sub>P</sub> + <i class="v">M</i><sub>w</sub></td><td id="out-M">24 kN·m</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 2.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">P</i></span><span class="what">point load at mid-span</span><span id="g-P" class="live">10 kN</span></li>
+          <li><span><i class="v">w</i></span><span class="what">uniform load</span><span id="g-w" class="live">2 kN/m</span></li>
+          <li><span><i class="v">L</i></span><span class="what">span</span><span id="g-L" class="live">6 m</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The bending moment at mid-span.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">M</i><sub>P</sub> = <i class="v">P</i><i class="v">L</i>/4 = <span id="w-MP" class="live">10&nbsp;kN × 6&nbsp;m / 4 = 15&nbsp;kN·m</span></span>
+          <span><i class="v">M</i><sub>w</sub> = <i class="v">w</i><i class="v">L</i>²/8 = <span id="w-Mw" class="live">2&nbsp;kN/m × (6&nbsp;m)² / 8 = 9&nbsp;kN·m</span></span>
+          <span><i class="v">M</i> = <i class="v">M</i><sub>P</sub> + <i class="v">M</i><sub>w</sub> = <span id="w-M" class="live">15 + 9 = 24&nbsp;kN·m</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">M</i> = </span><span id="w-ans">24 kN·m</span></span>
+          <p class="answer-note" id="w-note">Each support reaction is P/2 + wL/2 = 11 kN.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <p class="legend">Maximum bending moment for other common beams.</p>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/><path d="M8 31 L2 42 L14 42 Z"/><circle cx="104" cy="36" r="5"/></g><path d="M36 4 L36 20 M32.1 20 L36 27 L39.9 20 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Simply supported, point load at <i class="v">a</i></h3>
+            <p class="f"><span><span><i class="v">M</i> = </span><span class="frac"><span><i class="v">P</i><i class="v">a</i><i class="v">b</i></span><span><i class="v">L</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/><path d="M8 31 L2 42 L14 42 Z"/><circle cx="104" cy="36" r="5"/></g><g class="s-ox" stroke-width="1.5"><line x1="8" y1="8" x2="104" y2="8"/><path d="M14 8V24M28 8V24M42 8V24M56 8V24M70 8V24M84 8V24M98 8V24"/></g></svg>
+          <div>
+            <h3>Simply supported, uniform load</h3>
+            <p class="f"><span><span><i class="v">M</i> = </span><span class="frac"><span><i class="v">w</i><i class="v">L</i>²</span><span>8</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="6" x2="8" y2="48" stroke-width="3"/><path d="M2 12 L8 6 M2 22 L8 16 M2 32 L8 26 M2 42 L8 36"/><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/></g><path d="M102 4 L102 20 M98.2 20 L102 27 L105.8 20 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Cantilever, end load</h3>
+            <p class="f"><span><span><i class="v">M</i> = <i class="v">P</i><i class="v">L</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="6" x2="8" y2="48" stroke-width="3"/><path d="M2 12 L8 6 M2 22 L8 16 M2 32 L8 26 M2 42 L8 36"/><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/></g><g class="s-ox" stroke-width="1.5"><line x1="12" y1="8" x2="104" y2="8"/><path d="M20 8V24M34 8V24M48 8V24M62 8V24M76 8V24M90 8V24M102 8V24"/></g></svg>
+          <div>
+            <h3>Cantilever, uniform load</h3>
+            <p class="f"><span><span><i class="v">M</i> = </span><span class="frac"><span><i class="v">w</i><i class="v">L</i>²</span><span>2</span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Loads add by superposition: the moment from each load is found alone and the results summed. This holds for linear-elastic beams with small deflections.</li>
+          <li>A sagging moment, which bends the beam concave upwards, is positive.</li>
+          <li>The supports are simple, so the moment is zero at each end.</li>
+          <li>The beam's own weight is ignored unless it is included in <i class="v">w</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Each support carries <span class="inline-eq"><i class="v">R</i> = <i class="v">P</i>/2 + <i class="v">w</i><i class="v">L</i>/2</span>. Cut the beam at distance <i class="v">x</i> from the left support, with <span class="inline-eq"><i class="v">x</i> ≤ <i class="v">L</i>/2</span>, and take moments of the forces to the left of the cut.</p>
+        </div>
+        <ol class="derive prose">
+          <li><code><i class="v">M</i>(<i class="v">x</i>) = <i class="v">R</i><i class="v">x</i> − <i class="v">w</i><i class="v">x</i>²/2</code>, since the uniform load on the left part, <code><i class="v">w</i><i class="v">x</i></code>, acts at <code><i class="v">x</i>/2</code>.</li>
+          <li>Substitute <i class="v">R</i>: <code><i class="v">M</i>(<i class="v">x</i>) = <i class="v">P</i><i class="v">x</i>/2 + <i class="v">w</i><i class="v">x</i>(<i class="v">L</i> − <i class="v">x</i>)/2</code>.</li>
+          <li>At mid-span, <code><i class="v">x</i> = <i class="v">L</i>/2</code>: <code><i class="v">M</i> = <i class="v">P</i><i class="v">L</i>/4 + <i class="v">w</i><i class="v">L</i>²/8</code>.</li>
+        </ol>
+        <p class="prose">The point-load term grows linearly to mid-span and the uniform-load term is a parabola. Both peak at the centre, so their maxima add.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="reactions-and-shear.html">← 2.1 Reactions and shear</a>
+        <a href="beam-deflection.html">2.3 Beam deflection →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §2.2</span>
+  <a href="./#beams">Back to Beams</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/bending-moment.js" defer></script>
+</body>
+</html>

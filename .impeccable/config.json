@@ -1,0 +1,20 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "serif 4",
+        "createdAt": "2026-10-28T13:52:03.277Z",
+        "reason": "model triage: false positive, Source Serif 4 is the documented reading face in DESIGN.md; detector splits the font shorthand"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "serif 4\",serif",
+        "createdAt": "2026-10-28T13:52:03.294Z",
+        "reason": "model triage: same shorthand misparse of Source Serif 4"
+      }
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuity · Engineer's Notebook</title>
+<meta name="description" content="The continuity equation, A₁v₁ = A₂v₂, for steady incompressible flow in a pipe that changes size, with a live demo and worked example.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Fluids</a><span aria-hidden="true">/</span>
+    <a href="./#flow">Flow</a>
+  </nav>
+  <span class="ref">§1.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="./" aria-current="true">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Continuity</h1>
+      <p class="lede">In steady flow of a liquid, whatever goes in one end of a pipe must come out of the other. Where the pipe narrows, the flow speeds up:</p>
+
+      <div class="eq" role="math" aria-label="A 1 v 1 equals A 2 v 2">
+        <span><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>A</dt><dd>cross-sectional area</dd><dd class="u">m²</dd>
+        <dt>v</dt><dd>mean flow speed</dd><dd class="u">m/s</dd>
+        <dt>D</dt><dd>pipe diameter</dd><dd class="u">m</dd>
+        <dt>Q</dt><dd>volume flow rate</dd><dd class="u">m³/s</dd>
+        <dt>ṁ</dt><dd>mass flow rate</dd><dd class="u">kg/s</dd>
+        <dt>ρ</dt><dd>density</dd><dd class="u">kg/m³</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A pipe that changes diameter, with an arrow in each section whose length shows the flow speed.</desc>
+          <path id="pipe" class="s-ink f-tab" stroke-width="2.5" stroke-linejoin="round" d="M20 30 L200 30 L280 65 L500 65 L500 135 L280 135 L200 170 L20 170 Z"></path>
+          <path id="arr1" class="s-ink f-ink" stroke-width="3" d="M40.0 100.0 L68.0 100.0 M68.0 106.6 L80.0 100.0 L68.0 93.4 Z"></path>
+          <path id="arr2" class="s-ox f-ox" stroke-width="3" d="M300.0 100.0 L448.0 100.0 M448.0 106.6 L460.0 100.0 L448.0 93.4 Z"></path>
+          <text id="s1-label" x="24" y="188.0">v₁ = 2 m/s</text>
+          <text id="s2-label" x="496" text-anchor="end" y="153.0">v₂ = 8 m/s</text>
+        </svg>
+        <figcaption><b>Fig. 1.1-1</b>Pipe diameters to scale; arrow lengths show speed.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="D1-num"><i>D₁</i>Inlet <span class="unit">mm</span></label>
+            <input type="range" id="D1-range" min="10" max="500" step="1" value="100" aria-label="Inlet, mm">
+            <input type="number" id="D1-num" min="10" max="500" step="1" value="100" inputmode="numeric" data-name="a diameter" data-unit="mm" aria-describedby="D1-err">
+            <span class="err" id="D1-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="D2-num"><i>D₂</i>Outlet <span class="unit">mm</span></label>
+            <input type="range" id="D2-range" min="10" max="500" step="1" value="50" aria-label="Outlet, mm">
+            <input type="number" id="D2-num" min="10" max="500" step="1" value="50" inputmode="numeric" data-name="a diameter" data-unit="mm" aria-describedby="D2-err">
+            <span class="err" id="D2-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="v1-num"><i>v₁</i>Inlet speed <span class="unit">m/s</span></label>
+            <input type="range" id="v1-range" min="0.1" max="10" step="0.1" value="2" aria-label="Inlet speed, m/s">
+            <input type="number" id="v1-num" min="0.1" max="10" step="0.1" value="2" inputmode="decimal" data-name="a speed" data-unit="m/s" aria-describedby="v1-err">
+            <span class="err" id="v1-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">A</i><sub>1</sub> = π<i class="v">D</i><sub>1</sub>²/4</td><td id="out-A1">7,850 mm²</td></tr>
+            <tr><td><i class="v">A</i><sub>2</sub> = π<i class="v">D</i><sub>2</sub>²/4</td><td id="out-A2">1,960 mm²</td></tr>
+            <tr><td><i class="v">Q</i> = <i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub></td><td id="out-Q">15.7 L/s</td></tr>
+            <tr class="key"><td><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub><i class="v">A</i><sub>1</sub>/<i class="v">A</i><sub>2</sub></td><td id="out-v2">8 m/s</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">D</i><sub>1</sub></span><span class="what">inlet diameter</span><span id="g-D1" class="live">100 mm</span></li>
+          <li><span><i class="v">D</i><sub>2</sub></span><span class="what">outlet diameter</span><span id="g-D2" class="live">50 mm</span></li>
+          <li><span><i class="v">v</i><sub>1</sub></span><span class="what">inlet speed</span><span id="g-v1" class="live">2 m/s</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The speed <i class="v">v</i><sub>2</sub> in the outlet, and the flow rate <i class="v">Q</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">A</i><sub>1</sub> = π<i class="v">D</i><sub>1</sub>²/4 = <span id="w-A1" class="live">π × (0.1&nbsp;m)² / 4 = 7.85 × 10⁻³&nbsp;m²</span></span>
+          <span><i class="v">A</i><sub>2</sub> = π<i class="v">D</i><sub>2</sub>²/4 = <span id="w-A2" class="live">π × (0.05&nbsp;m)² / 4 = 1.96 × 10⁻³&nbsp;m²</span></span>
+          <span><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub><i class="v">A</i><sub>1</sub>/<i class="v">A</i><sub>2</sub> = <span id="w-v2" class="live">2&nbsp;m/s × 7.85 × 10⁻³ / 1.96 × 10⁻³ = 8&nbsp;m/s</span></span>
+          <span><i class="v">Q</i> = <i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <span id="w-Q" class="live">7.85 × 10⁻³&nbsp;m² × 2&nbsp;m/s = 0.0157&nbsp;m³/s</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">v</i><sub>2</sub> = </span><span id="w-ans">8 m/s</span></span>
+          <p class="answer-note" id="w-note">That is 15.7 L/s, the same through both sections.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 14 L48 14 L64 14 L106 14 M6 38 L48 38 L64 38 L106 38" class="s-ink" stroke-width="1.5"/><path d="M30 26 L73 26 M73 29.9 L80 26 L73 22.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Volume flow rate</h3>
+            <p class="f"><span><span><i class="v">Q</i> = <i class="v">A</i><i class="v">v</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 12 L48 12 L64 19 L106 19 M6 40 L48 40 L64 33 L106 33" class="s-ink" stroke-width="1.5"/><path d="M20 26 L33 26 M33 29.9 L40 26 L33 22.1 Z" class="s-ox f-ox" stroke-width="2"/><path d="M72 26 L93 26 M93 29.9 L100 26 L93 22.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Gas or other compressible flow</h3>
+            <p class="f"><span><span><i class="v">ρ</i><sub>1</sub><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <i class="v">ρ</i><sub>2</sub><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 20 L60 20 L100 6 M6 32 L60 32 L100 46 M70 26 L104 26" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Branching pipe</h3>
+            <p class="f"><span><span><i class="v">Q</i><sub>1</sub> = <i class="v">Q</i><sub>2</sub> + <i class="v">Q</i><sub>3</sub></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Flow is steady: nothing changes with time and no fluid builds up between the sections.</li>
+          <li>The fluid is incompressible. That suits liquids, and gases well below about a third of the speed of sound.</li>
+          <li><i class="v">v</i> is the mean speed over the section. The real speed is highest at the centre and zero at the wall.</li>
+          <li>No leaks and no branches between the sections.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>In a short time Δ<i class="v">t</i>, the fluid entering section 1 fills a volume <code><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub>Δ<i class="v">t</i></code>.</li>
+          <li>In the same time the fluid leaving section 2 fills <code><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub>Δ<i class="v">t</i></code>.</li>
+          <li>Mass is conserved and none is stored between them: <code><i class="v">ρ</i><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub>Δ<i class="v">t</i> = <i class="v">ρ</i><i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub>Δ<i class="v">t</i></code>.</li>
+          <li>With <i class="v">ρ</i> constant, <code><i class="v">A</i><sub>1</sub><i class="v">v</i><sub>1</sub> = <i class="v">A</i><sub>2</sub><i class="v">v</i><sub>2</sub></code>.</li>
+        </ol>
+        <p class="prose">For round pipes <span class="inline-eq"><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub>(<i class="v">D</i><sub>1</sub>/<i class="v">D</i><sub>2</sub>)²</span>: halving the diameter makes the flow four times faster.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="./">← Fluids contents</a>
+        <a href="bernoullis-equation.html">1.2 Bernoulli's equation →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Fluids §1.1</span>
+  <a href="./#flow">Back to Flow</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/continuity.js" defer></script>
+</body>
+</html>

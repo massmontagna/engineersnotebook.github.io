@@ -1,0 +1,49 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#EDEEEA;color:#1B1C1B;font:400 17px/1.55 Barlow,sans-serif;position:relative}
+.top{height:56px;border-bottom:2px solid #1B1C1B;display:flex;align-items:center;padding:0 40px;gap:40px}
+.top b{font:600 22px 'Barlow Condensed';letter-spacing:.06em;text-transform:uppercase}
+.top span{font:500 15px 'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase;color:#5A5D58}
+.top span.on{color:#1B1C1B;border-bottom:3px solid #F7B500;padding-bottom:2px}
+.top i{margin-left:auto;font:400 13px 'JetBrains Mono';color:#5A5D58;font-style:normal}
+.rail{position:absolute;top:56px;left:0;width:300px;bottom:0;border-right:1px solid #8C8F8A;padding:28px 24px;font-size:15px}
+.rail h4{font:600 13px 'Barlow Condensed';letter-spacing:.12em;text-transform:uppercase;color:#5A5D58;margin-bottom:12px}
+.rail p{display:flex;gap:12px;padding:5px 0}
+.rail p em{font:400 13px 'JetBrains Mono';font-style:normal;color:#5A5D58;width:34px}
+.rail p.on{background:#F7B500;margin:0 -24px;padding:5px 24px;font-weight:600}
+.rail p.on em{color:#1B1C1B}
+.main{position:absolute;top:56px;left:300px;right:0;bottom:0;padding:36px 56px;display:grid;grid-template-columns:70px 1fr 400px;column-gap:28px}
+.num{font:600 15px 'JetBrains Mono';color:#5A5D58;padding-top:9px}
+h1{font:600 56px/1 'Barlow Condensed';letter-spacing:.01em;text-transform:uppercase;margin-bottom:6px}
+.sub{font:400 13px 'JetBrains Mono';color:#5A5D58;margin-bottom:22px}
+.cl{display:contents}
+.cl>*{border-top:1px solid #1B1C1B;padding-top:8px;margin-top:14px}
+.cl h3{font:600 20px 'Barlow Condensed';letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.f{font:500 40px 'JetBrains Mono';background:#fff;border-left:6px solid #F7B500;padding:18px 24px;margin:6px 0 10px}
+.sym{font:400 14px/1.7 'JetBrains Mono'}
+.sym b{font-weight:500;display:inline-block;width:46px}
+.demo{background:#fff;border:1px solid #1B1C1B;padding:16px;height:360px}
+.demo h5{font:600 13px 'Barlow Condensed';letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.sl{font:400 13px 'JetBrains Mono';display:flex;justify-content:space-between;border-top:1px solid #8C8F8A;padding:7px 0}
+.sl s{text-decoration:none;font-weight:500}
+</style></head><body>
+<div class="top"><b>Engineer's Notebook</b><span class="on">Mechanics</span><span>Index of formulae</span><span>About</span><i>EN-M-02.3</i></div>
+<div class="rail"><h4>Part 2 · Beams</h4>
+<p><em>2.1</em>Reactions &amp; shear</p><p><em>2.2</em>Bending moment</p><p class="on"><em>2.3</em>Deflection</p><p><em>2.4</em>Cantilevers</p><p><em>2.5</em>Second moment of area</p>
+<h4 style="margin-top:28px">Part 1 · Statics</h4><p><em>1.1</em>Free-body diagrams</p><p><em>1.2</em>Equilibrium</p></div>
+<div class="main">
+<div class="num">2.3</div>
+<div><h1>Beam deflection</h1><div class="sub">Simply supported · central point load · Mechanics</div></div>
+<div></div>
+<div class="cl"><div class="num" style="border:0">2.3.1</div>
+<div><h3>Formula</h3><div class="f">δ = P·L³ / 48·E·I</div>
+<p>Maximum deflection occurs at mid-span. Bending moment peaks there too: M = P·L / 4.</p></div>
+<div style="border:0;margin-top:14px"><div class="demo"><h5>Demo · adjust and watch the beam</h5>
+<svg viewBox="0 0 368 160" width="100%"><path d="M20 70 Q184 130 348 70" fill="none" stroke="#1B1C1B" stroke-width="3"/><path d="M20 70H348" stroke="#8C8F8A" stroke-dasharray="4 4"/><path d="M184 8V52" stroke="#F7B500" stroke-width="5"/><path d="M174 46l10 12 10-12z" fill="#F7B500"/><path d="M14 74l6-8 6 8z M342 74l6-8 6 8z" fill="#1B1C1B"/></svg>
+<div class="sl">Load P<s>2.0 kN</s></div><div class="sl">Span L<s>1.5 m</s></div><div class="sl">E · steel<s>200 GPa</s></div><div class="sl">I<s>8.0e-6 m⁴</s></div><div class="sl">δ max<s>4.7 mm</s></div></div></div>
+<div class="num" style="border:0"></div>
+<div><h3>Symbols and units</h3><div class="sym"><b>P</b>point load, N<br><b>L</b>span, m<br><b>E</b>elastic modulus, Pa<br><b>I</b>second moment of area, m⁴<br><b>δ</b>deflection, m</div></div>
+</div></div>
+</body></html>

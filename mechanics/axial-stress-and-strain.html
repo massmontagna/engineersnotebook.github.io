@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Axial stress and strain · Engineer's Notebook</title>
+<meta name="description" content="Normal stress and strain in a bar under axial load, σ = F/A and ε = σ/E, with a live demo of the extension, a worked example and related cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#stress">Stress</a>
+  </nav>
+  <span class="ref">§3.1</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Axial stress and strain</h1>
+      <p class="lede">A bar pulled along its axis carries the force spread evenly over its cross-section. The stress, and the strain it causes, are:</p>
+
+      <div class="eq" role="math" aria-label="sigma equals F over A; epsilon equals sigma over E">
+        <span><i class="v">σ</i> = <span class="frac"><span><i class="v">F</i></span><span><i class="v">A</i></span></span>,</span><span><i class="v">ε</i> = <span class="frac"><span><i class="v">σ</i></span><span><i class="v">E</i></span></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>σ</dt><dd>normal stress</dd><dd class="u">Pa</dd>
+        <dt>F</dt><dd>axial force</dd><dd class="u">N</dd>
+        <dt>A</dt><dd>cross-sectional area</dd><dd class="u">m²</dd>
+        <dt>ε</dt><dd>strain</dd><dd class="u">—</dd>
+        <dt>E</dt><dd>Young's modulus</dd><dd class="u">Pa</dd>
+        <dt>L</dt><dd>original length</dd><dd class="u">m</dd>
+        <dt>ΔL</dt><dd>change in length</dd><dd class="u">m</dd>
+        <dt>d</dt><dd>bar diameter</dd><dd class="u">m</dd>
+        <dt>τ</dt><dd>shear stress</dd><dd class="u">Pa</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 190" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A round bar fixed to a wall at the left and pulled to the right by a force. The stretched bar is drawn over its original length.</desc>
+<line x1="40" y1="40" x2="40" y2="140" class="s-ink" stroke-width="3"></line><path d="M32 48 L40 40 M32 58 L40 50 M32 68 L40 60 M32 78 L40 70 M32 88 L40 80 M32 98 L40 90 M32 108 L40 100 M32 118 L40 110 M32 128 L40 120 M32 138 L40 130" class="s-ink" stroke-width="1"></path>
+          <rect id="bar" x="40" class="s-ink f-tab" stroke-width="2" y="82.9" width="391.8" height="14.2"></rect>
+          <line x1="400" y1="44" x2="400" y2="136" class="s-ink2 dash" stroke-width="1"></line>
+          <path id="force" class="s-ox f-ox" stroke-width="4" d="M435.8 90.0 L481.8 90.0 M481.8 97.7 L495.8 90.0 L481.8 82.3 Z"></path>
+          <text id="force-label" y="72.9" class="t-ox" x="512" text-anchor="end">F = 20 kN</text>
+          <line x1="40" y1="156" x2="400" y2="156" class="s-ink2" stroke-width="1"></line>
+          <line x1="400" y1="150" x2="400" y2="162" class="s-ink2" stroke-width="1"></line>
+          <text id="len-label" x="44" y="178">L = 2 m</text>
+          <text id="scale-label" class="lbl" x="500" y="178" text-anchor="end">extension drawn ×100</text>
+        </svg>
+        <figcaption><b>Fig. 3.1-1</b>Extension exaggerated; scale noted under the bar.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="F-num"><i>F</i>Force <span class="unit">kN</span></label>
+            <input type="range" id="F-range" min="0.1" max="500" step="0.1" value="20" aria-label="Force, kN">
+            <input type="number" id="F-num" min="0.1" max="500" step="0.1" value="20" inputmode="decimal" data-name="a force" data-unit="kN" aria-describedby="F-err">
+            <span class="err" id="F-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="d-num"><i>d</i>Diameter <span class="unit">mm</span></label>
+            <input type="range" id="d-range" min="2" max="100" step="1" value="12" aria-label="Diameter, mm">
+            <input type="number" id="d-num" min="2" max="100" step="1" value="12" inputmode="numeric" data-name="a diameter" data-unit="mm" aria-describedby="d-err">
+            <span class="err" id="d-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="L-num"><i>L</i>Length <span class="unit">m</span></label>
+            <input type="range" id="L-range" min="0.1" max="10" step="0.1" value="2" aria-label="Length, m">
+            <input type="number" id="L-num" min="0.1" max="10" step="0.1" value="2" inputmode="decimal" data-name="a length" data-unit="m" aria-describedby="L-err">
+            <span class="err" id="L-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="E-sel"><i>E</i>Material</label>
+            <select id="E-sel">
+              <option value="200" data-name="steel S275" data-fy="275">Steel S275 · 200 GPa</option>
+              <option value="69" data-name="aluminium 6061-T6" data-fy="276">Aluminium 6061-T6 · 69 GPa</option>
+              <option value="114" data-name="titanium Ti-6Al-4V" data-fy="880">Titanium Ti-6Al-4V · 114 GPa</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">A</i> = π<i class="v">d</i>²/4</td><td id="out-A">113 mm²</td></tr>
+            <tr><td><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></td><td id="out-s">177 MPa</td></tr>
+            <tr><td><i class="v">ε</i> = <i class="v">σ</i>/<i class="v">E</i></td><td id="out-e">8.84 × 10⁻⁴</td></tr>
+            <tr class="key"><td>Δ<i class="v">L</i> = <i class="v">F</i><i class="v">L</i>/<i class="v">A</i><i class="v">E</i></td><td id="out-dL">1.77 mm</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 3.1-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">F</i></span><span class="what">axial pull</span><span id="g-F" class="live">20 kN</span></li>
+          <li><span><i class="v">d</i></span><span class="what">bar diameter</span><span id="g-d" class="live">12 mm</span></li>
+          <li><span><i class="v">L</i></span><span class="what">length</span><span id="g-L" class="live">2 m</span></li>
+          <li><span><i class="v">E</i></span><span class="what"><span id="g-Ename" class="live">steel S275</span></span><span id="g-E" class="live">200 GPa</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The stress in the bar and how much it stretches.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">A</i> = π<i class="v">d</i>²/4 = <span id="w-A" class="live">π × (12&nbsp;mm)² / 4 = 113&nbsp;mm²</span></span>
+          <span><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i> = <span id="w-s" class="live">20,000&nbsp;N / 113&nbsp;mm² = 177&nbsp;MPa</span></span>
+          <span><i class="v">ε</i> = <i class="v">σ</i>/<i class="v">E</i> = <span id="w-e" class="live">177&nbsp;MPa / 2 × 10⁵&nbsp;MPa = 8.84 × 10⁻⁴</span></span>
+          <span>Δ<i class="v">L</i> = <i class="v">ε</i><i class="v">L</i> = <span id="w-dL" class="live">8.84 × 10⁻⁴ × 2,000&nbsp;mm = 1.77&nbsp;mm</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span>Δ<i class="v">L</i> = </span><span id="w-ans">1.77 mm</span></span>
+          <p class="answer-note" id="w-note">The stress is 64.3% of the yield strength of steel S275 (275 MPa).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="8" y1="14" x2="8" y2="40" class="s-ink" stroke-width="3"/><path d="M0 22 L8 14 M0 32 L8 24" class="s-ink" stroke-width="1"/><rect x="8" y="20" width="76" height="14" class="s-ink f-tab" stroke-width="1.5"/><path d="M86 27 L99 27 M99 30.9 L106 27 L99 23.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Extension</h3>
+            <p class="f"><span><span>Δ<i class="v">L</i> = </span><span class="frac"><span><i class="v">F</i><i class="v">L</i></span><span><i class="v">A</i><i class="v">E</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="20" y="10" width="72" height="12" class="s-ink f-tab" stroke-width="1.5"/><rect x="20" y="30" width="72" height="12" class="s-ink f-tab" stroke-width="1.5"/><line x1="56" y1="2" x2="56" y2="50" class="s-ink" stroke-width="4"/></svg>
+          <div>
+            <h3>Pin in single shear</h3>
+            <p class="f"><span><span><i class="v">τ</i> = </span><span class="frac"><span><i class="v">F</i></span><span><i class="v">A</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><circle cx="56" cy="26" r="20" class="s-ink f-tab" stroke-width="1.5"/><circle cx="56" cy="26" r="13" class="s-ink f-sheet" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Tube</h3>
+            <p class="f"><span><span><i class="v">A</i> = </span><span class="frac"><span>π(<i class="v">D</i>² − <i class="v">d</i>²)</span><span>4</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="8" y1="14" x2="8" y2="40" class="s-ink" stroke-width="3"/><path d="M0 22 L8 14 M0 32 L8 24" class="s-ink" stroke-width="1"/><rect x="8" y="18" width="40" height="18" class="s-ink f-tab" stroke-width="1.5"/><rect x="48" y="22" width="36" height="10" class="s-ink f-tab" stroke-width="1.5"/><path d="M86 27 L99 27 M99 30.9 L106 27 L99 23.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Bars in series</h3>
+            <p class="f"><span><span>Δ<i class="v">L</i> = <i class="v">F</i> Σ </span><span class="frac"><span><i class="v">L</i><sub>i</sub></span><span><i class="v">A</i><sub>i</sub><i class="v">E</i><sub>i</sub></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The force acts along the bar's axis through the centroid, so stress is uniform across the section.</li>
+          <li>Stress is uniform only away from the ends, holes and changes of section (Saint-Venant's principle). Local stresses there are higher.</li>
+          <li>The material stays linear-elastic, below its yield strength.</li>
+          <li>In compression the same formulas hold for short bars. Slender bars buckle first.</li>
+          <li>Material properties are typical values. Use the supplier's figures for design.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Stress is force per unit area: <code><i class="v">σ</i> = <i class="v">F</i>/<i class="v">A</i></code>.</li>
+          <li>Strain is extension per unit length: <code><i class="v">ε</i> = Δ<i class="v">L</i>/<i class="v">L</i></code>.</li>
+          <li>In the elastic range they are proportional (Hooke's law): <code><i class="v">σ</i> = <i class="v">E</i><i class="v">ε</i></code>.</li>
+          <li>Combine them: <code>Δ<i class="v">L</i> = <i class="v">ε</i><i class="v">L</i> = <i class="v">σ</i><i class="v">L</i>/<i class="v">E</i> = <i class="v">F</i><i class="v">L</i>/<i class="v">A</i><i class="v">E</i></code>.</li>
+        </ol>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="second-moment-of-area.html">← 2.5 Second moment of area</a>
+        <a href="bending-stress.html">3.2 Bending stress →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §3.1</span>
+  <a href="./#stress">Back to Stress</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/axial-stress-and-strain.js" defer></script>
+</body>
+</html>

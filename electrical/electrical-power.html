@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electrical power · Engineer's Notebook</title>
+<meta name="description" content="Electrical power, P = VI, shown as the area of a voltage–current rectangle, with energy use over time, a worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Electrical</a><span aria-hidden="true">/</span>
+    <a href="./#dc-circuits">DC circuits</a>
+  </nav>
+  <span class="ref">§1.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="./" aria-current="true">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Electrical power</h1>
+      <p class="lede">Power is the rate at which a circuit converts electrical energy into heat, light or work. It is voltage times current:</p>
+
+      <div class="eq" role="math" aria-label="P equals V I">
+        <span><i class="v">P</i> = <i class="v">V</i><i class="v">I</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>P</dt><dd>power</dd><dd class="u">W</dd>
+        <dt>V</dt><dd>voltage</dd><dd class="u">V</dd>
+        <dt>I</dt><dd>current</dd><dd class="u">A</dd>
+        <dt>R</dt><dd>resistance</dd><dd class="u">Ω</dd>
+        <dt>E</dt><dd>energy</dd><dd class="u">J, kWh</dd>
+        <dt>t</dt><dd>time</dd><dd class="u">s, h</dd>
+        <dt>cos φ</dt><dd>power factor</dd><dd class="u">—</dd>
+        <dt>V<sub>L</sub></dt><dd>line voltage</dd><dd class="u">V</dd>
+        <dt>I<sub>L</sub></dt><dd>line current</dd><dd class="u">A</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 240" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A graph with current along the bottom and voltage up the side. The shaded rectangle from the origin to the operating point has an area equal to the power.</desc>
+<path d="M60 200 L484 200 M484 203.3 L490 200 L484 196.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 200 L60 24 M63.3 24 L60 18 L56.7 24 Z" class="s-ink2 f-ink" stroke-width="1"></path><text class="lbl" x="490" y="234" text-anchor="end">CURRENT I, A</text><text class="lbl" x="68" y="22">VOLTAGE V, V</text>
+          <text x="54" y="44" text-anchor="end">400</text>
+          <text x="460" y="218" text-anchor="middle">32</text>
+          <rect id="area" x="60" class="s-ox f-tint" stroke-width="1.5" y="108.0" width="62.5" height="92.0"></rect>
+          <circle id="pt" r="5" class="f-ox" cx="122.5" cy="108.0"></circle>
+          <text id="P-label" text-anchor="start" class="t-ox" x="132.5" y="98.0">P = 1.15 kW</text>
+        </svg>
+        <figcaption><b>Fig. 1.2-1</b>Axes run to 400 V and 32 A. The shaded area is the power.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="V-num"><i>V</i>Voltage <span class="unit">V</span></label>
+            <input type="range" id="V-range" min="1" max="400" step="1" value="230" aria-label="Voltage, V">
+            <input type="number" id="V-num" min="1" max="400" step="1" value="230" inputmode="numeric" data-name="a voltage" data-unit="V" aria-describedby="V-err">
+            <span class="err" id="V-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="I-num"><i>I</i>Current <span class="unit">A</span></label>
+            <input type="range" id="I-range" min="0.01" max="32" step="0.01" value="5" aria-label="Current, A">
+            <input type="number" id="I-num" min="0.01" max="32" step="0.01" value="5" inputmode="decimal" data-name="a current" data-unit="A" aria-describedby="I-err">
+            <span class="err" id="I-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="t-num"><i>t</i>Time on <span class="unit">h</span></label>
+            <input type="range" id="t-range" min="0.1" max="24" step="0.1" value="1" aria-label="Time on, h">
+            <input type="number" id="t-num" min="0.1" max="24" step="0.1" value="1" inputmode="decimal" data-name="a time" data-unit="h" aria-describedby="t-err">
+            <span class="err" id="t-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">R</i> = <i class="v">V</i>/<i class="v">I</i></td><td id="out-R">46 Ω</td></tr>
+            <tr><td><i class="v">E</i> = <i class="v">P</i><i class="v">t</i></td><td id="out-E">1.15 kWh</td></tr>
+            <tr class="key"><td><i class="v">P</i> = <i class="v">V</i><i class="v">I</i></td><td id="out-P">1.15 kW</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">V</i></span><span class="what">supply voltage</span><span id="g-V" class="live">230 V</span></li>
+          <li><span><i class="v">I</i></span><span class="what">current drawn</span><span id="g-I" class="live">5 A</span></li>
+          <li><span><i class="v">t</i></span><span class="what">time switched on</span><span id="g-t" class="live">1 h</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The power <i class="v">P</i>, and the energy used in time <i class="v">t</i>.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">P</i> = <i class="v">V</i><i class="v">I</i> = <span id="w-P" class="live">230&nbsp;V × 5&nbsp;A = 1,150&nbsp;W</span></span>
+          <span><i class="v">E</i> = <i class="v">P</i><i class="v">t</i> = <span id="w-E" class="live">1.15&nbsp;kW × 1&nbsp;h = 1.15&nbsp;kWh</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">P</i> = </span><span id="w-ans">1.15 kW</span></span>
+          <p class="answer-note" id="w-note">The equivalent resistance is V/I = 46 Ω, so P = I²R gives the same 1.15 kW.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L30 26 L36 16 L48 36 L60 16 L72 36 L78 26 L106 26" class="s-ink" stroke-width="1.5"/><path d="M10 14 L21 14 M21 17.9 L28 14 L21 10.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Current and resistance</h3>
+            <p class="f"><span><span><i class="v">P</i> = <i class="v">I</i>²<i class="v">R</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L30 26 L36 16 L48 36 L60 16 L72 36 L78 26 L106 26" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Voltage and resistance</h3>
+            <p class="f"><span><span><i class="v">P</i> = </span><span class="frac"><span><i class="v">V</i>²</span><span><i class="v">R</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 14 L106 14 M6 26 L106 26 M6 38 L106 38" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Three-phase supply</h3>
+            <p class="f"><span><span><i class="v">P</i> = √3 <i class="v">V</i><sub>L</sub><i class="v">I</i><sub>L</sub> cos <i class="v">φ</i></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Direct current, or AC with RMS values and a resistive load (power factor 1).</li>
+          <li>For loads with a power factor below 1, such as motors, multiply by cos <i class="v">φ</i> to get the real power.</li>
+          <li>Voltage and current stay steady for the whole time <i class="v">t</i>.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Voltage is energy per unit charge: <code><i class="v">V</i> = <i class="v">E</i>/<i class="v">q</i></code>.</li>
+          <li>Current is charge per unit time: <code><i class="v">I</i> = <i class="v">q</i>/<i class="v">t</i></code>.</li>
+          <li>Multiply them: <code><i class="v">V</i><i class="v">I</i> = <i class="v">E</i>/<i class="v">t</i></code>, which is power.</li>
+          <li>With Ohm's law, <code><i class="v">V</i> = <i class="v">I</i><i class="v">R</i></code>, this becomes <code><i class="v">P</i> = <i class="v">I</i>²<i class="v">R</i> = <i class="v">V</i>²/<i class="v">R</i></code>.</li>
+        </ol>
+        <p class="prose">One kilowatt-hour is 1 kW for one hour, or 3.6 MJ.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="ohms-law.html">← 1.1 Ohm's law</a>
+        <a href="rc-time-constant.html">1.3 RC time constant →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Electrical §1.2</span>
+  <a href="./#dc-circuits">Back to DC circuits</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/electrical-power.js" defer></script>
+</body>
+</html>

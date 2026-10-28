@@ -1,0 +1,47 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;color:#16181a;font:400 18px/1.6 'Source Serif 4',serif;position:relative;
+background:#e8ebea url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .12 0 0 0 0 .12 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+.head{position:absolute;left:72px;right:144px;top:28px;display:flex;justify-content:space-between;border-bottom:4px double #16181a;padding-bottom:10px;font:700 13px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase}
+.head .c{color:#b3261e}.head .r{font:500 13px 'JetBrains Mono'}
+.tabs{position:absolute;right:0;top:88px;width:72px;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.tabs div{width:52px;height:96px;background:#d2d8d6;border-radius:10px 0 0 10px;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font:700 12px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase}
+.tabs .on{width:72px;background:#b3261e;color:#f6f7f6}.tabs .soon{color:#4c5351}
+.rule{position:absolute;left:1000px;top:88px;bottom:0;border-left:1px solid #b3261e;opacity:.5}
+.steps{position:absolute;left:200px;top:96px;width:60px;font:700 13px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase;color:#4c5351}
+.col{position:absolute;left:280px;top:96px;width:680px}
+h1{font:700 52px/1 'Source Serif 4';letter-spacing:-.02em}
+.lab{position:absolute;left:200px;font:700 12px 'Archivo Narrow';letter-spacing:.14em;text-transform:uppercase;color:#4c5351}
+p{margin-top:14px}
+.fig{margin-top:22px;background:#f6f7f6;border:1px solid #16181a;padding:14px 18px}
+.fig svg{width:100%;height:170px}
+.ctl{display:flex;gap:28px;font:500 13px 'JetBrains Mono';border-top:1px solid #c3c9c7;padding-top:8px;margin-top:4px}
+.ctl i{font:italic 500 16px 'Source Serif 4';margin-right:4px}
+.eq{margin-top:24px;border-top:1px solid #16181a;border-bottom:1px solid #16181a;padding:16px 0;font:500 32px 'JetBrains Mono';text-align:center}
+.eq i{font:italic 500 36px 'Source Serif 4'}
+.m{position:absolute;left:1024px;width:240px;font-size:15px;line-height:1.5}
+.m i{font:italic 500 17px 'Source Serif 4';margin-right:6px}
+.m small{font:400 12px 'JetBrains Mono';color:#4c5351;margin-left:6px}
+.m.ox{color:#b3261e;font:500 15px 'JetBrains Mono'}
+</style></head><body>
+<div class="head"><span>Engineer's Notebook</span><span class="c">Mechanics / Beams</span><span class="r">§2.3</span></div>
+<div class="tabs"><div>Contents</div><div class="on">Mechanics</div><div class="soon">Thermo</div><div class="soon">Fluids</div><div class="soon">Materials</div><div class="soon">Electrical</div><div class="soon">Automotive</div></div>
+<div class="rule"></div>
+<div class="col">
+<h1>Beam deflection</h1>
+<p>A simply supported beam carries one load at mid-span. How far does it sag at the centre?</p>
+<div class="fig"><svg viewBox="0 0 640 170"><line x1="40" y1="80" x2="600" y2="80" stroke="#4c5351" stroke-dasharray="5 5"/><path d="M40 80 Q320 130 600 80" fill="none" stroke="#16181a" stroke-width="4"/><line x1="320" y1="12" x2="320" y2="94" stroke="#b3261e" stroke-width="5"/><path d="M308 88 L320 106 L332 88Z" fill="#b3261e"/><path d="M40 82 L28 104 L52 104Z" fill="none" stroke="#16181a" stroke-width="2"/><circle cx="600" cy="92" r="9" fill="none" stroke="#16181a" stroke-width="2"/></svg>
+<div class="ctl"><span><i>P</i>2.0 kN</span><span><i>L</i>1.50 m</span><span><i>E</i>Steel</span><span><i>b×h</i>40×80 mm</span></div></div>
+<div class="eq"><i>δ</i> = <i>P·L</i>³ / 48·<i>E·I</i></div>
+<p>Integrate the bending equation twice and use symmetry at mid-span.</p>
+</div>
+<div class="lab" style="top:186px">Problem</div>
+<div class="lab" style="top:246px">Sketch</div>
+<div class="lab" style="top:560px">Formula</div>
+<div class="lab" style="top:660px">Working</div>
+<div class="m" style="top:250px">Drag the load or type a value. Deflection drawn ×200.</div>
+<div class="m" style="top:548px"><i>P</i>point load<small>N</small><br><i>L</i>span<small>m</small><br><i>E</i>Young's modulus<small>Pa</small><br><i>I</i>second moment of area<small>m⁴</small></div>
+<div class="m ox" style="top:700px">Answer: δ = 0.412 mm</div>
+</body></html>

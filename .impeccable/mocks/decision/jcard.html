@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Caveat:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#E8E8E4;color:#2748B8;font:500 19px/1.6 Caveat,cursive;position:relative}
+.top{height:56px;display:flex;align-items:center;padding:0 48px;gap:36px;background:#fff;border-bottom:3px solid #D12A2A;font:500 15px Barlow;color:#1B1B1B}
+.top b{font-weight:600;font-size:19px}
+.top span.on{border-bottom:2px solid #D12A2A}
+.card{position:absolute;left:80px;top:96px;width:1280px;height:740px;background:#fff;background-image:repeating-linear-gradient(transparent 0 37px,#C9D3EC 37px 38px);box-shadow:0 2px 0 #B5B5B0;display:grid;grid-template-columns:1fr 1fr}
+.side{padding:30px 44px}
+.side+.side{border-left:2px dashed #B5B5B0}
+.tag{font:700 44px Caveat;border-bottom:3px solid #2748B8;display:inline-block;margin-bottom:8px}
+.tag em{font:400 14px 'JetBrains Mono';font-style:normal;color:#6B6B66;margin-left:14px}
+.row{display:flex;justify-content:space-between;border-bottom:1px solid transparent;font-size:22px}
+.row i{font:400 14px 'JetBrains Mono';font-style:normal;color:#5E5E5A}
+.big{font:700 52px Caveat;margin:16px 0 8px}
+.pen{color:#6B6B66}
+.stripe{position:absolute;left:0;right:0;bottom:0;height:22px;background:#D12A2A;display:flex;align-items:center;padding:0 20px;color:#fff;font:600 12px 'JetBrains Mono';letter-spacing:.2em}
+</style></head><body>
+<div class="top"><b>Engineer's Notebook</b><span class="on">Mechanics</span><span>All formulae</span><span>About</span></div>
+<div class="card">
+<div class="side"><div class="tag">Side A · Formula<em>2.3</em></div>
+<div class="big">Beam deflection</div>
+<div class="row"><span>1. Central point load</span><i>δ = PL³/48EI</i></div>
+<div class="row"><span>2. Max bending moment</span><i>M = PL/4</i></div>
+<div class="row"><span>3. End slope</span><i>θ = PL²/16EI</i></div>
+<div class="row"><span>4. Reactions</span><i>R = P/2</i></div>
+<div class="row pen"><span>5. Uniform load (next)</span><i>5wL⁴/384EI</i></div>
+<div class="row pen"><span>6. Cantilever (next)</span><i>PL³/3EI</i></div></div>
+<div class="side"><div class="tag">Side B · Demo<em>play</em></div>
+<svg viewBox="0 0 520 220" width="100%" style="margin-top:14px"><path d="M30 90 Q260 190 490 90" fill="none" stroke="#2748B8" stroke-width="4"/><path d="M260 14V76" stroke="#D12A2A" stroke-width="6"/><path d="M248 70l12 16 12-16z" fill="#D12A2A"/><path d="M20 98l10-12 10 12z M480 98l10-12 10 12z" fill="#2748B8"/></svg>
+<div class="row"><span>Load P</span><i>2.0 kN</i></div><div class="row"><span>Span L</span><i>1.5 m</i></div>
+<div class="row"><span>Section I</span><i>8.0e-6 m⁴</i></div><div class="row"><span>Deflection</span><i>4.7 mm</i></div></div>
+<div class="stripe">FLIP ⟲ SIDE A / SIDE B</div></div>
+</body></html>

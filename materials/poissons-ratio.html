@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poisson's ratio · Engineer's Notebook</title>
+<meta name="description" content="Poisson's ratio, ν = −ε_lat/ε_ax, with a live demo of a bar narrowing as it stretches, a worked example and related elastic constants.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Materials</a><span aria-hidden="true">/</span>
+    <a href="./#elasticity">Elasticity</a>
+  </nav>
+  <span class="ref">§1.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="./" aria-current="true">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Poisson's ratio</h1>
+      <p class="lede">Stretch a bar and it gets thinner; squash it and it bulges. Poisson's ratio is the lateral strain per unit axial strain:</p>
+
+      <div class="eq" role="math" aria-label="nu equals minus epsilon lateral over epsilon axial">
+        <span><i class="v">ν</i> = −</span><span class="frac"><span><i class="v">ε</i><sub>lat</sub></span><span><i class="v">ε</i><sub>ax</sub></span></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>ν</dt><dd>Poisson's ratio</dd><dd class="u">—</dd>
+        <dt>ε<sub>ax</sub></dt><dd>axial strain</dd><dd class="u">—</dd>
+        <dt>ε<sub>lat</sub></dt><dd>lateral strain</dd><dd class="u">—</dd>
+        <dt>d</dt><dd>width</dd><dd class="u">m</dd>
+        <dt>E</dt><dd>Young's modulus</dd><dd class="u">Pa</dd>
+        <dt>G</dt><dd>shear modulus</dd><dd class="u">Pa</dd>
+        <dt>K</dt><dd>bulk modulus</dd><dd class="u">Pa</dd>
+        <dt>V</dt><dd>volume</dd><dd class="u">m³</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A rectangular bar, outlined dashed at its original size and drawn solid after loading: longer and narrower in tension, shorter and wider in compression.</desc>
+          <rect x="110" y="60" width="300" height="80" class="s-ink2 dash" stroke-width="1"></rect>
+          <rect id="bar" class="s-ink f-tab" stroke-width="2" x="80.0" y="62.4" width="360.0" height="75.2"></rect>
+          <path id="fl" class="s-ox f-ox" stroke-width="3" d="M74.0 100.0 L42.0 100.0 M42.0 93.4 L30.0 100.0 L42.0 106.6 Z"></path>
+          <path id="fr" class="s-ox f-ox" stroke-width="3" d="M446.0 100.0 L478.0 100.0 M478.0 106.6 L490.0 100.0 L478.0 93.4 Z"></path>
+          <text id="d-label" x="260" y="186" text-anchor="middle">d = 20 mm → 19.94 mm</text>
+          <text id="scale-label" class="lbl" x="500" y="24" text-anchor="end">strains drawn ×20</text>
+        </svg>
+        <figcaption><b>Fig. 1.2-1</b>Dashed: original shape. Strains exaggerated by the scale noted.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="nu-sel"><i>ν</i>Material</label>
+            <select id="nu-sel">
+              <option value="0.3" data-name="steel">Steel · 0.30</option>
+              <option value="0.33" data-name="aluminium">Aluminium · 0.33</option>
+              <option value="0.2" data-name="concrete">Concrete · 0.20</option>
+              <option value="0.49" data-name="rubber">Rubber · 0.49</option>
+              <option value="0" data-name="cork">Cork · about 0</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="e-num"><i>ε</i>Axial strain <span class="unit">%</span></label>
+            <input type="range" id="e-range" min="-5" max="5" step="0.1" value="1" aria-label="Axial strain, %">
+            <input type="number" id="e-num" min="-5" max="5" step="0.1" value="1" inputmode="decimal" data-name="a strain" data-unit="%" aria-describedby="e-err">
+            <span class="err" id="e-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="d-num"><i>d</i>Width <span class="unit">mm</span></label>
+            <input type="range" id="d-range" min="1" max="200" step="1" value="20" aria-label="Width, mm">
+            <input type="number" id="d-num" min="1" max="200" step="1" value="20" inputmode="numeric" data-name="a width" data-unit="mm" aria-describedby="d-err">
+            <span class="err" id="d-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td>Δ<i class="v">d</i> = <i class="v">ε</i><sub>lat</sub><i class="v">d</i></td><td id="out-dd">−0.06 mm</td></tr>
+            <tr><td>Δ<i class="v">V</i>/<i class="v">V</i> = <i class="v">ε</i><sub>ax</sub>(1 − 2<i class="v">ν</i>)</td><td id="out-vol">0.4%</td></tr>
+            <tr class="key"><td><i class="v">ε</i><sub>lat</sub> = −<i class="v">ν</i><i class="v">ε</i><sub>ax</sub></td><td id="out-lat">−0.3%</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">ν</i></span><span class="what"><span id="g-name" class="live">steel</span></span><span id="g-nu" class="live">0.3</span></li>
+          <li><span><i class="v">ε</i><sub>ax</sub></span><span class="what">axial strain</span><span id="g-e" class="live">1%</span></li>
+          <li><span><i class="v">d</i></span><span class="what">original width</span><span id="g-d" class="live">20 mm</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The lateral strain and the change in width.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">ε</i><sub>lat</sub> = −<i class="v">ν</i><i class="v">ε</i><sub>ax</sub> = <span id="w-lat" class="live">−0.3 × 1% = −0.3%</span></span>
+          <span>Δ<i class="v">d</i> = <i class="v">ε</i><sub>lat</sub><i class="v">d</i> = <span id="w-dd" class="live">−3 × 10⁻³ × 20&nbsp;mm = −0.06&nbsp;mm</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">ε</i><sub>lat</sub> = </span><span id="w-ans">−0.3%</span></span>
+          <p class="answer-note" id="w-note">The width changes by −0.06 mm, and the volume by 0.4%.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related elastic constants</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="16" width="52" height="28" class="s-ink f-tab" stroke-width="1.5"/><path d="M30 10 L75 10 M75 13.9 L82 10 L75 6.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Shear modulus</h3>
+            <p class="f"><span><span><i class="v">E</i> = 2<i class="v">G</i>(1 + <i class="v">ν</i>)</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="38" y="14" width="36" height="26" class="s-ink f-tab" stroke-width="1.5"/><path d="M56 2 L56 5 M52.1 5 L56 12 L59.9 5 Z" class="s-ox f-ox" stroke-width="2"/><path d="M56 52 L56 49 M59.9 49 L56 42 L52.1 49 Z" class="s-ox f-ox" stroke-width="2"/><path d="M22 27 L29 27 M29 30.9 L36 27 L29 23.1 Z" class="s-ox f-ox" stroke-width="2"/><path d="M90 27 L83 27 M83 23.1 L76 27 L83 30.9 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Bulk modulus</h3>
+            <p class="f"><span><span><i class="v">K</i> = </span><span class="frac"><span><i class="v">E</i></span><span>3(1 − 2<i class="v">ν</i>)</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="14" y="18" width="70" height="16" class="s-ink f-tab" stroke-width="1.5"/><path d="M86 26 L99 26 M99 29.9 L106 26 L99 22.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Volume change, uniaxial</h3>
+            <p class="f"><span><span class="frac"><span>Δ<i class="v">V</i></span><span><i class="v">V</i></span></span><span> = <i class="v">ε</i><sub>ax</sub>(1 − 2<i class="v">ν</i>)</span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The material is isotropic and linear-elastic, and strains are small.</li>
+          <li>The stress is uniaxial: the sides are free to move.</li>
+          <li>For isotropic materials −1 < <i class="v">ν</i> ≤ 0.5. At 0.5 the volume never changes, which rubber nearly achieves.</li>
+          <li>Values are typical. Cork's ratio is close to zero, which is why a cork goes into a bottle without bulging.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>Apply axial strain <i class="v">ε</i>. Each lateral direction then strains by <code>−<i class="v">ν</i><i class="v">ε</i></code>.</li>
+          <li>A block of volume <i class="v">V</i> becomes <code><i class="v">V</i>(1 + <i class="v">ε</i>)(1 − <i class="v">ν</i><i class="v">ε</i>)²</code>.</li>
+          <li>Expand and drop the squared terms, which are tiny for small strains: <code><i class="v">V</i>(1 + <i class="v">ε</i> − 2<i class="v">ν</i><i class="v">ε</i>)</code>.</li>
+          <li>So <code>Δ<i class="v">V</i>/<i class="v">V</i> = <i class="v">ε</i>(1 − 2<i class="v">ν</i>)</code>.</li>
+        </ol>
+        <p class="prose">With <span class="inline-eq"><i class="v">ν</i> = 0.5</span> the volume stays constant, which is why rubber is nearly incompressible yet easy to stretch.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="hookes-law.html">← 1.1 Hooke's law</a>
+        <a href="thermal-expansion.html">2.1 Thermal expansion →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Materials §1.2</span>
+  <a href="./#elasticity">Back to Elasticity</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/poissons-ratio.js" defer></script>
+</body>
+</html>

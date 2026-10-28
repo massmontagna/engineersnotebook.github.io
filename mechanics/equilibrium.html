@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Equilibrium · Engineer's Notebook</title>
+<meta name="description" content="Static equilibrium, ΣF = 0 and ΣM = 0, applied to a weight hung from two cables, with a live demo, a worked example and related cases.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Mechanics</a><span aria-hidden="true">/</span>
+    <a href="./#statics">Statics</a>
+  </nav>
+  <span class="ref">§1.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="./" aria-current="true">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Equilibrium</h1>
+      <p class="lede">A body stays at rest only if the forces on it cancel and their moments about any point cancel too:</p>
+
+      <div class="eq" role="math" aria-label="sum of forces equals zero; sum of moments equals zero">
+        <span>Σ<i class="v">F</i> = 0,</span><span>Σ<i class="v">M</i> = 0</span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>F</dt><dd>force</dd><dd class="u">N</dd>
+        <dt>M</dt><dd>moment</dd><dd class="u">N·m</dd>
+        <dt>W</dt><dd>weight</dd><dd class="u">N</dd>
+        <dt>T<sub>1</sub></dt><dd>left cable tension</dd><dd class="u">N</dd>
+        <dt>T<sub>2</sub></dt><dd>right cable tension</dd><dd class="u">N</dd>
+        <dt>θ<sub>1</sub></dt><dd>left cable angle from horizontal</dd><dd class="u">°</dd>
+        <dt>θ<sub>2</sub></dt><dd>right cable angle from horizontal</dd><dd class="u">°</dd>
+        <dt>H</dt><dd>horizontal pull on each anchor</dd><dd class="u">N</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 250" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A weight hangs from a knot held by two cables running up to a ceiling at different angles. Each cable is labelled with its tension.</desc>
+<line x1="20" y1="30" x2="500" y2="30" class="s-ink" stroke-width="2"></line><path d="M20 30 L28 22 M32 30 L40 22 M44 30 L52 22 M56 30 L64 22 M68 30 L76 22 M80 30 L88 22 M92 30 L100 22 M104 30 L112 22 M116 30 L124 22 M128 30 L136 22 M140 30 L148 22 M152 30 L160 22 M164 30 L172 22 M176 30 L184 22 M188 30 L196 22 M200 30 L208 22 M212 30 L220 22 M224 30 L232 22 M236 30 L244 22 M248 30 L256 22 M260 30 L268 22 M272 30 L280 22 M284 30 L292 22 M296 30 L304 22 M308 30 L316 22 M320 30 L328 22 M332 30 L340 22 M344 30 L352 22 M356 30 L364 22 M368 30 L376 22 M380 30 L388 22 M392 30 L400 22 M404 30 L412 22 M416 30 L424 22 M428 30 L436 22 M440 30 L448 22 M452 30 L460 22 M464 30 L472 22 M476 30 L484 22 M488 30 L496 22" class="s-ink" stroke-width="1"></path>
+          <path id="cab1" class="s-ink" stroke-width="2" d="M136.2 30.0 L303.0 170.0"></path>
+          <path id="cab2" class="s-ink" stroke-width="2" d="M383.8 30.0 L303.0 170.0"></path>
+          <path id="arc1" class="s-ink2" stroke-width="1" d="M166.2 30 A30 30 0 0 1 159.1 49.3"></path>
+          <path id="arc2" class="s-ink2" stroke-width="1" d="M353.8 30 A30 30 0 0 0 368.8 56.0"></path>
+          <text id="arc1-label" x="172.2" y="50">θ₁</text>
+          <text id="arc2-label" text-anchor="end" x="347.8" y="50">θ₂</text>
+          <line id="hang" class="s-ink" stroke-width="2" x1="303.0" y1="170.0" x2="303.0" y2="196.0"></line>
+          <rect id="wt" width="100" height="34" class="s-ink f-tab" stroke-width="2" x="253.0" y="196.0"></rect>
+          <text id="wt-label" class="t-ink" text-anchor="middle" x="303.0" y="218.0">W = 500 N</text>
+          <circle id="knot" r="4" class="f-ink" cx="303.0" cy="170.0"></circle>
+          <text id="t1-label" class="t-ox" text-anchor="end" x="211.6" y="110.0">T₁ = 254 N</text>
+          <text id="t2-label" class="t-ox" x="351.4" y="110.0">T₂ = 389 N</text>
+        </svg>
+        <figcaption><b>Fig. 1.2-1</b>Both tensions follow from ΣF = 0 at the knot.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="W-num"><i>W</i>Weight <span class="unit">N</span></label>
+            <input type="range" id="W-range" min="10" max="5000" step="10" value="500" aria-label="Weight, N">
+            <input type="number" id="W-num" min="10" max="5000" step="10" value="500" inputmode="numeric" data-name="a weight" data-unit="N" aria-describedby="W-err">
+            <span class="err" id="W-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="a-num"><i>θ₁</i>Left angle <span class="unit">°</span></label>
+            <input type="range" id="a-range" min="10" max="80" step="1" value="40" aria-label="Left angle, °">
+            <input type="number" id="a-num" min="10" max="80" step="1" value="40" inputmode="numeric" data-name="an angle" data-unit="°" aria-describedby="a-err">
+            <span class="err" id="a-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="b-num"><i>θ₂</i>Right angle <span class="unit">°</span></label>
+            <input type="range" id="b-range" min="10" max="80" step="1" value="60" aria-label="Right angle, °">
+            <input type="number" id="b-num" min="10" max="80" step="1" value="60" inputmode="numeric" data-name="an angle" data-unit="°" aria-describedby="b-err">
+            <span class="err" id="b-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">T</i><sub>1</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</td><td id="out-T1">254 N</td></tr>
+            <tr><td><i class="v">T</i><sub>2</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>1</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</td><td id="out-T2">389 N</td></tr>
+            <tr><td><i class="v">H</i> = <i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub></td><td id="out-H">194 N</td></tr>
+            <tr class="key"><td><i class="v">T</i><sub>max</sub></td><td id="out-Tmax">389 N</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">W</i></span><span class="what">hanging weight</span><span id="g-W" class="live">500 N</span></li>
+          <li><span><i class="v">θ</i><sub>1</sub></span><span class="what">left cable, from horizontal</span><span id="g-a" class="live">40°</span></li>
+          <li><span><i class="v">θ</i><sub>2</sub></span><span class="what">right cable, from horizontal</span><span id="g-b" class="live">60°</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The tension in each cable.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span>Σ<i class="v">F</i><sub>x</sub> = 0: <i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> = <i class="v">T</i><sub>2</sub> cos <i class="v">θ</i><sub>2</sub></span>
+          <span>Σ<i class="v">F</i><sub>y</sub> = 0: <i class="v">T</i><sub>1</sub> sin <i class="v">θ</i><sub>1</sub> + <i class="v">T</i><sub>2</sub> sin <i class="v">θ</i><sub>2</sub> = <i class="v">W</i></span>
+          <span><i class="v">T</i><sub>1</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</span>
+          <span class="sub-line live" id="w-T1">= 500&nbsp;N × cos 60° / sin(40° + 60°) = 254&nbsp;N</span>
+          <span><i class="v">T</i><sub>2</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>1</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</span>
+          <span class="sub-line live" id="w-T2">= 500&nbsp;N × cos 40° / sin(40° + 60°) = 389&nbsp;N</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span></span><span id="w-ans">T₁ = 254 N, T₂ = 389 N</span></span>
+          <p class="answer-note" id="w-note">Check: T₁ sin θ₁ + T₂ sin θ₂ = 500 N, the weight.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related cases</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="8" y1="26" x2="104" y2="26" class="s-ink" stroke-width="3"/><path d="M40 27 L33 40 L47 40 Z" class="s-ink" stroke-width="1.5"/><path d="M12 4 L12 18 M8.1 18 L12 25 L15.9 18 Z" class="s-ox f-ox" stroke-width="2"/><path d="M100 4 L100 18 M96.2 18 L100 25 L103.8 18 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Lever on a pivot</h3>
+            <p class="f"><span><span><i class="v">F</i><sub>1</sub><i class="v">a</i> = <i class="v">F</i><sub>2</sub><i class="v">b</i></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><line x1="4" y1="6" x2="108" y2="6" class="s-ink" stroke-width="2"/><path d="M4 6 L12 -2 M16 6 L24 -2 M28 6 L36 -2 M40 6 L48 -2 M52 6 L60 -2 M64 6 L72 -2 M76 6 L84 -2 M88 6 L96 -2 M100 6 L108 -2" class="s-ink" stroke-width="1"/><path d="M14 6 L56 30 L98 6" class="s-ink" stroke-width="1.5"/><rect x="46" y="34" width="20" height="14" class="s-ink f-tab" stroke-width="1.5"/><line x1="56" y1="30" x2="56" y2="34" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Two equal cables at <i class="v">θ</i></h3>
+            <p class="f"><span><span><i class="v">T</i> = </span><span class="frac"><span><i class="v">W</i></span><span>2 sin <i class="v">θ</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><g class="s-ink" stroke-width="1.5"><line x1="8" y1="30" x2="104" y2="30" stroke-width="3"/><path d="M8 31 L2 42 L14 42 Z"/><circle cx="104" cy="36" r="5"/></g><path d="M40 4 L40 20 M36.1 20 L40 27 L43.9 20 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Beam on two supports, load at <i class="v">a</i></h3>
+            <p class="f"><span><span><i class="v">R</i><sub>A</sub> = </span><span class="frac"><span><i class="v">P</i><i class="v">b</i></span><span><i class="v">L</i></span></span></span><span><span><i class="v">R</i><sub>B</sub> = </span><span class="frac"><span><i class="v">P</i><i class="v">a</i></span><span><i class="v">L</i></span></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The cables are weightless, do not stretch and can only pull.</li>
+          <li>All three forces meet at the knot, so their moments about it are zero and Σ<i class="v">M</i> = 0 holds automatically. Σ<i class="v">F</i> = 0 does the work.</li>
+          <li>The anchors are rigid.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Draw the free body of the knot: <i class="v">T</i><sub>1</sub> pulls up and to the left at <i class="v">θ</i><sub>1</sub>, <i class="v">T</i><sub>2</sub> up and to the right at <i class="v">θ</i><sub>2</sub>, and the weight <i class="v">W</i> pulls straight down.</p>
+        </div>
+        <ol class="derive prose">
+          <li>Horizontal: <code><i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> = <i class="v">T</i><sub>2</sub> cos <i class="v">θ</i><sub>2</sub></code>.</li>
+          <li>Vertical: <code><i class="v">T</i><sub>1</sub> sin <i class="v">θ</i><sub>1</sub> + <i class="v">T</i><sub>2</sub> sin <i class="v">θ</i><sub>2</sub> = <i class="v">W</i></code>.</li>
+          <li>Put <code><i class="v">T</i><sub>2</sub> = <i class="v">T</i><sub>1</sub> cos <i class="v">θ</i><sub>1</sub> / cos <i class="v">θ</i><sub>2</sub></code> into the vertical equation and multiply by <code>cos <i class="v">θ</i><sub>2</sub></code>: <code><i class="v">T</i><sub>1</sub>(sin <i class="v">θ</i><sub>1</sub> cos <i class="v">θ</i><sub>2</sub> + cos <i class="v">θ</i><sub>1</sub> sin <i class="v">θ</i><sub>2</sub>) = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub></code>.</li>
+          <li>The bracket is <code>sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</code>, so <code><i class="v">T</i><sub>1</sub> = <i class="v">W</i> cos <i class="v">θ</i><sub>2</sub> / sin(<i class="v">θ</i><sub>1</sub> + <i class="v">θ</i><sub>2</sub>)</code>.</li>
+        </ol>
+        <p class="prose">Swapping the subscripts gives <i class="v">T</i><sub>2</sub>. As both cables flatten, the sine in the denominator shrinks and the tensions grow without limit, which is why a loaded line can never be pulled perfectly straight.</p>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="free-body-diagrams.html">← 1.1 Free-body diagrams</a>
+        <a href="reactions-and-shear.html">2.1 Reactions and shear →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Mechanics §1.2</span>
+  <a href="./#statics">Back to Statics</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/equilibrium.js" defer></script>
+</body>
+</html>

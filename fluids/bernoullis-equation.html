@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bernoulli's equation · Engineer's Notebook</title>
+<meta name="description" content="Bernoulli's equation, p + ½ρv² + ρgh = constant, for flow through a pipe that narrows and rises, with a live demo, worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Fluids</a><span aria-hidden="true">/</span>
+    <a href="./#flow">Flow</a>
+  </nav>
+  <span class="ref">§1.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="./" aria-current="true">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="../automotive/">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Bernoulli's equation</h1>
+      <p class="lede">Along a streamline in steady, frictionless flow, pressure, kinetic energy and height trade off against each other, but their sum stays fixed:</p>
+
+      <div class="eq" role="math" aria-label="p plus one half rho v squared plus rho g h equals a constant">
+        <span><i class="v">p</i> + ½<i class="v">ρ</i><i class="v">v</i>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i> = <i class="v">C</i></span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>p</dt><dd>pressure</dd><dd class="u">Pa</dd>
+        <dt>ρ</dt><dd>density</dd><dd class="u">kg/m³</dd>
+        <dt>v</dt><dd>flow speed</dd><dd class="u">m/s</dd>
+        <dt>g</dt><dd>gravitational acceleration</dd><dd class="u">m/s²</dd>
+        <dt>h</dt><dd>height above a datum</dd><dd class="u">m</dd>
+        <dt>C</dt><dd>constant along the streamline</dd><dd class="u">Pa</dd>
+        <dt>D</dt><dd>pipe diameter</dd><dd class="u">m</dd>
+        <dt>Δh</dt><dd>rise from inlet to outlet</dd><dd class="u">m</dd>
+        <dt>H</dt><dd>total head</dd><dd class="u">m</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 230" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A pipe that narrows and changes height between an inlet on the left and an outlet on the right. A standpipe over each section shows the gauge pressure as a column height.</desc>
+          <path id="pipe" class="s-ink f-tab" stroke-width="2.5" stroke-linejoin="round" d="M20 120 L200 120 L280 124 L500 124 L500 160 L280 160 L200 180 L20 180 Z"></path>
+          <rect id="tube1" x="104" y="14" width="12" class="s-ink f-sheet" stroke-width="1.5" height="106.0"></rect>
+          <rect id="tube2" x="384" y="14" width="12" class="s-ink f-sheet" stroke-width="1.5" height="110.0"></rect>
+          <rect id="col1" x="105" width="10" class="f-ink" y="60.0" height="60.0"></rect>
+          <rect id="col2" x="385" width="10" class="f-ox" y="73.9" height="50.1"></rect>
+          <text id="p1-label" x="124" class="t-ink" y="64.0">p₁ = 200 kPa</text>
+          <text id="p2-label" x="376" text-anchor="end" class="t-ox" y="77.9">p₂ = 167 kPa</text>
+          <path id="arr1" class="s-ink f-ink" stroke-width="2.5" d="M30.0 150.0 L45.9 150.0 M45.9 155.5 L55.9 150.0 L45.9 144.5 Z"></path>
+          <path id="arr2" class="s-ink f-ink" stroke-width="2.5" d="M300.0 142.0 L362.0 142.0 M362.0 147.5 L372.0 142.0 L362.0 136.5 Z"></path>
+          <text id="h-label" class="lbl" x="500" y="222" text-anchor="end">Δh = 2 m (drawn 4 units/m)</text>
+        </svg>
+        <figcaption><b>Fig. 1.2-1</b>Standpipe columns show gauge pressure to scale. The pipe's rise is drawn to a fixed scale.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="p1-num"><i>p₁</i>Inlet pressure <span class="unit">kPa</span></label>
+            <input type="range" id="p1-range" min="0" max="1000" step="1" value="200" aria-label="Inlet pressure, kPa">
+            <input type="number" id="p1-num" min="0" max="1000" step="1" value="200" inputmode="numeric" data-name="a gauge pressure" data-unit="kPa" aria-describedby="p1-err">
+            <span class="err" id="p1-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="v1-num"><i>v₁</i>Inlet speed <span class="unit">m/s</span></label>
+            <input type="range" id="v1-range" min="0.1" max="10" step="0.1" value="2" aria-label="Inlet speed, m/s">
+            <input type="number" id="v1-num" min="0.1" max="10" step="0.1" value="2" inputmode="decimal" data-name="a speed" data-unit="m/s" aria-describedby="v1-err">
+            <span class="err" id="v1-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="D1-num"><i>D₁</i>Inlet <span class="unit">mm</span></label>
+            <input type="range" id="D1-range" min="10" max="500" step="1" value="100" aria-label="Inlet, mm">
+            <input type="number" id="D1-num" min="10" max="500" step="1" value="100" inputmode="numeric" data-name="a diameter" data-unit="mm" aria-describedby="D1-err">
+            <span class="err" id="D1-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="D2-num"><i>D₂</i>Outlet <span class="unit">mm</span></label>
+            <input type="range" id="D2-range" min="10" max="500" step="1" value="60" aria-label="Outlet, mm">
+            <input type="number" id="D2-num" min="10" max="500" step="1" value="60" inputmode="numeric" data-name="a diameter" data-unit="mm" aria-describedby="D2-err">
+            <span class="err" id="D2-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="dh-num"><i>Δh</i>Rise <span class="unit">m</span></label>
+            <input type="range" id="dh-range" min="-10" max="10" step="0.1" value="2" aria-label="Rise, m">
+            <input type="number" id="dh-num" min="-10" max="10" step="0.1" value="2" inputmode="decimal" data-name="a height" data-unit="m" aria-describedby="dh-err">
+            <span class="err" id="dh-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="rho-sel"><i>ρ</i>Fluid</label>
+            <select id="rho-sel">
+              <option value="998" data-name="water">Water · 998 kg/m³</option>
+              <option value="1025" data-name="seawater">Seawater · 1,025 kg/m³</option>
+              <option value="840" data-name="diesel">Diesel · 840 kg/m³</option>
+            </select>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub>(<i class="v">D</i><sub>1</sub>/<i class="v">D</i><sub>2</sub>)²</td><td id="out-v2">5.56 m/s</td></tr>
+            <tr><td>½<i class="v">ρ</i>(<i class="v">v</i><sub>1</sub>² − <i class="v">v</i><sub>2</sub>²)</td><td id="out-kin">−13.4 kPa</td></tr>
+            <tr><td>−<i class="v">ρ</i><i class="v">g</i> Δ<i class="v">h</i></td><td id="out-pot">−19.6 kPa</td></tr>
+            <tr class="key"><td><i class="v">p</i><sub>2</sub></td><td id="out-p2">167 kPa</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite"></p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <h2 id="worked">Worked example</h2>
+      <p class="legend">Uses the values in Fig. 1.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">p</i><sub>1</sub></span><span class="what">inlet gauge pressure</span><span id="g-p1" class="live">200 kPa</span></li>
+          <li><span><i class="v">v</i><sub>1</sub></span><span class="what">inlet speed</span><span id="g-v1" class="live">2 m/s</span></li>
+          <li><span><i class="v">D</i><sub>1</sub></span><span class="what">inlet diameter</span><span id="g-D1" class="live">100 mm</span></li>
+          <li><span><i class="v">D</i><sub>2</sub></span><span class="what">outlet diameter</span><span id="g-D2" class="live">60 mm</span></li>
+          <li><span>Δ<i class="v">h</i></span><span class="what">outlet height above inlet</span><span id="g-dh" class="live">2 m</span></li>
+          <li><span><i class="v">ρ</i></span><span class="what"><span id="g-name" class="live">water</span></span><span id="g-rho" class="live">998 kg/m³</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The gauge pressure <i class="v">p</i><sub>2</sub> at the outlet.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">v</i><sub>2</sub> = <i class="v">v</i><sub>1</sub>(<i class="v">D</i><sub>1</sub>/<i class="v">D</i><sub>2</sub>)² = <span id="w-v2" class="live">2&nbsp;m/s × (100/60)² = 5.56&nbsp;m/s</span></span>
+          <span><i class="v">p</i><sub>2</sub> = <i class="v">p</i><sub>1</sub> + ½<i class="v">ρ</i>(<i class="v">v</i><sub>1</sub>² − <i class="v">v</i><sub>2</sub>²) − <i class="v">ρ</i><i class="v">g</i> Δ<i class="v">h</i></span>
+          <span class="sub-line live" id="w-sub">= 200&nbsp;kPa + ½ × 998&nbsp;kg/m³ × ((2&nbsp;m/s)² − (5.56&nbsp;m/s)²) − 998&nbsp;kg/m³ × 9.81&nbsp;m/s² × 2&nbsp;m</span>
+          <span class="sub-line live" id="w-p2">= 200 − 13.4 − 19.6 = 167&nbsp;kPa</span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span><i class="v">p</i><sub>2</sub> = </span><span id="w-ans">167 kPa</span></span>
+          <p class="answer-note" id="w-note">That is gauge pressure, about 268 kPa absolute.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2 id="cases">Related forms</h2>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="30" y="6" width="44" height="40" class="s-ink f-sheet" stroke-width="1.5"/><rect x="31" y="14" width="42" height="31" class="f-tab"/><path d="M74 40 L97 40 M97 43.9 L104 40 L97 36.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Draining tank (Torricelli)</h3>
+            <p class="f"><span><span><i class="v">v</i> = √(2<i class="v">g</i><i class="v">h</i>)</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 26 L80 26 M80 20 L80 32" class="s-ink" stroke-width="1.5"/><path d="M80 22 L100 22 L100 30 L80 30" class="s-ink" stroke-width="1.5"/><path d="M10 14 L43 14 M43 17.9 L50 14 L43 10.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Pitot tube</h3>
+            <p class="f"><span><span><i class="v">v</i> = √(</span><span class="frac"><span>2Δ<i class="v">p</i></span><span><i class="v">ρ</i></span></span><span>)</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M6 16 L48 16 L64 20 L106 20 M6 36 L48 36 L64 32 L106 32" class="s-ink" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Head form, in metres</h3>
+            <p class="f"><span><span class="frac"><span><i class="v">p</i></span><span><i class="v">ρ</i><i class="v">g</i></span></span><span> + </span><span class="frac"><span><i class="v">v</i>²</span><span>2<i class="v">g</i></span></span><span> + <i class="v">z</i> = <i class="v">H</i></span></span></p>
+          </div>
+        </li>
+      </ul>
+
+      <details class="more" id="assumptions">
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>Flow is steady and incompressible.</li>
+          <li>There is no friction. Real pipes lose head to friction, so the real outlet pressure is lower.</li>
+          <li>The equation applies along one streamline, or between sections where the flow is uniform.</li>
+          <li>No pump or turbine sits between the two points.</li>
+          <li>Pressures here are gauge. Absolute pressure is gauge plus about 101.3 kPa, and water starts to boil (cavitate) near 2.3 kPa absolute at 20 °C.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation">
+        <summary><h2>Derivation</h2></summary>
+        <div class="prose">
+          <p>Follow a small volume <i class="v">V</i> of fluid from section 1 to section 2.</p>
+        </div>
+        <ol class="derive prose">
+          <li>The pressure difference does work on it: <code>(<i class="v">p</i><sub>1</sub> − <i class="v">p</i><sub>2</sub>)<i class="v">V</i></code>.</li>
+          <li>Its kinetic energy rises by <code>½<i class="v">ρ</i><i class="v">V</i>(<i class="v">v</i><sub>2</sub>² − <i class="v">v</i><sub>1</sub>²)</code>, and its potential energy by <code><i class="v">ρ</i><i class="v">V</i><i class="v">g</i>(<i class="v">h</i><sub>2</sub> − <i class="v">h</i><sub>1</sub>)</code>.</li>
+          <li>With no friction, work in equals energy gained. Divide by <i class="v">V</i> and collect each section's terms:</li>
+          <li><code><i class="v">p</i><sub>1</sub> + ½<i class="v">ρ</i><i class="v">v</i><sub>1</sub>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i><sub>1</sub> = <i class="v">p</i><sub>2</sub> + ½<i class="v">ρ</i><i class="v">v</i><sub>2</sub>² + <i class="v">ρ</i><i class="v">g</i><i class="v">h</i><sub>2</sub></code>.</li>
+        </ol>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="continuity.html">← 1.1 Continuity</a>
+        <a href="reynolds-number.html">1.3 Reynolds number →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Fluids §1.2</span>
+  <a href="./#flow">Back to Flow</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/bernoullis-equation.js" defer></script>
+</body>
+</html>

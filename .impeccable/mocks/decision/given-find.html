@@ -1,0 +1,45 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=1440">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;color:#16181a;font:400 18px/1.6 'Source Serif 4',serif;position:relative;
+background:#e8ebea url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .12 0 0 0 0 .12 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+.head{position:absolute;left:72px;right:144px;top:28px;display:flex;justify-content:space-between;border-bottom:4px double #16181a;padding-bottom:10px;font:700 13px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase}
+.head .c{color:#b3261e}.head .r{font:500 13px 'JetBrains Mono'}
+.tabs{position:absolute;right:0;top:88px;width:72px;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.tabs div{width:52px;height:96px;background:#d2d8d6;border-radius:10px 0 0 10px;writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font:700 12px 'Archivo Narrow';letter-spacing:.12em;text-transform:uppercase}
+.tabs .on{width:72px;background:#b3261e;color:#f6f7f6}.tabs .soon{color:#4c5351}
+h1{position:absolute;left:72px;top:96px;font:700 52px/1 'Source Serif 4';letter-spacing:-.02em}
+.row{position:absolute;left:72px;right:144px;display:grid;grid-template-columns:140px 1fr;border-top:1px solid #16181a;padding-top:10px}
+.row>b{font:700 13px 'Archivo Narrow';letter-spacing:.14em;text-transform:uppercase}
+.given{display:grid;grid-template-columns:1fr 520px;gap:48px}
+table{border-collapse:collapse;width:100%;font:500 15px 'JetBrains Mono'}
+td{border-bottom:1px solid #c3c9c7;padding:8px 6px}
+td:first-child{font:italic 500 18px 'Source Serif 4';width:44px}
+td.v{text-align:right}
+td.v span{border:1px solid #4c5351;background:#e8ebea;padding:3px 10px}
+.fig{background:#f6f7f6;border:1px solid #16181a;padding:10px 14px}
+.fig svg{width:100%;height:190px}
+.eq{font:500 26px 'JetBrains Mono'}.eq i{font:italic 500 30px 'Source Serif 4'}
+.sub{font:500 18px 'JetBrains Mono';color:#4c5351;margin-top:6px}
+.box{display:inline-block;border:2px solid #b3261e;padding:8px 18px;font:500 34px 'JetBrains Mono';color:#b3261e}
+.box i{font:italic 500 36px 'Source Serif 4'}
+</style></head><body>
+<div class="head"><span>Engineer's Notebook</span><span class="c">Mechanics / Beams</span><span class="r">§2.3</span></div>
+<div class="tabs"><div>Contents</div><div class="on">Mechanics</div><div class="soon">Thermo</div><div class="soon">Fluids</div><div class="soon">Materials</div><div class="soon">Electrical</div><div class="soon">Automotive</div></div>
+<h1>Beam deflection</h1>
+<div class="row" style="top:180px"><b>Given</b>
+<div class="given"><table>
+<tr><td>P</td><td>Point load at mid-span</td><td class="v"><span>2.0</span> kN</td></tr>
+<tr><td>L</td><td>Span, simply supported</td><td class="v"><span>1.50</span> m</td></tr>
+<tr><td>E</td><td>Steel</td><td class="v"><span>200</span> GPa</td></tr>
+<tr><td>b×h</td><td>Rectangular section</td><td class="v"><span>40 × 80</span> mm</td></tr>
+</table>
+<div class="fig"><svg viewBox="0 0 500 190"><line x1="30" y1="90" x2="470" y2="90" stroke="#4c5351" stroke-dasharray="5 5"/><path d="M30 90 Q250 146 470 90" fill="none" stroke="#16181a" stroke-width="4"/><line x1="250" y1="16" x2="250" y2="104" stroke="#b3261e" stroke-width="5"/><path d="M238 98 L250 116 L262 98Z" fill="#b3261e"/><path d="M30 92 L18 114 L42 114Z" fill="none" stroke="#16181a" stroke-width="2"/><circle cx="470" cy="102" r="9" fill="none" stroke="#16181a" stroke-width="2"/><line x1="30" y1="160" x2="470" y2="160" stroke="#4c5351"/></svg></div></div></div>
+<div class="row" style="top:440px"><b>Find</b><p>Maximum deflection <i>δ</i> at mid-span.</p></div>
+<div class="row" style="top:510px"><b>Solution</b>
+<div><div class="eq"><i>I</i> = <i>bh</i>³/12 = 1.71 × 10⁶ mm⁴</div>
+<div class="eq" style="margin-top:10px"><i>δ</i> = <i>PL</i>³ / 48<i>EI</i></div>
+<div class="sub">= 2000 × 1.5³ / (48 × 200×10⁹ × 1.71×10⁻⁶)</div></div></div>
+<div class="row" style="top:720px"><b>Answer</b><div><span class="box"><i>δ</i> = 0.412 mm</span></div></div>
+</body></html>
