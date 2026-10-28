@@ -23,7 +23,7 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   - Each discipline has a folder (`mechanics/`, `thermodynamics/`, `fluids/`, `materials/`, `electrical/`, `automotive/`) with an `index.html` topic list and one page per topic: 27 topics in all.
   - `mechanics/beam-deflection.html` is the original hand-written topic. Every other topic page follows its structure.
 - **Shared chrome is duplicated, not templated.** Each page repeats the running head, the right-edge discipline tabs (`ul.tabs`: Contents, Mechanics, Thermo, Fluids, Materials, Electrical, Automotive) and the footer.
-  - Adding a discipline or a page means editing the tab list on every page, plus the discipline index, the homepage list and the neighbouring pagers.
+  - Adding a discipline or a page means editing the tab list on every page, plus the discipline index, the homepage (its demo count, and its list if the topic is among the first three, which is all it shows) and the neighbouring pagers.
   - Every discipline is published now. A future unpublished one would use `class="soon"` and link to its homepage section.
 - **Topic page order** (keep it the same for new topics):
   1. title, lede, `.eq` formula block, `dl.symbols`
