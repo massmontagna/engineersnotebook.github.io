@@ -384,15 +384,12 @@ ul.plain li::marker { color: var(--ox); }
 .disc li.live a { font-weight: 600; }
 .disc.soon h2 { color: var(--ink-2); }
 
-.example {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 26rem);
-  column-gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-.example .eq { justify-content: flex-start; margin-top: 1rem; }
-.example .go { display: inline-block; margin-top: 1rem; font-weight: 600; }
-.example .demo { padding: 14px 16px; }
+/* A–Z index: every topic, in three columns like the shelf above. */
+.az { list-style: none; padding: 0; columns: 3; column-gap: clamp(24px, 3vw, 48px); }
+.az li { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--hair); break-inside: avoid; font-size: 1rem; }
+.az a { font-weight: 600; }
+.az .k { font: 500 0.8125rem var(--mono); white-space: nowrap; }
+.az .d { grid-column: 1 / -1; font: 500 0.75rem var(--label); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); }
 
 /* ---------- mechanics index ---------- */
 .toc { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-top: 1.25rem; padding: 0; list-style: none; font: 700 0.8125rem var(--label); letter-spacing: 0.12em; text-transform: uppercase; }
@@ -423,12 +420,12 @@ tr.current th { font-weight: 600; }
 /* ---------- narrower screens ---------- */
 @media (max-width: 1180px) {
   .shelf { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .az { columns: 2; }
 }
 @media (max-width: 960px) {
-  .topic, .example { grid-template-columns: minmax(0, 1fr); }
+  .topic { grid-template-columns: minmax(0, 1fr); }
   .topic { grid-template-rows: none; }
   .topic > .demo-col { grid-column: 1; grid-row: auto; margin-top: 2rem; }
-  .example .demo { margin-top: 1.5rem; }
 }
 @media (max-width: 760px) {
   :root { --tabs-w: 0px; }
@@ -461,6 +458,7 @@ tr.current th { font-weight: 600; }
   }
   main { padding-top: 28px; }
   .shelf { grid-template-columns: minmax(0, 1fr); }
+  .az { columns: 1; }
   .symbols { grid-template-columns: 2.25rem 1fr auto; }
   .symbols dt:nth-of-type(even) { padding-left: 0; grid-column-start: auto; }
   .step { grid-template-columns: minmax(0, 1fr); row-gap: 6px; }
