@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tyre load sensitivity · Engineer's Notebook</title>
+<meta name="description" content="Tyre load sensitivity, μ = μ₀ − kF_z, and why lateral load transfer costs an axle 2kΔW² of grip, with a live grip-curve demo, a worked example and related forms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,500&display=swap" rel="stylesheet">
+<link rel="icon" href="../images/favicon.ico" sizes="32x32">
+<link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../images/favicon-180.png">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#content">Skip to content</a>
+
+<header class="head">
+  <a class="site" href="../"><img src="../images/favicon.svg" alt="" width="22" height="22">Engineer's Notebook</a>
+  <nav class="crumbs" aria-label="Breadcrumb">
+    <a href="./">Automotive</a><span aria-hidden="true">/</span>
+    <a href="./#handling">Handling</a>
+  </nav>
+  <span class="ref">§3.2</span>
+</header>
+
+<nav aria-label="Disciplines">
+  <ul class="tabs">
+    <li><a href="../">Contents</a></li>
+    <li><a href="../mechanics/">Mechanics</a></li>
+    <li><a href="../thermodynamics/">Thermo</a></li>
+    <li><a href="../fluids/">Fluids</a></li>
+    <li><a href="../materials/">Materials</a></li>
+    <li><a href="../electrical/">Electrical</a></li>
+    <li><a href="./" aria-current="true">Automotive</a></li>
+  </ul>
+</nav>
+
+<main id="content">
+  <article class="topic">
+    <div class="col">
+      <h1 class="title">Tyre load sensitivity</h1>
+      <p class="lede">Press a tyre harder into the road and it grips harder, but not in proportion: its friction coefficient falls as the load rises. So when cornering moves load from the inner wheel to the outer, the outer gains less grip than the inner loses, and the axle as a whole grips less:</p>
+
+      <div class="eq" role="math" aria-label="mu equals mu nought minus k F z; delta F equals 2 k delta W squared">
+        <span><i class="v">μ</i> = <i class="v">μ</i><sub>0</sub> − <i class="v">k</i><i class="v">F</i><sub>z</sub>,</span><span>Δ<i class="v">F</i> = 2<i class="v">k</i>Δ<i class="v">W</i>²</span>
+      </div>
+
+      <dl class="symbols" aria-label="Symbols and units">
+        <dt>μ</dt><dd>tyre friction coefficient</dd><dd class="u">—</dd>
+        <dt>μ<sub>0</sub></dt><dd>friction coefficient at zero load</dd><dd class="u">—</dd>
+        <dt>k</dt><dd>load sensitivity</dd><dd class="u">1/kN</dd>
+        <dt>F<sub>z</sub></dt><dd>wheel load</dd><dd class="u">kN</dd>
+        <dt>F<sub>z0</sub></dt><dd>static wheel load</dd><dd class="u">kN</dd>
+        <dt>ΔW</dt><dd>lateral load transfer</dd><dd class="u">kN</dd>
+        <dt>F</dt><dd>peak lateral force of one tyre</dd><dd class="u">kN</dd>
+        <dt>ΔF</dt><dd>axle grip lost to transfer</dd><dd class="u">kN</dd>
+      </dl>
+
+    </div>
+
+    <div class="demo-col">
+      <figure class="demo" id="demo">
+        <svg class="fig" id="fig" viewBox="0 0 520 290" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">Peak lateral force of a tyre against its vertical load: a curve that bends over as load rises. The inner and outer wheel points are joined by a straight chord, which passes below the curve at the static load. The gap is half the grip the axle loses.</desc>
+          <path d="M60 250 L500 250 M500 253.3 L506 250 L500 246.7 Z" class="s-ink2 f-ink" stroke-width="1"></path><path d="M60 250 L60 30 M63.3 30 L60 24 L56.7 30 Z" class="s-ink2 f-ink" stroke-width="1"></path>
+          <text class="lbl" x="506" y="284" text-anchor="end">WHEEL LOAD Fz, kN</text><text class="lbl" x="68" y="28">PEAK LATERAL FORCE F, kN</text>
+          <text x="60" y="268" text-anchor="middle">0</text><text x="200" y="268" text-anchor="middle">4</text><text x="340" y="268" text-anchor="middle">8</text><text x="480" y="268" text-anchor="middle">12</text>
+          <text x="52" y="254" text-anchor="end">0</text><text x="52" y="149" text-anchor="end">10</text><text x="52" y="44" text-anchor="end">20</text>
+          <path d="M60 145 L480 145 M60 40 L480 40" class="s-hair" stroke-width="1"></path>
+          <path id="drops" class="s-ink2 dash" stroke-width="1" d="M130.0 224.4 L130.0 250.0 M270.0 183.2 L270.0 250.0 M200.0 203.8 L200.0 250.0"></path>
+          <path id="curve" class="s-ink" stroke-width="2" d="M60.0 250.0 L68.8 246.6 L77.5 243.3 L86.3 240.0 L95.0 236.8 L103.8 233.6 L112.5 230.5 L121.3 227.4 L130.0 224.4 L138.8 221.4 L147.5 218.5 L156.3 215.6 L165.0 212.8 L173.8 210.1 L182.5 207.4 L191.3 204.7 L200.0 202.1 L208.8 199.6 L217.5 197.1 L226.3 194.6 L235.0 192.3 L243.8 189.9 L252.5 187.6 L261.3 185.4 L270.0 183.2 L278.8 181.1 L287.5 179.0 L296.3 177.0 L305.0 175.0 L313.8 173.1 L322.5 171.3 L331.3 169.4 L340.0 167.7 L348.8 166.0 L357.5 164.3 L366.3 162.7 L375.0 161.2 L383.8 159.7 L392.5 158.2 L401.3 156.8 L410.0 155.5 L418.8 154.2 L427.5 153.0 L436.3 151.8 L445.0 150.7 L453.8 149.6 L462.5 148.6 L471.3 147.6 L480.0 146.7"></path>
+          <path id="chord" class="s-ox dash" stroke-width="1.5" d="M130.0 224.4 L270.0 183.2"></path>
+          <circle id="pt-i" r="5" class="f-ink" cx="130.0" cy="224.4"></circle>
+          <circle id="pt-o" r="5" class="f-ink" cx="270.0" cy="183.2"></circle>
+          <circle id="pt-m" r="4.5" class="s-ox f-sheet" stroke-width="2" cx="200.0" cy="203.8"></circle>
+          <circle id="pt-s" r="5" class="f-ox" cx="200.0" cy="202.1"></circle>
+          <text id="i-label" class="lbl" x="130.0" y="212.4" text-anchor="middle" display="inline">INNER</text>
+          <text id="o-label" class="lbl" x="270.0" y="171.2" text-anchor="middle" display="inline">OUTER</text>
+          <rect id="lens" x="190.5" y="197.5" width="19" height="11" class="s-ink2" stroke-width="1"></rect>
+          <clipPath id="inset-clip"><rect x="72" y="36" width="190" height="110"></rect></clipPath>
+          <rect x="72" y="36" width="190" height="110" class="s-ink2 f-sheet" stroke-width="1"></rect>
+          <g clip-path="url(#inset-clip)">
+            <path id="i-curve" class="s-ink" stroke-width="2" d="M65.0 112.9 L73.5 110.4 L82.0 107.8 L90.5 105.3 L99.0 102.8 L107.5 100.2 L116.0 97.7 L124.5 95.2 L133.0 92.6 L141.5 90.1 L150.0 87.6 L158.5 85.1 L167.0 82.6 L175.5 80.1 L184.0 77.6 L192.5 75.1 L201.0 72.6 L209.5 70.2 L218.0 67.7 L226.5 65.2 L235.0 62.8 L243.5 60.3 L252.0 57.9 L260.5 55.4 L269.0 53.0"></path>
+            <path id="i-chord" class="s-ox dash" stroke-width="1.5" d="M65.0 129.4 L269.0 69.4"></path>
+            <path id="i-gap" class="s-ox" stroke-width="2" d="M179.0 82.6 L179.0 99.4"></path>
+            <circle id="i-m" cx="167" cy="99.4" r="4.5" class="s-ox f-sheet" stroke-width="2" display="inline"></circle>
+            <circle id="i-s" cx="167" cy="82.6" r="5" class="f-ox"></circle>
+          </g>
+          <text id="i-gap-label" class="t-ox halo" x="185" y="95.0" display="inline">½ΔF</text>
+          <text class="lbl" x="78" y="50">×10</text>
+        </svg>
+        <figcaption><b>Fig. 3.2-1</b>Fixed axes; the inset magnifies the boxed area ×10. The filled red point is each tyre's grip with equal loads, the ring the average of inner and outer. The gap is half the axle's loss.</figcaption>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="Fz0-num"><i>F<sub>z0</sub></i>Static load <span class="unit">kN</span></label>
+            <input type="range" id="Fz0-range" min="1" max="6" step="0.1" value="4" aria-label="Static wheel load, kN">
+            <input type="number" id="Fz0-num" min="1" max="6" step="0.1" value="4" inputmode="decimal" data-name="a load" data-unit="kN" aria-describedby="Fz0-err">
+            <span class="err" id="Fz0-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="dW-num"><i>ΔW</i>Transfer <span class="unit">kN</span></label>
+            <input type="range" id="dW-range" min="0" max="4" step="0.1" value="2" aria-label="Lateral load transfer, kN">
+            <input type="number" id="dW-num" min="0" max="4" step="0.1" value="2" inputmode="decimal" data-name="a transfer" data-unit="kN" aria-describedby="dW-err">
+            <span class="err" id="dW-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="mu0-num"><i>μ<sub>0</sub></i>Base grip</label>
+            <input type="range" id="mu0-range" min="0.8" max="1.6" step="0.01" value="1.3" aria-label="Friction coefficient at zero load">
+            <input type="number" id="mu0-num" min="0.8" max="1.6" step="0.01" value="1.3" inputmode="decimal" data-name="a coefficient" data-unit="" aria-describedby="mu0-err">
+            <span class="err" id="mu0-err" aria-live="polite"></span>
+          </div>
+          <div class="ctl">
+            <label for="k-num"><i>k</i>Sensitivity <span class="unit">/kN</span></label>
+            <input type="range" id="k-range" min="0" max="0.06" step="0.002" value="0.04" aria-label="Load sensitivity, per kN">
+            <input type="number" id="k-num" min="0" max="0.06" step="0.002" value="0.04" inputmode="decimal" data-name="a sensitivity" data-unit="/kN" aria-describedby="k-err">
+            <span class="err" id="k-err" aria-live="polite"></span>
+          </div>
+        </div>
+
+        <table class="results" aria-label="Results">
+          <tbody>
+            <tr><td><i class="v">F</i><sub>inner</sub></td><td id="out-Fi">2.44 kN</td></tr>
+            <tr><td><i class="v">F</i><sub>outer</sub></td><td id="out-Fo">6.36 kN</td></tr>
+            <tr><td>Axle grip, equal loads</td><td id="out-eq">9.12 kN</td></tr>
+            <tr class="key"><td>Δ<i class="v">F</i> = 2<i class="v">k</i>Δ<i class="v">W</i>²</td><td id="out-loss">0.32 kN</td></tr>
+          </tbody>
+        </table>
+        <p class="readout" id="readout" aria-live="polite">Moving 2 kN across the axle costs 0.32 kN of grip, 3.51% of what it has with equal loads.</p>
+        <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
+      </figure>
+    </div>
+
+    <div class="col worked-live">
+      <details class="more" id="worked" open>
+        <summary><h2>Worked example</h2></summary>
+      <p class="legend">Uses the values in Fig. 3.2-1. Change them and the working updates.</p>
+      <div class="step">
+        <span class="lbl">Given</span>
+        <ul class="given">
+          <li><span><i class="v">F</i><sub>z0</sub></span><span class="what">static wheel load</span><span id="g-Fz0" class="live">4 kN</span></li>
+          <li><span>Δ<i class="v">W</i></span><span class="what">lateral load transfer</span><span id="g-dW" class="live">2 kN</span></li>
+          <li><span><i class="v">μ</i><sub>0</sub></span><span class="what">friction coefficient at zero load</span><span id="g-mu0" class="live">1.3</span></li>
+          <li><span><i class="v">k</i></span><span class="what">load sensitivity</span><span id="g-k" class="live">0.04 /kN</span></li>
+        </ul>
+      </div>
+      <div class="step">
+        <span class="lbl">Find</span>
+        <p>The grip the axle loses because its wheel loads are unequal.</p>
+      </div>
+      <div class="step">
+        <span class="lbl">Solution</span>
+        <div class="calc">
+          <span><i class="v">F</i><sub>inner</sub> = (<i class="v">μ</i><sub>0</sub> − <i class="v">k</i><i class="v">F</i><sub>z</sub>)<i class="v">F</i><sub>z</sub> = <span id="w-Fi" class="live">(1.3 − 0.04 × 2) × 2&nbsp;kN = 2.44&nbsp;kN</span></span>
+          <span><i class="v">F</i><sub>outer</sub> = <span id="w-Fo" class="live">(1.3 − 0.04 × 6) × 6&nbsp;kN = 6.36&nbsp;kN</span></span>
+          <span>Equal loads: <span id="w-eq" class="live">2 × (1.3 − 0.04 × 4) × 4&nbsp;kN = 9.12&nbsp;kN</span></span>
+          <span>Δ<i class="v">F</i> = <span id="w-loss" class="live">9.12&nbsp;kN − 8.8&nbsp;kN = 0.32&nbsp;kN</span></span>
+        </div>
+      </div>
+      <div class="step">
+        <span class="lbl">Answer</span>
+        <div>
+          <span class="answer live" id="w-box"><span>Δ<i class="v">F</i> = </span><span id="w-ans">0.32 kN</span></span>
+          <p class="answer-note" id="w-note">The same as 2kΔW² = 2 × 0.04 × 2² = 0.32 kN, whatever the static load.</p>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <div class="col">
+      <details class="more" id="assumptions" open>
+        <summary><h2>Assumptions</h2></summary>
+        <ul class="plain prose">
+          <li>The friction coefficient falls in a straight line with load. Real tyres follow a curve, but a straight line fits well over the working range.</li>
+          <li>Both tyres on the axle are the same and are both at their grip limit.</li>
+          <li>Camber, tyre temperature and pressure are ignored.</li>
+          <li>The model holds below the load of peak grip, <span class="inline-eq"><i class="v">μ</i><sub>0</sub>/2<i class="v">k</i></span>. Above it, the straight line would predict less force for more load.</li>
+        </ul>
+      </details>
+
+      <details class="more" id="derivation" open>
+        <summary><h2>Derivation</h2></summary>
+        <ol class="derive prose">
+          <li>One tyre's peak lateral force is <code><i class="v">F</i> = <i class="v">μ</i><i class="v">F</i><sub>z</sub> = <i class="v">μ</i><sub>0</sub><i class="v">F</i><sub>z</sub> − <i class="v">k</i><i class="v">F</i><sub>z</sub>²</code>, a curve that bends over as load rises.</li>
+          <li>Cornering moves Δ<i class="v">W</i> from the inner wheel to the outer: <code><i class="v">F</i><sub>z</sub> = <i class="v">F</i><sub>z0</sub> ∓ Δ<i class="v">W</i></code>.</li>
+          <li>Adding the two tyres: <code><i class="v">F</i><sub>axle</sub> = 2<i class="v">μ</i><sub>0</sub><i class="v">F</i><sub>z0</sub> − 2<i class="v">k</i><i class="v">F</i><sub>z0</sub>² − 2<i class="v">k</i>Δ<i class="v">W</i>²</code>.</li>
+          <li>The first two terms are the grip with equal loads, so the transfer costs <code>Δ<i class="v">F</i> = 2<i class="v">k</i>Δ<i class="v">W</i>²</code>.</li>
+        </ol>
+        <p class="prose">The loss grows with the square of the transfer and does not depend on the static load. This is how roll stiffness tunes the balance of a car: stiffening one axle's anti-roll bar moves more of the transfer onto that axle, which then runs out of grip first. Stiffer at the front gives understeer; stiffer at the rear, oversteer.</p>
+      </details>
+
+      <details class="more" id="cases" open>
+        <summary><h2>Related forms</h2></summary>
+      <ul class="cases">
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M8 46 L106 46 M8 46 L8 4" class="s-ink2" stroke-width="1"/><path d="M8 46 Q50 2 104 14" class="s-ink" stroke-width="2"/><circle cx="72" cy="10" r="3" class="f-ox"/><path d="M72 13 L72 46" class="s-ox dash" stroke-width="1"/></svg>
+          <div>
+            <h3>Load for peak grip</h3>
+            <p class="f"><span><span><i class="v">F</i><sub>z</sub>* = </span><span class="frac"><span><i class="v">μ</i><sub>0</sub></span><span>2<i class="v">k</i></span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M8 46 L106 46 M8 46 L8 4" class="s-ink2" stroke-width="1"/><path d="M8 46 Q50 2 104 14" class="s-ink" stroke-width="2"/><path d="M26 28 L90 12" class="s-ox dash" stroke-width="1.5"/><circle cx="26" cy="28" r="2.5" class="f-ink"/><circle cx="90" cy="12" r="2.5" class="f-ink"/></svg>
+          <div>
+            <h3>Share of axle grip lost</h3>
+            <p class="f"><span><span class="frac"><span>Δ<i class="v">F</i></span><span><i class="v">F</i><sub>axle,0</sub></span></span><span> = </span><span class="frac"><span><i class="v">k</i>Δ<i class="v">W</i>²</span><span><i class="v">F</i><sub>z0</sub>(<i class="v">μ</i><sub>0</sub> − <i class="v">k</i><i class="v">F</i><sub>z0</sub>)</span></span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><path d="M26 44 L26 14 L40 6 L72 6 L86 14 L86 44 Z" class="s-ink f-tab" stroke-width="1.5"/><rect x="18" y="30" width="10" height="16" class="s-ink f-sheet" stroke-width="1.5"/><rect x="84" y="30" width="10" height="16" class="s-ink f-sheet" stroke-width="1.5"/><circle cx="56" cy="24" r="3" class="f-ox"/><path d="M60 24 L80 24 M80 27.9 L87 24 L80 20.1 Z" class="s-ox f-ox" stroke-width="2"/></svg>
+          <div>
+            <h3>Lateral load transfer, one axle</h3>
+            <p class="f"><span><span>Δ<i class="v">W</i> = </span><span class="frac"><span><i class="v">m</i><i class="v">a</i><sub>y</sub><i class="v">h</i></span><span><i class="v">t</i></span></span></span><span><span>see 3.1 Jacking</span></span></p>
+          </div>
+        </li>
+        <li>
+          <svg class="fig" viewBox="0 0 112 52" aria-hidden="true"><rect x="20" y="8" width="72" height="36" rx="10" class="s-ink f-tab" stroke-width="1.5"/><rect x="12" y="10" width="10" height="12" class="s-ink f-sheet" stroke-width="1.5"/><rect x="90" y="10" width="10" height="12" class="s-ink f-sheet" stroke-width="1.5"/><rect x="12" y="30" width="10" height="12" class="s-ink f-sheet" stroke-width="1.5"/><rect x="90" y="30" width="10" height="12" class="s-ink f-sheet" stroke-width="1.5"/><path d="M8 16 L104 16" class="s-ox" stroke-width="1.5"/></svg>
+          <div>
+            <h3>Front against rear, same tyres</h3>
+            <p class="f"><span><span class="frac"><span>Δ<i class="v">F</i><sub>f</sub></span><span>Δ<i class="v">F</i><sub>r</sub></span></span><span> = </span><span>(</span><span class="frac"><span>Δ<i class="v">W</i><sub>f</sub></span><span>Δ<i class="v">W</i><sub>r</sub></span></span><span>)²</span></span></p>
+          </div>
+        </li>
+      </ul>
+      </details>
+
+      <nav class="pager" aria-label="Section pages">
+        <a href="jacking.html">← 3.1 Jacking</a>
+        <a href="./">Automotive contents →</a>
+      </nav>
+    </div>
+  </article>
+</main>
+
+<footer class="foot">
+  <span>Engineer's Notebook · Automotive §3.2</span>
+  <a href="./#handling">Back to Handling</a>
+</footer>
+
+<script src="../assets/js/notebook.js" defer></script>
+<script src="../assets/js/load-sensitivity.js" defer></script>
+</body>
+</html>

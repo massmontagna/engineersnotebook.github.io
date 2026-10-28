@@ -302,6 +302,8 @@ svg.fig text { font: 400 13px var(--mono); fill: var(--ink-2); }
 svg.fig text.lbl { font: 600 12px var(--label); letter-spacing: 0.04em; }
 svg.fig text.t-ink { fill: var(--ink); }
 svg.fig text.t-ox { fill: var(--ox); }
+/* A paper halo keeps a label legible where it crosses a line. */
+svg.fig text.halo { paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
 svg.fig .s-ink { stroke: var(--ink); fill: none; }
 svg.fig .s-ink2 { stroke: var(--ink-2); fill: none; }
 svg.fig .s-hair { stroke: var(--hair); fill: none; }
