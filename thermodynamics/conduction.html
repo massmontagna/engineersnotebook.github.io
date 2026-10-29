@@ -65,18 +65,21 @@
 
     <div class="demo-col">
       <figure class="demo" id="demo">
-        <svg class="fig" id="fig" viewBox="0 0 520 220" role="img" aria-labelledby="fig-desc">
-          <desc id="fig-desc">A wall seen edge-on, hot side on the left and cold side on the right. A line shows the temperature falling straight through the wall, and an arrow shows the heat flow.</desc>
-          <rect x="200" y="30" width="120" height="150" class="s-ink f-tab" stroke-width="2"></rect>
-          <text id="k-label" x="260" y="112" text-anchor="middle" class="t-ink">k = 0.7</text>
-          <text id="L-label" x="260" y="22" text-anchor="middle">L = 100 mm</text>
-          <path id="prof" class="s-ox" stroke-width="3" stroke-linejoin="round" d="M40.0 55.0 L200.0 55.0 L320.0 155.0 L480.0 155.0"></path>
-          <text id="T1-label" x="40" y="47.0">T₁ = 20 °C</text>
-          <text id="T2-label" x="480" text-anchor="end" y="147.0">T₂ = 0 °C</text>
-          <path id="flow" class="s-ox f-ox" stroke-width="2.5" d="M210.0 210.0 L298.0 210.0 M298.0 216.6 L310.0 210.0 L298.0 203.4 Z"></path>
-          <text id="q-label" x="260" y="200" text-anchor="middle" class="t-ox">q = 140 W/m²</text>
+        <svg class="fig" id="fig" viewBox="0 -58 520 294" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A wall seen edge-on with its face receding into the page, drawn thicker for a thicker wall and deeper for a larger area. A line on a fixed temperature scale shows the temperature falling straight through it from the left face to the right, and an arrow below, heavier for a larger heat flow, shows the heat passing through.</desc>
+          <path class="s-hair" stroke-width="1" d="M40 167.3 L480 167.3"></path><text class="lbl" x="34" y="171.3" text-anchor="end">0 °C</text><path class="s-hair" stroke-width="1" d="M40 103.6 L480 103.6"></path><text class="lbl" x="34" y="107.6" text-anchor="end">100 °C</text><path class="s-hair" stroke-width="1" d="M40 40.0 L480 40.0"></path><text class="lbl" x="34" y="44.0" text-anchor="end">200 °C</text>
+          <path id="wall-side" class="s-ink f-tab" stroke-width="1.5" d="M320.3 34.0 L346.2 8.1 L346.2 164.1 L320.3 190.0 Z"></path><path id="wall-top" class="s-ink f-sheet" stroke-width="1.5" d="M199.7 34.0 L320.3 34.0 L346.2 8.1 L225.6 8.1 Z"></path><rect id="wall" y="34" height="156" class="s-ink f-tab" stroke-width="2" x="199.7" width="120.6"></rect>
+          <text id="k-label" x="260" y="-44" text-anchor="middle" class="t-ink">k = 0.7 W/(m·K)</text>
+          <text id="L-label" x="260" y="-30" text-anchor="middle">L = 100 mm</text>
+          <text id="A-label" x="260" y="-16" text-anchor="middle">A = 10 m²</text>
+          <path id="prof" class="s-ox" stroke-width="3" stroke-linejoin="round" d="M40.0 154.5 L199.7 154.5 L320.3 167.3 L480.0 167.3"></path>
+          <text id="T1-label" x="44" y="146.5">T₁ = 20 °C</text>
+          <text id="T2-label" x="476" text-anchor="end" y="159.3">T₂ = 0 °C</text>
+          <path id="flow" class="s-ox f-ox" d="M170.0 214.0 L332.7 214.0 M332.7 223.5 L350.0 214.0 L332.7 204.5 Z" stroke-width="6.6"></path>
+          <text id="q-label" y="218" text-anchor="end" x="162">q = 140 W/m²</text>
+          <text id="Phi-label" y="218" class="t-ox" x="368">Φ = 1.4 kW</text>
         </svg>
-        <figcaption><b>Fig. 2.1-1</b>Wall shown at a fixed width. The temperature scale fits the two faces.</figcaption>
+        <figcaption><b>Fig. 2.1-1</b>Temperatures to scale. The wall's thickness follows L, its depth into the page follows A, and the arrow's weight follows the heat flow Φ, all on log scales.</figcaption>
 
         <div class="controls">
           <div class="ctl">
