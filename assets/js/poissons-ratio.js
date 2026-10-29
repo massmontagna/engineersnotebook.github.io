@@ -2,8 +2,7 @@
 (function () {
   const { fmt, set, attr, opt, arrow, nb } = NB;
   const CX = 260, CY = 100, L0 = 280, D0 = 80, MAX = 70, SCALE = 10; // original bar, largest drawn half-extension, exaggeration
-  const neg = (s) => s.replace("-", "−");
-  const pct = (x) => neg(fmt(x * 100)) + "%";
+  const pct = (x) => fmt(x * 100) + "%";
 
   NB.demo(function (v) {
     const nu = v.nu, ea = v.e / 100, el = -nu * ea, dd = el * v.d, vol = ea * (1 - 2 * nu);
@@ -18,7 +17,7 @@
     set("d-label", "d = " + v.d + " mm → " + fmt(v.d + dd, 5) + " mm");
     set("scale-label", "strains " + ex.label);
 
-    set("out-dd", neg(fmt(dd)) + " mm");
+    set("out-dd", fmt(dd) + " mm");
     set("out-vol", pct(vol));
     set("out-lat", pct(el));
     set("readout", ea === 0
@@ -31,8 +30,8 @@
     set("g-e", pct(ea));
     set("g-d", v.d + " mm");
     set("w-lat", "−" + fmt(nu) + " × " + pct(ea) + " = " + pct(el));
-    set("w-dd", neg(fmt(el)) + " × " + v.d + nb + "mm = " + neg(fmt(dd)) + nb + "mm");
+    set("w-dd", fmt(el) + " × " + v.d + nb + "mm = " + fmt(dd) + nb + "mm");
     set("w-ans", pct(el));
-    set("w-note", "The width changes by " + neg(fmt(dd)) + " mm, and the volume by " + pct(vol) + ".");
+    set("w-note", "The width changes by " + fmt(dd) + " mm, and the volume by " + pct(vol) + ".");
   });
 })();

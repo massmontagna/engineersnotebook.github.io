@@ -16,7 +16,8 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   - Ignores already applied live in `.impeccable/config.json`.
   - Known false positives: `flat-type-hierarchy` (it misreads `clamp()` headings), `design-system-color` on `.frac` borders (they use `currentColor`), and `cramped-padding` on the unboxed `.disc h2`.
 
-- **Releasing:** every page links `site.css` and its scripts with a version query (`?v=1.0.3`). GitHub Pages serves them with a 4-hour cache, so when a release changes CSS or JS, bump the version on every page (one find-and-replace) or returning visitors get new HTML with stale styles.
+- **Check the shipped defaults:** `python3 tools/check-defaults.py [pages…]` renders every topic page in headless Chrome and lists any element whose shipped text or drawing differs from what its script writes. Run it before a release; it exits 1 on drift.
+- **Releasing:** every page links `site.css` and its scripts with a version query (`?v=1.0.4`). GitHub Pages serves them with a 4-hour cache, so when a release changes CSS or JS, bump the version on every page (one find-and-replace) or returning visitors get new HTML with stale styles.
 
 ## Architecture
 
@@ -36,12 +37,12 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
 
   The source order is what puts the demo straight after the formula block on phones.
 - **Demo scripts** (`assets/js/<topic>.js`) find elements by id.
-  - `beam-deflection.js` is self-contained. Every other topic loads `assets/js/notebook.js` first and calls `NB.demo(update)`. The helper binds every `.demo .ctl` (range/number pair `<key>-range`/`<key>-num`, or select `<key>-sel`), validates against the number input's `min`, `max`, `data-name` and `data-unit`, then calls `update(values)` and flashes the worked example. It also supplies `fmt`, `set`, `attr`, `opt`, `path`, `arrow`, `nice`, `exaggerate` and `limit`.
+  - Every topic loads `assets/js/notebook.js` first and calls `NB.demo(update)`. The helper binds every `.demo .ctl` (range/number pair `<key>-range`/`<key>-num`, or select `<key>-sel`), validates against the number input's `min`, `max`, `data-name` and `data-unit`, then calls `update(values)` and flashes the worked example. It also supplies `fmt`, `set`, `attr`, `opt`, `path`, `arrow`, `nice`, `exaggerate` and `limit`.
   - A page with two demos (`mechanics/mass-spring-damper.html`) uses one `article.topic` per demo, each with its own worked example. Control keys must be unique across the page; one `NB.demo` call updates both, and the worked-example flash stays within the changed demo's article. Animated figures need a Pause button and start paused under reduced motion.
   - Demo figures use `svg.fig` with token classes from `site.css` (`s-ink`, `s-ox`, `f-tab`, `t-ox` and so on) instead of hex colours.
   - The HTML ships with each demo's default output already written in (worked example, results and figure), so pages read correctly without JavaScript. If you change a default, update those values too.
-  - `beam-deflection.js` syncs each range input with its number input, validates against each field's min and max, redraws the SVG elastic curve with an auto-chosen exaggeration scale, fills the results table, and rewrites the worked-example `.live` spans, which flash on change.
-  - `fmt()` switches to ×10ⁿ notation outside 1e-2 to 1e5. Units are joined to their values with a no-break space.
+  - `beam-deflection.js` also animates the elastic curve towards each new value (instantly under reduced motion, and on the first draw so the shipped figure does not jump).
+  - `fmt()` switches to ×10ⁿ notation outside 1e-2 to 1e5 and writes negatives with a true minus sign (−), so scripts need no minus helper of their own. Units are joined to their values with a no-break space.
 - **Maths markup:** variables are `<i class="v">` (italic serif) and numerals stay mono. Fractions are `.frac` with two child spans, and subscripts use `<sub>`. Greek letters in uppercase table headers go in `.gk`, so δ does not render as Δ.
 - **Placeholders:** unpublished topics appear greyed (`.planned`, `li` without `.live`), with one legend line ("Topics in grey are in preparation."). Never invent content, authors, usage figures or testimonials (PRODUCT.md, Evidence on Hand).
 

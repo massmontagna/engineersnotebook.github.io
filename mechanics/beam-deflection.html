@@ -12,7 +12,7 @@
 <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
-<link rel="stylesheet" href="../assets/css/site.css?v=1.0.3">
+<link rel="stylesheet" href="../assets/css/site.css?v=1.0.4">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -69,8 +69,8 @@
         <svg id="beam" viewBox="0 0 520 180" role="img" aria-labelledby="beam-desc">
           <desc id="beam-desc">A beam on a pin support at the left and a roller at the right, with a point load at mid-span. The deflected shape is drawn below the unloaded position.</desc>
           <line x1="40" y1="86" x2="480" y2="86" stroke="#4c5351" stroke-width="1" stroke-dasharray="4 4"/>
-          <path id="beam-curve" d="M40 86 L480 86" fill="none" stroke="#16181a" stroke-width="4" stroke-linecap="round"/>
-          <g id="load">
+          <path id="beam-curve" d="M40.0 86.00 L51.0 87.81 L62.0 89.61 L73.0 91.40 L84.0 93.15 L95.0 94.87 L106.0 96.55 L117.0 98.17 L128.0 99.73 L139.0 101.21 L150.0 102.62 L161.0 103.93 L172.0 105.14 L183.0 106.25 L194.0 107.23 L205.0 108.09 L216.0 108.82 L227.0 109.39 L238.0 109.82 L249.0 110.08 L260.0 110.17 L271.0 110.08 L282.0 109.82 L293.0 109.39 L304.0 108.82 L315.0 108.09 L326.0 107.23 L337.0 106.25 L348.0 105.14 L359.0 103.93 L370.0 102.62 L381.0 101.21 L392.0 99.73 L403.0 98.17 L414.0 96.55 L425.0 94.87 L436.0 93.15 L447.0 91.40 L458.0 89.61 L469.0 87.81 L480.0 86.00" fill="none" stroke="#16181a" stroke-width="4" stroke-linecap="round"/>
+          <g id="load" transform="translate(0 24.17)">
             <line x1="260" y1="14" x2="260" y2="70" stroke="#b3261e" stroke-width="4"/>
             <path d="M249 64 L260 80 L271 64 Z" fill="#b3261e"/>
             <text id="load-label" x="272" y="30" font-family="JetBrains Mono, monospace" font-size="13" fill="#b3261e">P = 2 kN</text>
@@ -83,7 +83,7 @@
           <line x1="40" y1="144" x2="40" y2="156" stroke="#4c5351" stroke-width="1"/>
           <line x1="480" y1="144" x2="480" y2="156" stroke="#4c5351" stroke-width="1"/>
           <text id="span-label" x="40" y="172" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="13" fill="#4c5351">L = 1.50 m</text>
-          <text id="scale-label" x="480" y="172" text-anchor="end" font-family="Archivo Narrow, sans-serif" font-size="12" fill="#4c5351">deflection drawn ×1</text>
+          <text id="scale-label" x="480" y="172" text-anchor="end" font-family="Archivo Narrow, sans-serif" font-size="12" fill="#4c5351">deflection drawn ×200</text>
         </svg>
         <figcaption><b>Fig. 2.3-1</b>Deflection exaggerated; scale noted under the beam.</figcaption>
 
@@ -91,13 +91,13 @@
           <div class="ctl">
             <label for="P-num"><i>P</i>Load <span class="unit">kN</span></label>
             <input type="range" id="P-range" min="0.1" max="50" step="0.1" value="2" aria-label="Load, kilonewtons">
-            <input type="number" id="P-num" min="0.1" max="50" step="0.1" value="2" inputmode="decimal" aria-describedby="P-err">
+            <input type="number" id="P-num" min="0.1" max="50" step="0.1" value="2" inputmode="decimal" data-name="a load" data-unit="kN" aria-describedby="P-err">
             <span class="err" id="P-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
             <label for="L-num"><i>L</i>Span <span class="unit">m</span></label>
             <input type="range" id="L-range" min="0.5" max="10" step="0.05" value="1.5" aria-label="Span, metres">
-            <input type="number" id="L-num" min="0.5" max="10" step="0.05" value="1.5" inputmode="decimal" aria-describedby="L-err">
+            <input type="number" id="L-num" min="0.5" max="10" step="0.05" value="1.5" inputmode="decimal" data-name="a span" data-unit="m" aria-describedby="L-err">
             <span class="err" id="L-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
@@ -111,26 +111,26 @@
           <div class="ctl">
             <label for="b-num"><i>b</i>Width <span class="unit">mm</span></label>
             <input type="range" id="b-range" min="5" max="300" step="1" value="40" aria-label="Section width, millimetres">
-            <input type="number" id="b-num" min="5" max="300" step="1" value="40" inputmode="numeric" aria-describedby="b-err">
+            <input type="number" id="b-num" min="5" max="300" step="1" value="40" inputmode="numeric" data-name="a width" data-unit="mm" aria-describedby="b-err">
             <span class="err" id="b-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
             <label for="h-num"><i>h</i>Depth <span class="unit">mm</span></label>
             <input type="range" id="h-range" min="5" max="500" step="1" value="80" aria-label="Section depth, millimetres">
-            <input type="number" id="h-num" min="5" max="500" step="1" value="80" inputmode="numeric" aria-describedby="h-err">
+            <input type="number" id="h-num" min="5" max="500" step="1" value="80" inputmode="numeric" data-name="a depth" data-unit="mm" aria-describedby="h-err">
             <span class="err" id="h-err" aria-live="polite"></span>
           </div>
         </div>
 
         <table class="results" aria-label="Results">
           <tbody>
-            <tr><td><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12</td><td id="out-I">—</td></tr>
-            <tr><td><i class="v">M</i><sub>max</sub> = <i class="v">P</i><i class="v">L</i>/4</td><td id="out-M">—</td></tr>
-            <tr><td><i class="v">θ</i><sub>end</sub> = <i class="v">P</i><i class="v">L</i>²/16<i class="v">E</i><i class="v">I</i></td><td id="out-T">—</td></tr>
-            <tr class="key"><td><i class="v">δ</i><sub>max</sub> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></td><td id="out-D">—</td></tr>
+            <tr><td><i class="v">I</i> = <i class="v">b</i><i class="v">h</i>³/12</td><td id="out-I">1.71 × 10⁶ mm⁴</td></tr>
+            <tr><td><i class="v">M</i><sub>max</sub> = <i class="v">P</i><i class="v">L</i>/4</td><td id="out-M">0.75 kN·m</td></tr>
+            <tr><td><i class="v">θ</i><sub>end</sub> = <i class="v">P</i><i class="v">L</i>²/16<i class="v">E</i><i class="v">I</i></td><td id="out-T">0.824 mrad</td></tr>
+            <tr class="key"><td><i class="v">δ</i><sub>max</sub> = <i class="v">P</i><i class="v">L</i>³/48<i class="v">E</i><i class="v">I</i></td><td id="out-D">0.412 mm</td></tr>
           </tbody>
         </table>
-        <p class="readout" id="readout" aria-live="polite"></p>
+        <p class="readout" id="readout" aria-live="polite">The beam deflects 0.412 mm at mid-span, or L/3,641.</p>
         <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
       </figure>
     </div>
@@ -237,7 +237,7 @@
   <a href="./#beams">Back to Beams</a>
 </footer>
 
-<script src="../assets/js/notebook.js?v=1.0.3" defer></script>
-<script src="../assets/js/beam-deflection.js?v=1.0.3" defer></script>
+<script src="../assets/js/notebook.js?v=1.0.4" defer></script>
+<script src="../assets/js/beam-deflection.js?v=1.0.4" defer></script>
 </body>
 </html>

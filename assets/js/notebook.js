@@ -6,13 +6,14 @@
   const values = {};
 
   function fmt(n, digits) {
-    // Plain numbers in the everyday range, scientific notation outside it.
+    // Plain numbers in the everyday range, scientific notation outside it. Negatives get a true minus sign.
+    let s;
     if (n !== 0 && (Math.abs(n) >= 1e5 || Math.abs(n) < 1e-2)) {
       const exp = Math.floor(Math.log10(Math.abs(n)));
       const mant = (n / 10 ** exp).toLocaleString("en-GB", { maximumSignificantDigits: digits || 3 });
-      return mant + " × 10" + String(exp).replace(/./g, (c) => SUP[c]);
-    }
-    return n.toLocaleString("en-GB", { maximumSignificantDigits: digits || 3 });
+      s = mant + " × 10" + String(exp).replace(/./g, (c) => SUP[c]);
+    } else s = n.toLocaleString("en-GB", { maximumSignificantDigits: digits || 3 });
+    return s.replace("-", "−");
   }
 
   const set = (id, text) => { $(id).textContent = text; };

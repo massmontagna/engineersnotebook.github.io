@@ -2,7 +2,6 @@
 (function () {
   const { fmt, set, attr, path, nb } = NB;
   const R = 8.314, OX = 60, OY = 200, W = 400, H = 160, VMAX = 100, PMAX = 500; // plot origin and size; axes in litres and kPa
-  const neg = (s) => s.replace("-", "−");
 
   NB.demo(function (v) {
     const T = v.T + 273.15, V = v.V / 1000, nRT = v.n * R * T, p = nRT / V, pk = p / 1000;
@@ -32,9 +31,9 @@
     set("readout", "At " + fmt(v.V) + " L the gas is at " + fmt(pk) + " kPa (" + fmt(pk / 100) + " bar). Halve the volume and the pressure doubles.");
 
     set("g-n", fmt(v.n) + " mol");
-    set("g-T", neg(fmt(v.T)) + " °C");
+    set("g-T", fmt(v.T) + " °C");
     set("g-V", fmt(v.V) + " L");
-    set("w-T", neg(fmt(v.T)) + " + 273.15 = " + fmt(T, 5) + nb + "K");
+    set("w-T", fmt(v.T) + " + 273.15 = " + fmt(T, 5) + nb + "K");
     set("w-sub", "= " + fmt(v.n) + nb + "mol × 8.314" + nb + "J/(mol·K) × " + fmt(T, 5) + nb + "K / " + fmt(V) + nb + "m³");
     set("w-p", "= " + fmt(p) + nb + "Pa");
     set("w-ans", fmt(pk) + " kPa");

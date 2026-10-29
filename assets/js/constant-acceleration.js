@@ -45,9 +45,9 @@
         : "With no speed and no acceleration, the body never moves.");
 
     set("g-u", fmt(u) + " m/s");
-    set("g-a", fmt(a).replace("-", "−") + " m/s²");
+    set("g-a", fmt(a) + " m/s²");
     set("g-s", fmt(s) + " m");
-    set("w-sub", "= (" + fmt(u) + nb + "m/s)² + 2 × " + fmt(a).replace("-", "−") + nb + "m/s² × " + fmt(s) + nb + "m = " + fmt(v2, 4).replace("-", "−") + nb + "m²/s²");
+    set("w-sub", "= (" + fmt(u) + nb + "m/s)² + 2 × " + fmt(a) + nb + "m/s² × " + fmt(s) + nb + "m = " + fmt(v2, 4) + nb + "m²/s²");
     if (state === "stops") {
       set("w-v", "no real value: v² is negative, so the body stops first");
       set("w-t", "u/|a| = " + fmt(t) + nb + "s to come to rest");
@@ -61,7 +61,7 @@
     } else {
       set("w-v", "√" + fmt(v2, 4) + " = " + fmt(vf) + nb + "m/s");
       set("w-t", Math.abs(a) > 1e-9
-        ? "(v − u)/a = (" + fmt(vf) + " − " + fmt(u) + ")" + nb + "m/s / " + fmt(a).replace("-", "−") + nb + "m/s² = " + fmt(t) + nb + "s"
+        ? "(v − u)/a = (" + fmt(vf) + " − " + fmt(u) + ")" + nb + "m/s / " + fmt(a) + nb + "m/s² = " + fmt(t) + nb + "s"
         : "s/u = " + fmt(s) + nb + "m / " + fmt(u) + nb + "m/s = " + fmt(t) + nb + "s");
       set("w-ans", fmt(vf) + " m/s");
       set("w-note", "That is " + fmt(vf * 3.6) + " km/h, reached after " + fmt(t) + " s.");
