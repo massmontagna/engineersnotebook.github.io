@@ -39,7 +39,6 @@
     playing = on;
     last = 0;
     set("play", on ? "Pause" : "Play");
-    $("play").setAttribute("aria-pressed", String(!on));
     if (on) requestAnimationFrame(tick);
   }
   $("play").addEventListener("click", () => play(!playing));
@@ -91,20 +90,21 @@
 
     // Part 2
     const wn = Math.sqrt(v.k2 / v.m2), cc = 2 * Math.sqrt(v.k2 * v.m2), z = v.c / cc, near = Math.abs(z - 1) < 0.02;
-    const kind = near ? "critically damped" : z < 1 ? "underdamped" : "overdamped";
-    const wd = z < 1 ? wn * Math.sqrt(1 - z * z) : 0;
-    attr("x-curve", { d: curve(response(wn, z)) });
+    // Within 2% of ζ = 1 counts as critically damped everywhere: label, curve and damped frequency agree.
+    const under = z < 1 && !near, kind = near ? "critically damped" : under ? "underdamped" : "overdamped";
+    const wd = under ? wn * Math.sqrt(1 - z * z) : 0;
+    attr("x-curve", { d: curve(response(wn, near ? 1 : z)) });
     attr("x-crit", { d: near ? "" : curve(response(wn, 1)) });
-    attr("x-env", { d: z < 1 && z > 0 ? curve((t) => Math.exp(-z * wn * t)) + " " + curve((t) => -Math.exp(-z * wn * t)) : "" });
+    attr("x-env", { d: under && z > 0 ? curve((t) => Math.exp(-z * wn * t)) + " " + curve((t) => -Math.exp(-z * wn * t)) : "" });
     set("kind-label", kind.toUpperCase() + ", ζ = " + fmt(z));
 
     set("out-cc", fmt(cc) + " N·s/m");
-    set("out-wd", z < 1 ? fmt(wd) + " rad/s" : "none");
+    set("out-wd", under ? fmt(wd) + " rad/s" : "none");
     set("out-kind", kind);
     set("out-z", fmt(z));
     set("readout2", near
       ? "Critically damped: the fastest return to rest without overshooting."
-      : z < 1
+      : under
         ? "Underdamped: it overshoots and rings at " + fmt(wd) + " rad/s" + (z > 0 ? ", settling within 2% in about " + fmt(4 / (z * wn)) + " s." : ", never settling: there is no damping.")
         : "Overdamped: no overshoot, but it creeps back more slowly than at critical damping.");
 
@@ -114,11 +114,11 @@
     set("w-cc", "2√(" + fmt(v.k2) + nb + "N/m × " + fmt(v.m2) + nb + "kg) = " + fmt(cc) + nb + "N·s/m");
     set("w-z", fmt(v.c) + " / " + fmt(cc) + " = " + fmt(z));
     set("w-wn2", "√(" + fmt(v.k2) + nb + "N/m / " + fmt(v.m2) + nb + "kg) = " + fmt(wn) + nb + "rad/s");
-    set("w-wd", z < 1 ? fmt(wn) + nb + "rad/s × √(1 − " + fmt(z) + "²) = " + fmt(wd) + nb + "rad/s" : "none: ζ ≥ 1, so it does not oscillate");
+    set("w-wd", under ? fmt(wn) + nb + "rad/s × √(1 − " + fmt(z) + "²) = " + fmt(wd) + nb + "rad/s" : "none: ζ " + (near ? "≈" : ">") + " 1, so it does not oscillate");
     set("w-ans2", fmt(z));
     set("w-note2", near
-      ? "ζ is 1, so it is critically damped."
-      : z < 1
+      ? "ζ is about 1, so it is critically damped."
+      : under
         ? "ζ is below 1, so it is underdamped and oscillates as it decays."
         : "ζ is above 1, so it is overdamped and returns without oscillating.");
   });
