@@ -17,7 +17,7 @@ Engineer's Notebook (`engineersnotebook.github.io`): "your go-to for engineering
   - Known false positives: `flat-type-hierarchy` (it misreads `clamp()` headings), `design-system-color` on `.frac` borders (they use `currentColor`), and `cramped-padding` on the unboxed `.disc h2`.
 
 - **Check the shipped defaults:** `python3 tools/check-defaults.py [pages…]` renders every topic page in headless Chrome and lists any element whose shipped text or drawing differs from what its script writes. Run it before a release; it exits 1 on drift.
-- **Releasing:** every page links `site.css` and its scripts with a version query (`?v=1.0.4`). GitHub Pages serves them with a 4-hour cache, so when a release changes CSS or JS, bump the version on every page (one find-and-replace) or returning visitors get new HTML with stale styles.
+- **Releasing:** every page links `site.css` and its scripts with a version query (`?v=1.0.5`). GitHub Pages serves them with a 4-hour cache, so when a release changes CSS or JS, bump the version on every page (one find-and-replace) or returning visitors get new HTML with stale styles.
 
 ## Architecture
 

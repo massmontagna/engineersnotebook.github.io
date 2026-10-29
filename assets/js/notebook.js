@@ -7,12 +7,15 @@
 
   function fmt(n, digits) {
     // Plain numbers in the everyday range, scientific notation outside it. Negatives get a true minus sign.
+    // Round first, so 0.009996 reads 0.01 and 99,960 reads 1 × 10⁵, never "10 × 10⁻³".
+    // Round with the same formatter that displays it, so ties go the same way in both.
+    const d = digits || 3, r = Number(n.toLocaleString("en-US", { maximumSignificantDigits: d, useGrouping: false }));
     let s;
-    if (n !== 0 && (Math.abs(n) >= 1e5 || Math.abs(n) < 1e-2)) {
-      const exp = Math.floor(Math.log10(Math.abs(n)));
-      const mant = (n / 10 ** exp).toLocaleString("en-GB", { maximumSignificantDigits: digits || 3 });
+    if (r !== 0 && (Math.abs(r) >= 1e5 || Math.abs(r) < 1e-2)) {
+      const exp = Math.floor(Math.log10(Math.abs(r)));
+      const mant = (r / 10 ** exp).toLocaleString("en-GB", { maximumSignificantDigits: d });
       s = mant + " × 10" + String(exp).replace(/./g, (c) => SUP[c]);
-    } else s = n.toLocaleString("en-GB", { maximumSignificantDigits: digits || 3 });
+    } else s = r.toLocaleString("en-GB", { maximumSignificantDigits: d });
     return s.replace("-", "−");
   }
 
