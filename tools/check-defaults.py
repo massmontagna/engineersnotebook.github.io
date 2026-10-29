@@ -23,7 +23,7 @@ class Ids(HTMLParser):
     def __init__(self, html):
         super().__init__()
         self.stack, self.text, self.attrs = [], {}, {}
-        self.hidden, self.live, self.parents = set(), set(), set()
+        self.hidden, self.parents = set(), set()
         self.feed(html)
 
     def handle_starttag(self, tag, attrs):
@@ -45,8 +45,6 @@ class Ids(HTMLParser):
         self.parents.update(j for _, j in self.stack if j)  # compared through their own ids instead
         if "hidden" in a:
             self.hidden.add(i)
-        if "aria-live" in a:
-            self.live.add(i)
 
     def handle_endtag(self, tag):
         while self.stack and self.stack.pop()[0] != tag:
@@ -78,10 +76,10 @@ def diff(page, base):
     rendered = Ids(dom)
     out = []
     for i, text in shipped.text.items():
-        # Skip what only the script shows or fills: a hidden control, or a live region shipped empty.
+        # Skip what only the script shows, such as a hidden Play button.
         if i not in rendered.text or i in shipped.parents or i in shipped.hidden:
             continue
-        if not (i in shipped.live and not norm(text)) and norm(text) != norm(rendered.text[i]):
+        if norm(text) != norm(rendered.text[i]):
             out.append(f"#{i}: ships {norm(text)[:90]!r}, script writes {norm(rendered.text[i])[:90]!r}")
         for k, v in shipped.attrs[i].items():
             w = rendered.attrs[i].get(k, "")
