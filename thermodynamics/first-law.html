@@ -65,30 +65,44 @@
 
     <div class="demo-col">
       <figure class="demo" id="demo">
-        <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
-          <desc id="fig-desc">Two bars. The top bar is the heat added. The bottom bar splits the same length into the rise in internal energy and the work done by the gas.</desc>
-          <text class="lbl" x="20" y="61">HEAT IN, Q</text>
-          <rect id="bar-Q" x="150" y="40" height="34" class="s-ink f-tab" stroke-width="1.5" width="330"></rect>
-          <text id="Q-label" y="62" class="t-ink" x="160">Q = 5 kJ</text>
-          <text class="lbl" x="20" y="131">GOES TO</text>
-          <rect id="bar-U" x="150" y="110" height="34" class="f-ox" width="235.7"></rect>
-          <rect id="bar-W" y="110" height="34" class="s-ink f-sheet" stroke-width="1.5" x="385.7" width="94.3" visibility="visible"></rect>
-          <text id="U-label" y="166" text-anchor="middle" class="t-ox" x="267.9">ΔU = 3.57 kJ</text>
-          <text id="W-label" y="186" text-anchor="middle" class="t-ink" x="432.9">W = 1.43 kJ</text>
+        <svg class="fig" id="fig" viewBox="0 0 520 250" role="img" aria-labelledby="fig-desc">
+          <desc id="fig-desc">A gas in a cylinder under a weighted piston, heated from below. At constant pressure the piston rises as the gas expands; at constant volume stops hold it in place. A thermometer shows the temperature rise, and a bar splits the heat into the rise in internal energy and the work done by the gas.</desc>
+          <path class="s-ink" stroke-width="1.5" d="M34 200 L34 50 L46 50 L46 200"></path>
+          <circle cx="40" cy="212" r="10" class="f-ox"></circle>
+          <rect id="therm" x="37" width="6" class="f-ox" y="164.2" height="47.8"></rect>
+          <path id="t1-tick" class="s-ink2" stroke-width="1" d="M46.0 192.8 L52.0 192.8"></path>
+          <text id="t1-label" x="54" y="196.8" visibility="visible">T₁</text>
+          <text id="t2-label" x="54" class="t-ox" y="168.2">T₂</text>
+          <rect id="gas" x="111" width="138" class="f-tab" y="138.6" height="71.4"></rect>
+          <path id="start-line" class="s-ink2 dash" stroke-width="1" d="M111.0 165.0 L249.0 165.0"></path>
+          <rect id="piston" x="112" width="136" height="12" class="s-ink f-sheet" stroke-width="1.5" y="126.6"></rect>
+          <rect id="weight" x="155" width="50" height="18" class="s-ink f-tab" stroke-width="1.5" y="108.6"></rect>
+          <path id="stops" class="f-ink" d=""></path>
+          <path class="s-ink" stroke-width="2" d="M110 40 L110 210 L250 210 L250 40"></path>
+          <text id="gas-label" x="180" text-anchor="middle" class="t-ink" y="179.3">n = 1 mol</text>
+          <path id="rise" class="s-ink2 f-ink" stroke-width="1" d="M262.0 165.0 L262.0 146.6 M266.4 146.6 L262.0 138.6 L257.6 146.6 Z M256.0 165.0 L268.0 165.0"></path>
+          <text id="rise-label" x="268" y="155.8">ΔV</text>
+          <path id="heat" class="s-ox f-ox" stroke-width="2.5" d="M150.0 234.0 L150.0 224.0 M154.4 224.0 L150.0 216.0 L145.6 224.0 Z M180.0 234.0 L180.0 224.0 M184.4 224.0 L180.0 216.0 L175.6 224.0 Z M210.0 234.0 L210.0 224.0 M214.4 224.0 L210.0 216.0 L205.6 224.0 Z"></path>
+          <text id="Q-label" x="136" y="240" text-anchor="end" class="t-ox">Q = 5 kJ</text>
+          <text x="340" y="48">Q = ΔU + W</text>
+          <rect id="bar-W" x="340" width="28" class="s-ink f-sheet" stroke-width="1.5" y="60" height="40.0" visibility="visible"></rect>
+          <rect id="bar-U" x="340" width="28" class="f-ox" y="100.0" height="100.0"></rect>
+          <text id="W-label" x="378" class="t-ink" y="84.0">W = 1.43 kJ</text>
+          <text id="U-label" x="378" class="t-ox" y="154.0">ΔU = 3.57 kJ</text>
         </svg>
-        <figcaption><b>Fig. 1.2-1</b>Q = ΔU + W: the two lower parts always add up to the heat in.</figcaption>
+        <figcaption><b>Fig. 1.2-1</b>The gas starts at 20 °C, and the piston's rise is drawn to scale. Dashed: where the piston started.</figcaption>
 
         <div class="controls">
           <div class="ctl">
             <label for="Q-num"><i>Q</i>Heat in <span class="unit">kJ</span></label>
-            <input type="range" id="Q-range" min="0.1" max="50" step="0.1" value="5" aria-label="Heat in, kJ">
-            <input type="number" id="Q-num" min="0.1" max="50" step="0.1" value="5" inputmode="decimal" data-name="an amount of heat" data-unit="kJ" aria-describedby="Q-err">
+            <input type="range" id="Q-range" min="0.1" max="10" step="0.1" value="5" aria-label="Heat in, kJ">
+            <input type="number" id="Q-num" min="0.1" max="10" step="0.1" value="5" inputmode="decimal" data-name="an amount of heat" data-unit="kJ" aria-describedby="Q-err">
             <span class="err" id="Q-err" aria-live="polite"></span>
           </div>
           <div class="ctl">
             <label for="n-num"><i>n</i>Amount <span class="unit">mol</span></label>
-            <input type="range" id="n-range" min="0.1" max="10" step="0.1" value="1" aria-label="Amount, mol">
-            <input type="number" id="n-num" min="0.1" max="10" step="0.1" value="1" inputmode="decimal" data-name="an amount" data-unit="mol" aria-describedby="n-err">
+            <input type="range" id="n-range" min="1" max="10" step="0.1" value="1" aria-label="Amount, mol">
+            <input type="number" id="n-num" min="1" max="10" step="0.1" value="1" inputmode="decimal" data-name="an amount" data-unit="mol" aria-describedby="n-err">
             <span class="err" id="n-err" aria-live="polite"></span>
           </div>
           <div class="ctl">

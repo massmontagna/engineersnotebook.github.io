@@ -1,20 +1,49 @@
 // Heat into an ideal gas split between internal energy and work: live demo for Thermodynamics §1.2.
 (function () {
-  const { fmt, set, attr, opt, nb } = NB;
-  const R = 8.314, X0 = 150, MAX = 330; // bar start and full width, SVG units
+  const { fmt, set, attr, opt, path, arrow, nb } = NB;
+  const R = 8.314, T1 = 293.15; // the gas starts at 20 °C
+  const BASE = 210, H0 = 45, XL = 111, XR = 249; // cylinder floor, starting gas height, inner walls
+  const TB = 200, TH = 150, TLO = 250, THI = 1150; // thermometer: foot, height and scale in K
+  const BY = 60, BH = 140; // split bar top and height
+  const yT = (t) => TB - (TH * (t - TLO)) / (THI - TLO);
 
   NB.demo(function (v) {
     const Q = v.Q * 1e3, cv = v.gas * R, isobaric = v.proc === 1;
-    const c = isobaric ? cv + R : cv, dT = Q / (v.n * c), W = isobaric ? v.n * R * dT : 0, U = Q - W;
+    const c = isobaric ? cv + R : cv, dT = Q / (v.n * c), W = isobaric ? v.n * R * dT : 0, U = Q - W, T2 = T1 + dT;
 
-    const wU = (MAX * U) / Q;
-    attr("bar-Q", { width: MAX });
-    attr("Q-label", { x: X0 + 10 });
+    // Thermometer: the column stands at T₂, with a tick where it started.
+    const y1 = yT(T1), y2 = yT(T2);
+    attr("therm", { y: y2.toFixed(1), height: (212 - y2).toFixed(1) });
+    attr("t1-tick", { d: path([[46, y1], [52, y1]]) });
+    attr("t1-label", { y: (y1 + 4).toFixed(1), visibility: y1 - y2 < 14 ? "hidden" : "visible" });
+    attr("t2-label", { y: (y2 + 4).toFixed(1) });
+
+    // Cylinder: at constant pressure the gas height grows with T (V ∝ T), drawn to scale; at constant volume stops hold the piston.
+    const h = isobaric ? (H0 * T2) / T1 : H0, yP = BASE - h, y0 = BASE - H0;
+    attr("gas", { y: yP.toFixed(1), height: h.toFixed(1) });
+    attr("piston", { y: (yP - 12).toFixed(1) });
+    attr("weight", { y: (yP - 30).toFixed(1) });
+    const stop = (x0, x1) => path([[x0, y0 - 19], [x1, y0 - 19], [x1, y0 - 12], [x0, y0 - 12]]) + " Z";
+    attr("stops", { d: isobaric ? "" : stop(XL, XL + 14) + " " + stop(XR - 14, XR) });
+    attr("start-line", { d: isobaric ? path([[XL, y0], [XR, y0]]) : "" });
+    attr("gas-label", { y: (BASE - h / 2 + 5).toFixed(1) });
+    set("gas-label", "n = " + fmt(v.n) + " mol");
+    const tall = isobaric && h - H0 > 14;
+    attr("rise", { d: tall ? arrow(262, y0, 262, yP, 8) + " " + path([[256, y0], [268, y0]]) : "" });
+    attr("rise-label", { y: ((y0 + yP) / 2 + 4).toFixed(1) });
+    set("rise-label", tall ? "ΔV" : "");
+
+    // Heat in from below, the arrows growing with Q.
+    const len = 8 + (20 * v.Q) / 10;
+    attr("heat", { d: [150, 180, 210].map((x) => arrow(x, 216 + len, x, 216, 8)).join(" ") });
     set("Q-label", "Q = " + fmt(v.Q) + " kJ");
-    attr("bar-U", { width: wU.toFixed(1) });
-    attr("bar-W", { x: (X0 + wU).toFixed(1), width: (MAX - wU).toFixed(1), visibility: W > 0 ? "visible" : "hidden" });
-    attr("U-label", { x: (X0 + wU / 2).toFixed(1) });
-    attr("W-label", { x: (X0 + wU + (MAX - wU) / 2).toFixed(1) });
+
+    // Split bar: ΔU stays in the gas (bottom), W leaves through the piston (top).
+    const hU = (BH * U) / Q;
+    attr("bar-U", { y: (BY + BH - hU).toFixed(1), height: hU.toFixed(1) });
+    attr("bar-W", { height: (BH - hU).toFixed(1), visibility: W > 0 ? "visible" : "hidden" });
+    attr("U-label", { y: (BY + BH - hU / 2 + 4).toFixed(1) });
+    attr("W-label", { y: (BY + (BH - hU) / 2 + 4).toFixed(1) });
     set("U-label", "ΔU = " + fmt(U / 1e3) + " kJ");
     set("W-label", W > 0 ? "W = " + fmt(W / 1e3) + " kJ" : "");
 
