@@ -12,7 +12,7 @@
 <link rel="icon" href="../images/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../images/favicon-180.png">
-<link rel="stylesheet" href="../assets/css/site.css?v=1.0.3">
+<link rel="stylesheet" href="../assets/css/site.css?v=1.0.4">
 </head>
 <body>
 <a class="skip" href="#content">Skip to content</a>
@@ -65,14 +65,14 @@
       <figure class="demo" id="demo">
         <svg class="fig" id="fig" viewBox="0 0 520 200" role="img" aria-labelledby="fig-desc">
           <desc id="fig-desc">A rectangular bar, outlined dashed at its original size and drawn solid after loading: longer and narrower in tension, shorter and wider in compression.</desc>
-          <rect x="110" y="60" width="300" height="80" class="s-ink2 dash" stroke-width="1"></rect>
-          <rect id="bar" class="s-ink f-tab" stroke-width="2" x="106.0" y="61.2" width="308.0" height="77.6"></rect>
+          <rect id="orig" x="120" y="67.4" width="280" height="65.2" class="s-ink2 dash" stroke-width="1"></rect>
+          <rect id="bar" class="s-ink f-tab" stroke-width="2" x="106.0" y="68.4" width="308.0" height="63.3"></rect>
           <path id="fl" class="s-ox f-ox" stroke-width="3" d="M100.0 100.0 L78.0 100.0 M78.0 93.4 L66.0 100.0 L78.0 106.6 Z"></path>
           <path id="fr" class="s-ox f-ox" stroke-width="3" d="M420.0 100.0 L442.0 100.0 M442.0 106.6 L454.0 100.0 L442.0 93.4 Z"></path>
           <text id="d-label" x="260" y="186" text-anchor="middle">d = 20 mm → 19.94 mm</text>
           <text id="scale-label" class="lbl" x="500" y="24" text-anchor="end">strains drawn ×10</text>
         </svg>
-        <figcaption><b>Fig. 1.2-1</b>Dashed: original shape. Strains exaggerated by the scale noted.</figcaption>
+        <figcaption><b>Fig. 1.2-1</b>Dashed: original shape, drawn wider for a wider bar but not to scale. Strains exaggerated by the scale noted.</figcaption>
 
         <div class="controls">
           <div class="ctl">
@@ -106,7 +106,7 @@
             <tr class="key"><td><i class="v">ε</i><sub>lat</sub> = −<i class="v">ν</i><i class="v">ε</i><sub>ax</sub></td><td id="out-lat">−0.3%</td></tr>
           </tbody>
         </table>
-        <p class="readout" id="readout" aria-live="polite"></p>
+        <p class="readout" id="readout" aria-live="polite">Stretched by 1%, the bar narrows by 0.3%. Its volume changes by 0.4%.</p>
         <noscript><p class="readout">The demo needs JavaScript. The formula and worked example work without it, using the default values.</p></noscript>
       </figure>
     </div>
@@ -206,7 +206,7 @@
   <a href="./#elasticity">Back to Elasticity</a>
 </footer>
 
-<script src="../assets/js/notebook.js?v=1.0.3" defer></script>
-<script src="../assets/js/poissons-ratio.js?v=1.0.3" defer></script>
+<script src="../assets/js/notebook.js?v=1.0.4" defer></script>
+<script src="../assets/js/poissons-ratio.js?v=1.0.4" defer></script>
 </body>
 </html>

@@ -45,7 +45,7 @@
     set("w-ax", fmt(v.ax) + " × 9.81" + nb + "m/s² = " + fmt(ax) + nb + "m/s²");
     set("w-dW", fmt(m, 4) + nb + "kg × " + fmt(ax) + nb + "m/s² × " + fmt(h) + nb + "m / " + fmt(L) + nb + "m = " + fmt(dW / 1000) + nb + "kN");
     set("w-Wf", fmt(W / 1000) + nb + "kN × " + fmt(b, 4) + nb + "m / " + fmt(L) + nb + "m + " + fmt(dW / 1000) + nb + "kN = " + fmt((Wfs + dW) / 1000) + nb + "kN");
-    set("w-Wr", fmt(W / 1000) + nb + "kN × " + fmt(a, 4) + nb + "m / " + fmt(L) + nb + "m − " + fmt(dW / 1000) + nb + "kN = " + fmt((W - Wfs - dW) / 1000).replace("-", "−") + nb + "kN");
+    set("w-Wr", fmt(W / 1000) + nb + "kN × " + fmt(a, 4) + nb + "m / " + fmt(L) + nb + "m − " + fmt(dW / 1000) + nb + "kN = " + fmt((W - Wfs - dW) / 1000) + nb + "kN");
     set("w-ans", fmt(dW / 1000) + " kN");
     set("w-note", Wfs + dW >= W
       ? "The rear load comes out negative: the rear wheels lift off."

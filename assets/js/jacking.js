@@ -14,7 +14,6 @@
     const other = pts.slice().reverse().map(([x, y]) => [CX - x * S, GROUND - y * S]);
     return path(side.concat(other)) + " Z";
   };
-  const signed = (n) => fmt(n).replace("-", "−");
 
   NB.demo(function (v) {
     const rcmm = NB.limit("rc", -150, v.h); // the roll centre sits below the CG
@@ -45,11 +44,11 @@
     const jw = BW * Math.min(1, Math.max(0, jack));
     attr("bar-jack", { width: jw.toFixed(1) });
     attr("bar-roll", { x: (BX + jw).toFixed(1), width: (BW - jw).toFixed(1) });
-    set("jack-label", "JACKING " + signed(100 * jack) + "%");
-    set("roll-label", "ROLL " + signed(100 * roll) + "%");
+    set("jack-label", "JACKING " + fmt(100 * jack) + "%");
+    set("roll-label", "ROLL " + fmt(100 * roll) + "%");
 
-    set("out-jack", signed(100 * jack) + "%");
-    set("out-roll", signed(100 * roll) + "%");
+    set("out-jack", fmt(100 * jack) + "%");
+    set("out-roll", fmt(100 * roll) + "%");
     set("out-arm", fmt(v.h - rcmm, 4) + " mm");
     set("out-dW", fmt(100 * share) + "% of weight");
     set("readout", lift
@@ -65,13 +64,13 @@
     set("g-ay", fmt(v.ay) + " g");
     set("g-h", v.h + " mm");
     set("g-t", fmt(v.t, 4) + " mm");
-    set("g-rc", signed(rcmm) + " mm");
-    set("w-jack", signed(rcmm) + " mm / " + v.h + " mm = " + signed(100 * jack) + "%");
-    set("w-roll", "1 − " + signed(100 * jack) + "% = " + signed(100 * roll) + "%");
+    set("g-rc", fmt(rcmm) + " mm");
+    set("w-jack", fmt(rcmm) + " mm / " + v.h + " mm = " + fmt(100 * jack) + "%");
+    set("w-roll", "1 − " + fmt(100 * jack) + "% = " + fmt(100 * roll) + "%");
     set("w-dW", fmt(v.ay) + " × " + v.h + " mm / " + fmt(v.t, 4) + " mm = " + fmt(100 * share) + "%");
-    set("w-ans", signed(100 * jack) + "%");
+    set("w-ans", fmt(100 * jack) + "%");
     set("w-note", lift
       ? "The transfer reaches half the weight, so the inner wheels lift off."
-      : "Roll takes the other " + signed(100 * roll) + "%. " + fmt(100 * share) + "% of the car's weight moves to the outer wheels.");
+      : "Roll takes the other " + fmt(100 * roll) + "%. " + fmt(100 * share) + "% of the car's weight moves to the outer wheels.");
   });
 })();
